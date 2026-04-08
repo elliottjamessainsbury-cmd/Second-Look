@@ -1,0 +1,51 @@
+[
+  {
+    "film_id": "aftersun-2022",
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Strong anchor title for introspective, emotionally precise recommendations."
+    ],
+    "manual_links": [
+      "the-long-day-closes-1992",
+      "petite-maman-2021",
+      "morvern-callar-2002"
+    ],
+    "deep_cut_score": 4,
+    "overexposed_score": 1,
+    "accessibility": "medium",
+    "intensity": "low",
+    "discovery_lanes": [
+      "memory films",
+      "modern British cinema",
+      "gentle emotional devastation"
+    ],
+    "collections": [
+      "core films",
+      "starter arthouse"
+    ]
+  },
+  {
+    "film_id": "mikey-and-nicky-1976",
+    "editorial_score": 8,
+    "editorial_notes": [
+      "A bruised, intimate recommendation path out of New Hollywood crime cinema."
+    ],
+    "manual_links": [
+      "california-split-1974",
+      "the-killing-of-a-chinese-bookie-1976"
+    ],
+    "deep_cut_score": 7,
+    "overexposed_score": 2,
+    "accessibility": "medium",
+    "intensity": "medium",
+    "discovery_lanes": [
+      "american drift",
+      "male friendship breakdown",
+      "1970s deeper cuts"
+    ],
+    "collections": [
+      "core films",
+      "new hollywood"
+    ]
+  }
+]

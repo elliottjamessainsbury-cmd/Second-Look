@@ -1,0 +1,272 @@
+[
+  {
+    "id": "aftersun-2022",
+    "title": "Aftersun",
+    "year": 2022,
+    "director": "Charlotte Wells",
+    "countries": ["UK", "USA"],
+    "genres": ["Drama"],
+    "themes": ["memory", "parent-child relationship", "grief", "coming of age"],
+    "tone": ["tender", "melancholic", "intimate"],
+    "pace": "slow",
+    "tags": ["modern British cinema", "emotional restraint", "sun-drenched sadness"],
+    "similar_to": ["The Souvenir", "The Long Day Closes"],
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Strong anchor title for introspective, emotionally precise recommendations."
+    ],
+    "manual_links": ["The Long Day Closes", "Petite Maman", "Morvern Callar"]
+  },
+  {
+    "id": "the-souvenir-2019",
+    "title": "The Souvenir",
+    "year": 2019,
+    "director": "Joanna Hogg",
+    "countries": ["UK", "USA"],
+    "genres": ["Drama", "Romance"],
+    "themes": ["memory", "creative life", "obsession", "class"],
+    "tone": ["cool", "observant", "melancholic"],
+    "pace": "slow",
+    "tags": ["British cinema", "autobiographical", "art school"],
+    "similar_to": ["Aftersun", "The Souvenir Part II"],
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Boost for users drawn to memory pieces, emotional ambiguity, and quietly devastating British work."
+    ],
+    "manual_links": ["Aftersun", "Exhibition", "The Long Day Closes"]
+  },
+  {
+    "id": "the-long-day-closes-1992",
+    "title": "The Long Day Closes",
+    "year": 1992,
+    "director": "Terence Davies",
+    "countries": ["UK"],
+    "genres": ["Drama"],
+    "themes": ["memory", "childhood", "family", "interiority"],
+    "tone": ["lyrical", "melancholic", "tender"],
+    "pace": "slow",
+    "tags": ["British cinema", "memory film", "formal beauty"],
+    "similar_to": ["Distant Voices, Still Lives", "Aftersun"],
+    "editorial_score": 10,
+    "editorial_notes": [
+      "Boost for users drawn to memory, fragility, and formally expressive British films."
+    ],
+    "manual_links": ["Aftersun", "Distant Voices, Still Lives", "The Souvenir"]
+  },
+  {
+    "id": "petite-maman-2021",
+    "title": "Petite Maman",
+    "year": 2021,
+    "director": "Celine Sciamma",
+    "countries": ["France"],
+    "genres": ["Drama", "Fantasy"],
+    "themes": ["grief", "childhood", "mother-daughter relationship", "memory"],
+    "tone": ["gentle", "precise", "tender"],
+    "pace": "slow",
+    "tags": ["quiet fantasy", "emotional clarity", "French cinema"],
+    "similar_to": ["Aftersun", "The Long Day Closes"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "A clean recommendation for users responding to emotional precision and small-scale formal invention."
+    ],
+    "manual_links": ["Aftersun", "The Long Day Closes"]
+  },
+  {
+    "id": "morvern-callar-2002",
+    "title": "Morvern Callar",
+    "year": 2002,
+    "director": "Lynne Ramsay",
+    "countries": ["UK", "Canada"],
+    "genres": ["Drama"],
+    "themes": ["alienation", "reinvention", "grief", "escape"],
+    "tone": ["cool", "mysterious", "sensory"],
+    "pace": "slow",
+    "tags": ["Scottish cinema", "female antihero", "needle drops"],
+    "similar_to": ["Ratcatcher", "Aftersun"],
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Boost when users respond to elliptical storytelling and emotionally indirect films."
+    ],
+    "manual_links": ["Aftersun", "Ratcatcher", "Beau Travail"]
+  },
+  {
+    "id": "ratcatcher-1999",
+    "title": "Ratcatcher",
+    "year": 1999,
+    "director": "Lynne Ramsay",
+    "countries": ["UK", "France"],
+    "genres": ["Drama"],
+    "themes": ["childhood", "guilt", "working class life", "escape"],
+    "tone": ["bleak", "lyrical", "immersive"],
+    "pace": "slow",
+    "tags": ["Scottish cinema", "debut feature", "social realism"],
+    "similar_to": ["Morvern Callar", "The Long Day Closes"],
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Useful bridge between British social realism and more poetic, interior cinema."
+    ],
+    "manual_links": ["Morvern Callar", "The Long Day Closes"]
+  },
+  {
+    "id": "beau-travail-1999",
+    "title": "Beau Travail",
+    "year": 1999,
+    "director": "Claire Denis",
+    "countries": ["France"],
+    "genres": ["Drama"],
+    "themes": ["desire", "jealousy", "discipline", "masculinity"],
+    "tone": ["sensual", "austere", "hypnotic"],
+    "pace": "slow",
+    "tags": ["art cinema", "physical performance", "legionnaire drama"],
+    "similar_to": ["L'Intrus", "Trouble Every Day"],
+    "editorial_score": 10,
+    "editorial_notes": [
+      "Boost for users open to sensual, formally daring, psychologically charged cinema."
+    ],
+    "manual_links": ["Trouble Every Day", "Morvern Callar", "Theorem"]
+  },
+  {
+    "id": "trouble-every-day-2001",
+    "title": "Trouble Every Day",
+    "year": 2001,
+    "director": "Claire Denis",
+    "countries": ["France", "Germany", "Japan"],
+    "genres": ["Drama", "Horror"],
+    "themes": ["desire", "violence", "body horror", "obsession"],
+    "tone": ["sensual", "disturbing", "dreamlike"],
+    "pace": "slow",
+    "tags": ["art horror", "extreme cinema", "cult favorite"],
+    "similar_to": ["Beau Travail", "Theorem"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "Good escalation path when users can handle stranger and darker recommendations."
+    ],
+    "manual_links": ["Beau Travail", "Possession"]
+  },
+  {
+    "id": "theorem-1968",
+    "title": "Theorem",
+    "year": 1968,
+    "director": "Pier Paolo Pasolini",
+    "countries": ["Italy"],
+    "genres": ["Drama", "Mystery"],
+    "themes": ["desire", "bourgeois family", "spiritual crisis", "disruption"],
+    "tone": ["provocative", "austere", "symbolic"],
+    "pace": "slow",
+    "tags": ["European modernism", "political cinema", "art film"],
+    "similar_to": ["Beau Travail", "Teorema"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "Boost for viewers who like severe, mysterious, idea-rich cinema."
+    ],
+    "manual_links": ["Beau Travail", "Trouble Every Day"]
+  },
+  {
+    "id": "mikey-and-nicky-1976",
+    "title": "Mikey and Nicky",
+    "year": 1976,
+    "director": "Elaine May",
+    "countries": ["USA"],
+    "genres": ["Crime", "Drama"],
+    "themes": ["friendship", "betrayal", "paranoia", "masculinity"],
+    "tone": ["ragged", "tense", "sad"],
+    "pace": "medium",
+    "tags": ["New Hollywood", "anti-gangster", "cult favorite"],
+    "similar_to": ["The Killing of a Chinese Bookie", "California Split"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "Useful deeper-cut recommendation for users orbiting around 1970s American male relationship dramas."
+    ],
+    "manual_links": ["California Split", "The Killing of a Chinese Bookie"]
+  },
+  {
+    "id": "california-split-1974",
+    "title": "California Split",
+    "year": 1974,
+    "director": "Robert Altman",
+    "countries": ["USA"],
+    "genres": ["Comedy", "Drama"],
+    "themes": ["friendship", "addiction", "drifting", "chance"],
+    "tone": ["loose", "shaggy", "restless"],
+    "pace": "medium",
+    "tags": ["New Hollywood", "gambling", "hangout movie"],
+    "similar_to": ["Mikey and Nicky", "The Long Goodbye"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "A strong recommendation when the user likes human mess, drift, and anti-plot energy."
+    ],
+    "manual_links": ["Mikey and Nicky", "The Long Goodbye"]
+  },
+  {
+    "id": "the-killing-of-a-chinese-bookie-1976",
+    "title": "The Killing of a Chinese Bookie",
+    "year": 1976,
+    "director": "John Cassavetes",
+    "countries": ["USA"],
+    "genres": ["Crime", "Drama"],
+    "themes": ["performance", "self-destruction", "masculinity", "loneliness"],
+    "tone": ["messy", "tense", "raw"],
+    "pace": "medium",
+    "tags": ["American indie", "noir underworld", "character study"],
+    "similar_to": ["Mikey and Nicky", "Opening Night"],
+    "editorial_score": 9,
+    "editorial_notes": [
+      "Boost for users who like unstable men, performance spaces, and bruised American cinema."
+    ],
+    "manual_links": ["Mikey and Nicky", "California Split"]
+  },
+  {
+    "id": "the-long-goodbye-1973",
+    "title": "The Long Goodbye",
+    "year": 1973,
+    "director": "Robert Altman",
+    "countries": ["USA"],
+    "genres": ["Crime", "Comedy", "Drama"],
+    "themes": ["paranoia", "alienation", "friendship", "disillusionment"],
+    "tone": ["sleepy", "wry", "off-kilter"],
+    "pace": "medium",
+    "tags": ["neo-noir", "Los Angeles", "New Hollywood"],
+    "similar_to": ["California Split", "Mikey and Nicky"],
+    "editorial_score": 7,
+    "editorial_notes": [
+      "Good bridge title for users moving from classic noir to looser 1970s revisionism."
+    ],
+    "manual_links": ["California Split", "Mikey and Nicky"]
+  },
+  {
+    "id": "possession-1981",
+    "title": "Possession",
+    "year": 1981,
+    "director": "Andrzej Zulawski",
+    "countries": ["France", "West Germany"],
+    "genres": ["Drama", "Horror"],
+    "themes": ["marriage", "madness", "desire", "political anxiety"],
+    "tone": ["hysterical", "intense", "surreal"],
+    "pace": "medium",
+    "tags": ["cult horror", "Berlin cinema", "extreme performance"],
+    "similar_to": ["Trouble Every Day", "Theorem"],
+    "editorial_score": 8,
+    "editorial_notes": [
+      "Escalation pick for users who want emotional extremity rather than tasteful restraint."
+    ],
+    "manual_links": ["Trouble Every Day", "Beau Travail"]
+  },
+  {
+    "id": "distant-voices-still-lives-1988",
+    "title": "Distant Voices, Still Lives",
+    "year": 1988,
+    "director": "Terence Davies",
+    "countries": ["UK"],
+    "genres": ["Drama"],
+    "themes": ["memory", "family", "music", "postwar life"],
+    "tone": ["lyrical", "melancholic", "warm"],
+    "pace": "slow",
+    "tags": ["British cinema", "memory film", "working class life"],
+    "similar_to": ["The Long Day Closes", "Aftersun"],
+    "editorial_score": 10,
+    "editorial_notes": [
+      "Essential recommendation for users who connect with memory, music, and postwar British atmosphere."
+    ],
+    "manual_links": ["The Long Day Closes", "Aftersun"]
+  }
+]

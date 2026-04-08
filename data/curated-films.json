@@ -1,0 +1,610 @@
+[
+  {
+    "film_id": "hard-truths-2024",
+    "title": "Hard Truths",
+    "year": 2024,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Abigail's Party",
+      "Naked"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "one-battle-after-another-2025",
+    "title": "One Battle After Another",
+    "year": 2025,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Eddington",
+      "The Secret Agent",
+      "There Will Be Blood"
+    ],
+    "source_row_count": 3
+  },
+  {
+    "film_id": "a-woman-under-the-influence-1974",
+    "title": "A Woman Under the Influence",
+    "year": 1974,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Piano Teacher",
+      "Dans Ma Peau"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "the-voice-of-hind-rajab-2025",
+    "title": "The Voice of Hind Rajab",
+    "year": 2025,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Look of Silence"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-secret-agent-2025",
+    "title": "The Secret Agent",
+    "year": 2025,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "One Battle After Another"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "story-of-women-1988",
+    "title": "Story of Women",
+    "year": 1988,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Piano Teacher",
+      "Le Rayon Vert"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "aparajito-1956",
+    "title": "Aparajito",
+    "year": 1956,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Pather Pachali",
+      "Late Spring"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "amadeus-1984",
+    "title": "Amadeus",
+    "year": 1984,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Barry Lyndon",
+      "Lawrence of Arabia"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "lawrence-of-arabia-1962",
+    "title": "Lawrence of Arabia",
+    "year": 1962,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Amadeus",
+      "Dune Part Two",
+      "The Best Years of our Lives",
+      "Dune",
+      "Dune: Part Two",
+      "The Look of Silence",
+      "Oppenheimer"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "the-substance-2024",
+    "title": "The Substance",
+    "year": 2024,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Reality+",
+      "Society",
+      "From Beyond",
+      "Dans Ma Peau",
+      "Inside (2007)",
+      "Braindead"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "tropical-malady-2004",
+    "title": "Tropical Malady",
+    "year": 2004,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Happy Together"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "rope-1948",
+    "title": "Rope",
+    "year": 1948,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Talented Mr Ripley",
+      "Vertigo",
+      "Rebecca"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-look-of-silence-2014",
+    "title": "The Look of Silence",
+    "year": 2014,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Shoah",
+      "The Voice of Hind Rajab",
+      "Night and Fog",
+      "The Act of Killing"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "happy-together-1997",
+    "title": "Happy Together",
+    "year": 1997,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Chungking Express",
+      "All of Us Strangers",
+      "Tropical Malady",
+      "Farwell My Concubine"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "bug-2006",
+    "title": "Bug",
+    "year": 2006,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Killer Joe",
+      "A Woman Under the Influence",
+      "The Piano Teacher",
+      "Dans Ma Peau"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "tar-2022",
+    "title": "TÁR",
+    "year": 2022,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "In the Bedroom",
+      "The Piano Teacher"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "persona-1966",
+    "title": "Persona",
+    "year": 1966,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "A Woman Under the Influence",
+      "Autumn Sonata"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "harakiri-1962",
+    "title": "Harakiri",
+    "year": 1962,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Rashomon"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "vertigo-1958",
+    "title": "Vertigo",
+    "year": 1958,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Persona",
+      "Rope"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "all-about-eve-1950",
+    "title": "All About Eve",
+    "year": 1950,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Gloria"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "cabaret-1972",
+    "title": "Cabaret",
+    "year": 1972,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "All That Jazz",
+      "All About Eve"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "chungking-express-1994",
+    "title": "Chungking Express",
+    "year": 1994,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Happy Together"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "paris-is-burning-1990",
+    "title": "Paris Is Burning",
+    "year": 1990,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Funeral Parade of Roses",
+      "To Wong Foo Thanks for Everything Julie Newmar"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "oppenheimer-2023",
+    "title": "Oppenheimer",
+    "year": 2023,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Lawrence of Arabia"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "singin-in-the-rain-1952",
+    "title": "Singin' in the Rain",
+    "year": 1952,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Sunset Boulevard"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "time-of-the-wolf-2003",
+    "title": "Time of the Wolf",
+    "year": 2003,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Piano Teacher"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "dune-part-two-2024",
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Lawrence of Arabia",
+      "Batman Begins",
+      "The Dark Knight",
+      "The Empire Strikes Back"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "poor-things-2023",
+    "title": "Poor Things",
+    "year": 2023,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Suspiria (Guadagnino version)",
+      "Bugonia",
+      "The Favourite",
+      "TAR"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "the-silence-of-the-lambs-1991",
+    "title": "The Silence of the Lambs",
+    "year": 1991,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Vertigo"
+    ],
+    "source_row_count": 2
+  },
+  {
+    "film_id": "who-s-afraid-of-virginia-woolf-1966",
+    "title": "Who's Afraid of Virginia Woolf?",
+    "year": 1966,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Bug",
+      "Autumn Sonata",
+      "Persona",
+      "A Woman Under the Influence"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-ascent-1977",
+    "title": "The Ascent",
+    "year": 1977,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Cremator",
+      "Shoah",
+      "Ordet"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "rashomon-1950",
+    "title": "Rashomon",
+    "year": 1950,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "High and Low",
+      "Ran",
+      "Woman in the Dunes"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "shoah-1985",
+    "title": "Shoah",
+    "year": 1985,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "OJ: Made in America",
+      "Night and Fog",
+      "The Look of Silence"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964",
+    "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+    "year": 1964,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Fail-Safe",
+      "The War Games",
+      "Triangle of Sadness"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "threads-1984",
+    "title": "Threads",
+    "year": 1984,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Bug"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "eraserhead-1977",
+    "title": "Eraserhead",
+    "year": 1977,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Tetsuo: The Iron Man",
+      "Inland Empire",
+      "Mulholland Drive"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "autumn-sonata-1978",
+    "title": "Autumn Sonata",
+    "year": 1978,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Piano Teacher",
+      "Anatomy of a Fall",
+      "Who's Afraid of Virginia Woolf?"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "beau-is-afraid-2023",
+    "title": "Beau Is Afraid",
+    "year": 2023,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "We're All Going to the World's Fair"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-best-years-of-our-lives-1946",
+    "title": "The Best Years of Our Lives",
+    "year": 1946,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Lawrence of Arabia"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "citizen-kane-1941",
+    "title": "Citizen Kane",
+    "year": 1941,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "The Best Years of Our Lives",
+      "Lawrence of Arabia"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-texas-chain-saw-massacre-1974",
+    "title": "The Texas Chain Saw Massacre",
+    "year": 1974,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Dans Ma Peau"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "the-shining-1980",
+    "title": "The Shining",
+    "year": 1980,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Eyes Wide Shut"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "spirited-away-2001",
+    "title": "Spirited Away",
+    "year": 2001,
+    "elliott_rating": 5.0,
+    "manual_links": [
+      "Kiki's Delivery Service"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "ash-is-purest-white-2018",
+    "title": "Ash Is Purest White",
+    "year": 2018,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "Long Day's Journey Into Night (2018)"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "hard-boiled-1992",
+    "title": "Hard Boiled",
+    "year": 1992,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "The Terminator",
+      "Terminator 2",
+      "Aliens"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "it-was-just-an-accident-2025",
+    "title": "It Was Just an Accident",
+    "year": 2025,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "The Salesman",
+      "Triangle of Sadness",
+      "Anatomy of a Fall"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "28-years-later-2025",
+    "title": "28 Years Later",
+    "year": 2025,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "Dawn of the Dead",
+      "Night of the Living Dead",
+      "Day of the Dead"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "barton-fink-1991",
+    "title": "Barton Fink",
+    "year": 1991,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "There Will Be Blood"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "red-rooms-2023",
+    "title": "Red Rooms",
+    "year": 2023,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "Dans Ma Peau",
+      "Inside (2007)",
+      "Bug",
+      "My House Walkthrough"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "anora-2024",
+    "title": "Anora",
+    "year": 2024,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "The Florida Project",
+      "After Hours"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "haxan-1922",
+    "title": "Häxan",
+    "year": 1922,
+    "elliott_rating": 4.5,
+    "manual_links": [
+      "Freaks",
+      "Night of the Hunter"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "possibly-in-michigan-1983",
+    "title": "Possibly in Michigan",
+    "year": 1983,
+    "elliott_rating": 4.0,
+    "manual_links": [
+      "We're All Going to the World's Fair"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "wax-or-the-discovery-of-television-among-the-bees-1991",
+    "title": "Wax, or The Discovery of Television Among the Bees",
+    "year": 1991,
+    "elliott_rating": 4.0,
+    "manual_links": [
+      "We're All Going to the World's Fair"
+    ],
+    "source_row_count": 1
+  },
+  {
+    "film_id": "summer-palace-2006",
+    "title": "Summer Palace",
+    "year": 2006,
+    "elliott_rating": 2.5,
+    "manual_links": [
+      "Ash is Purest White",
+      "Raise the Red Lanter"
+    ],
+    "source_row_count": 1
+  }
+]
