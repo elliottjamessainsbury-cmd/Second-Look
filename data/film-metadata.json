@@ -1,12 +1,47 @@
 {
+  "12 Angry Men": {
+    "title": "12 Angry Men",
+    "year": 1957,
+    "director": "Sidney Lumet",
+    "intro": "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
+    "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/7/0/0/51700-12-angry-men-0-230-0-345-crop.jpg?v=b8aaf291a9",
+    "letterboxd_url": "https://letterboxd.com/film/12-angry-men/",
+    "average_rating": "4.63 out of 5",
+    "page_type": "letterboxd:film",
+    "review_rating": ""
+  },
   "28 Years Later": {
     "title": "28 Years Later",
     "year": 2025,
     "director": "Danny Boyle",
     "intro": "Twenty-eight years after the Rage virus outbreak, a heavily-defended island survives connected to the mainland by a single causeway. When one of the group leaves the island into the dark heart of the mainland, he discovers secrets, wonders, and horrors that have mutated not only the infected but other survivors as well.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/9/9/2/7/8/6/992786-28-years-later-0-230-0-345-crop.jpg?v=014e09c066",
+    "letterboxd_url": "https://letterboxd.com/film/28-years-later/",
+    "average_rating": "3.44 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "8½": {
+    "title": "8½",
+    "year": 1963,
+    "director": "Federico Fellini",
+    "intro": "Guido Anselmi, a film director, finds himself creatively barren at the peak of his career. Urged by his doctors to rest, Anselmi heads for a luxurious resort, but a sorry group gathers—his producer, staff, actors, wife, mistress, and relatives—each one begging him to get on with the show. In retreat from their dependency, he fantasizes about past women and dreams of his childhood.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/ho/pb/4o/of/8%20half-1200-1200-675-675-crop-000000.jpg?v=b249097cac",
+    "letterboxd_url": "https://letterboxd.com/film/8-half/",
+    "average_rating": "4.28 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.28 out of 5"
+  },
+  "A Hard Day's Night": {
+    "title": "A Hard Day's Night",
+    "year": 1964,
+    "director": "Richard Lester",
+    "intro": "Capturing John Lennon, Paul McCartney, George Harrison and Ringo Starr in their electrifying element, 'A Hard Day's Night' is a wildly irreverent journey through this pastiche of a day in the life of The Beatles during 1964. The band have to use all their guile and wit to avoid the pursuing fans and press to reach their scheduled television performance, in spite of Paul's troublemaking grandfather and Ringo's arrest.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/he/89/4y/bx/a-hard-days-night-1200-1200-675-675-crop-000000.jpg?v=86625cd0c4",
+    "letterboxd_url": "https://letterboxd.com/film/a-hard-days-night/",
+    "average_rating": "3.87 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.87 out of 5"
   },
   "Abigail's Party": {
     "title": "Abigail's Party",
@@ -14,6 +49,8 @@
     "director": "Mike Leigh",
     "intro": "Beverly and Laurence are entertaining their new neighbours, Angela and Tony as well as Sue, whose teenage daughter, Abigail, is having a party. Over drinks and small talk, class differences and relationship difficulties emerge.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/7/1/0/7/37107-abigail-s-party-0-230-0-345-crop.jpg?v=fc04bc5df0",
+    "letterboxd_url": "https://letterboxd.com/film/abigails-party/",
+    "average_rating": "3.89 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -23,6 +60,8 @@
     "director": "Andrew Haigh",
     "intro": "One night in his near-empty tower block in contemporary London, Adam has a chance encounter with a mysterious neighbor Harry, which punctures the rhythm of his everyday life.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/8/9/5/2/9/0/895290-all-of-us-strangers-0-230-0-345-crop.jpg?v=6b8a3d00c7",
+    "letterboxd_url": "https://letterboxd.com/film/all-of-us-strangers/",
+    "average_rating": "3.93 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -32,6 +71,8 @@
     "director": "Justine Triet",
     "intro": "A woman is suspected of her husband's murder, and their blind son faces a moral dilemma as the sole witness.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/8/2/2/0/9/3/822093-anatomy-of-a-fall-0-230-0-345-crop.jpg?v=4efab8aedc",
+    "letterboxd_url": "https://letterboxd.com/film/anatomy-of-a-fall/",
+    "average_rating": "4.12 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -41,6 +82,8 @@
     "director": "Sean Baker",
     "intro": "A young sex worker from Brooklyn gets her chance at a Cinderella story when she meets and impulsively marries the son of an oligarch. Once the news reaches Russia, her fairytale is threatened as his parents set out to get the marriage annulled.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/9/5/9/5/4/0/959540-anora-0-230-0-345-crop.jpg?v=6f92877033",
+    "letterboxd_url": "https://letterboxd.com/film/anora/",
+    "average_rating": "3.79 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -50,6 +93,8 @@
     "director": "Satyajit Ray",
     "intro": "Apu and his family have moved away from the country to live in the bustling holy city of Benares. As he progresses from wide-eyed child to intellectually curious teenager, eventually studying in Kolkata, we witness his academic and moral education, as well as the growing complexity of his relationship with his mother.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/2/5/5/51255-aparajito-0-230-0-345-crop.jpg?v=5c43ed9898",
+    "letterboxd_url": "https://letterboxd.com/film/aparajito/",
+    "average_rating": "4.26 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -59,6 +104,8 @@
     "director": "Jia Zhangke",
     "intro": "Set in China's underworld, this tale of love and betrayal follows a dancer who fired a gun to protect her mobster boyfriend during a fight. On release from prison 5 years later, she sets out to find him.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/7/4/0/5/6/374056-ash-is-purest-white-0-230-0-345-crop.jpg?v=e866cf80a8",
+    "letterboxd_url": "https://letterboxd.com/film/ash-is-purest-white/",
+    "average_rating": "3.82 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -68,8 +115,21 @@
     "director": "Jia Zhangke",
     "intro": "Set in China's underworld, this tale of love and betrayal follows a dancer who fired a gun to protect her mobster boyfriend during a fight. On release from prison 5 years later, she sets out to find him.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/7/4/0/5/6/374056-ash-is-purest-white-0-230-0-345-crop.jpg?v=e866cf80a8",
+    "letterboxd_url": "https://letterboxd.com/film/ash-is-purest-white/",
+    "average_rating": "3.82 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Au hasard Balthazar": {
+    "title": "Au Hasard Balthazar",
+    "year": 1966,
+    "director": "Robert Bresson",
+    "intro": "The story of a donkey Balthazar as he is passed from owner to owner, some kind and some cruel but all with motivations beyond his understanding. Balthazar, whose life parallels that of his first keeper, Marie, is truly a beast of burden, suffering the sins of humankind. But despite his powerlessness, he accepts his fate nobly.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/7o/cp/47/zn/au-1200-1200-675-675-crop-000000.jpg?v=9107921f16",
+    "letterboxd_url": "https://letterboxd.com/film/au-hasard-balthazar/",
+    "average_rating": "4.08 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.08 out of 5"
   },
   "Barton Fink": {
     "title": "Barton Fink",
@@ -77,6 +137,8 @@
     "director": "Joel Coen",
     "intro": "A renowned New York playwright is enticed to California to write for the movies and discovers the hellish truth of Hollywood.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/7/6/9/51769-barton-fink-0-230-0-345-crop.jpg?v=51c9ebe541",
+    "letterboxd_url": "https://letterboxd.com/film/barton-fink/",
+    "average_rating": "4.06 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -86,8 +148,32 @@
     "director": "Ari Aster",
     "intro": "Following the sudden death of his mother, a mild-mannered but anxiety-ridden man confronts his darkest fears as he embarks on an epic odyssey back home.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/7/1/5/8/5/6/715856-beau-is-afraid-0-230-0-345-crop.jpg?v=b5fd01665a",
+    "letterboxd_url": "https://letterboxd.com/film/beau-is-afraid/",
+    "average_rating": "3.42 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Beau travail": {
+    "title": "Beau Travail",
+    "year": 1999,
+    "director": "Claire Denis",
+    "intro": "Foreign Legion officer Galoup recalls his once glorious life, training troops in the Gulf of Djibouti. His existence there was happy, strict and regimented, until the arrival of a promising young recruit, Sentain, plants the seeds of jealousy in Galoup's mind.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/9b/dw/nk/xa/beau%20travail-1200-1200-675-675-crop-000000.jpg?v=ba75f95f89",
+    "letterboxd_url": "https://letterboxd.com/film/beau-travail/",
+    "average_rating": "4.12 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.12 out of 5"
+  },
+  "Bicycle Thieves": {
+    "title": "Bicycle Thieves",
+    "year": 1948,
+    "director": "Vittorio De Sica",
+    "intro": "Unemployed Antonio is elated when he finally finds work hanging posters around war-torn Rome. However on his first day, his bicycle—essential to his work—gets stolen. His job is doomed unless he can find the thief. With the help of his son, Antonio combs the city, becoming desperate for justice.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/xh/na/ai/0x/bicycle-thieves-1200-1200-675-675-crop-000000.jpg?v=7cd2a52c59",
+    "letterboxd_url": "https://letterboxd.com/film/bicycle-thieves/",
+    "average_rating": "4.29 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.29 out of 5"
   },
   "Bugonia": {
     "title": "Bugonia",
@@ -95,6 +181,8 @@
     "director": "Yorgos Lanthimos",
     "intro": "Two conspiracy obsessed young men kidnap the high-powered CEO of a major company, convinced that she is an alien intent on destroying planet Earth.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/6/2/5/4/0/0/625400-bugonia-0-230-0-345-crop.jpg?v=4c6649150e",
+    "letterboxd_url": "https://letterboxd.com/film/bugonia/",
+    "average_rating": "3.85 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -104,8 +192,21 @@
     "director": "Bob Fosse",
     "intro": "Inside the Kit Kat Club of 1931 Berlin, starry-eyed singer Sally Bowles and an impish emcee sound the clarion call to decadent fun, while outside a certain political party grows into a brutal force.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/x9/ji/ih/xp/1RmUfX3LcS897GhUWrWp5nRADo4-0-230-0-345-crop.jpg?v=a432fbfc58",
+    "letterboxd_url": "https://letterboxd.com/film/cabaret/",
+    "average_rating": "4.17 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Charade": {
+    "title": "Charade",
+    "year": 1963,
+    "director": "Stanley Donen",
+    "intro": "After Regina Lampert falls for the dashing Peter Joshua on a skiing holiday in the French Alps, she discovers upon her return to Paris that her husband has been murdered. Soon, she and Peter are giving chase to three of her late husband's World War II cronies, Tex, Scobie and Gideon, who are after a quarter of a million dollars the quartet stole while behind enemy lines.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/9j/m6/8v/ia/charade-1200-1200-675-675-crop-000000.jpg?v=7b431c14e1",
+    "letterboxd_url": "https://letterboxd.com/film/charade/",
+    "average_rating": "4.04 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.04 out of 5"
   },
   "Chungking Express": {
     "title": "Chungking Express",
@@ -113,6 +214,8 @@
     "director": "Wong Kar-Wai",
     "intro": "Two melancholic Hong Kong policemen fall in love: one with a mysterious underworld figure, the other with a beautiful and ethereal server at a late-night restaurant.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/5/6/0/2/45602-chungking-express-0-230-0-345-crop.jpg?v=9475abb05b",
+    "letterboxd_url": "https://letterboxd.com/film/chungking-express/",
+    "average_rating": "4.28 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -122,8 +225,54 @@
     "director": "Orson Welles",
     "intro": "Newspaper magnate Charles Foster Kane is taken from his mother as a boy and made the ward of a rich industrialist. As a result, every well-meaning, tyrannical or self-destructive move he makes for the rest of his life appears in some way to be a reaction to that deeply wounding event.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/2/7/0/2/2702-citizen-kane-0-230-0-345-crop.jpg?v=56bbc53dfd",
+    "letterboxd_url": "https://letterboxd.com/film/citizen-kane/",
+    "average_rating": "4.19 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Crumb": {
+    "title": "Crumb",
+    "year": 1994,
+    "director": "Terry Zwigoff",
+    "intro": "This movie chronicles the life and times of R. Crumb. Robert Crumb is the cartoonist/artist who drew Keep On Truckin', Fritz the Cat, and played a major pioneering role in the genesis of underground comix. Through interviews with his mother, two brothers, wife, ex-wife and ex-girlfriends, as well as selections from his vast quantity of graphic art, we are treated to a darkly comic ride through one man's subconscious mind.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/51/c2/e2/jc/crumb-1200-1200-675-675-crop-000000.jpg?v=aa79a207cf",
+    "letterboxd_url": "https://letterboxd.com/film/crumb/",
+    "average_rating": "4.19 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.19 out of 5"
+  },
+  "Cure": {
+    "title": "Cure",
+    "year": 1997,
+    "director": "Kiyoshi Kurosawa",
+    "intro": "A detective starts spiraling out of control when a wave of gruesome murders with seemingly similar bizarre circumstances is sweeping Tokyo.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/uf/3p/7c/vn/cure-1997-1200-1200-675-675-crop-000000.jpg?v=13b9c13ede",
+    "letterboxd_url": "https://letterboxd.com/film/cure/",
+    "average_rating": "4.28 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.28 out of 5"
+  },
+  "Daisies": {
+    "title": "Daisies",
+    "year": 1966,
+    "director": "Věra Chytilová",
+    "intro": "Two teenage girls embark on a series of destructive pranks in which they consume and destroy the world around them.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/xs/iz/hc/ts/daisies-1200-1200-675-675-crop-000000.jpg?v=9631f107b0",
+    "letterboxd_url": "https://letterboxd.com/film/daisies/",
+    "average_rating": "4.01 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.01 out of 5"
+  },
+  "Down by Law": {
+    "title": "Down by Law",
+    "year": 1986,
+    "director": "Jim Jarmusch",
+    "intro": "A disc jockey, a pimp and an Italian tourist escape from jail in New Orleans.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/qn/xh/md/3k/down-by-law-1200-1200-675-675-crop-000000.jpg?v=a3cb07fb73",
+    "letterboxd_url": "https://letterboxd.com/film/down-by-law/",
+    "average_rating": "4.08 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.08 out of 5"
   },
   "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb": {
     "title": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
@@ -131,8 +280,43 @@
     "director": "Stanley Kubrick",
     "intro": "After the insane General Jack D. Ripper initiates a nuclear strike on the Soviet Union, a war room full of politicians, generals and a Russian diplomat all frantically try to stop it.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/2/1/8/51218-dr-strangelove-or-how-i-learned-to-stop-worrying-and-love--0-230-0-345-crop.jpg?v=c814dfbae0",
+    "letterboxd_url": "https://letterboxd.com/film/dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb/",
+    "average_rating": "4.30 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Dune": {
+    "title": "Dune",
+    "year": 2021,
+    "director": "Denis Villeneuve",
+    "intro": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their fear will survive.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/a6/8b/5j/zk/dune-2021a-1200-1200-675-675-crop-000000.jpg?v=7422445327",
+    "letterboxd_url": "https://letterboxd.com/film/dune-2021/",
+    "average_rating": "3.89 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.89 out of 5"
+  },
+  "Dune Part Two": {
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "director": "Denis Villeneuve",
+    "intro": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/qp/uv/i4/8b/l6b9YZEokZl1nt7q0pprrur6btG-1200-1200-675-675-crop-000000.jpg?v=ed21d71137",
+    "letterboxd_url": "https://letterboxd.com/film/dune-part-two/",
+    "average_rating": "4.38 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.38 out of 5"
+  },
+  "Dune: Part Two": {
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "director": "Denis Villeneuve",
+    "intro": "Follow the mythic journey of Paul Atreides as he unites with Chani and the Fremen while on a path of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, Paul endeavors to prevent a terrible future only he can foresee.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/qp/uv/i4/8b/l6b9YZEokZl1nt7q0pprrur6btG-1200-1200-675-675-crop-000000.jpg?v=ed21d71137",
+    "letterboxd_url": "https://letterboxd.com/film/dune-part-two/",
+    "average_rating": "4.38 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.38 out of 5"
   },
   "Eddington": {
     "title": "Eddington",
@@ -140,6 +324,8 @@
     "director": "Ari Aster",
     "intro": "In May of 2020, a standoff between a small-town sheriff and mayor sparks a powder keg as neighbor is pitted against neighbor in Eddington, New Mexico.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/7/4/5/9/5/574595-eddington-0-230-0-345-crop.jpg?v=925abc6d9b",
+    "letterboxd_url": "https://letterboxd.com/film/eddington/",
+    "average_rating": "3.36 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -149,6 +335,8 @@
     "director": "David Lynch",
     "intro": "First-time father Henry Spencer tries to survive his industrial environment, his angry girlfriend, and the unbearable screams of his newly born mutant child.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/cw/7x/ig/m6/l8oAmU5swopsyWzTHpZtAK15Mrc-0-230-0-345-crop.jpg?v=c9fb159d8f",
+    "letterboxd_url": "https://letterboxd.com/film/eraserhead/",
+    "average_rating": "3.82 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -158,8 +346,21 @@
     "director": "Sidney Lumet",
     "intro": "Because of a technical defect an American bomber team mistakenly orders the destruction of Moscow. The President of the United States has but little time to prevent an atomic catastrophe from occurring.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/6/0/8/51608-fail-safe-0-230-0-345-crop.jpg?v=2eabe8a26d",
+    "letterboxd_url": "https://letterboxd.com/film/fail-safe/",
+    "average_rating": "4.28 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Fanny and Alexander": {
+    "title": "Fanny and Alexander",
+    "year": 1982,
+    "director": "Ingmar Bergman",
+    "intro": "As children in the loving Ekdahl family, Fanny and Alexander enjoy a happy life with their parents, who run a theater company. After their father dies unexpectedly, however, the siblings end up in a joyless home when their mother, Emilie, marries a stern bishop. The bleak situation gradually grows worse as the bishop becomes more controlling, but dedicated relatives make a valiant attempt to aid Emilie, Fanny and Alexander.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/cv/1q/zd/to/fanny-alexander-1200-1200-675-675-crop-000000.jpg?v=024e655181",
+    "letterboxd_url": "https://letterboxd.com/film/fanny-and-alexander/",
+    "average_rating": "4.42 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.42 out of 5"
   },
   "From Beyond": {
     "title": "From Beyond",
@@ -167,6 +368,8 @@
     "director": "Stuart Gordon",
     "intro": "The Resonator, a powerful machine that can control the sixth sense, has killed its creator and sent his associate into an insane asylum. When a psychiatrist becomes determined to continue the experiment, she unwittingly opens the door to a hostile parallel universe.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/3/0/3/6/43036-from-beyond-0-230-0-345-crop.jpg?v=1c81cab104",
+    "letterboxd_url": "https://letterboxd.com/film/from-beyond/",
+    "average_rating": "3.51 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -176,6 +379,8 @@
     "director": "Toshio Matsumoto",
     "intro": "In 1960s Tokyo, Gonda owns a bar in which the gay, cross-dresser, and trans scenes meet. Gonda is in a relationship with the madam of the bar, Leda. As the younger Eddie starts a passionate affair with Gonda, she ignites the jealousy of Leda, unaware of another kind of history between them.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/0/9/7/8/50978-funeral-parade-of-roses-0-230-0-345-crop.jpg?v=b5baaee99f",
+    "letterboxd_url": "https://letterboxd.com/film/funeral-parade-of-roses/",
+    "average_rating": "4.33 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -185,6 +390,8 @@
     "director": "John Cassavetes",
     "intro": "When a young boy's family is killed by the mob, their tough neighbor Gloria becomes his reluctant guardian. In possession of a book that the gangsters want, the pair go on the run in New York.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/6/5/2/4/6524-gloria-0-230-0-345-crop.jpg?v=a561a0493d",
+    "letterboxd_url": "https://letterboxd.com/film/gloria/",
+    "average_rating": "3.80 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -194,6 +401,8 @@
     "director": "Wong Kar-Wai",
     "intro": "A couple travels from Hong Kong to Argentina to revive their relationship but experience turbulence when both men's lives drift in separate directions.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/4w/sy/nq/o5/qrpUybe97xNRYk63TryiwbItoAV-0-230-0-345-crop.jpg?v=064ed91055",
+    "letterboxd_url": "https://letterboxd.com/film/happy-together-1997/",
+    "average_rating": "4.21 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -203,6 +412,8 @@
     "director": "Masaki Kobayashi",
     "intro": "Down-on-his-luck veteran Tsugumo Hanshirō enters the courtyard of the prosperous House of Iyi. Unemployed, and with no family, he hopes to find a place to commit seppuku—and a worthy second to deliver the coup de grâce in his suicide ritual. The senior counselor for the Iyi clan questions the ronin’s resolve and integrity, suspecting Hanshirō of seeking charity rather than an honorable end. What follows is a pair of interlocking stories which lay bare the difference between honor and respect, and promises to examine the legendary foundations of the Samurai code.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/3/0/1/5/43015-harakiri-0-230-0-345-crop.jpg?v=007080a0fb",
+    "letterboxd_url": "https://letterboxd.com/film/harakiri/",
+    "average_rating": "4.69 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -212,6 +423,8 @@
     "director": "John Woo",
     "intro": "A cop who loses his partner in a shoot-out with gun smugglers goes on a mission to catch them. In order to get closer to the leaders of the ring he joins forces with an undercover cop who's working as a gangster hitman. They use all means of excessive force to find them.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/5/0/1/3/45013-hard-boiled-0-230-0-345-crop.jpg?v=4bc5621882",
+    "letterboxd_url": "https://letterboxd.com/film/hard-boiled/",
+    "average_rating": "4.19 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -221,6 +434,8 @@
     "director": "Akira Kurosawa",
     "intro": "A Yokohama shoe executive faces a wrenching choice when kidnappers mistakenly seize his chauffeur’s son but demand the ransom anyway.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/do/zm/ur/ug/dgnyE40yWdI7gbaHmmB5yCCIVpI-0-230-0-345-crop.jpg?v=b0fd9f50fd",
+    "letterboxd_url": "https://letterboxd.com/film/high-and-low/",
+    "average_rating": "4.60 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -230,6 +445,8 @@
     "director": "Benjamin Christensen",
     "intro": "Grave robbing, torture, possessed nuns, and a satanic Sabbath: Benjamin Christensen's legendary film uses a series of dramatic vignettes to explore the scientific hypothesis that the witches of the Middle Ages suffered the same hysteria as turn-of-the-century psychiatric patients. But the film itself is far from serious-- instead it's a witches' brew of the scary, gross, and darkly humorous.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/8/8/7/1/8871-haxan-0-230-0-345-crop.jpg?v=cd0cff7624",
+    "letterboxd_url": "https://letterboxd.com/film/haxan/",
+    "average_rating": "4.04 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -239,6 +456,8 @@
     "director": "David Lynch",
     "intro": "When actress Nikki Grace gets the lead role in a cursed film, her world becomes more and more surreal, blending realities and ideas of infidelity, reincarnation, and supernatural forces.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/0/8/2/2/50822-inland-empire-0-230-0-345-crop.jpg?v=b4bd226d73",
+    "letterboxd_url": "https://letterboxd.com/film/inland-empire/",
+    "average_rating": "3.89 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -248,17 +467,109 @@
     "director": "Jafar Panahi",
     "intro": "An unassuming mechanic is reminded of his time in an Iranian prison when he encounters a man he suspects to be his sadistic jailhouse captor.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/1/3/3/3/4/9/8/1333498-it-was-just-an-accident-0-230-0-345-crop.jpg?v=d1e92cf746",
+    "letterboxd_url": "https://letterboxd.com/film/it-was-just-an-accident/",
+    "average_rating": "3.97 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Judex": {
+    "title": "Judex",
+    "year": 1963,
+    "director": "Georges Franju",
+    "intro": "Georges Franju's Judex is an arch, playful tribute to the serials of the influential silent filmmaker Louis Feuillade. Franju shuffles through the plot of Feuillade's lengthy serial of the same name, about an adventurer named Judex whose revenge against the corrupt banker Favraux unleashes a complicated series of schemes.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/rh/jj/2m/xr/judex-1200-1200-675-675-crop-000000.jpg?v=de2b2c583c",
+    "letterboxd_url": "https://letterboxd.com/film/judex-1963/",
+    "average_rating": "3.62 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.62 out of 5"
+  },
+  "Jules and Jim": {
+    "title": "Jules and Jim",
+    "year": 1962,
+    "director": "François Truffaut",
+    "intro": "In the carefree days before World War I, introverted Austrian author Jules strikes up a friendship with the exuberant Frenchman Jim and both men fall for the impulsive and beautiful Catherine.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/i4/9y/ez/5r/jules-et-jim-15-1200-1200-675-675-crop-000000.jpg?v=5286db6093",
+    "letterboxd_url": "https://letterboxd.com/film/jules-and-jim/",
+    "average_rating": "3.94 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.94 out of 5"
+  },
+  "Kagemusha": {
+    "title": "Kagemusha",
+    "year": 1980,
+    "director": "Akira Kurosawa",
+    "intro": "Akira Kurosawa's lauded feudal epic presents the tale of a petty thief who is recruited to impersonate Shingen, an aging warlord, in order to avoid attacks by competing clans. When Shingen dies, his generals reluctantly agree to have the impostor take over as the powerful ruler. He soon begins to appreciate life as Shingen, but his commitment to the role is tested when he must lead his troops into battle against the forces of a rival warlord.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/j5/ws/62/s0/kagemusha-1200-1200-675-675-crop-000000.jpg?v=ef20a6a239",
+    "letterboxd_url": "https://letterboxd.com/film/kagemusha/",
+    "average_rating": "4.23 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.23 out of 5"
+  },
+  "La strada": {
+    "title": "La Strada",
+    "year": 1954,
+    "director": "Federico Fellini",
+    "intro": "When Gelsomina, a naïve young woman, is purchased from her impoverished mother by brutish circus strongman Zampanò to be his wife and partner, she loyally endures her husband's coldness and abuse as they travel the Italian countryside performing together. Soon Zampanò must deal with his jealousy and conflicted feelings about Gelsomina when she finds a kindred spirit in Il Matto, the carefree circus fool, and contemplates leaving Zampanò.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/vl/qs/ss/eh/la-strada-1200-1200-675-675-crop-000000.jpg?v=77ffa33d10",
+    "letterboxd_url": "https://letterboxd.com/film/la-strada/",
+    "average_rating": "4.18 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.18 out of 5"
   },
   "Late Spring": {
     "title": "Late Spring",
     "year": 1949,
     "director": "Yasujirō Ozu",
     "intro": "Noriko is perfectly happy living at home with her widowed father, Shukichi, and has no plans to marry -- that is, until her aunt Masa convinces Shukichi that unless he marries off his 27-year-old daughter soon, she will likely remain alone for the rest of her life. When Noriko resists Masa's matchmaking, Shukichi is forced to deceive his daughter and sacrifice his own happiness to do what he believes is right.",
-    "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/8/9/5/3/38953-late-spring-0-230-0-345-crop.jpg?v=fa023efefc",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/a0/08/gy/l5/late-spring-1200-1200-675-675-crop-000000.jpg?v=1130854abd",
+    "letterboxd_url": "https://letterboxd.com/film/late-spring/",
+    "average_rating": "4.33 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.33 out of 5"
+  },
+  "Le samouraï": {
+    "title": "Le Samouraï",
+    "year": 1967,
+    "director": "Jean-Pierre Melville",
+    "intro": "After carrying out a flawlessly planned hit, Jef Costello, a contract killer with samurai instincts, finds himself caught between a persistent police investigator and a ruthless employer, and not even his armor of fedora and trench coat can protect him.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/23/j9/4i/nv/le%20samourai-1200-1200-675-675-crop-000000.jpg?v=4baccd7830",
+    "letterboxd_url": "https://letterboxd.com/film/le-samourai/",
+    "average_rating": "4.22 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.22 out of 5"
+  },
+  "Man Bites Dog": {
+    "title": "Man Bites Dog",
+    "year": 1992,
+    "director": "Rémy Belvaux, Benoît Poelvoorde et al",
+    "intro": "The activities of rampaging, indiscriminate serial killer Ben are recorded by a willingly complicit documentary team, who eventually become his accomplices and active participants. Ben provides casual commentary on the nature of his work and arbitrary musings on topics of interest to him, such as music or the conditions of low-income housing, and even goes so far as to introduce the documentary crew to his family. But their reckless indulgences soon get the better of them.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/d2/md/ae/p6/man-bites-dog-0-230-0-345-crop.jpg?v=822ca7a413",
+    "letterboxd_url": "https://letterboxd.com/film/man-bites-dog/",
+    "average_rating": "3.79 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Mouchette": {
+    "title": "Mouchette",
+    "year": 1967,
+    "director": "Robert Bresson",
+    "intro": "A young girl living in the French countryside suffers constant indignities at the hand of alcoholism and her fellow man.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/w4/ay/yr/1n/mouchette-1200-1200-675-675-crop-000000.jpg?v=ae260ed122",
+    "letterboxd_url": "https://letterboxd.com/film/mouchette/",
+    "average_rating": "4.06 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.06 out of 5"
+  },
+  "Naked": {
+    "title": "Naked",
+    "year": 1993,
+    "director": "Mike Leigh",
+    "intro": "An unemployed Brit vents his rage on unsuspecting strangers as he embarks on a nocturnal London odyssey.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/zt/e8/41/dn/naked-1200-1200-675-675-crop-000000.jpg?v=b75bd458b3",
+    "letterboxd_url": "https://letterboxd.com/film/naked/",
+    "average_rating": "4.01 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.01 out of 5"
   },
   "Night and Fog": {
     "title": "Night and Fog",
@@ -266,8 +577,21 @@
     "director": "Alain Resnais",
     "intro": "Filmmaker Alain Resnais documents the atrocities behind the walls of Hitler's concentration camps.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/wv/jl/fk/si/xJc21xCemQirc1rHOJ8QLpUj1jA-0-230-0-345-crop.jpg?v=413c57dd42",
+    "letterboxd_url": "https://letterboxd.com/film/night-and-fog/",
+    "average_rating": "4.56 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Odd Man Out": {
+    "title": "Odd Man Out",
+    "year": 1947,
+    "director": "Carol Reed",
+    "intro": "Belfast police conduct a door-to-door manhunt for an IRA gunman wounded in a daring robbery.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/6l/el/v9/sp/odd%20man%20out-1200-1200-675-675-crop-000000.jpg?v=4a02dcd958",
+    "letterboxd_url": "https://letterboxd.com/film/odd-man-out/",
+    "average_rating": "3.92 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.92 out of 5"
   },
   "Ordet": {
     "title": "Ordet",
@@ -275,6 +599,8 @@
     "director": "Carl Theodor Dreyer",
     "intro": "The three sons of devout Danish farmer Morten have widely disparate religious beliefs. Youngest son Anders shares his father's religion, but eldest son Mikkel has lost his faith, while middle child Johannes has become delusional and proclaims that he is Jesus Christ himself. When Mikkel's wife, Inger goes into a difficult childbirth, everyone's beliefs are put to the test.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/xu/0o/wv/m6/e3oh96Zrqdaku8DoD10pXZHLZoU-0-230-0-345-crop.jpg?v=c412b52883",
+    "letterboxd_url": "https://letterboxd.com/film/ordet/",
+    "average_rating": "4.35 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -284,8 +610,32 @@
     "director": "Jennie Livingston",
     "intro": "Where does voguing come from, and what, exactly, is throwing shade? This landmark documentary provides a vibrant snapshot of the 1980s through the eyes of New York City's African American and Latinx Harlem drag-ball scene. Made over seven years, PARIS IS BURNING offers an intimate portrait of rival fashion \"houses,\" from fierce contests for trophies to house mothers offering sustenance in a world rampant with homophobia, transphobia, racism, AIDS, and poverty. Featuring legendary voguers, drag queens, and trans women — including Willi Ninja, Pepper LaBeija, Dorian Corey, and Venus Xtravaganza.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/1/3/5/5/31355-paris-is-burning-0-230-0-345-crop.jpg?v=5f4fd6ecd0",
+    "letterboxd_url": "https://letterboxd.com/film/paris-is-burning/",
+    "average_rating": "4.55 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Paths of Glory": {
+    "title": "Paths of Glory",
+    "year": 1957,
+    "director": "Stanley Kubrick",
+    "intro": "A commanding officer defends three scapegoats on trial for a failed offensive that occurred within the French Army in 1916.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/y6/ra/j1/o7/paths-of-glory-1200-1200-675-675-crop-000000.jpg?v=d8777ff289",
+    "letterboxd_url": "https://letterboxd.com/film/paths-of-glory/",
+    "average_rating": "4.45 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.45 out of 5"
+  },
+  "Pickpocket": {
+    "title": "Pickpocket",
+    "year": 1959,
+    "director": "Robert Bresson",
+    "intro": "Michel takes up pickpocketing on a lark and is arrested soon after. His mother dies shortly after his release, and despite the objections of his only friend, Jacques, and his mother's neighbor Jeanne, Michel teams up with a couple of petty thieves in order to improve his craft. With a police inspector keeping an eye on him, Michel also tries to get a straight job, but the temptation to steal is hard to resist.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/y9/fj/8i/yw/pickpocket-1200-1200-675-675-crop-000000.jpg?v=4ca9359176",
+    "letterboxd_url": "https://letterboxd.com/film/pickpocket/",
+    "average_rating": "3.94 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.94 out of 5"
   },
   "Possibly in Michigan": {
     "title": "Possibly in Michigan",
@@ -293,6 +643,8 @@
     "director": "Cecelia Condit",
     "intro": "A musical horror story about two young women who are stalked through a shopping mall by a cannibal. He follows them home, and here the victims become the aggressors.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/2/6/1/2/3/1/261231-possibly-in-michigan-0-230-0-345-crop.jpg?v=38d58b9b53",
+    "letterboxd_url": "https://letterboxd.com/film/possibly-in-michigan/",
+    "average_rating": "3.96 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -302,6 +654,8 @@
     "director": "Akira Kurosawa",
     "intro": "Four people recount different versions of the story of a man's murder and the rape of his wife.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/5/7/0/51570-rashomon-0-230-0-345-crop.jpg?v=f8eb7c45da",
+    "letterboxd_url": "https://letterboxd.com/film/rashomon/",
+    "average_rating": "4.20 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -311,6 +665,8 @@
     "director": "Coralie Fargeat",
     "intro": "Vincent, a young Parisian uncomfortable with his appearance, installs a brain chip named Reality+ which allows users to see themselves and fellow users with their dream body. However, Reality+ only works over 12-hour intervals, proving infuriating for Vincent as he falls for Stella, another user.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/0/3/1/5/9/303159-reality-2014-1-0-230-0-345-crop.jpg?v=16d9bf48e0",
+    "letterboxd_url": "https://letterboxd.com/film/reality-2014-1/",
+    "average_rating": "3.28 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -320,6 +676,8 @@
     "director": "Alfred Hitchcock",
     "intro": "Story of a young woman who marries a fascinating widower only to find out that she must live in the shadow of his former wife, Rebecca, who died mysteriously several years earlier. The young wife must come to grips with the terrible secret of her handsome, cold husband, Max De Winter. She must also deal with the jealous, obsessed Mrs. Danvers, the housekeeper, who will not accept her as the mistress of the house.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/8/3/3/51833-rebecca-0-230-0-345-crop.jpg?v=bde4ae41c9",
+    "letterboxd_url": "https://letterboxd.com/film/rebecca/",
+    "average_rating": "4.13 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -329,8 +687,21 @@
     "director": "Pascal Plante",
     "intro": "The high-profile case of serial killer Ludovic Chevalier has just gone to trial, and Kelly-Anne is obsessed. When reality blurs with her morbid fantasies, she goes down a dark path to seek the final piece of the case’s puzzle.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/8/1/8/7/9/8/818798-red-rooms-0-230-0-345-crop.jpg?v=af37112bc2",
+    "letterboxd_url": "https://letterboxd.com/film/red-rooms/",
+    "average_rating": "3.91 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Repulsion": {
+    "title": "Repulsion",
+    "year": 1965,
+    "director": "Roman Polanski",
+    "intro": "Beautiful young manicurist Carole suffers from androphobia (the pathological fear of interaction with men). When her sister and roommate, Helen, leaves their London flat to go on an Italian holiday with her married boyfriend, Carole withdraws into her apartment. She begins to experience frightful hallucinations, her fear gradually mutating into madness.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/oo/69/r6/8x/repulsion-1200-1200-675-675-crop-000000.jpg?v=233375ee35",
+    "letterboxd_url": "https://letterboxd.com/film/repulsion/",
+    "average_rating": "3.91 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.91 out of 5"
   },
   "Rope": {
     "title": "Rope",
@@ -338,8 +709,21 @@
     "director": "Alfred Hitchcock",
     "intro": "Two young men attempt to prove they committed the perfect murder by hosting a dinner party for the family of a classmate they just strangled to death.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/0/9/5/4/50954-rope-0-230-0-345-crop.jpg?v=bd8d1695a5",
+    "letterboxd_url": "https://letterboxd.com/film/rope/",
+    "average_rating": "4.14 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Salesman": {
+    "title": "Salesman",
+    "year": 1969,
+    "director": "David Maysles, Charlotte Zwerin et al",
+    "intro": "This documentary from Albert and David Maysles follows the bitter rivalry of four door-to-door salesmen working for the Mid-American Bible Company: Paul \"The Badger\" Brennan, Charles \"The Gipper\" McDevitt, James \"The Rabbit\" Baker and Raymond \"The Bull\" Martos. Times are tough for this hard-living quartet, who spend their days traveling through small-town America, trying their best to peddle gold-leaf Bibles to an apathetic crowd of lower-middle-class housewives and elderly couples.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/6w/bl/3e/53/salesman-1200-1200-675-675-crop-000000.jpg?v=ebd092c31c",
+    "letterboxd_url": "https://letterboxd.com/film/salesman/",
+    "average_rating": "3.87 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.87 out of 5"
   },
   "Shoah": {
     "title": "Shoah",
@@ -347,6 +731,8 @@
     "director": "Claude Lanzmann",
     "intro": "Director Claude Lanzmann spent 11 years on this sprawling documentary about the Holocaust, conducting his own interviews and refusing to use a single frame of archival footage. Dividing Holocaust witnesses into three categories – survivors, bystanders, and perpetrators – Lanzmann presents testimonies from survivors of the Chelmno concentration camp, an Auschwitz escapee, and witnesses of the Warsaw Ghetto Uprising, as well as a chilling report of gas chambers from an SS officer at Treblinka.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/2/3/0/1/9/23019-shoah-0-230-0-345-crop.jpg?v=0e2c8f5379",
+    "letterboxd_url": "https://letterboxd.com/film/shoah/",
+    "average_rating": "4.53 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -356,6 +742,8 @@
     "director": "Stanley Donen, Gene Kelly",
     "intro": "In 1927 Hollywood, a silent film star falls for a chorus girl just as he and his paranoid screen partner struggle to make the difficult transition to talking pictures.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/xc/8e/3x/nt/nUP6Kna8oiUl2VNbEQ4BJhTcpO8-0-230-0-345-crop.jpg?v=2c7de99ac3",
+    "letterboxd_url": "https://letterboxd.com/film/singin-in-the-rain/",
+    "average_rating": "4.34 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -365,6 +753,8 @@
     "director": "Hayao Miyazaki",
     "intro": "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/9/2/1/51921-spirited-away-0-230-0-345-crop.jpg?v=a3ad463c55",
+    "letterboxd_url": "https://letterboxd.com/film/spirited-away/",
+    "average_rating": "4.44 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -374,6 +764,8 @@
     "director": "Claude Chabrol",
     "intro": "France, World War II. In order to somehow make ends meet, the mother of two children, Marie Latour, does underground abortions and rents a room to a familiar prostitute. She doesn't pay any attention to her husband, who returned from the war because of his injury, and lives her own life. Abortions gradually begin to bring a good income, and boredom can be easily dispelled by starting up with a young lover.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/d1/aa/7y/ps/88zOSBnfOQT66BemGD02VIIvPHG-0-230-0-345-crop.jpg?v=1cf31e1f31",
+    "letterboxd_url": "https://letterboxd.com/film/story-of-women/",
+    "average_rating": "3.99 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -383,8 +775,21 @@
     "director": "Lou Ye",
     "intro": "Yu Hong leaves her home village and starts university in Beijing, where she develops a consuming and compulsive relationship with another student. The student riots from 1989 then ensue and take a toll on their lives.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/1/0/1/5/41015-summer-palace-0-230-0-345-crop.jpg?v=340bc20c41",
+    "letterboxd_url": "https://letterboxd.com/film/summer-palace/",
+    "average_rating": "3.87 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Summer with Monika": {
+    "title": "Summer with Monika",
+    "year": 1953,
+    "director": "Ingmar Bergman",
+    "intro": "One summer day, two teens begin a reckless affair and abandon their families to be with one another.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/fq/fi/f6/75/summer-with-monika-1200-1200-675-675-crop-000000.jpg?v=da6b079a91",
+    "letterboxd_url": "https://letterboxd.com/film/summer-with-monika/",
+    "average_rating": "3.86 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.86 out of 5"
   },
   "Sunset Boulevard": {
     "title": "Sunset Boulevard",
@@ -392,8 +797,21 @@
     "director": "Billy Wilder",
     "intro": "A hack screenwriter writes a screenplay for a former silent film star who has faded into Hollywood obscurity.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/5/2/2/51522-sunset-boulevard-0-230-0-345-crop.jpg?v=75e49b76e3",
+    "letterboxd_url": "https://letterboxd.com/film/sunset-boulevard/",
+    "average_rating": "4.43 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The 400 Blows": {
+    "title": "The 400 Blows",
+    "year": 1959,
+    "director": "François Truffaut",
+    "intro": "For young Parisian boy Antoine Doinel, life is one difficult situation after another. Surrounded by inconsiderate adults, including his neglectful parents, Antoine spends his days with his best friend, Rene, trying to plan for a better life. When one of their schemes goes awry, Antoine ends up in trouble with the law, leading to even more conflicts with unsympathetic authority figures.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/xv/bq/6v/ir/400-blows-1200-1200-675-675-crop-000000.jpg?v=f8a1b32571",
+    "letterboxd_url": "https://letterboxd.com/film/the-400-blows/",
+    "average_rating": "4.30 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.30 out of 5"
   },
   "The Ascent": {
     "title": "The Ascent",
@@ -401,8 +819,21 @@
     "director": "Larisa Shepitko",
     "intro": "During a freezing WWII winter, two Soviet partisans on a mission to gather food contend with the temperature, the occupying Germans, and their own psyches.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/1/5/4/6/6/15466-the-ascent-0-230-0-345-crop.jpg?v=23f005183e",
+    "letterboxd_url": "https://letterboxd.com/film/the-ascent/",
+    "average_rating": "4.43 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Battle of Algiers": {
+    "title": "The Battle of Algiers",
+    "year": 1966,
+    "director": "Gillo Pontecorvo",
+    "intro": "Paratrooper commander Colonel Mathieu, a former French Resistance fighter during World War II, is sent to Algeria to reinforce efforts to squelch the uprisings of the Algerian War. There he faces Ali la Pointe, a former petty criminal who, as the leader of the Algerian Front de Liberation Nationale, directs terror strategies against the colonial French government occupation. As each side resorts to ever-increasing brutality, no violent act is too unthinkable.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/kt/5s/28/w3/battle-algiers-1200-1200-675-675-crop-000000.jpg?v=70389d0066",
+    "letterboxd_url": "https://letterboxd.com/film/the-battle-of-algiers/",
+    "average_rating": "4.46 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.46 out of 5"
   },
   "The Best Years of Our Lives": {
     "title": "The Best Years of Our Lives",
@@ -410,6 +841,8 @@
     "director": "William Wyler",
     "intro": "It's the hope that sustains the spirit of every GI: the dream of the day when he will finally return home. For three WWII veterans, the day has arrived. But for each man, the dream is about to become a nightmare.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/2/6/5/51265-the-best-years-of-our-lives-0-230-0-345-crop.jpg?v=9cb440046e",
+    "letterboxd_url": "https://letterboxd.com/film/the-best-years-of-our-lives/",
+    "average_rating": "4.25 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -419,8 +852,21 @@
     "director": "William Wyler",
     "intro": "It's the hope that sustains the spirit of every GI: the dream of the day when he will finally return home. For three WWII veterans, the day has arrived. But for each man, the dream is about to become a nightmare.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/2/6/5/51265-the-best-years-of-our-lives-0-230-0-345-crop.jpg?v=9cb440046e",
+    "letterboxd_url": "https://letterboxd.com/film/the-best-years-of-our-lives/",
+    "average_rating": "4.25 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Cameraman": {
+    "title": "The Cameraman",
+    "year": 1928,
+    "director": "Edward Sedgwick, Buster Keaton",
+    "intro": "A photographer takes up newsreel shooting to impress a secretary.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/vj/rv/xa/r1/cameraman-1200-1200-675-675-crop-000000.jpg?v=de01532512",
+    "letterboxd_url": "https://letterboxd.com/film/the-cameraman/",
+    "average_rating": "4.13 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.13 out of 5"
   },
   "The Cremator": {
     "title": "The Cremator",
@@ -428,6 +874,8 @@
     "director": "Juraj Herz",
     "intro": "In 1930s Prague, a Czech cremator who firmly believes cremation relieves one from earthly suffering is drawn inexorably to Nazism.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/0/4/1/5/40415-the-cremator-0-230-0-345-crop.jpg?v=a7019ceedb",
+    "letterboxd_url": "https://letterboxd.com/film/the-cremator/",
+    "average_rating": "4.30 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -437,6 +885,8 @@
     "director": "Christopher Nolan",
     "intro": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/78/y5/zg/ej/oefdD26aey8GPdx7Rm45PNncJdU-0-230-0-345-crop.jpg?v=2d0ce4be25",
+    "letterboxd_url": "https://letterboxd.com/film/the-dark-knight/",
+    "average_rating": "4.49 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -446,8 +896,21 @@
     "director": "Yorgos Lanthimos",
     "intro": "England, early 18th century. The close relationship between Queen Anne and Sarah Churchill is threatened by the arrival of Sarah's cousin, Abigail Hill, resulting in a bitter rivalry between the two cousins to be the Queen's favourite.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/1/0/7/0/5/310705-the-favourite-0-230-0-345-crop.jpg?v=c5488e37ef",
+    "letterboxd_url": "https://letterboxd.com/film/the-favourite/",
+    "average_rating": "4.01 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Firemen's Ball": {
+    "title": "The Firemen's Ball",
+    "year": 1967,
+    "director": "Miloš Forman",
+    "intro": "The firemen of a provincial Czechoslovakian town throw a ball in honor of the old chief's retirement. There will be music and dancing, a beauty pageant and a raffle. The whole town will be in attendance. However, the proceedings are dogged by difficulty at every step. Workplace injuries, stolen prizes, a shortage of pretty girls... and fire.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/6s/dh/yr/sy/firemens-ball-1200-1200-675-675-crop-000000.jpg?v=8a7223d4d4",
+    "letterboxd_url": "https://letterboxd.com/film/the-firemens-ball/",
+    "average_rating": "3.73 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.73 out of 5"
   },
   "The Look of Silence": {
     "title": "The Look of Silence",
@@ -455,8 +918,21 @@
     "director": "Joshua Oppenheimer",
     "intro": "An optician grapples with the Indonesian mass killings of 1965-1966, during which his older brother was exterminated.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/og/ca/jq/o1/zUGbN7JTo7F8GXwvjVz3GorNRW0-0-230-0-345-crop.jpg?v=2e50eb0bc4",
+    "letterboxd_url": "https://letterboxd.com/film/the-look-of-silence/",
+    "average_rating": "4.34 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Magician": {
+    "title": "The Magician",
+    "year": 1926,
+    "director": "Rex Ingram",
+    "intro": "A young woman, Margaret Dauncey, is caught between the forces of a charlatan magician, Oliver Haddo, whom she is unable to resist, and the love of a handsome surgeon, Arthur Burdon, who has saved her from being a helpless cripple by performing a delicate operation on her spine.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/m0/3n/00/s1/o0wXHlJChL2gKGBtPY2plhTsQhx-1200-1200-675-675-crop-000000.jpg?v=50d04cdaa4",
+    "letterboxd_url": "https://letterboxd.com/film/the-magician/",
+    "average_rating": "3.33 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.33 out of 5"
   },
   "The Piano Teacher": {
     "title": "The Piano Teacher",
@@ -464,8 +940,21 @@
     "director": "Michael Haneke",
     "intro": "Erika Kohut, a sexually repressed piano teacher living with her domineering mother, meets a young man who starts romantically pursuing her.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/0/7/9/1/50791-the-piano-teacher-0-230-0-345-crop.jpg?v=5ee594e70c",
+    "letterboxd_url": "https://letterboxd.com/film/the-piano-teacher/",
+    "average_rating": "4.06 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Red Shoes": {
+    "title": "The Red Shoes",
+    "year": 1948,
+    "director": "Michael Powell, Emeric Pressburger",
+    "intro": "A fledgling ballerina falls in love with a brilliant composer, but the jealous head of the ballet company plots to drive them apart.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/fu/qf/kx/tt/red-shoes-1200-1200-675-675-crop-000000.jpg?v=b670b336d9",
+    "letterboxd_url": "https://letterboxd.com/film/the-red-shoes/",
+    "average_rating": "4.41 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.41 out of 5"
   },
   "The Secret Agent": {
     "title": "The Secret Agent",
@@ -473,6 +962,8 @@
     "director": "Kleber Mendonça Filho",
     "intro": "In 1977 Brazil, technology specialist Marcelo, fleeing a mysterious past, returns to Recife in search of peace, but realizes the city is far from the refuge he seeks.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/1/1/0/4/3/4/8/1104348-the-secret-agent-2025-0-230-0-345-crop.jpg?v=3bcd2a3e02",
+    "letterboxd_url": "https://letterboxd.com/film/the-secret-agent-2025/",
+    "average_rating": "3.81 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -482,6 +973,8 @@
     "director": "Stanley Kubrick",
     "intro": "Jack Torrance accepts a caretaker job at the Overlook Hotel, where he, along with his wife Wendy and their son Danny, must live isolated from the rest of the world for the winter. But they aren't prepared for the madness that lurks within.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/7s/m2/bw/d0/caoYMcjUamGoBVy65i1AHJBvdzw-0-230-0-345-crop.jpg?v=88d9d6cce4",
+    "letterboxd_url": "https://letterboxd.com/film/the-shining/",
+    "average_rating": "4.22 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -491,8 +984,21 @@
     "director": "Tobe Hooper",
     "intro": "Five friends head out to rural Texas to visit the grave of a grandfather. On the way, they stumble across what appears to be a deserted house, only to discover something sinister within. Something armed with a chainsaw.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/1/9/8/5/31985-the-texas-chain-saw-massacre-0-230-0-345-crop.jpg?v=c63b3f1958",
+    "letterboxd_url": "https://letterboxd.com/film/the-texas-chain-saw-massacre/",
+    "average_rating": "3.78 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Thin Red Line": {
+    "title": "The Thin Red Line",
+    "year": 1998,
+    "director": "Terrence Malick",
+    "intro": "The story of a group of men, an Army Rifle company called C-for-Charlie, who change, suffer, and ultimately make essential discoveries about themselves during the fierce World War II battle of Guadalcanal. It follows their journey, from the surprise of an unopposed landing, through the bloody and exhausting battles that follow, to the ultimate departure of those who survived.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/ee/da/3c/9u/the-thin-red-line-1200-1200-675-675-crop-000000.jpg?v=37178d663c",
+    "letterboxd_url": "https://letterboxd.com/film/the-thin-red-line/",
+    "average_rating": "4.09 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.09 out of 5"
   },
   "The Voice of Hind Rajab": {
     "title": "The Voice of Hind Rajab",
@@ -500,8 +1006,32 @@
     "director": "Kaouther Ben Hania",
     "intro": "January 29, 2024. Red Crescent volunteers receive an emergency call. A five-year old girl is trapped in a car under fire in Gaza, pleading for rescue. While trying to keep her on the line, they do everything they can to get an ambulance to her. Her name was Hind Rajab.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/1/3/5/7/4/0/2/1357402-the-voice-of-hind-rajab-0-230-0-345-crop.jpg?v=c5d8abe27e",
+    "letterboxd_url": "https://letterboxd.com/film/the-voice-of-hind-rajab/",
+    "average_rating": "4.39 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "The Wages of Fear": {
+    "title": "The Wages of Fear",
+    "year": 1953,
+    "director": "Henri-Georges Clouzot",
+    "intro": "In a run-down South American town, four men are paid to drive trucks loaded with nitroglycerin into the jungle through to the oil field. Friendships are tested and rivalries develop as they embark upon the perilous journey.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/w0/8k/qz/hj/8JaU1ez5TSrRSmncB0Xh2YQavXP-1200-1200-675-675-crop-000000.jpg?v=8d2369585b",
+    "letterboxd_url": "https://letterboxd.com/film/the-wages-of-fear/",
+    "average_rating": "4.36 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.36 out of 5"
+  },
+  "Things to Come": {
+    "title": "Things to Come",
+    "year": 1936,
+    "director": "William Cameron Menzies",
+    "intro": "The story of a century: a decades-long second World War leaves plague and anarchy, then a rational state rebuilds civilization and attempts space travel.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/nb/89/3f/s1/things%20to%20come-1200-1200-675-675-crop-000000.jpg?v=72ecaa27a4",
+    "letterboxd_url": "https://letterboxd.com/film/things-to-come/",
+    "average_rating": "3.29 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.29 out of 5"
   },
   "Time of the Wolf": {
     "title": "Time of the Wolf",
@@ -509,6 +1039,8 @@
     "director": "Michael Haneke",
     "intro": "A middle-class family flees an unspecified disaster that has struck the city and takes refuge in their country home. They think this will allow them to escape the chaos, but they soon realize that getting away won’t be so easy.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/3/6/9/4/9/36949-time-of-the-wolf-0-230-0-345-crop.jpg?v=e42070b6bd",
+    "letterboxd_url": "https://letterboxd.com/film/time-of-the-wolf-2003/",
+    "average_rating": "3.46 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -518,6 +1050,8 @@
     "director": "Ruben Östlund",
     "intro": "A celebrity model couple are invited on a luxury cruise for the uber-rich, helmed by an unhinged, alcoholic captain. What first appears Instagrammable ends catastrophically, leaving the survivors stranded on a desert island in a struggle of hierarchy.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/2/7/9/7/0/427970-triangle-of-sadness-0-230-0-345-crop.jpg?v=a9210ebfee",
+    "letterboxd_url": "https://letterboxd.com/film/triangle-of-sadness/",
+    "average_rating": "3.69 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -527,8 +1061,54 @@
     "director": "Alfred Hitchcock",
     "intro": "A retired San Francisco detective suffering from acrophobia investigates the strange activities of an old friend's wife, all the while becoming dangerously obsessed with her.",
     "poster_url": "https://a.ltrbxd.com/resized/sm/upload/q9/3o/ng/om/obhM86qyv8RsE69XSMTtT9FdE0b-0-230-0-345-crop.jpg?v=1403a5e003",
+    "letterboxd_url": "https://letterboxd.com/film/vertigo/",
+    "average_rating": "4.22 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
+  },
+  "Viridiana": {
+    "title": "Viridiana",
+    "year": 1961,
+    "director": "Luis Buñuel",
+    "intro": "Viridiana is preparing to start her life as a nun when she is sent, somewhat unwillingly, to visit her aging uncle, Don Jaime. He supports her; but the two have met only once. Jaime thinks Viridiana resembles his dead wife. Viridiana has secretly despised this man all her life and finds her worst fears proven when Jaime grows determined to seduce his pure niece. Viridiana becomes undone as her uncle upends the plans she had made to join the convent.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/kv/0c/kt/u4/viridiana-1200-1200-675-675-crop-000000.jpg?v=60919146fa",
+    "letterboxd_url": "https://letterboxd.com/film/viridiana/",
+    "average_rating": "4.10 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.10 out of 5"
+  },
+  "Vivre sa vie": {
+    "title": "Vivre Sa Vie",
+    "year": 1962,
+    "director": "Jean-Luc Godard",
+    "intro": "Twelve episodic tales in the life of a Parisian woman and her slow descent into prostitution.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/q2/dd/yo/19/vivre-sa-vie-1200-1200-675-675-crop-000000.jpg?v=3e0a61aaf0",
+    "letterboxd_url": "https://letterboxd.com/film/vivre-sa-vie/",
+    "average_rating": "4.01 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.01 out of 5"
+  },
+  "Walkabout": {
+    "title": "Walkabout",
+    "year": 1971,
+    "director": "Nicolas Roeg",
+    "intro": "Under the pretense of having a picnic, a geologist takes his teenage daughter and 6-year-old son into the Australian outback and attempts to shoot them. When he fails, he turns the gun on himself, and the two city-bred children must contend with harsh wilderness alone. They are saved by a chance encounter with an Aboriginal boy who shows them how to survive, and in the process underscores the disharmony between nature and modern life.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/0i/np/y0/44/walkabout-1200-1200-675-675-crop-000000.jpg?v=270f7408a7",
+    "letterboxd_url": "https://letterboxd.com/film/walkabout/",
+    "average_rating": "4.01 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "4.01 out of 5"
+  },
+  "Wanda": {
+    "title": "Wanda",
+    "year": 1970,
+    "director": "Barbara Loden",
+    "intro": "After a string of abusive relationships, Wanda abandons her family and seeks solace in the company of a petty criminal.",
+    "poster_url": "https://a.ltrbxd.com/resized/sm/upload/vg/81/fv/32/wanda-1200-1200-675-675-crop-000000.jpg?v=51b7a9dc58",
+    "letterboxd_url": "https://letterboxd.com/film/wanda/",
+    "average_rating": "3.81 out of 5",
+    "page_type": "video.movie",
+    "review_rating": "3.81 out of 5"
   },
   "Wax, or The Discovery of Television Among the Bees": {
     "title": "Wax, or The Discovery of Television Among the Bees",
@@ -536,6 +1116,8 @@
     "director": "David Blair",
     "intro": "Computer programmer/beekeeper Jacob gets a \"television\" implanted in his brain by a race of telekinetic bees, which causes him to experience severe hallucinations.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/1/1/6/7/6/11676-wax-or-the-discovery-of-television-among-the-bees-0-230-0-345-crop.jpg?v=4b90269e1f",
+    "letterboxd_url": "https://letterboxd.com/film/wax-or-the-discovery-of-television-among-the-bees/",
+    "average_rating": "3.91 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -545,6 +1127,8 @@
     "director": "Jane Schoenbrun",
     "intro": "Reality and fantasy begin to blur when a teenager, alone in her attic bedroom, immerses herself in a role-playing horror game online.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/6/9/5/5/2/2/695522-we-re-all-going-to-the-world-s-fair-0-230-0-345-crop.jpg?v=d123af3067",
+    "letterboxd_url": "https://letterboxd.com/film/were-all-going-to-the-worlds-fair/",
+    "average_rating": "3.10 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -554,6 +1138,8 @@
     "director": "Mike Nichols",
     "intro": "A history professor and his wife entertain a young couple who are new to the university's faculty. As the drinks flow, secrets come to light, and the middle-aged couple unload onto their guests the full force of the bitterness, dysfunction, and animosity that defines their marriage.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/5/1/6/9/4/51694-who-s-afraid-of-virginia-woolf--0-230-0-345-crop.jpg?v=e194eba2b2",
+    "letterboxd_url": "https://letterboxd.com/film/whos-afraid-of-virginia-woolf/",
+    "average_rating": "4.27 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   },
@@ -563,6 +1149,8 @@
     "director": "Hiroshi Teshigahara",
     "intro": "A vacationing entomologist suffers extreme physical and psychological trauma after being taken captive by the residents of a poor seaside village and made to live with a woman whose life task is shoveling sand for them.",
     "poster_url": "https://a.ltrbxd.com/resized/film-poster/4/1/4/4/0/41440-woman-in-the-dunes-0-230-0-345-crop.jpg?v=e4bc8bd787",
+    "letterboxd_url": "https://letterboxd.com/film/woman-in-the-dunes/",
+    "average_rating": "4.47 out of 5",
     "page_type": "letterboxd:film",
     "review_rating": ""
   }

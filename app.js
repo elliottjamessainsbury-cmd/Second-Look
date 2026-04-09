@@ -2,9 +2,11 @@ const state = {
   curatedFilms: [],
   metadataByTitle: {},
   sampleMovies: [],
+  criterionClosetPicks: [],
   query: "",
   selectedFilmId: null,
   selectedFilm: null,
+  expandedCardKey: "",
   recommendations: [],
   loading: true,
   error: ""
@@ -18,8 +20,8 @@ const elements = {
   directorList: document.querySelector("#director-list"),
   resetDirector: document.querySelector("#reset-director"),
   clearSelections: document.querySelector("#clear-selections"),
-  recommendButton: document.querySelector("#recommend-button"),
   resultsGrid: document.querySelector("#results-grid"),
+  criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   resultsSubtitle: document.querySelector("#results-subtitle")
 };
@@ -39,13 +41,58 @@ function getSearchMatches() {
   }
 
   const needle = normalize(state.query);
-  return state.curatedFilms
+  const curatedMatches = state.curatedFilms
     .filter((film) => normalize(film.title).includes(needle))
-    .slice(0, 8);
+    .map((film) => ({
+      ...film,
+      sourceType: "curated"
+    }));
+
+  const seenTitles = new Set(curatedMatches.map((film) => normalize(film.title)));
+  const sampleMatches = state.sampleMovies
+    .filter((film) => normalize(film.title).includes(needle) && !seenTitles.has(normalize(film.title)))
+    .map((film) => ({
+      ...film,
+      film_id: film.id || titleToId(film.title, film.year),
+      elliott_rating: null,
+      manual_links: [],
+      sourceType: "sample"
+    }));
+
+  return [...curatedMatches, ...sampleMatches].slice(0, 8);
 }
 
 function metadataForTitle(title) {
-  return state.metadataByTitle[title] || null;
+  if (state.metadataByTitle[title]) {
+    return state.metadataByTitle[title];
+  }
+
+  const needle = normalize(title);
+  const matchedKey = Object.keys(state.metadataByTitle).find((key) => normalize(key) === needle);
+  return matchedKey ? state.metadataByTitle[matchedKey] : null;
+}
+
+function directorForTitle(title) {
+  const metadata = metadataForTitle(title);
+  if (metadata?.director) {
+    return metadata.director;
+  }
+
+  const matchedSample = byTitle(state.sampleMovies, title);
+  return matchedSample?.director || "";
+}
+
+function makeJustWatchUrl(title) {
+  return `https://www.justwatch.com/uk/search?q=${encodeURIComponent(title)}`;
+}
+
+function makeLetterboxdUrl(title) {
+  const metadata = metadataForTitle(title);
+  return metadata?.letterboxd_url || `https://letterboxd.com/search/films/${encodeURIComponent(title)}/`;
+}
+
+function cardKey(section, title) {
+  return `${section}:${normalize(title)}`;
 }
 
 function titleToId(title, year) {
@@ -130,17 +177,23 @@ function scoreSampleMovie(candidate, selectedMovies, profile) {
 
 function getHybridRecommendations(selectedFilm) {
   const manualTitles = selectedFilm.manual_links || [];
-  const curatedCards = manualTitles.map((title, index) => ({
+  const curatedCards = manualTitles.map((title) => ({
     kind: "curated",
     title,
-    rankLabel: `PICK ${index + 1}`,
     sourceFilm: selectedFilm.title
   }));
+
+  const directorNames = new Set();
+  const selectedDirector = directorForTitle(selectedFilm.title);
+  if (selectedDirector) {
+    directorNames.add(selectedDirector);
+  }
 
   const sampleSeeds = [];
   const selectedAsSample = byTitle(state.sampleMovies, selectedFilm.title);
   if (selectedAsSample) {
     sampleSeeds.push(selectedAsSample);
+    directorNames.add(selectedAsSample.director);
   }
 
   manualTitles.forEach((title) => {
@@ -148,14 +201,49 @@ function getHybridRecommendations(selectedFilm) {
     if (matched && !sampleSeeds.some((movie) => movie.id === matched.id)) {
       sampleSeeds.push(matched);
     }
+
+    const linkedDirector = directorForTitle(title);
+    if (linkedDirector) {
+      directorNames.add(linkedDirector);
+    }
+  });
+
+  const blockedTitles = new Set([selectedFilm.title, ...manualTitles].map(normalize));
+  const criterionCards = [];
+
+  state.criterionClosetPicks.forEach((entry) => {
+    if (!directorNames.has(entry.director)) {
+      return;
+    }
+
+    entry.picks.forEach((title) => {
+      if (blockedTitles.has(normalize(title))) {
+        return;
+      }
+
+      if (criterionCards.some((item) => normalize(item.title) === normalize(title))) {
+        return;
+      }
+
+      criterionCards.push({
+        kind: "criterion",
+        title,
+        sourceFilm: selectedFilm.title,
+        criterionDirector: entry.director,
+        criterionSource: entry.source
+      });
+    });
   });
 
   if (sampleSeeds.length === 0) {
-    return curatedCards;
+    return {
+      primary: curatedCards,
+      criterion: criterionCards.slice(0, 4)
+    };
   }
 
   const profile = collectWeightedProfile(sampleSeeds);
-  const blockedTitles = new Set([selectedFilm.title, ...manualTitles].map(normalize));
+  criterionCards.forEach((item) => blockedTitles.add(normalize(item.title)));
 
   const discoveryCards = state.sampleMovies
     .filter((movie) => !blockedTitles.has(normalize(movie.title)))
@@ -169,11 +257,29 @@ function getHybridRecommendations(selectedFilm) {
     .sort((left, right) => right.score - left.score)
     .slice(0, 4);
 
-  return [...curatedCards, ...discoveryCards];
+  return {
+    primary: [...curatedCards, ...discoveryCards],
+    criterion: criterionCards.slice(0, 4)
+  };
 }
 
 function addFilm(filmId) {
-  const film = state.curatedFilms.find((item) => item.film_id === filmId);
+  let film = state.curatedFilms.find((item) => item.film_id === filmId);
+
+  if (!film) {
+    const sampleFilm = state.sampleMovies.find((item) => (item.id || titleToId(item.title, item.year)) === filmId);
+    if (sampleFilm) {
+      film = {
+        film_id: sampleFilm.id || titleToId(sampleFilm.title, sampleFilm.year),
+        title: sampleFilm.title,
+        year: sampleFilm.year,
+        elliott_rating: null,
+        manual_links: [],
+        sourceType: "sample"
+      };
+    }
+  }
+
   if (!film) {
     return;
   }
@@ -181,6 +287,7 @@ function addFilm(filmId) {
   state.selectedFilmId = filmId;
   state.selectedFilm = film;
   state.recommendations = getHybridRecommendations(film);
+  state.expandedCardKey = "";
   state.query = "";
   elements.movieSearch.value = "";
   render();
@@ -189,8 +296,14 @@ function addFilm(filmId) {
 function clearSelectedFilm() {
   state.selectedFilmId = null;
   state.selectedFilm = null;
+  state.expandedCardKey = "";
   state.recommendations = [];
   render();
+}
+
+function toggleExpandedCard(key) {
+  state.expandedCardKey = state.expandedCardKey === key ? "" : key;
+  renderRecommendations();
 }
 
 function renderSearchResults() {
@@ -237,7 +350,11 @@ function renderSearchResults() {
         <div class="search-result">
           <div>
             <strong>${film.title}</strong>
-            <div class="match-meta">${film.year} • Elliott rating ${film.elliott_rating}/5</div>
+            <div class="match-meta">${
+              film.sourceType === "curated"
+                ? `${film.year} • Curated source film${film.elliott_rating ? ` • Elliott rating ${film.elliott_rating}/5` : ""}`
+                : `${film.year} • Original similarity engine`
+            }</div>
           </div>
           <button type="button" data-add-film="${film.film_id}">Use this</button>
         </div>
@@ -310,66 +427,169 @@ function monogramForTitle(title) {
 
 function renderRecommendations() {
   if (!state.selectedFilm) {
-    elements.resultsTitle.textContent = "Your hand-picked recommendation graph";
+    elements.resultsTitle.textContent = "Recommendations";
     elements.resultsSubtitle.textContent =
-      "Choose a curated source film and the app will return the titles from your “Would also like” column.";
+      "Once you've chosen a film, you'll find recommendations here.";
     elements.resultsGrid.innerHTML = `
       <div class="empty-state">
         <h3>Start from one film</h3>
         <p>
-          This version uses your own curation directly. Search for a title you mapped manually and we’ll return
-          the companion films you chose for it.
+          Search for a title you mapped manually and we’ll return the companion films you chose for it.
         </p>
       </div>
     `;
+    elements.criterionSection.innerHTML = "";
     return;
   }
 
   elements.resultsTitle.textContent = `${state.selectedFilm.title} leads to:`;
-  const discoverCount = state.recommendations.filter((item) => item.kind === "discovery").length;
-  elements.resultsSubtitle.textContent =
-    `${state.selectedFilm.manual_links.length} hand-picked recommendation` +
-    `${state.selectedFilm.manual_links.length === 1 ? "" : "s"} from your “Would also like” column` +
-    (discoverCount ? `, plus ${discoverCount} extra picks from the original similarity engine.` : ".");
+  const primaryRecommendations = state.recommendations.primary || [];
+  const criterionRecommendations = state.recommendations.criterion || [];
+  const manualCount = state.selectedFilm.manual_links.length;
+  const discoverCount = primaryRecommendations.filter((item) => item.kind === "discovery").length;
+  if (manualCount > 0) {
+    elements.resultsSubtitle.textContent =
+      `${manualCount} hand-picked recommendation` +
+      `${manualCount === 1 ? "" : "s"} from your “Would also like” column` +
+      (discoverCount ? `, plus ${discoverCount} extra picks from the original similarity engine.` : ".");
+  } else if (discoverCount > 0) {
+    elements.resultsSubtitle.textContent =
+      `${discoverCount} recommendation${discoverCount === 1 ? "" : "s"} from the original similarity engine.`;
+  } else {
+    elements.resultsSubtitle.textContent =
+      "No hand-curated links for this title yet, but you can still browse related director picks below when available.";
+  }
 
-  elements.resultsGrid.innerHTML = state.recommendations
-    .map((item, index) => {
+  elements.resultsGrid.innerHTML = primaryRecommendations
+    .map((item) => {
       const title = item.title;
       const metadata = metadataForTitle(title);
+      const key = cardKey("primary", title);
+      const expanded = state.expandedCardKey === key;
       const posterMarkup = metadata?.poster_url
         ? `<img class="poster-image" src="${metadata.poster_url}" alt="Poster for ${title}" loading="lazy" />`
         : `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
-      const detailLine = [metadata?.year, metadata?.director].filter(Boolean).join(" • ");
-      const intro =
-        metadata?.intro ||
-        (item.kind === "curated"
-          ? "This title comes straight from your own curation sheet rather than from an automated similarity score."
-          : "This extra pick comes from the original similarity engine using themes, tone, era, and editorial links.");
+      const letterboxdUrl = makeLetterboxdUrl(title);
+      const justWatchUrl = makeJustWatchUrl(title);
+      const letterboxdAverage = metadata?.average_rating || "Not available";
+      const rottenTomatoesRating = "Not available";
+      const expandedPanel = expanded
+        ? `
+            <div class="card-expanded-panel">
+              <div class="expanded-stats">
+                <div class="expanded-stat">
+                  <span class="expanded-stat-label">Average Letterboxd rating</span>
+                  <strong>${letterboxdAverage}</strong>
+                </div>
+                <div class="expanded-stat">
+                  <span class="expanded-stat-label">Rotten Tomatoes</span>
+                  <strong>${rottenTomatoesRating}</strong>
+                </div>
+              </div>
+              <p class="expanded-copy">${metadata?.intro || "No extended synopsis available yet."}</p>
+            </div>
+          `
+        : "";
 
       return `
-        <article class="result-card">
+        <article class="result-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
-            <div class="score-badge">${item.kind === "curated" ? `PICK ${index + 1}` : item.rankLabel}</div>
             ${posterMarkup}
           </div>
           <div class="card-body">
             <div class="card-title">${title}</div>
-            <div class="card-subtitle">${
-              detailLine || (item.kind === "curated"
-                ? `Hand-picked from ${state.selectedFilm.title}`
-                : `Similarity pick from ${state.selectedFilm.title}`)
-            }</div>
-            <p class="card-reason">${intro}</p>
-            <div class="card-footer">
-              <span class="footer-pill">${item.kind === "curated" ? "manual curation" : "similarity engine"}</span>
-              <span class="footer-pill">source film: ${state.selectedFilm.title}</span>
-              <span class="footer-pill">rating ${state.selectedFilm.elliott_rating}/5</span>
+            <div class="card-actions">
+              <a class="card-link-button" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
+              <a class="card-link-button card-link-button-secondary" href="${justWatchUrl}" target="_blank" rel="noreferrer">Where to watch it</a>
+              <button class="card-link-button card-link-button-tertiary" type="button" data-toggle-card="${key}">
+                ${expanded ? "See less" : "See more"}
+              </button>
             </div>
+            ${expandedPanel}
           </div>
         </article>
       `
     })
     .join("");
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => toggleExpandedCard(button.dataset.toggleCard));
+  });
+
+  if (!criterionRecommendations.length) {
+    elements.criterionSection.innerHTML = "";
+    return;
+  }
+
+  elements.criterionSection.innerHTML = `
+    <div class="criterion-divider"></div>
+    <div class="criterion-head">
+      <div>
+        <p class="eyebrow">Director's Picks</p>
+        <h3>${criterionRecommendations[0].criterionDirector}'s Criterion Closet picks</h3>
+      </div>
+      <p class="criterion-subtitle">
+        Films picked in the Criterion Closet by the director of ${state.selectedFilm.title}.
+      </p>
+    </div>
+    <div class="results-grid results-grid-secondary">
+      ${criterionRecommendations
+        .map((item) => {
+          const title = item.title;
+          const metadata = metadataForTitle(title);
+          const key = cardKey("criterion", title);
+          const expanded = state.expandedCardKey === key;
+          const posterMarkup = metadata?.poster_url
+            ? `<img class="poster-image" src="${metadata.poster_url}" alt="Poster for ${title}" loading="lazy" />`
+            : `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
+          const letterboxdUrl = makeLetterboxdUrl(title);
+          const justWatchUrl = makeJustWatchUrl(title);
+          const letterboxdAverage = metadata?.average_rating || "Not available";
+          const rottenTomatoesRating = "Not available";
+          const expandedPanel = expanded
+            ? `
+                <div class="card-expanded-panel">
+                  <div class="expanded-stats">
+                    <div class="expanded-stat">
+                      <span class="expanded-stat-label">Average Letterboxd rating</span>
+                      <strong>${letterboxdAverage}</strong>
+                    </div>
+                    <div class="expanded-stat">
+                      <span class="expanded-stat-label">Rotten Tomatoes</span>
+                      <strong>${rottenTomatoesRating}</strong>
+                    </div>
+                  </div>
+                  <p class="expanded-copy">${metadata?.intro || "No extended synopsis available yet."}</p>
+                </div>
+              `
+            : "";
+
+          return `
+            <article class="result-card ${expanded ? "result-card-expanded" : ""}">
+              <div class="poster-block">
+                ${posterMarkup}
+              </div>
+              <div class="card-body">
+                <div class="card-title">${title}</div>
+                <div class="card-actions">
+                  <a class="card-link-button" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
+                  <a class="card-link-button card-link-button-secondary" href="${justWatchUrl}" target="_blank" rel="noreferrer">Where to watch it</a>
+                  <button class="card-link-button card-link-button-tertiary" type="button" data-toggle-card="${key}">
+                    ${expanded ? "See less" : "See more"}
+                  </button>
+                </div>
+                ${expandedPanel}
+              </div>
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  elements.criterionSection.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => toggleExpandedCard(button.dataset.toggleCard));
+  });
 }
 
 function render() {
@@ -381,10 +601,11 @@ function render() {
 
 async function loadCuratedFilms() {
   try {
-    const [filmsResponse, metadataResponse, sampleResponse] = await Promise.all([
+    const [filmsResponse, metadataResponse, sampleResponse, criterionResponse] = await Promise.all([
       fetch("./data/curated-films.json"),
       fetch("./data/film-metadata.json"),
-      fetch("./data/sample-movies.json")
+      fetch("./data/sample-movies.json"),
+      fetch("./data/criterion-closet-picks.json")
     ]);
 
     if (!filmsResponse.ok) {
@@ -403,6 +624,10 @@ async function loadCuratedFilms() {
         ...movie,
         id: movie.id || titleToId(movie.title, movie.year)
       }));
+    }
+
+    if (criterionResponse.ok) {
+      state.criterionClosetPicks = await criterionResponse.json();
     }
   } catch (error) {
     state.error = "The curated film file could not be loaded. Make sure the local server is running.";
@@ -459,17 +684,6 @@ elements.resetDirector.addEventListener("click", () => {
 
 elements.clearSelections.addEventListener("click", () => {
   clearSelectedFilm();
-});
-
-elements.recommendButton.addEventListener("click", () => {
-  if (!state.selectedFilm) {
-    const firstMatch = getSearchMatches()[0];
-    if (firstMatch) {
-      addFilm(firstMatch.film_id);
-    }
-  }
-
-  elements.resultsGrid.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 render();

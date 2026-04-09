@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
   </head>
   <body>
     <div class="page-shell">
@@ -32,6 +32,7 @@
             <li>Return your hand-picked companion titles.</li>
             <li>Build outward from there later with richer logic.</li>
           </ol>
+          <p class="hero-panel-text">Search for a source film.</p>
         </aside>
       </header>
 
@@ -39,7 +40,6 @@
         <section class="controls card">
           <div class="section-heading">
             <h2>Choose a source film</h2>
-            <p>Search the films that you love or start with a quick pick.</p>
           </div>
 
           <div class="search-area">
@@ -74,11 +74,6 @@
             <div id="director-list" class="director-list"></div>
           </div>
 
-          <div class="action-row">
-            <button id="recommend-button" class="primary-button" type="button">
-              Show recommendations
-            </button>
-          </div>
         </section>
 
         <section class="results">
@@ -93,10 +88,11 @@
           </div>
 
           <div id="results-grid" class="results-grid"></div>
+          <div id="criterion-section" class="criterion-section"></div>
         </section>
       </main>
     </div>
 
-    <script src="./app.js"></script>
+    <script src="./app.js?v=7"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 import json
+import time
 import re
 import unicodedata
 import urllib.request
@@ -11,6 +12,8 @@ from pathlib import Path
 WORKBOOK_PATH = Path("/Users/elliott/Downloads/Film curation .xlsx")
 CURATED_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
 OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/film-metadata.json")
+FALLBACKS_PATH = Path("/Users/elliott/Documents/New project/data/letterboxd-fallbacks.json")
+CRITERION_PATH = Path("/Users/elliott/Documents/New project/data/criterion-closet-picks.json")
 
 NS = {
     "a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
@@ -129,15 +132,23 @@ def extract_structured_poster(html: str) -> str:
 
 
 def fetch_html(url: str) -> str:
-    request = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "Mozilla/5.0",
-            "Accept-Language": "en-GB,en;q=0.9",
-        },
-    )
-    with urllib.request.urlopen(request, timeout=8) as response:
-        return response.read().decode("utf-8", errors="ignore")
+    last_error = None
+    for attempt in range(3):
+        try:
+            request = urllib.request.Request(
+                url,
+                headers={
+                    "User-Agent": "Mozilla/5.0",
+                    "Accept-Language": "en-GB,en;q=0.9",
+                },
+            )
+            with urllib.request.urlopen(request, timeout=8) as response:
+                return response.read().decode("utf-8", errors="ignore")
+        except Exception as error:
+            last_error = error
+            if attempt < 2:
+                time.sleep(0.6 * (attempt + 1))
+    raise last_error
 
 
 def fetch_letterboxd_metadata(url: str) -> dict:
@@ -155,6 +166,7 @@ def fetch_letterboxd_metadata(url: str) -> dict:
             film_description = extract_meta(film_html, "og:description")
             film_image = extract_structured_poster(film_html) or extract_meta(film_html, "og:image")
             director = extract_meta(film_html, "twitter:data1", attr="name")
+            average_rating = extract_meta(film_html, "twitter:data2", attr="name")
             year_match = re.search(r"\((\d{4})\)", film_title)
             year = int(year_match.group(1)) if year_match else None
             parsed_title = re.sub(r"\s*\(\d{4}\)\s*$", "", film_title).strip()
@@ -165,7 +177,9 @@ def fetch_letterboxd_metadata(url: str) -> dict:
                 "director": director,
                 "intro": film_description,
                 "poster_url": review_poster or film_image,
+                "letterboxd_url": film_url,
                 "review_rating": "",
+                "average_rating": average_rating,
                 "twitter_title": extract_meta(film_html, "twitter:title", attr="name"),
             }
 
@@ -173,6 +187,7 @@ def fetch_letterboxd_metadata(url: str) -> dict:
     image_url = extract_structured_poster(html) or extract_meta(html, "og:image")
     twitter_title = extract_meta(html, "twitter:title", attr="name")
     review_rating = extract_meta(html, "twitter:data2", attr="name")
+    average_rating = review_rating if page_type == "video.movie" else ""
     year_match = re.search(r"\((\d{4})\)", title_with_year)
     year = int(year_match.group(1)) if year_match else None
     parsed_title = re.sub(r"^A\s+★★★★★?\s+review of\s+", "", title_with_year, flags=re.IGNORECASE)
@@ -186,32 +201,50 @@ def fetch_letterboxd_metadata(url: str) -> dict:
         "director": director,
         "intro": description,
         "poster_url": image_url,
+        "letterboxd_url": url,
         "review_rating": review_rating,
+        "average_rating": average_rating,
         "twitter_title": twitter_title,
     }
 
 
 def main() -> None:
     curated = json.loads(CURATED_PATH.read_text())
+    criterion = json.loads(CRITERION_PATH.read_text()) if CRITERION_PATH.exists() else []
     workbook_titles = title_map_from_workbook()
+    fallbacks = json.loads(FALLBACKS_PATH.read_text()) if FALLBACKS_PATH.exists() else {}
 
     targets = set()
     for item in curated:
         targets.add(item["title"])
         for manual_link in item["manual_links"]:
             targets.add(manual_link)
+    for entry in criterion:
+        for pick in entry["picks"]:
+            targets.add(pick)
 
     output = {}
     missing = []
 
     for title in sorted(targets):
         workbook_entry = workbook_titles.get(normalize(title))
-        if not workbook_entry:
+        target_url = ""
+        fallback_url = fallbacks.get(title)
+        if fallback_url:
+            target_url = fallback_url
+            if not workbook_entry:
+                workbook_entry = {"year": None}
+        elif workbook_entry:
+            target_url = workbook_entry["letterboxd_uri"]
+        else:
             missing.append(title)
             continue
 
+        if workbook_entry is None:
+            workbook_entry = {"year": None}
+
         try:
-            meta = fetch_letterboxd_metadata(workbook_entry["letterboxd_uri"])
+            meta = fetch_letterboxd_metadata(target_url)
         except Exception:
             missing.append(title)
             continue
@@ -222,6 +255,8 @@ def main() -> None:
             "director": meta["director"],
             "intro": meta["intro"],
             "poster_url": meta["poster_url"],
+            "letterboxd_url": meta["letterboxd_url"],
+            "average_rating": meta["average_rating"],
             "page_type": meta["page_type"],
             "review_rating": meta["review_rating"],
         }
