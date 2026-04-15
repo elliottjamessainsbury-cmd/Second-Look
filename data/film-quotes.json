@@ -1,10 +1,110 @@
-
 [
-    "Go ahead, try me. You'll love it. Okay? Sissies. You let a *woman* beat you, huh? You little tiny nothings. You punk! Go ahead, punks! - John Cassavetes, Gloria (1980)",
-
-"Bye, chiquita. Bye, little sucker. Bye, little insect. Bye, little fly. Bye, little tiny insect. Bye, sucker. - John Cassavetes, Gloria (1980)",
-
-"Lina. She can't act, she can't sing, she can't dance. A triple threat. - Gene Kelly, Stanley Donen, Singin' In the Rain (1952)",
-
-"What do they think I am? Dumb or something? Why, I make more money than - than - than Calvin Coolidge! Put together! - Gene Kelly, Stanley Donen, Singin' In the Rain (1952)"
-]
+    {
+      "quote": "Go ahead, try me. You'll love it. Okay? Sissies. You let a woman beat you, huh? You little tiny nothings. You punk! Go ahead, punks!",
+      "film": "Gloria",
+      "director": "John Cassavetes",
+      "year": 1980
+    },
+    {
+      "quote": "Bye, chiquita. Bye, little sucker. Bye, little insect. Bye, little fly. Bye, little tiny insect. Bye, sucker.",
+      "film": "Gloria",
+      "director": "John Cassavetes",
+      "year": 1980
+    },
+    {
+      "quote": "Lina. She can't act, she can't sing, she can't dance. A triple threat.",
+      "film": "Singin' in the Rain",
+      "director": "Gene Kelly, Stanley Donen",
+      "year": 1952
+    },
+    {
+      "quote": "What do they think I am? Dumb or something? Why, I make more money than—than—than Calvin Coolidge! Put together!",
+      "film": "Singin' in the Rain",
+      "director": "Gene Kelly, Stanley Donen",
+      "year": 1952
+    },
+    {
+      "quote": "The view from up here is beautiful.",
+      "film": "The Shining",
+      "director": "Stanley Kubrick",
+      "year": 1980
+    },
+    {
+      "quote": "A few words about your duties.",
+      "film": "2001: A Space Odyssey",
+      "director": "Stanley Kubrick",
+      "year": 1968
+    },
+    {
+      "quote": "You know what they say: once a doctor, always a doctor.",
+      "film": "Eyes Wide Shut",
+      "director": "Stanley Kubrick",
+      "year": 1999
+    },
+    {
+      "quote": "Dead serious.",
+      "film": "Full Metal Jacket",
+      "director": "Stanley Kubrick",
+      "year": 1987
+    },
+    {
+      "quote": "When you love someone, you’ve got to trust them.",
+      "film": "Casino",
+      "director": "Martin Scorsese",
+      "year": 1995
+    },
+    {
+      "quote": "You belong in the theatre.",
+      "film": "All About Eve",
+      "director": "Joseph L. Mankiewicz",
+      "year": 1950
+    },
+    {
+      "quote": "Never rat on your friends and always keep your mouth shut.",
+      "film": "Goodfellas",
+      "director": "Martin Scorsese",
+      "year": 1990
+    },
+    {
+      "quote": "I coulda been somebody.",
+      "film": "Raging Bull",
+      "director": "Martin Scorsese",
+      "year": 1980
+    },
+    {
+      "quote": "The future is not set.",
+      "film": "Terminator 2: Judgment Day",
+      "director": "James Cameron",
+      "year": 1991
+    },
+    {
+      "quote": "We didn’t need dialogue. We had faces.",
+      "film": "Sunset Boulevard",
+      "director": "Billy Wilder",
+      "year": 1950
+    },
+    {
+      "quote": "Money makes the world go round.",
+      "film": "Cabaret",
+      "director": "Bob Fosse",
+      "year": 1972
+    },
+    {
+      "quote": "There are no innocent bystanders.",
+      "film": "All That Jazz",
+      "director": "Bob Fosse",
+      "year": 1979
+    },
+    {
+      "quote": "It’s a hard world for little things.",
+      "film": "The Night of the Hunter",
+      "director": "Charles Laughton",
+      "year": 1955
+    },
+    {
+      "quote": "I feel like I’m changing.",
+      "film": "Bug",
+      "director": "William Friedkin",
+      "year": 2006
+    }
+  ]
