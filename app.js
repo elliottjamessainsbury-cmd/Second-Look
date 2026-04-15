@@ -1,6 +1,7 @@
 const state = {
   curatedFilms: [],
   curatedSourceFilms: [],
+  quickPicks: [],
   metadataByTitle: {},
   recommendationBlurbsByPair: {},
   tmdbMetadataByTitle: {},
@@ -27,6 +28,15 @@ const elements = {
   resultsTitle: document.querySelector("#results-title")
 };
 
+function shuffleList(values) {
+  const shuffled = [...values];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled;
+}
+
 async function initRotatingFilmQuotes() {
   const quoteEl = document.getElementById("rotating-film-quote");
   if (!quoteEl) {
@@ -48,11 +58,38 @@ async function initRotatingFilmQuotes() {
 
     let currentIndex = Math.floor(Math.random() * quotes.length);
 
+    function formatQuote(entry) {
+      if (typeof entry === "string") {
+        return entry;
+      }
+
+      if (entry && typeof entry === "object") {
+        const quote = String(entry.quote || "").trim();
+        const film = String(entry.film || "").trim();
+        const director = String(entry.director || "").trim();
+        const year = entry.year ? ` (${entry.year})` : "";
+
+        if (quote && film && director) {
+          return `${quote} — ${film}${year}, ${director}`;
+        }
+
+        if (quote && film) {
+          return `${quote} — ${film}${year}`;
+        }
+
+        if (quote) {
+          return quote;
+        }
+      }
+
+      return "Quote unavailable.";
+    }
+
     function showQuote(index) {
       quoteEl.classList.remove("is-visible");
 
       window.setTimeout(() => {
-        quoteEl.textContent = quotes[index];
+        quoteEl.textContent = formatQuote(quotes[index]);
         quoteEl.classList.add("is-visible");
       }, 1200);
     }
@@ -892,9 +929,9 @@ function renderSearchResults() {
 
   if (matches.length === 0) {
     elements.searchResults.innerHTML = `
-      <div class="empty-state">
-        <h3>No curated match yet</h3>
-        <p>Try another title from your left-hand column, or use one of the quick picks below.</p>
+      <div class="empty-state search-empty-state">
+        <h3>Game over, man! Game over!</h3>
+        <p>That film isn't here right now, but... we're working on it.</p>
       </div>
     `;
     return;
@@ -916,14 +953,7 @@ function renderSearchResults() {
 }
 
 function getQuickPicks() {
-  return [...state.curatedSourceFilms]
-    .sort((left, right) => {
-      if (right.elliott_rating !== left.elliott_rating) {
-        return right.elliott_rating - left.elliott_rating;
-      }
-      return right.manual_links.length - left.manual_links.length;
-    })
-    .slice(0, 12);
+  return state.quickPicks;
 }
 
 function renderQuickPicks() {
