@@ -1,0 +1,1719 @@
+{
+  "Hard Truths::Abigail's Party": {
+    "primary_angle": "Mike Leigh's domestic pressure-cooker, from brittle social comedy to raw interpersonal fallout",
+    "supporting_points": [
+      "same director: Mike Leigh",
+      "both mix comedy and drama around strained domestic relationships",
+      "shared interest in tension, dysfunction, and class-coded social friction"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_genres",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Hard Truths hit for its mix of corrosive family conflict and uneasy comedy, Abigail’s Party is Leigh in a strikingly related mode: another domestic gathering where polite talk curdles into social and emotional strain. The setting is smaller and more satirical, but the same pressure points are there — dysfunction, tension, and the claustrophobic way relationships reveal themselves in real time. It’s a clear companion piece, not a repeat."
+  },
+  "Hard Truths::Naked": {
+    "primary_angle": "Mike Leigh’s rage-charged social portraits, from domestic abrasion to urban breakdown",
+    "supporting_points": [
+      "shared director: Mike Leigh",
+      "parallel outbursts of anger and damaged intimacy",
+      "drama-comedy tone with bleak, abrasive humor"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Hard Truths worked for you as a study in rage, damage, and the uneasy comedy inside human misery, Naked is the darker, more feral companion piece. Both are Mike Leigh films built around a protagonist whose fury corrodes every interaction, but Naked pushes that volatility out into a nocturnal London odyssey, where alienation hardens into something meaner and more poisonous. It’s the obvious next stop if you want Leigh at his most raw and unsparing."
+  },
+  "One Battle After Another::Eddington": {
+    "primary_angle": "A darker, more satirical cousin to a paranoid political chase story",
+    "supporting_points": [
+      "small-town standoff turns into civic breakdown",
+      "dark comedy welded to crime and protest",
+      "shared appetite for chaos, resistance, and social fracture"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "Eddington feels like the regional, feverish mirror image of One Battle After Another: less off-grid revolutionary thriller than small-town civic implosion. Both films traffic in paranoia, resistance, and the way political conflict bleeds into family and community life, but Ari Aster pushes that material into a more overtly satirical Western shape. If you want the same sense of America under pressure, just filtered through a sheriff-mayor powder keg instead of a fugitive chase, this is the sharper detour."
+  },
+  "One Battle After Another::The Secret Agent": {
+    "primary_angle": "A paranoid political thriller about men on the run, with the city itself turning hostile.",
+    "supporting_points": [
+      "shared 'on the run' tension",
+      "political unrest and state pressure",
+      "Latin American setting with a city-as-trap feel"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "letterboxd_intro"
+    ],
+    "blurb": "If One Battle After Another is your lane, The Secret Agent looks like a sharper, more grounded off-ramp into similar territory: fugitives, political pressure, and a nervous sense that nowhere is truly safe. Kleber Mendonça Filho sets that unease in 1977 Recife, where a man trying to vanish instead finds the city closing in around him. It swaps PTA’s gonzo volatility for something cooler and more claustrophobic, but keeps the same fugitives-under-fire energy."
+  },
+  "One Battle After Another::There Will Be Blood": {
+    "primary_angle": "Shared Paul Thomas Anderson DNA, but with a sharper political pulse and more outward chaos here.",
+    "supporting_points": [
+      "Paul Thomas Anderson connection",
+      "paranoid antihero pressure",
+      "control, violence, and fallout"
+    ],
+    "source_signals": [
+      "tmdb_director",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If One Battle After Another leaves you wanting more Paul Thomas Anderson, There Will Be Blood is the cleanest next stop. It swaps this film’s stoned paranoia, pursuit, and contemporary unrest for a colder, slower burn about greed, power, and self-invention, but the moral rot is just as deep. It’s the same filmmaker’s fascination with men dragging everyone around them into ruin—only stripped down to a harsher, more elemental duel."
+  },
+  "A Woman Under the Influence::The Piano Teacher": {
+    "primary_angle": "A brutal companion piece about women trapped between desire, control, and emotional damage",
+    "supporting_points": [
+      "shared psychological intensity",
+      "female-centered breakdown under pressure",
+      "romance twisted by cruelty and repression"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If A Woman Under the Influence is about a woman breaking apart under domestic strain, The Piano Teacher pushes that same pressure into colder, more controlled territory. Michael Haneke’s film trades Cassavetes’ raw volatility for repression, humiliation, and masochistic desire, but the emotional territory is similarly punishing. It’s a natural next stop if you were drawn to the first film’s unsparing look at intimacy turning cruel."
+  },
+  "A Woman Under the Influence::Dans Ma Peau": {
+    "primary_angle": "A brutal sister-film to Cassavetes’ study of female instability: both center a woman whose interior collapse becomes impossible for the people around her to contain.",
+    "supporting_points": [
+      "shared obsession with mental unraveling",
+      "female subjectivity under pressure",
+      "pushes domestic distress into body horror"
+    ],
+    "source_signals": [
+      "tmdb_keywords: mental breakdown, tense, ambivalent, cruel",
+      "manual_links: The Piano Teacher, Dans Ma Peau",
+      "tmdb_overview/genres: drama → horror escalation"
+    ],
+    "blurb": "If A Woman Under the Influence turns instability into a raw domestic tragedy, In My Skin takes that same inward pressure and drives it into flesh. Marina de Van’s film is a grim, feral companion piece: a woman’s private crisis becomes a secret, self-directed relationship to pain. It’s less a thematic echo than a harsher mutation of Cassavetes’ terrain."
+  },
+  "The Voice of Hind Rajab::The Look of Silence": {
+    "primary_angle": "A punishingly direct pair of films about witnessing atrocity in real time, where survival, memory, and moral pressure are inseparable.",
+    "supporting_points": [
+      "both center on ordinary people confronting state violence",
+      "shared focus on testimony, guilt, and the aftermath of mass killing",
+      "The Voice of Hind Rajab’s phone-call urgency echoes The Look of Silence’s confrontation with buried truth"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If The Voice of Hind Rajab struck you as unbearable in the way it turns a single plea for help into a record of political violence, The Look of Silence offers a similarly severe experience: less immediate, but just as devastating. Joshua Oppenheimer’s film follows an optician confronting the Indonesian mass killings of 1965–66, shifting the emphasis from rescue to reckoning. Both films refuse distance, and both turn private human voices into an indictment that lingers long after the credits."
+  },
+  "The Secret Agent::One Battle After Another": {
+    "primary_angle": "A paranoid, politically charged chase story where the past keeps catching up",
+    "supporting_points": [
+      "Both films center on a man on the run",
+      "1970s/alternate-era political unrest and repression",
+      "Thriller-crime energy with a personal, family-shaped stakes"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If you liked The Secret Agent’s tense blend of flight, political pressure, and a city that never quite feels safe, One Battle After Another looks like a sharp next stop. It trades Brazilian dictatorship-era paranoia for a more ragged, off-grid American chase, but keeps the same core charge: a man trying to outrun the damage of his past. The added comic strain in Paul Thomas Anderson’s thriller-crime mix should make the tension feel less austere, not less dangerous."
+  },
+  "Story of Women::The Piano Teacher": {
+    "primary_angle": "A bracing follow-up for Isabelle Huppert viewers: another portrait of a woman boxed in by desire, power, and social pressure, but pushed into far colder psychological territory.",
+    "supporting_points": [
+      "Isabelle Huppert in both films",
+      "female protagonist under coercive domestic or social control",
+      "sexual tension framed as menace rather than romance"
+    ],
+    "source_signals": [
+      "tmdb_cast",
+      "letterboxd_intro",
+      "tmdb_overview"
+    ],
+    "blurb": "If Story of Women drew you to Isabelle Huppert’s unsparing presence, The Piano Teacher is a natural, harsher companion piece. Both films center women navigating desire inside constricting systems, but Haneke trades Chabrol’s wartime opportunism for a chilling study of repression, control, and humiliation. It’s the same kind of performance corridor, only narrower and far less forgiving."
+  },
+  "Story of Women::Le Rayon Vert": {
+    "primary_angle": "A bracing contrast in female solitude: from Chabrol’s wartime moral pressure-cooker to Rohmer’s sunlit study of isolation, desire, and drift.",
+    "supporting_points": [
+      "female-centered psychological scrutiny",
+      "loneliness as the real dramatic engine",
+      "minimalist, character-first French cinema"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_genres_keywords_overview"
+    ],
+    "blurb": "If Story of Women is about a woman hardening herself inside wartime necessity, The Green Ray turns inward for a quieter kind of crisis: loneliness, hesitation, and the slow ache of being unmoored. Rohmer’s summer-vacation romance strips away Chabrol’s historical pressure, but keeps the focus on a woman negotiating her own isolation. It’s a sharp companion piece if you want French cinema that studies female interior life without softening its edges."
+  },
+  "Aparajito::Pather Pachali": {
+    "primary_angle": "A natural companion piece: the first chapter of Apu’s life before Aparajito carries him into adolescence and separation.",
+    "supporting_points": [
+      "same Apu/film cycle",
+      "prequel-to-Aparajito relationship",
+      "Ray’s rural-to-urban contrast"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Aparajito is the story of Apu moving into education, city life, and emotional distance, Pather Pachali is the place where that world begins. It offers the earlier, rural chapter of the same family and the same director’s patient attention to everyday life, making the pair feel less like separate films than two halves of one coming-of-age memory. The appeal here is the contrast: Aparajito’s widening world against the intimate beginnings that make it hurt."
+  },
+  "Aparajito::Late Spring": {
+    "primary_angle": "A quiet, emotionally exact match for viewers who respond to family bonds under pressure",
+    "supporting_points": [
+      "father-daughter / mother-son emotional core",
+      "coming-of-age and duty-to-family tension",
+      "black-and-white, restrained drama"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "director_match"
+    ],
+    "blurb": "If what stayed with you in Aparajito was the ache of family responsibility creeping in alongside a young person’s education, Late Spring moves in a similar emotional register. Ozu swaps Ray’s widening social world for an intimate father-daughter study, but both films are built on restraint, sacrifice, and the pain of changing attachments. It’s a gentler, more domestic film, yet just as devastating in the way it lets duty and affection quietly collide."
+  },
+  "Amadeus::Barry Lyndon": {
+    "primary_angle": "A stately period drama that trades Amadeus’s feverish jealousy for cooler, social-climbing ambition",
+    "supporting_points": [
+      "18th-century historical setting",
+      "elite courts and palace life",
+      "obsession with status and talent"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If Amadeus is a storm of envy inside the gilded world of court culture, Barry Lyndon is its colder cousin: an 18th-century ascent built on wit, appetite, and social calculation. Both are stately historical dramas moving through aristocratic spaces, but Kubrick’s film swaps Mozart’s volcanic genius for a more controlled study of ambition and class. It’s a fitting follow-up if you want the same period grandeur with a drier, more pitiless edge."
+  },
+  "Amadeus::Lawrence of Arabia": {
+    "primary_angle": "Both films turn history into grand-scale spectacle, but where Amadeus is intimate, envious, and theatrical, Lawrence of Arabia expands that same prestige into desert epic.",
+    "supporting_points": [
+      "historical drama with prestige scale",
+      "operatic, highly stylized storytelling",
+      "focus on ambitious, larger-than-life figures"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If Amadeus works for you as history made operatic — jealous, theatrical, and shot through with grandeur — Lawrence of Arabia is the same sort of prestige cinema pushed out onto an even larger canvas. David Lean’s film trades the courtly interiors of Mozart’s world for dunes, empire, and wartime ambition, but it keeps the sense of a life unfolding at epic scale. It’s the natural next stop if you want a historical drama that feels monumental rather than merely illustrative."
+  },
+  "Lawrence of Arabia::Amadeus": {
+    "primary_angle": "A stately historical epic, but traded from imperial desert warfare for a theatrical duel of genius and envy.",
+    "supporting_points": [
+      "sweeping period scale",
+      "history-driven character study",
+      "outsized central figure under pressure"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If what grips you in Lawrence of Arabia is the way history gets filtered through one towering, mythic figure, Amadeus offers a sharp tonal shift on the same scale. It replaces desert campaigns and empire with courtly Vienna, where genius becomes a source of corrosive jealousy and spectacle. The result is another lavish historical drama, but one that turns the epic inward, toward obsession rather than conquest."
+  },
+  "Lawrence of Arabia::Dune Part Two": {
+    "primary_angle": "A modern, sci-fi counterpart to Lean’s desert epic",
+    "supporting_points": [
+      "desert landscapes and imperial struggle",
+      "mythic leader uniting a fractured people",
+      "spectacle with political and spiritual scale"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If Lawrence of Arabia is the classic desert epic of empire, alliance, and myth-making, Dune: Part Two plays like its sleek, science-fiction echo. Both center on a charismatic outsider drawn into a vast struggle across sand and politics, with destiny, power, and uneasy leadership hanging over every move. Villeneuve’s sequel doesn’t imitate Lean, but it rhymes with him: grand scale, hard choices, and the desert as a stage for history in the making."
+  },
+  "Lawrence of Arabia::The Best Years of our Lives": {
+    "primary_angle": "A humane war film that shifts the battlefield from desert campaigns to the quieter, more brutal aftermath of homecoming.",
+    "supporting_points": [
+      "wartime identity and aftermath",
+      "veterans as the emotional center",
+      "from campaign epic to domestic fallout"
+    ],
+    "source_signals": [
+      "source_tmdb_genres",
+      "source_tmdb_overview",
+      "recommended_tmdb_keywords",
+      "letterboxd_intro",
+      "manual_links"
+    ],
+    "blurb": "If Lawrence of Arabia is a monument to wartime ambition, The Best Years of Our Lives is its rueful aftermath: a film about what happens when the uniforms come off and the real struggle begins. It trades military spectacle for the intimate damage of returning veterans, with PTSD, disability, and family life at the center. The connection is less about scale than consequence — both films ask what war does to the people sent to carry it."
+  },
+  "Lawrence of Arabia::Dune": {
+    "primary_angle": "A modern counterpart to a vast desert epic about empire, prophecy, and the burden of leadership",
+    "supporting_points": [
+      "desert-scale spectacle",
+      "imperial conflict",
+      "charismatic young leader"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "Villeneuve’s Dune feels like the 21st-century sibling of Lawrence of Arabia: another desert epic built on imperial maneuvering, political fracture, and a young man pushed into history before he fully understands it. Both films make landscape into drama, using sand, armies, and shifting alliances to frame a story of leadership under pressure. If Lean’s film is about empire seen through the last glow of the old world, Dune recasts that scale in a colder, more futuristic register."
+  },
+  "Lawrence of Arabia::Dune: Part Two": {
+    "primary_angle": "A modern epic that echoes Lawrence of Arabia’s desert grandeur and messianic scale, but swaps imperial history for sci-fi prophecy.",
+    "supporting_points": [
+      "desert as spectacle and battleground",
+      "mythic leader rising among tribal forces",
+      "sweeping, high-stakes adventure tone"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "Dune: Part Two feels like Lawrence of Arabia translated into science fiction: vast desert vistas, a charismatic outsider moving through tribal politics, and the sense of history tipping under one person’s gaze. Where Lean’s film turns on empire and wartime strategy, Villeneuve’s pushes that same mythic scale toward prophecy, revenge, and doom. If you’re drawn to Lawrence for its sand-bound grandeur and the weight of leadership, this is a sharply contemporary echo."
+  },
+  "Lawrence of Arabia::The Look of Silence": {
+    "primary_angle": "A stark thematic pivot from imperial epic to moral reckoning",
+    "supporting_points": [
+      "both are history-minded films",
+      "violence seen through personal witness",
+      "power, guilt, and aftermath"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If Lawrence of Arabia is empire rendered as grandeur and motion, The Look of Silence is the opposite: a quiet, devastating confrontation with the human cost left behind. Both films are history films that turn large-scale violence into something deeply personal, but Joshua Oppenheimer’s documentary replaces spectacle with testimony, guilt, and the pressure of memory. It’s a sharp counterpoint for anyone drawn to Lawrence’s moral and political sweep."
+  },
+  "Lawrence of Arabia::Oppenheimer": {
+    "primary_angle": "Epic historical scale refracted through a single consequential figure",
+    "supporting_points": [
+      "Wartime history centered on one man",
+      "Political and moral weight, not action-first spectacle",
+      "A prestige-scale study of empire, science, and consequence"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If Lawrence of Arabia turns a world war into the saga of one mythic outsider, Oppenheimer does something similarly grand and troubled with the birth of the atomic age. Both films are built around history as personality study: men whose intelligence and ambition pull them into forces bigger than themselves. The shift from desert empire to nuclear science is stark, but the underlying fascination with power, legacy, and catastrophe makes this a clean match."
+  },
+  "The Substance::Reality+": {
+    "primary_angle": "Coralie Fargeat’s earlier body-image satire, with a cooler, more playful sci-fi premise",
+    "supporting_points": [
+      "same director, different scale",
+      "appearance anxiety turned into a speculative device",
+      "short-form, high-concept French sci-fi"
+    ],
+    "source_signals": [
+      "director_match",
+      "letterboxd_intro",
+      "tmdb_overview"
+    ],
+    "blurb": "If you liked The Substance for its brutal, ironic fixation on beauty and self-reinvention, Reality+ is the cleaner, earlier prototype. Coralie Fargeat takes the same unease about appearance and filters it through a brain-chip premise, letting the satire stay sharper and the science-fiction idea do more of the work. It’s less monstrous than The Substance, but it’s already very much in the same destabilized mirror-world."
+  },
+  "The Substance::Society": {
+    "primary_angle": "Body-horror satire with a nasty class-conscious edge",
+    "supporting_points": [
+      "identity crisis through physical metamorphosis",
+      "dark comedy wrapped around grotesque social critique",
+      "same strain of surreal, transgressive body horror"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_genres",
+      "manual_links"
+    ],
+    "blurb": "If The Substance hit for you as a vicious mix of body horror, satire, and identity panic, Society is a sharp, uglier cousin. Brian Yuzna’s film turns upper-class unease into full-blown bodily nightmare, with surrealism and transformation pushed into something both comic and deeply unsettling. It swaps Fargeat’s beauty-obsessed sleekness for a more absurd, conspiratorial rot, but the contempt for elite performance is very much in the same bloodstream."
+  },
+  "The Substance::From Beyond": {
+    "primary_angle": "Body-horror sci-fi that pushes desire, experimentation, and bodily transformation into grotesque excess",
+    "supporting_points": [
+      "shared horror/science-fiction DNA",
+      "transformation and experimentation motifs",
+      "grotesque, Lovecraft-leaning escalation"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If The Substance worked for you as a savage body-horror riff on transformation and self-destruction, From Beyond is a sharp old-school follow-up. Stuart Gordon takes the same experiment-gone-wrong energy and drags it into a more overtly Lovecraftian nightmare: parallel worlds, mad science, and an increasingly hostile grip on the body. It’s messier and more pulp than Fargeat’s film, but the escalation is similarly unhinged."
+  },
+  "The Substance::Dans Ma Peau": {
+    "primary_angle": "A savage body-horror companion piece: if The Substance turns self-improvement into grotesque social satire, Dans Ma Peau pushes the obsession inward, making flesh, pain, and identity feel even more intimate and disquieting.",
+    "supporting_points": [
+      "body horror rooted in female identity",
+      "self-inflicted injury and bodily obsession",
+      "more intimate, less satirical than The Substance"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If The Substance is body horror as glossy, capitalist revenge fantasy, Dans Ma Peau is the colder, more private version of the same panic. Marina de Van’s film keeps the focus inside the body—where pain curdles into desire and self-knowledge becomes something ugly, physical, and hard to shake. It’s an especially sharp follow-up for viewers drawn to The Substance’s mix of female identity, flesh, and unease, but want the experience stripped of satire and turned inward."
+  },
+  "The Substance::Inside (2007)": {
+    "primary_angle": "Body-horror escalation that trades in invasive transformation, pressure-cooker dread, and grimly comic excess.",
+    "supporting_points": [
+      "female body horror",
+      "spiraling gore and violence",
+      "French extremity-adjacent intensity"
+    ],
+    "source_signals": [
+      "manual_links",
+      "source_film.tmdb.genres",
+      "source_film.tmdb.overview"
+    ],
+    "blurb": "If what hooked you in The Substance was its vicious blend of body horror and satire, Inside is the harsher, more stripped-down companion piece. Both turn the body into a site of panic and punishment, but Inside pushes the idea into a ruthless home-invasion nightmare with far less irony and even less mercy. It’s the cleaner recommendation for anyone who wants the same skin-crawling extremity without the glossy pop sheen."
+  },
+  "The Substance::Braindead": {
+    "primary_angle": "Shares the same taste for grotesque body horror pushed into black comedy, but swaps sleek modern satire for full-on splatter chaos.",
+    "supporting_points": [
+      "horror/comedy overlap",
+      "body transformation and reanimation",
+      "graphic, outrageous tonal excess"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If The Substance fascinates you because it turns bodily transformation into savage comedy, Braindead is the unruly ancestor: less polished, more feral, and gleefully committed to the mess. Peter Jackson’s zombie fiasco takes the same basic pleasure in flesh gone wrong and drives it into pure splatter farce, with a town-wide escalation that never worries about restraint."
+  },
+  "Tropical Malady::Happy Together": {
+    "primary_angle": "A restless queer romance where love turns unstable, then quietly devastating.",
+    "supporting_points": [
+      "male homosexuality / gay theme",
+      "relationship strain and emotional drift",
+      "romance framed by isolation and dislocation"
+    ],
+    "source_signals": [
+      "manual_links: Happy Together",
+      "tmdb_keywords: male homosexuality, gay theme, relationship problems",
+      "tmdb_overview + letterboxd_intro"
+    ],
+    "blurb": "If Tropical Malady drew you to queer desire that feels tender, unsettled, and a little haunted, Happy Together is a natural follow-up. Wong Kar-wai trades the jungle-fable strangeness for a more bruised, urban romance, but keeps the same ache of two men trying — and failing — to hold a relationship together. It’s a film about love under pressure, where drift and distance become the real drama."
+  },
+  "Rope::The Talented Mr Ripley": {
+    "primary_angle": "A Hitchcockian descent into polished deception and murder, updated from a sealed-room experiment to a more sunlit but equally rotten study of doubles and lies.",
+    "supporting_points": [
+      "shared crime-thriller DNA",
+      "murder framed as performance and concealment",
+      "dangerous charm, duplicity, and double lives"
+    ],
+    "source_signals": [
+      "source_film_overview",
+      "recommended_film_overview",
+      "tmdb_genres_keywords"
+    ],
+    "blurb": "If what grips you in Rope is the cold pleasure of watching murder hidden behind manners, The Talented Mr. Ripley offers a glossier variation on the same poison. Both are crime dramas built around performance, concealment, and the social mask, but Ripley trades Hitchcock’s claustrophobic dinner-party pressure for sunlit fraud and a far slipperier protagonist. It’s less sealed-room suspense than elegant moral rot."
+  },
+  "Rope::Vertigo": {
+    "primary_angle": "Hitchcock’s obsession thriller, shifting from criminal concealment to psychological fixation.",
+    "supporting_points": [
+      "same director: Alfred Hitchcock",
+      "James Stewart connection",
+      "obsession, guilt, and carefully staged tension"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Rope is Hitchcock at his most theatrical and nervy, Vertigo is the same obsession game turned inward and unbearable. Both hinge on James Stewart and the director’s taste for traps, guilt, and controlled dread, but Vertigo trades Rope’s cold murder-room precision for a more haunted, unstable psychology. It’s the cleaner match if you want Hitchcock’s suspense pushed into romantic fixation and self-destruction."
+  },
+  "Rope::Rebecca": {
+    "primary_angle": "Another Hitchcock chamber thriller, but with a darker gothic-romantic pulse",
+    "supporting_points": [
+      "shared director: Alfred Hitchcock",
+      "controlled, suspenseful domestic setting",
+      "obsession and hidden menace"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_genres",
+      "tmdb_keywords"
+    ],
+    "blurb": "If what you liked in Rope was Hitchcock’s ability to turn a sealed social space into pure dread, Rebecca extends that instinct into a more ornate, gothic register. It swaps the murder-game provocation for obsession, secrecy, and the poison of memory, but keeps the same cold-sweating control over atmosphere. A good next step if you want the tension to feel less theatrical and more haunted."
+  },
+  "The Look of Silence::Shoah": {
+    "primary_angle": "A landmark of testimonial documentary for viewers drawn to The Look of Silence’s patient, morally charged confrontation with mass violence.",
+    "supporting_points": [
+      "extended interviews and witness testimony",
+      "history framed through survivors, bystanders, perpetrators",
+      "severe, archival-free documentary approach"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_genres_keywords"
+    ],
+    "blurb": "If The Look of Silence interested you in the quiet pressure of testimony after atrocity, Shoah goes even further: an immense, uncompromising account built from interviews alone. Lanzmann refuses archival footage and instead lets survivors, bystanders, and perpetrators speak for themselves, creating a film that feels less like history lesson than moral excavation. It’s grueling, exacting cinema, but the kinship with Oppenheimer is unmistakable."
+  },
+  "The Look of Silence::The Voice of Hind Rajab": {
+    "primary_angle": "A harrowing, witness-centered documentary companion piece about violence made legible through a single human voice.",
+    "supporting_points": [
+      "both films anchor mass atrocity in one intimate, unbearable encounter",
+      "documentary / history framing with explicit political violence",
+      "shared emphasis on guilt, loss, and the ethics of bearing witness"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If The Look of Silence is about meeting state violence through one survivor’s gaze, The Voice of Hind Rajab turns that same pressure inward and real-time: a child on the phone, a rescue effort collapsing around her. Both films refuse abstraction and make history audible through an individual cry for help. The pairing is stark, but apt — each uses documentary immediacy to turn distant catastrophe into something painfully, unavoidably present."
+  },
+  "The Look of Silence::Night and Fog": {
+    "primary_angle": "A devastating pairing of witness films: Oppenheimer’s contemporary confrontation with genocide finds its stark ancestor in Resnais’s pioneering meditation on the Holocaust.",
+    "supporting_points": [
+      "documentary as moral witness",
+      "genocide, guilt, and survivor aftermath",
+      "formal contrast: intimate confrontation vs. archival historical reckoning"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If The Look of Silence is a face-to-face reckoning with inherited guilt, Night and Fog is the cold, penetrating blueprint for that kind of testimony. Resnais turns the camera back on the ruins of Auschwitz and the machinery of atrocity, creating a short, unsparing companion to Oppenheimer’s own documentary of genocide and aftermath. Together they make a severe double feature about what it means to look directly at state violence and refuse distance."
+  },
+  "The Look of Silence::The Act of Killing": {
+    "primary_angle": "A necessary companion piece: The same historical wound, but seen from the other side of the moral equation.",
+    "supporting_points": [
+      "Same director, Joshua Oppenheimer",
+      "Same Indonesian 1965-66 mass killing context",
+      "Shifts from victim testimony to perpetrator reenactment"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_overview",
+      "letterboxd_intro"
+    ],
+    "blurb": "If The Look of Silence is the quiet, devastating account of surviving a massacre, The Act of Killing is its unnerving structural mirror: Oppenheimer turns from the victim’s family to the men who carried out the violence. The result is less an adjoining documentary than a second, indispensable angle on the same historical crime, one that pushes the psychology of guilt and impunity into grotesque, unforgettable relief."
+  },
+  "Happy Together::Chungking Express": {
+    "primary_angle": "A natural next Wong Kar-Wai: same romantic melancholy, but lighter on its feet",
+    "supporting_points": [
+      "same director, Wong Kar-Wai",
+      "shared Tony Leung Chiu-wai cast",
+      "Hong Kong romance with drifting, lonely moods"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Happy Together is Wong Kar-Wai at his most bruised and romantic, Chungking Express is the more buoyant companion piece: still lonely, still yearning, but animated by speed, color, and urban weirdness. The overlap is obvious in Wong’s signature way of making desire feel fleeting and accidental, and Tony Leung Chiu-wai anchors both films. It’s the cleaner follow-up if you want the same emotional weather with a little more neon air in it."
+  },
+  "Happy Together::All of Us Strangers": {
+    "primary_angle": "A haunted, intimate queer romance that shifts from desire into melancholy and memory.",
+    "supporting_points": [
+      "gay relationship at the center",
+      "emotional drift and separation",
+      "lonely, urban atmosphere"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If what you loved in Happy Together was the ache of a queer relationship fraying under distance and loneliness, All of Us Strangers feels like a modern echo rather than a repeat. Andrew Haigh trades Wong Kar-wai’s restless travel for a near-empty London tower block, but keeps the same intimate pull toward desire, isolation, and emotional drift. It’s less feverish, more spectral — but just as attuned to the ghosts that linger around love."
+  },
+  "Happy Together::Tropical Malady": {
+    "primary_angle": "A haunting queer romance that takes the emotional drift of Happy Together and pushes it into stranger, more mystical territory.",
+    "supporting_points": [
+      "same-sex relationship at the center",
+      "desire shaded by distance and unease",
+      "from urban melancholy to jungle mystery"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "shared_genre_romance"
+    ],
+    "blurb": "If Happy Together is about love fraying under emotional and geographic pressure, Tropical Malady takes that ache and lets it wander into the forest. Apichatpong Weerasethakul builds a queer romance that begins in gentle intimacy and then slips toward shamanic unease and jungle-shadow terror. It’s a fitting next stop for anyone drawn to Wong Kar-wai’s tenderness, but looking for something more elusive and mythic."
+  },
+  "Happy Together::Farwell My Concubine": {
+    "primary_angle": "Both films turn queer longing into grand, wounded melodrama, but where Happy Together feels improvisational and cracked open by exile, Farewell My Concubine carries that same emotional scale through opera, history, and performance.",
+    "supporting_points": [
+      "shared Wong Kar-Wai adjacent mood of aching desire",
+      "queer relationship drama with emotional rupture",
+      "melodrama intensified by displacement and performance"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If you respond to Happy Together’s mix of queer desire and emotional dislocation, Farewell My Concubine is a natural next stop: another sweeping melodrama where love is shaped by performance, pain, and history. It trades Wong Kar-Wai’s wandering intimacy for a more operatic scale, but keeps the same sense of romance under pressure. The pairing works because both films treat love as something lived in public and lost in private."
+  },
+  "Bug::Killer Joe": {
+    "primary_angle": "A natural follow-up for Friedkin’s taste for rural American pressure cookers: sleazy, volatile, and steadily more unhinged.",
+    "supporting_points": [
+      "same director: William Friedkin",
+      "shared Southern/Texas-Oklahoma backwoods setting",
+      "violence, paranoia, and psychological escalation"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Bug felt like Friedkin turning a motel room into a sealed chamber of paranoia, Killer Joe pushes that same strain of grime and desperation into a meaner, darker comic register. It trades Bug’s feverish isolation for trailer-park corruption and blackly funny cruelty, but the appeal is the same: bad people cornered in ugly spaces, with the tension kept just a little too long. A fitting next stop if you want Friedkin at his most merciless."
+  },
+  "Bug::A Woman Under the Influence": {
+    "primary_angle": "A raw, close-quarters study of female instability under pressure, where emotional volatility becomes the whole terrain.",
+    "supporting_points": [
+      "lonely women pushed toward breakdown",
+      "abrasive, intimate domestic tension",
+      "shared interest in cruelty, paranoia, and psychological strain"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Bug is the claustrophobic descent of a lonely woman into paranoia and bodily obsession, A Woman Under the Influence is its more domestic, devastating cousin. Cassavetes strips away the horror trappings and keeps the raw nerve: a woman whose instability strains every room she enters, and a family system that can’t absorb her. It’s a sharper, sadder study of volatility, but the emotional weather feels uncannily adjacent."
+  },
+  "Bug::The Piano Teacher": {
+    "primary_angle": "Both films are about desire curdling into psychological damage, but The Piano Teacher pushes that tension into colder, more controlled territory.",
+    "supporting_points": [
+      "repressed sexuality and obsession",
+      "intimate relationships turned toxic",
+      "unnerving psychological pressure"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Bug is all feverish paranoia and bodily panic, The Piano Teacher takes a drier, more surgical route into similar territory: desire, repression, and the damage done when intimacy turns predatory. Haneke’s film is colder than Friedkin’s, but it shares the same appetite for psychological discomfort and relationships that feel like traps. A sharp follow-up if you want the dread to become more controlled, not less."
+  },
+  "Bug::Dans Ma Peau": {
+    "primary_angle": "Body-horror as psychological self-erasure",
+    "supporting_points": [
+      "female-centered descent into obsession",
+      "intimate, invasive bodily horror",
+      "bleak drama-horror overlap"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If Bug is your lane for its claustrophobic slide from isolation into bodily obsession, Dans Ma Peau pushes that same unease inward and makes it more intimate. Marina de Van’s film trades conspiracy paranoia for a woman’s secret, escalating relationship with her own body, where pain and desire blur into one another. It’s a colder, more surgical kind of horror, but it shares Bug’s appetite for psychological collapse expressed through flesh."
+  },
+  "TÁR::In the Bedroom": {
+    "primary_angle": "Todd Field's pressure-cooker family drama, from public authority to private collapse",
+    "supporting_points": [
+      "same director: Todd Field",
+      "both are severe, character-driven dramas",
+      "shared interest in consequences, grief, and a life unspooling under pressure"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If TÁR worked for you as a study of control slowly cracking under moral and emotional strain, In the Bedroom is the earlier, more intimate version of that pressure. Todd Field trades the concert hall for a Maine family on the edge of tragedy, but keeps the same unsparing attention to what happens after a seemingly contained life breaks open. It’s a colder, quieter film than it first appears, and that restraint is what cuts deepest."
+  },
+  "TÁR::The Piano Teacher": {
+    "primary_angle": "A severe, psychologically charged portrait of a woman whose artistic authority is inseparable from private damage.",
+    "supporting_points": [
+      "classical-music world, but under strain",
+      "female protagonist shaped by repression and power",
+      "seductive unease instead of prestige-drama polish"
+    ],
+    "source_signals": [
+      "tmdb_keywords: classical music, conductor, orchestra, composer",
+      "manual_links: In the Bedroom, The Piano Teacher",
+      "recommended_tmdb_overview and keywords: music teacher, conservatory, masochism, fetish"
+    ],
+    "blurb": "If TÁR appeals for the way it turns musical authority into a study of control, guilt, and private fracture, The Piano Teacher is an even harsher companion piece. Haneke’s film trades the orchestral boardroom for the conservatory, but keeps the same fascination with discipline curdling into obsession and self-destruction. Isabelle Huppert’s Erika is a colder, more claustrophobic variation on that same terrain: all precision on the surface, violence and need underneath."
+  },
+  "Persona::A Woman Under the Influence": {
+    "primary_angle": "A raw, psychologically pressured companion to Bergman’s sealed-off interior chamber piece",
+    "supporting_points": [
+      "female-centered breakdown under scrutiny",
+      "shared interest in identity collapse and instability",
+      "grows from quiet tension to emotional volatility"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Persona turns inward, A Woman Under the Influence pushes the same psychic fracture out into the messy world of family and marriage. Both films track a woman under intense emotional strain, with breakdown, isolation, and the uneasy gaze of others shaping every scene. Cassavetes swaps Bergman’s icy austerity for raw domestic volatility, but the sense of a self coming apart is just as devastating."
+  },
+  "Persona::Autumn Sonata": {
+    "primary_angle": "A colder, later Bergman chamber drama that carries forward the same psychological pressure as Persona, but turns it into a brutal mother-daughter reckoning.",
+    "supporting_points": [
+      "same director: Ingmar Bergman",
+      "shared cast anchor: Liv Ullmann",
+      "intimate, introspective family confrontation"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Persona is Bergman at his most unnerving and elliptical, Autumn Sonata feels like the same pressure cooker moved into a more openly emotional register. It keeps the intimate, interrogative intensity—Liv Ullmann, private suffering, unresolved wounds—but channels it into a devastating mother-daughter reunion. For viewers drawn to Persona’s severe emotional close-ups and psychological stripping-away, this is a sharp, more domestic companion piece."
+  },
+  "Harakiri::Rashomon": {
+    "primary_angle": "A natural next step from Harakiri’s interrogation of samurai honor: Rashomon shifts the focus from ritual and institution to perception itself, turning a historical setting into a battle over truth.",
+    "supporting_points": [
+      "samurai-era moral pressure",
+      "interlocking, contradictory testimonies",
+      "same cultural terrain, different question"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If Harakiri is about the cruelty hidden inside samurai honor, Rashomon takes that moral unease one step further: it asks whether truth can be pinned down at all. Kurosawa’s film trades ritual judgment for a braid of contradictory testimonies, using the same historical terrain to expose how unstable any story can become. The link makes sense because both films strip away heroic mythology, but Rashomon does it by making certainty itself the problem."
+  },
+  "Vertigo::Persona": {
+    "primary_angle": "From Hitchcock’s erotic obsession to Bergman’s psychological collapse: a cleaner, colder chamber piece that turns inward.",
+    "supporting_points": [
+      "shared interest in identity and fixation",
+      "black-and-white psychological austerity",
+      "suspense replaced by intimate breakdown"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Vertigo is Hitchcock’s most feverish study of obsession, Persona strips that pressure down to something bleaker and more sealed-off. Bergman keeps the focus on identity, silence, and emotional fracture, but swaps San Francisco suspense for a stark black-and-white confrontation between two women. It’s a natural next stop if you want the psychological voltage of Vertigo with less plot machinery and more raw interior strain."
+  },
+  "Vertigo::Rope": {
+    "primary_angle": "Another Hitchcock chamber piece: less romantic obsession, more murderous control and social tension.",
+    "supporting_points": [
+      "shared director: Alfred Hitchcock",
+      "James Stewart overlap",
+      "suspense built around obsession, guilt, and concealed violence"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Vertigo is Hitchcock turning obsession into an elegant, haunted spiral, Rope is his colder, more theatrical experiment in control. It trades the San Francisco vertigo of desire for a single-room dinner-party trap, with James Stewart again in the mix and the same taste for guilt, concealment, and slow-burn dread. The pairing makes sense if you want Hitchcock at his most psychologically precise, but with the violence pushed right up against the table."
+  },
+  "All About Eve::Gloria": {
+    "primary_angle": "A sharp female-power mirror to backstage ambition, but shifted from Broadway glamour to street-level survival.",
+    "supporting_points": [
+      "ambitious woman at the center",
+      "power games and role reversal",
+      "glamour vs grit contrast"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If you liked the backstage jockeying and cool-eyed social maneuvering of All About Eve, Gloria offers a tougher, rougher echo: a woman in motion, forced into a survival story rather than a stage melodrama. The appeal is the contrast — not Broadway polish, but New York grit, with a reluctant guardian figure at the center of the chase. It’s a looser match in plot, but a clean one in attitude: women under pressure, making hard choices on the fly."
+  },
+  "Cabaret::All That Jazz": {
+    "primary_angle": "Bob Fosse’s self-interrogation: from Cabaret’s decadent, politically shadowed nightlife to All That Jazz’s razored backstage collapse.",
+    "supporting_points": [
+      "shared director: Bob Fosse",
+      "performer-centered show-business world",
+      "decadence edged by tragedy"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Cabaret is Fosse turning the nightclub into a political pressure cooker, All That Jazz is him dragging the whole show business machine under the lights and into the operating room. Both films are obsessed with performance, glamour, and the rot beneath the spectacle, but All That Jazz shifts the focus from Weimar Berlin to a director choreographing his own collapse. It’s the sharper, more inward companion piece to Cabaret’s dangerous seduction."
+  },
+  "Cabaret::All About Eve": {
+    "primary_angle": "A backstage-world companion piece: from Cabaret’s decadent performance culture to All About Eve’s sharper, colder theatre rivalry.",
+    "supporting_points": [
+      "stagecraft and performer ambition",
+      "women at the center of a competitive spotlight",
+      "showbiz glamour shadowed by manipulation"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Cabaret is the fever dream of performance under pressure, All About Eve is its colder, more talkative cousin: another backstage world where ambition, insecurity, and public image do most of the damage. It trades Bob Fosse’s nightclub decadence for razor-edged Broadway intrigue, but keeps the focus on performers competing for attention, power, and control. A smart follow-up if you want the same show-business pulse with far less glitter and much more poison."
+  },
+  "Chungking Express::Happy Together": {
+    "primary_angle": "A Wong Kar-wai continuation: same aching romantic drift, but colder, lonelier, and more openly fractured.",
+    "supporting_points": [
+      "same director, later in the 1990s",
+      "melancholy romance under pressure",
+      "Hong Kong-to-Argentina dislocation"
+    ],
+    "source_signals": [
+      "director_match",
+      "letterboxd_intro",
+      "tmdb_overview"
+    ],
+    "blurb": "If Chungking Express is Wong Kar-wai catching love in motion, Happy Together feels like what happens when the spell has already started to crack. It keeps the same feverish romantic melancholy, but shifts it into a more openly troubled relationship, stranded far from home in Argentina. A sharp follow-up if you want Wong’s tenderness with a harder edge."
+  },
+  "Paris Is Burning::Funeral Parade of Roses": {
+    "primary_angle": "A foundational queer-cinema companion piece: from the Harlem ballrooms of Paris Is Burning to the stylized, earlier Tokyo underground of Funeral Parade of Roses.",
+    "supporting_points": [
+      "shared queer/trans subculture focus",
+      "pre-ballroom precursor energy",
+      "intimate, historically specific portrait"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "letterboxd_intros"
+    ],
+    "blurb": "If Paris Is Burning captures the pageantry and social force of Harlem ballroom culture, Funeral Parade of Roses feels like an earlier, more feverish ancestor: a black-and-white descent into Tokyo’s gay, cross-dresser, and trans scene. Both films are fascinated by identity as performance, but Matsumoto’s film pushes that idea into something stranger and more surreal. It’s a sharp next step if you want the same queer history, refracted through a very different cinematic style."
+  },
+  "Paris Is Burning::To Wong Foo Thanks for Everything Julie Newmar": {
+    "primary_angle": "A lighter, road-movie counterpart to Paris Is Burning's Harlem ballroom intimacy",
+    "supporting_points": [
+      "drag performance and gender play at the center",
+      "shared themes of homophobia and transvestism",
+      "from New York City ballroom culture to a cross-country comic odyssey"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Paris Is Burning is the essential document of Harlem ballroom culture, To Wong Foo turns some of that same drag energy into a breezier, mainstream road movie. It keeps the focus on performance, gender play, and the social friction around drag, but swaps the documentary urgency for comedy and travel-movie sprawl. The contrast is the hook: same cultural territory, very different register."
+  },
+  "Oppenheimer::Lawrence of Arabia": {
+    "primary_angle": "A grand historical epic about the burden of empire and the men who get swallowed by it",
+    "supporting_points": [
+      "History drama centered on a consequential figure",
+      "War setting shaped by global politics",
+      "Mythic scale and prestige-cinema gravity"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If Oppenheimer is the story of a mind caught in the machinery of power, Lawrence of Arabia is its older, sand-blown cousin: another vast historical portrait of a singular man pulled into the logic of war and empire. Both films trade in scale, consequence, and the uneasy glamour of history, but Lean’s film stretches those concerns across a more classical, expansive adventure canvas. It’s a fitting next stop for anyone drawn to Oppenheimer’s seriousness and its sense of fate operating on a continental stage."
+  },
+  "Singin' in the Rain::Sunset Boulevard": {
+    "primary_angle": "A dark mirror to Singin' in the Rain’s Hollywood nostalgia: same silent-era wreckage, but viewed as fatal obsession instead of musical buoyancy.",
+    "supporting_points": [
+      "Both films center on the collapse of silent-era stardom",
+      "Hollywood-as-machine, not just backdrop",
+      "Contrasts cheerful showbiz energy with noir cynicism"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_overview"
+    ],
+    "blurb": "If Singin' in the Rain is Hollywood’s exuberant version of the transition to sound, Sunset Boulevard is the hangover. Both films orbit faded silent-era stardom and the studio system’s churn, but Wilder turns that material into something far colder and more deranged. It’s the perfect companion piece: same dream factory, less singing, more ruin."
+  },
+  "Time of the Wolf::The Piano Teacher": {
+    "primary_angle": "A sharp Haneke-to-Haneke follow-up: from apocalypse stripped bare to a claustrophobic study of repression and control.",
+    "supporting_points": [
+      "same director, Michael Haneke",
+      "shared bleak psychological pressure",
+      "domestic confinement under emotional strain"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_director",
+      "letterboxd_intro",
+      "tmdb_overview"
+    ],
+    "blurb": "If Time of the Wolf appealed for its cold, unsparing view of people trapped in a collapsing world, The Piano Teacher pushes that same severity inward. Haneke trades disaster for domestic punishment: a sexually repressed teacher, a domineering mother, and a romance that feels more like a wound being opened than a release. It’s an even tighter, harsher chamber piece, but unmistakably of a piece with the earlier film’s moral chill."
+  },
+  "Dune: Part Two::Lawrence of Arabia": {
+    "primary_angle": "Epic desert scale with a mythic, leader-in-the-making arc",
+    "supporting_points": [
+      "desert-world grandeur",
+      "charismatic figure binding rival factions",
+      "historical epic as a tonal counterpoint to sci-fi fantasy"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If what worked for you in Dune: Part Two was the sweep of a sand-bound epic and the pressure of one man stepping into history, Lawrence of Arabia is the essential older cousin. David Lean’s film trades sci-fi prophecy for imperial-era geopolitics, but it shares that same fascination with vast landscapes, fragile alliances, and a protagonist whose legend grows larger than his own certainty. It’s less futuristic than Dune, more historically rooted — but just as gloriously large in scale."
+  },
+  "Dune: Part Two::Batman Begins": {
+    "primary_angle": "A clean bridge from mythic destiny to origin-story vengeance, with the same scale-minded, seriousness-first momentum.",
+    "supporting_points": [
+      "loss-driven hero’s journey",
+      "surveillance, secrecy, and identity",
+      "Nolan/Villeneuve blockbuster gravity"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "director_match"
+    ],
+    "blurb": "If what grips you in Dune: Part Two is Paul Atreides’ turn from inheritor to force of destiny, Batman Begins scratches a similar itch in a much earthbound key. Both hinge on grief hardening into mission, and on a hero learning how to weaponize fear, secrecy, and symbol. Nolan swaps desert prophecy for Gotham corruption, but keeps the same solemn, mythic scale that makes the transformation land."
+  },
+  "Dune: Part Two::The Dark Knight": {
+    "primary_angle": "A clean bridge from epic mythmaking to grim, tactical heroism: if you liked Dune: Part Two’s scale, momentum, and messianic pressure, The Dark Knight offers a tighter, urban version of the same high-stakes moral crisis.",
+    "supporting_points": [
+      "shared interest in burdened heroes and destiny",
+      "escalating conflict that turns political and personal",
+      "Christopher Nolan connection through precision and scale"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_genres"
+    ],
+    "blurb": "A sharp follow-up if what you loved in Dune: Part Two was the weight of destiny and the sense that every choice could tip a world into chaos. The Dark Knight swaps deserts for Gotham, but keeps the same pressure-cooker blend of strategy, spectacle, and a hero pushed into morally ugly territory. It’s a colder, more urban film — but just as obsessed with what power does to the person carrying it."
+  },
+  "Dune: Part Two::The Empire Strikes Back": {
+    "primary_angle": "Mythic sequel energy: a heavy, world-shaping middle chapter where destiny, rebellion, and personal sacrifice collide.",
+    "supporting_points": [
+      "shared space-opera scale",
+      "chosen-one / destiny arc",
+      "sequel-as-turning-point structure"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_genres",
+      "manual_links"
+    ],
+    "blurb": "If Dune: Part Two hooked you on the feeling of a saga tipping into prophecy, The Empire Strikes Back is the obvious next stop. It has the same bruised, in-between energy: rebels on the back foot, a young hero tested by fate, and a story that feels bigger and more ominous than a simple sequel. Less desert mysticism, more icy space-opera pressure—but the same sense of myth tightening around its characters."
+  },
+  "Poor Things::Suspiria (Guadagnino version)": {
+    "primary_angle": "A companion piece to Lanthimos's baroque grotesque, but with Guadagnino's silkier, more ominous dread.",
+    "supporting_points": [
+      "female-centered transformation under pressure",
+      "queasy mix of body horror and artful excess",
+      "elegant, unsettling mood rather than clean genre logic"
+    ],
+    "source_signals": [
+      "source_film: Poor Things tmdb genres/overview",
+      "manual_links: Suspiria (Guadagnino version)",
+      "recommended_film: Letterboxd intro"
+    ],
+    "blurb": "If Poor Things appealed for its mix of liberation, bodily unease, and lavish formal strangeness, Suspiria is a sharp next stop. Guadagnino swaps Lanthimos’s comic volatility for a colder, more ritualized kind of terror, but both films turn female self-discovery into something ecstatic, damaged, and deeply unsettling. It's the cleaner, darker cousin to Poor Things’ unruly optimism."
+  },
+  "Poor Things::Bugonia": {
+    "primary_angle": "A neat Lanthimos-to-Lanthimos follow-up: Bugonia keeps the same deadpan eccentricity, but trades Poor Things’ liberated fairytale charge for a colder, more paranoid satire.",
+    "supporting_points": [
+      "same director: Yorgos Lanthimos",
+      "Emma Stone crossover",
+      "science fiction / comedy with dark satire"
+    ],
+    "source_signals": [
+      "tmdb_director",
+      "tmdb_cast",
+      "tmdb_genres_keywords"
+    ],
+    "blurb": "If what hooked you in Poor Things was Lanthimos’ ability to make the bizarre feel precise, Bugonia looks like a sharper, nastier variation on that mode. It keeps the science-fiction/comedy mix and Emma Stone, but swaps the earlier film’s liberated, globe-trotting momentum for conspiracy, kidnapping, and corporate paranoia. Same icy wit, different temperature."
+  },
+  "Poor Things::The Favourite": {
+    "primary_angle": "Same Lanthimos register, but in a more barbed, courtly key",
+    "supporting_points": [
+      "shared director: Yorgos Lanthimos",
+      "Emma Stone bridges both films",
+      "absurdist power games and social misrule"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "tmdb_overview"
+    ],
+    "blurb": "If Poor Things won you over with Lanthimos’s deadpan cruelty and elastic sense of performance, The Favourite is the cleanest next stop. It keeps Emma Stone in the orbit, but swaps the globe-trotting, fairy-tale sprawl for a tighter chamber piece of rivalry, court intrigue, and venomous comedy. The contrast is useful: less open-road liberation, more baroque combat inside a palace."
+  },
+  "Poor Things::TAR": {
+    "primary_angle": "Both films are about controlled surfaces cracking under pressure, but TAR swaps Poor Things’ wild, comic release for a cooler, more severe kind of psychological collapse.",
+    "supporting_points": [
+      "woman at the center of a highly charged social/emotional system",
+      "prestige performance and public scrutiny",
+      "artifice, self-fashioning, and consequences"
+    ],
+    "source_signals": [
+      "source_film_overview",
+      "recommended_film_intro",
+      "manual_links",
+      "tmdb_genres"
+    ],
+    "blurb": "If Poor Things thrilled you with a heroine pushing through systems of power and performance, TAR takes that same fascination with reinvention and turns it icy. Todd Field’s film is less fantastical and far more disciplined, but it’s just as interested in a woman whose carefully managed image starts to fracture under the weight of her own choices. The result is a sharper, more austere counterpart to Lanthimos’s baroque chaos."
+  },
+  "The Silence of the Lambs::Vertigo": {
+    "primary_angle": "Hitchcock’s obsession thriller, where investigation slips into fixation",
+    "supporting_points": [
+      "detective protagonist drawn into psychological entanglement",
+      "obsession and guilt as the real engine",
+      "shared thriller DNA, but with romance-noir melancholy"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If you’re coming from The Silence of the Lambs, Vertigo offers a colder, more queasy cousin to its cat-and-mouse psychology. Hitchcock turns a detective’s case into a study of obsession, guilt, and self-deception, trading forensic menace for romantic doom. It’s still a thriller, but one that spirals inward rather than closing in from the outside."
+  },
+  "Who's Afraid of Virginia Woolf?::Bug": {
+    "primary_angle": "A brutal psychological chamber piece where intimacy curdles into mutual destruction",
+    "supporting_points": [
+      "shared play adaptation",
+      "claustrophobic relationship breakdown",
+      "from corrosive dialogue to paranoia and dread"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If what you want from *Who's Afraid of Virginia Woolf?* is the pleasure of watching a domestic war turn airless and ugly, *Bug* pushes that same chamber-pressure into a stranger, nastier register. Both are play-born breakdown stories built on isolation, intoxication, and two people locking each other in a room until the conversation starts to feel like a fever. Friedkin swaps Nichols’s savage marital combat for paranoia and horror, but the emotional mechanism is the same: intimacy as a trap."
+  },
+  "Who's Afraid of Virginia Woolf?::Autumn Sonata": {
+    "primary_angle": "A brutal chamber drama that turns family damage into a duel of voices.",
+    "supporting_points": [
+      "intimate, dialogue-driven pressure cooker",
+      "emotionally savage domestic conflict",
+      "pairs well with bleak relationship studies like Persona and A Woman Under the Influence"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If you want the same claustrophobic emotional abrasion without the campus-party setting, Autumn Sonata is the sharper, colder cousin. Bergman stages it as an intimate reckoning between mother and daughter, where old wounds surface over one long, devastating night. For anyone drawn to Who's Afraid of Virginia Woolf? for its verbal cruelty and domestic combat, this is the kind of chamber drama that cuts just as deep, only with less venom and more remorse."
+  },
+  "Who's Afraid of Virginia Woolf?::Persona": {
+    "primary_angle": "A natural next step if you’re drawn to psychological duels that turn intimacy into combat",
+    "supporting_points": [
+      "two-woman pressure chamber",
+      "confession and identity fracture",
+      "black-and-white Bergman austerity"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Who’s Afraid of Virginia Woolf? is a drink-fueled marital siege, Persona strips the battlefield down further: two women, one of them silent, locked in a nerve-shredding exchange of confession, projection, and identity drift. It keeps the same fascination with emotional domination and private collapse, but Bergman’s black-and-white minimalism makes the damage feel colder, stranger, and more intimate."
+  },
+  "Who's Afraid of Virginia Woolf?::A Woman Under the Influence": {
+    "primary_angle": "Another devastating domestic pressure-cooker, but with Cassavetes’ raw, anxious empathy instead of Nichols’ barbed theatricality.",
+    "supporting_points": [
+      "marital collapse under public/private strain",
+      "volatile behavior inside an intimate relationship",
+      "cruel, disheartening emotional register"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If what you want from *Who’s Afraid of Virginia Woolf?* is the sight of a marriage turning vicious in close quarters, *A Woman Under the Influence* is a sharp next stop. It trades Nichols’ black-humored verbal demolition for Cassavetes’ bruised, unstable intimacy: less cocktail-party cruelty, more a slow, painful unraveling from the inside. The result is still claustrophobic, but stranger, sadder, and more emotionally exposed."
+  },
+  "The Ascent::The Cremator": {
+    "primary_angle": "Death-obsessed cinema that fuses ritual, ideology, and moral corrosion.",
+    "supporting_points": [
+      "shared preoccupation with death and human fragility",
+      "spiritual or ceremonial framing around mortality",
+      "slow, severe atmosphere rather than plot mechanics"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "letterboxd_title_similarity"
+    ],
+    "blurb": "A sharp follow-up if what stayed with you in The Ascent was its funereal weight and its sense that history, faith, and bodily suffering are all tangled together. The Cremator extends that fascination with death into ritual and obsession, circling a man whose work at the pyres becomes a bleak lens on belief, appetite, and mortality. It’s a drier, more overtly expressionist descent, but it rhymes with Shepitko’s film in the way it turns spiritual certainties into something terrifyingly unstable."
+  },
+  "The Ascent::Shoah": {
+    "primary_angle": "A severe, uncompromising WWII pairing: from Shepitko’s frostbitten moral ordeal to Lanzmann’s monumental witness document.",
+    "supporting_points": [
+      "shared World War II terrain",
+      "intense moral and psychological pressure",
+      "confrontation with atrocity and survival"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_keywords"
+    ],
+    "blurb": "If The Ascent hit hard with its freezing wartime ordeal and the collapse of ordinary moral certainty, Shoah is the next, larger chamber of that experience: less a drama than a vast act of testimony. Lanzmann strips away archival comfort and lets witness, memory, and silence do the work, which makes it feel like a brutal counterpart rather than a simple follow-up. It’s not a thematic match in tone so much as in seriousness: both films ask what remains when history becomes unbearable to look at directly."
+  },
+  "The Ascent::Ordet": {
+    "primary_angle": "Spiritual ordeal under pressure",
+    "supporting_points": [
+      "faith tested in extremis",
+      "climactic crisis around a vulnerable body",
+      "austere black-and-white moral intensity"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If The Ascent turns survival into a freezing moral trial, Ordet pushes that same pressure inward, into a household split by faith, doubt, and delirium. Dreyer’s black-and-white severity and the pregnancy-at-the-center of the drama make it feel like a colder, more metaphysical companion piece: less war film than spiritual emergency. It’s the kind of film that treats belief as something tested at the edge of life and death."
+  },
+  "Rashomon::High and Low": {
+    "primary_angle": "A tightly wound Kurosawa procedural that trades Rashomon’s shifting testimony for a far more linear but equally moral crisis.",
+    "supporting_points": [
+      "same director, Akira Kurosawa",
+      "shared star Toshirō Mifune",
+      "crime drama with police, ransom, and moral pressure"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_cast",
+      "tmdb_genres_keywords"
+    ],
+    "blurb": "If Rashomon is Kurosawa as a puzzle of competing truths, High and Low is Kurosawa stripped down to a moral emergency. It keeps the director’s interest in crime, judgment, and pressure-cooker decisions, but shifts from medieval testimony to a modern kidnapping case with police, ransom, and noir tension. Toshirō Mifune also links the two, though here the energy is less mythic than mercilessly procedural."
+  },
+  "Rashomon::Ran": {
+    "primary_angle": "Because it reframes family conflict as a stage for larger social collision, while keeping the emotional stakes front and center.",
+    "supporting_points": [
+      "family power dynamics",
+      "cross-cultural romance",
+      "contrast of love vs social division"
+    ],
+    "source_signals": [
+      "tmdb_genres",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Rashomon is about truth splintering under pressure, Rocky Aur Rani Kii Prem Kahaani takes a different route: it turns family friction into a loud, romantic culture clash. The setup of two people from polar opposite worlds, and the emphasis on wealth, nostalgia, and divided families, makes this a natural follow-up for viewers drawn to interpersonal tension with a wider social charge. It’s less austere than Kurosawa, but the pull is similar: private relationships colliding with bigger systems."
+  },
+  "Rashomon::Woman in the Dunes": {
+    "primary_angle": "A bleak, art-house descent into psychological captivity and bodily pressure",
+    "supporting_points": [
+      "holds a trapped protagonist under relentless physical strain",
+      "shares a stark interest in suffering, judgment, and truth under pressure",
+      "black-and-white, austere, and psychologically severe"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_keywords",
+      "tmdb_genres"
+    ],
+    "blurb": "If Rashomon is about truth splintering under testimony, Woman in the Dunes pushes that instability into a more claustrophobic key: a man trapped in a cruel, sand-choked routine, where survival itself becomes the point of the drama. Hiroshi Teshigahara trades courtroom ambiguity for physical entrapment, but the same severe, high-art intensity remains. It’s a colder, more abstract companion piece—less debate than ordeal."
+  },
+  "Shoah::OJ: Made in America": {
+    "primary_angle": "A sprawling, rigorously observed documentary built from testimony rather than spectacle.",
+    "supporting_points": [
+      "interview-driven, witness-centered structure",
+      "historical trauma examined through lived accounts",
+      "sweeping social history without archival-crunch editing"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Shoah’s force for you is the way it turns testimony into historical reckoning, O.J.: Made in America is a sharp companion piece. Ezra Edelman’s film also uses a vast documentary frame to map a national crisis through firsthand accounts, tracing how a single case exposed deeper racial fractures in America. It swaps Holocaust memory for late-20th-century U.S. history, but keeps the same patient, forensic attention to witness, context, and aftermath."
+  },
+  "Shoah::Night and Fog": {
+    "primary_angle": "A foundational Holocaust documentary that pairs directly with Shoah’s methodical witness testimony, but in a shorter, more compressed form.",
+    "supporting_points": [
+      "shared Holocaust subject",
+      "documentary + history overlap",
+      "contrast: concise vs sprawling"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "letterboxd_intro"
+    ],
+    "blurb": "Night and Fog is the clear precursor to Shoah in subject and moral seriousness: both are Holocaust documentaries built from historical reckoning rather than dramatization. Where Lanzmann’s film stretches across testimony and refusal of archival images, Resnais’s work is a much shorter, starker meditation on the camps themselves. Seen beside Shoah, it feels like the earlier, more compressed statement of the same impossible history."
+  },
+  "Shoah::The Look of Silence": {
+    "primary_angle": "A devastating companion to Shoah’s witness-driven method: another documentary that confronts mass murder through intimate testimony, moral pressure, and the long shadow of survivors living among perpetrators.",
+    "supporting_points": [
+      "testimony as the engine of the film",
+      "mass violence handled without archival spectacle",
+      "survivor facing the living aftermath of atrocity"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "shared documentary/history tags"
+    ],
+    "blurb": "If Shoah is the benchmark for testimony as moral confrontation, The Look of Silence feels like a sharper, more intimate echo. Joshua Oppenheimer follows a survivor’s family into the afterlife of mass killing, where guilt is still politically and personally alive rather than safely historical. It’s not a twin to Lanzmann’s film, but it belongs to the same severe tradition: documentaries that make silence, memory, and witnessing into the drama."
+  },
+  "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb::Fail-Safe": {
+    "primary_angle": "The cleanest companion to Dr. Strangelove’s nuclear panic is its straight-faced twin: another 1964 Cold War crisis film, but played as a thriller rather than a satire.",
+    "supporting_points": [
+      "shared nuclear catastrophe premise",
+      "same Cold War / presidential command-room setting",
+      "contrast between Kubrick’s black comedy and Lumet’s dead-serious tension"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Dr. Strangelove turns nuclear brinkmanship into savage comedy, Fail-Safe stages the same fear with a rigid, procedural chill. Both films orbit the Cold War command room and a president racing to stop an atomic disaster, but Sidney Lumet strips away the satire and leaves the panic exposed. It’s the most direct counterpoint to Kubrick’s film: same nightmare, no jokes."
+  },
+  "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb::The War Games": {
+    "primary_angle": "A darkly comic war-room film paired by title with something far more savage and literal.",
+    "supporting_points": [
+      "war as absurd spectacle",
+      "gamesmanship under pressure",
+      "from satire to survival horror"
+    ],
+    "source_signals": [
+      "source_tmdb_genres",
+      "source_tmdb_keywords",
+      "recommended_tmdb_overview"
+    ],
+    "blurb": "If you’re coming off Dr. Strangelove’s deadpan panic and military absurdity, The War Games takes the title joke in a much harsher direction. Instead of bureaucrats trying to avert catastrophe, this one turns a “game” into a lethal manhunt, with ex-soldiers hunting victims in a bloody thriller register. It’s less satirical than savage, but it keeps the same uneasy fascination with how easily organized violence slips into farce."
+  },
+  "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb::Triangle of Sadness": {
+    "primary_angle": "A sharper, modern companion piece to Dr. Strangelove’s bureaucratic apocalypse: still satirical, still cruel, but aimed at class hierarchy instead of nuclear brinkmanship.",
+    "supporting_points": [
+      "dark comedy and satire",
+      "power structures under pressure",
+      "catastrophic ensemble breakdown"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "letterboxd_intro",
+      "manual_links"
+    ],
+    "blurb": "If you like Dr. Strangelove’s dead-eyed joke about institutions collapsing in real time, Triangle of Sadness offers a caustic, contemporary variant. Östlund trades the war room for a luxury cruise, then turns the comedy into a social autopsy: class, status, and authority all buckle once the situation stops being curated. It’s less cold-war machinery than luxury meltdown, but the same appetite for satire under pressure is doing the work."
+  },
+  "Threads::Bug": {
+    "primary_angle": "From public catastrophe to private breakdown",
+    "supporting_points": [
+      "shared atmosphere of despair and isolation",
+      "both center on damaged lives under pressure",
+      "grim, escalating descent rather than conventional thriller beats"
+    ],
+    "source_signals": [
+      "tmdb_keywords: despair, nuclear holocaust, isolation, paranoia",
+      "tmdb_overview: working-class Sheffield; isolated Oklahoma motel",
+      "manual_links: Bug"
+    ],
+    "blurb": "If Threads is horror stretched across a nation, Bug is horror compressed into a motel room. Both films live in states of claustrophobic despair, where fear metastasizes into paranoia and ordinary spaces turn hostile. Friedkin’s Oklahoma nightmare trades nuclear ruin for intimate psychological collapse, but it keeps the same bruised, end-of-the-world feeling alive at close range."
+  },
+  "Eraserhead::Tetsuo: The Iron Man": {
+    "primary_angle": "A violent, industrial body-horror cousin to Lynch’s nightmare logic",
+    "supporting_points": [
+      "shared horror-sci fi DNA",
+      "black-and-white surreal extremity",
+      "mutated flesh, claustrophobic panic"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Eraserhead is industrial dread distilled into a sleepless parent’s nightmare, Tetsuo: The Iron Man pushes that same impulse into a speedball of metal, flesh, and panic. Both live in black-and-white, body-horror territory, but Tsukamoto trades Lynch’s deadpan unease for frantic, feral transformation. It’s a sharp next step for anyone drawn to surreal horror that feels physically invasive."
+  },
+  "Eraserhead::Inland Empire": {
+    "primary_angle": "A natural next stop for Lynch’s most oppressive, bodily nightmares: longer, looser, and even more reality-splintering.",
+    "supporting_points": [
+      "same director: David Lynch",
+      "shared surreal nightmare logic",
+      "horror filtered through identity collapse"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_genres",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Eraserhead is Lynch’s sealed chamber of industrial dread, Inland Empire takes that same unease and lets it roam. Both films turn horror into a pressure system of bodies, identity, and dream logic, but Inland Empire is the more diffuse and disorienting version—less a nightmare in a room than a nightmare that keeps opening new doors. It’s the obvious follow-up for anyone drawn to Lynch at his most uncompromisingly strange."
+  },
+  "Eraserhead::Mulholland Drive": {
+    "primary_angle": "Another Lynch nightmare, but transposed from industrial body horror to Hollywood identity collapse",
+    "supporting_points": [
+      "same director, same dream-logic unease",
+      "shared nightmare / surrealist atmosphere",
+      "shift from mutant-baby claustrophobia to amnesia and fractured identity"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Eraserhead is Lynch at his most visceral and enclosed, Mulholland Drive opens that same nightmare out into Hollywood: amnesia, split identity, and the sense that reality is slipping sideways. The connection is less about plot than atmosphere — both films turn ordinary spaces into traps and let dread accumulate through images you can’t quite shake. It’s the cleaner, glossier cousin to Eraserhead’s industrial nightmare, but the panic underneath is recognizably the same."
+  },
+  "Autumn Sonata::The Piano Teacher": {
+    "primary_angle": "Tense mother-daughter psychodrama anchored in music and emotional repression",
+    "supporting_points": [
+      "piano as shared pressure point",
+      "controlling mother-daughter dynamic",
+      "intimate, emotionally punitive tone"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If Autumn Sonata is Bergman at his most mercilessly intimate, The Piano Teacher feels like a colder, later echo: another story of a woman whose life is organized by piano practice, maternal control, and self-denial. Haneke shifts the family wound into sexual repression and social cruelty, but the same pressure remains—music as discipline, desire as punishment. It’s a harsh, exacting companion piece for viewers drawn to chamber-sized emotional damage."
+  },
+  "Autumn Sonata::Anatomy of a Fall": {
+    "primary_angle": "A chilly, psychologically precise drama of family rupture and moral pressure, shifted from Bergman’s chamber-piece cruelty into Triet’s courtroom uncertainty.",
+    "supporting_points": [
+      "mother-daughter / family conflict",
+      "intimate psychological confrontation",
+      "moral conflict under scrutiny"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If Autumn Sonata is Bergman at his most mercilessly intimate, Anatomy of a Fall carries that same domestic strain into a different arena: the courtroom. Both films turn family life into a pressure chamber, where love, grievance, and moral ambiguity keep colliding. The shift from a mother-daughter reckoning to a murder case gives the recommendation its edge, but the emotional temperature is similar: cold, exacting, and impossible to neatly resolve."
+  },
+  "Autumn Sonata::Who's Afraid of Virginia Woolf?": {
+    "primary_angle": "A caustic companion piece to Bergman’s domestic chamber drama, with marriage-as-battlefield energy and no interest in sentimentality.",
+    "supporting_points": [
+      "toxic marriage under pressure",
+      "intimate, dialogue-driven confrontation",
+      "shared focus on bitterness and emotional damage"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Autumn Sonata is Bergman’s surgical autopsy of mother-daughter grievance, Who’s Afraid of Virginia Woolf? turns that same pressure inward on a marriage and lets it detonate over drinks. Both films thrive on intimate, unsparing dialogue and the slow exposure of wounds that polite company can’t hide. Nichols’ version is sharper-edged and more acidly comic, but the emotional weather is just as brutal."
+  },
+  "Beau Is Afraid::We're All Going to the World's Fair": {
+    "primary_angle": "Internet-haunted psychological unease, but filtered through very different forms of dread.",
+    "supporting_points": [
+      "shared paranoia and nightmare logic",
+      "identity and reality blur under stress",
+      "intimate, isolating psychological horror"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "letterboxd_intros"
+    ],
+    "blurb": "If Beau Is Afraid is anxiety blown up into an epic, We're All Going to the World's Fair is the smaller, quieter nightmare version: a teenager alone online, letting fantasy and identity bleed together. Both films are drawn to paranoia, isolation, and the feeling that reality is slipping out of reach. The contrast is the lure here—Ari Aster’s baroque odyssey meets Jane Schoenbrun’s bedroom-sized digital dread."
+  },
+  "The Best Years of Our Lives::Lawrence of Arabia": {
+    "primary_angle": "A great match for viewers drawn to postwar human drama that widens into a larger war epic.",
+    "supporting_points": [
+      "Both films are centered on war’s aftermath and military identity",
+      "The emotional register shifts from intimate recovery to sweeping historical scale",
+      "Classic studio-era prestige filmmaking with strong period gravity"
+    ],
+    "source_signals": [
+      "tmdb_keywords: war veteran, world war ii, rehabilitation, post-traumatic stress disorder (ptsd)",
+      "manual_links: Lawrence of Arabia",
+      "tmdb_overview/genres: World War II drama vs World War I war epic"
+    ],
+    "blurb": "If you respond to The Best Years of Our Lives as a film about what war leaves behind, Lawrence of Arabia feels like the larger, more mythic cousin: less homecoming than imperial ordeal, but still built around the pressure war puts on a man’s identity. The contrast is useful — Wyler’s film is intimate and wounded, Lean’s is grand and panoramic — yet both are serious, prestige-scale studies of conflict, duty, and the costs of history."
+  },
+  "Citizen Kane::The Best Years of Our Lives": {
+    "primary_angle": "A postwar character study that turns private damage into public drama",
+    "supporting_points": [
+      "both films center on lives reshaped by formative trauma",
+      "ambition and identity are treated as emotional aftershocks",
+      "serious, adult black-and-white drama with a classical scale"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Citizen Kane is about a man whose life keeps curving back toward an early wound, The Best Years of Our Lives takes a similar interest in how damage surfaces later, in more domestic, less mythic form. William Wyler’s film swaps Kane’s media empire for returning veterans and their strained reentry into ordinary life, but it keeps the same sober attention to character under pressure. The result is a fitting follow-up: less baroque, more humane, yet just as alert to the cost of living with what made you."
+  },
+  "Citizen Kane::Lawrence of Arabia": {
+    "primary_angle": "A portrait of outsized men and the systems they try to bend, from Kane’s media empire to Lawrence’s imperial theatre.",
+    "supporting_points": [
+      "grand-scale historical figure",
+      "power shaped by institutions",
+      "epic length and ambition"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_keywords",
+      "letterboxd_intro"
+    ],
+    "blurb": "If what pulls you in is the spectacle of a single figure colliding with the machinery of history, Lawrence of Arabia is a sharp follow-up to Citizen Kane. Kane’s newspaper dynasty and emotional ruin give way here to imperial adventure, war, and a man trying to steer events larger than himself. It swaps the newsroom for the desert, but keeps the scale, the self-invention, and the uneasy sense of power as performance."
+  },
+  "The Texas Chain Saw Massacre::Dans Ma Peau": {
+    "primary_angle": "Body-horror that turns inward: the chain-saw savagery of Hooper’s film finds a colder, more intimate echo in Marina de Van’s self-inflicted descent.",
+    "supporting_points": [
+      "shared horror extremity",
+      "violence centered on the body",
+      "from rural shock to psychological obsession"
+    ],
+    "source_signals": [
+      "manual_link: Dans Ma Peau",
+      "tmdb_keywords: self-inflicted injury, wound, gore, knife",
+      "tmdb_overview comparison"
+    ],
+    "blurb": "If The Texas Chain Saw Massacre is horror as rural ambush, Dans Ma Peau takes that same appetite for bodily dread and turns it inward. Marina de Van’s film trades Leatherface’s external menace for a far more private, self-directed escalation: pain, flesh, and obsession becoming inseparable. It’s a stark next step for anyone drawn to Hooper’s raw, unsparing physicality."
+  },
+  "The Shining::Eyes Wide Shut": {
+    "primary_angle": "A late-period Kubrick counterpart: same director, colder surfaces, and the same slow creep from social reality into private obsession.",
+    "supporting_points": [
+      "Stanley Kubrick director match",
+      "thriller/mystery tension with psychological drift",
+      "themes of isolation, delusion, and obsession"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_genres",
+      "tmdb_keywords"
+    ],
+    "blurb": "If you’re coming from The Shining, Eyes Wide Shut feels like its adult, nocturnal echo: another Kubrick film about a man wandering into a sealed world and losing his grip on what’s real. Where The Shining turns isolation into outright horror, this one pushes the unease through desire, ritual, and embarrassment, with the same controlled, icy precision. It’s a strong follow-up if what you want is Kubrick’s knack for making interiors feel like traps."
+  },
+  "Spirited Away::Kiki's Delivery Service": {
+    "primary_angle": "A gentler Miyazaki companion piece: same magical sensibility, but traded for a more grounded coming-of-age story.",
+    "supporting_points": [
+      "Hayao Miyazaki directs both films",
+      "shared witch / magic / fantasy imagery",
+      "from peril and rescue to everyday independence"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Spirited Away is Miyazaki at his most baroque and uncanny, Kiki’s Delivery Service is his quieter counterpart: still a witch’s tale, but rooted in work, loneliness, and the awkwardness of growing up. The connection is formal as much as thematic — same director, similar fantasy vocabulary — yet Kiki swaps the haunted bathhouse logic for the softer discipline of earning your place in a new town. It’s an elegant follow-up if you want the Miyazaki spell without the intensity."
+  },
+  "Ash Is Purest White::Long Day's Journey Into Night (2018)": {
+    "primary_angle": "A moody Chinese follow-up that trades Jia Zhangke’s social-crime realism for Bi Gan’s dreamier noir of memory, longing, and emotional drift.",
+    "supporting_points": [
+      "China-set romantic-crime atmosphere",
+      "shared interest in memory, loss, and time passing",
+      "damaged intimacy pushed into a more dreamlike register"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_director_genres_keywords"
+    ],
+    "blurb": "If Ash Is Purest White worked for you, Long Day's Journey Into Night is a strong sideways move rather than a same-director continuation. Bi Gan takes some adjacent material—Chinese settings, romantic aftermath, criminal shadows, memory-haunted emotion—and turns it into something much dreamier and more nocturnal. The appeal is less narrative overlap than atmosphere: a bruised love story dissolving into longing, drift, and unstable recollection."
+  },
+  "Hard Boiled::The Terminator": {
+    "primary_angle": "If you like your action built on momentum, not polish, this is the cleanest bridge from Woo’s operatic gunplay to Cameron’s lean, ironclad pursuit thriller.",
+    "supporting_points": [
+      "relentless manhunt structure",
+      "gunfire-as-spectacle intensity",
+      "hard-edged genre drive, no dead air"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "tmdb_genres"
+    ],
+    "blurb": "Hard Boiled and The Terminator are cut from the same aggressive cloth: pursuers, fugitives, and an escalating sense that every scene should end in a blast of momentum. What changes is the texture—Woo turns chaos into balletic excess, while Cameron keeps everything stripped to steel and shadow. If you want action that moves like a machine but still has a pulse, this is a sharp next stop."
+  },
+  "Hard Boiled::Terminator 2": {
+    "primary_angle": "Gun-heavy, high-intensity action with a brutal sense of escalation",
+    "supporting_points": [
+      "shared action-thriller momentum",
+      "excessive force / shotgun-forward spectacle",
+      "1990s genre cinema with muscular pacing"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Hard Boiled is all about cops, smugglers, and violence pushed to the limit, Terminator 2 hits a similar nerve: an action-thriller built around relentless pursuit and bigger-than-life force. Both thrive on hard-edged momentum, shotguns, and a constant sense of escalation, but Cameron swaps Woo’s Hong Kong chaos for a sleek sci-fi cat-and-mouse game. It’s the right follow-up if what you want is precision-engineered mayhem with a surprisingly strong emotional current."
+  },
+  "Hard Boiled::Aliens": {
+    "primary_angle": "A ferocious crossover for fans of muscular, high-intensity action that turns camaraderie into a siege.",
+    "supporting_points": [
+      "shared love of relentless, escalating set pieces",
+      "combat framed as survival under pressure",
+      "big-screen action with a grim, abrasive edge"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If Hard Boiled works for you because it treats gunfights like full-body crisis management, Aliens lands in a similar register: a squad under siege, escalating chaos, and action that keeps tightening the screws. It swaps Hong Kong crime for sci-fi horror, but preserves the same hard, tactical momentum and pressure-cooker intensity. The contrast is the point—gunslinger bravado becomes military dread, with Sigourney Weaver anchoring the charge."
+  },
+  "It Was Just an Accident::The Salesman": {
+    "primary_angle": "Shared tension around an intimate intrusion that turns ordinary life into a moral trap",
+    "supporting_points": [
+      "home-invader unease",
+      "psychological escalation",
+      "civility curdling into menace"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "manual_links"
+    ],
+    "blurb": "If you liked the way It Was Just an Accident turns a chance encounter into a slow, sickening reckoning, The Salesman offers a similarly tight setup: a polite intrusion that quickly becomes something far more disturbing. It’s a chamber-piece of suspicion and violated boundaries, with the tension coming less from spectacle than from watching normal behavior tilt toward threat. Different in setting, but close in the feeling of dread that starts with one unexpected knock."
+  },
+  "It Was Just an Accident::Triangle of Sadness": {
+    "primary_angle": "Both films turn social power into suspense, but where Triangle of Sadness does it with corrosive satire and open grotesque farce, It Was Just an Accident seems to aim that same pressure at trauma, vengeance, and memory.",
+    "supporting_points": [
+      "elite power and humiliation",
+      "darkly comic escalation",
+      "survival under social hierarchy"
+    ],
+    "source_signals": [
+      "tmdb_keywords",
+      "tmdb_overview",
+      "letterboxd_intro"
+    ],
+    "blurb": "If you liked Triangle of Sadness for the way it turns hierarchy into a pressure cooker, It Was Just an Accident offers a darker, more intimate version of that tension. Jafar Panahi’s film pivots from the recognition of a suspected jailhouse captor into revenge, memory, and political dread. It’s less broad satire than moral trapdoor, but the same uneasy pleasure comes from watching power reveal itself under stress."
+  },
+  "It Was Just an Accident::Anatomy of a Fall": {
+    "primary_angle": "A tense, morally knotted procedural about suspicion and judgment, with the private trauma of imprisonment feeding a revenge story.",
+    "supporting_points": [
+      "Both films hinge on an accusation that may or may not be true",
+      "Shared thriller/mystery/crime DNA",
+      "Moral conflict under pressure, not action-driven suspense"
+    ],
+    "source_signals": [
+      "tmdb_overview",
+      "tmdb_genres",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If what you liked in It Was Just an Accident is the slow-burn pressure of uncertainty, Anatomy of a Fall is a sharp next stop. Justine Triet turns a murder inquiry into a study of suspicion, testimony, and moral drift, with the same pleasure in watching guilt remain stubbornly unresolved. It’s a colder, more courtroom-centered cousin to Panahi’s revenge thriller, but it shares the same fascination with how quickly certainty curdles into doubt."
+  },
+  "28 Years Later::Dawn of the Dead": {
+    "primary_angle": "A grim, kinetic zombie follow-up that trades the island isolation of 28 Years Later for the blunt survivalism of a sealed-off mall.",
+    "supporting_points": [
+      "virus-era survival horror",
+      "siege mentality under pressure",
+      "zombie outbreak as social collapse"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_keywords"
+    ],
+    "blurb": "If what pulled you into 28 Years Later was the tension of a quarantined world cracking at the edges, Dawn of the Dead hits a similar nerve with a harder, more immediate survival instinct. Zack Snyder’s mall-bound remake turns zombie outbreak into a sealed-room pressure cooker: horror with action muscle and a nasty streak of dark comedy. It’s the same end-of-civilization setup, but stripped down to a more direct, more feral kind of panic."
+  },
+  "28 Years Later::Night of the Living Dead": {
+    "primary_angle": "A foundational, stripped-down precursor to the siege-and-survival logic that animates 28 Years Later.",
+    "supporting_points": [
+      "shared horror/thriller/science fiction DNA",
+      "barricade-under-pressure survival setup",
+      "flesh-eating ghouls as genre ancestor to modern infected"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If 28 Years Later is about a sealed community cracking open under infection and dread, Night of the Living Dead is the raw blueprint: strangers holed up in a farmhouse while the dead close in. Romero’s 1968 film turns survival into social pressure-cooker horror, and its ghouls, barricades, and escalating panic still echo through modern zombie cinema. After Boyle’s mutated post-apocalyptic world, this is the essential ancestor."
+  },
+  "28 Years Later::Day of the Dead": {
+    "primary_angle": "A lean, survival-first zombie thriller that mirrors the source film’s sealed-off-civilization pressure.",
+    "supporting_points": [
+      "zombie outbreak in a contained setting",
+      "quarantine and survival under siege",
+      "shares horror / thriller / sci-fi DNA"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_genres"
+    ],
+    "blurb": "If what grips you in 28 Years Later is the pressure-cooker survival setup — a defended enclave, a deadly infection, and the sense that containment is always about to fail — Day of the Dead scratches a similar itch. It swaps the island causeway for quarantine chaos and a small Colorado town overrun by the dead, but keeps the same hard-edged mix of horror, thriller, and post-collapse desperation. A tighter, more direct outbreak movie, with the emphasis on escape rather than discovery."
+  },
+  "Barton Fink::There Will Be Blood": {
+    "primary_angle": "A shared portrait of American ambition curdling into menace, with California as a pressure-cooker rather than a dream.",
+    "supporting_points": [
+      "California as corrupting landscape",
+      "ruthless ambition and self-invention",
+      "slow-burn menace"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Barton Fink is Hollywood as a fever dream, There Will Be Blood is California as an extraction machine: another American success story turning predatory, eerie, and corrosive. Both films track men whose ambition curdles into something uglier, with the setting doing as much psychological damage as any antagonist. It’s a natural next stop if what you want is slow-burn dread, moral rot, and a world where success feels indistinguishable from ruin."
+  },
+  "Red Rooms::Dans Ma Peau": {
+    "primary_angle": "Body-horror sister film: another woman-led descent into obsession, where self-examination turns vicious and intimate.",
+    "supporting_points": [
+      "female protagonist driven inward",
+      "psychological collapse becomes corporeal",
+      "pain, flesh, and obsession as central motifs"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Red Rooms is about obsession curdling into a private fixation, Dans Ma Peau takes that same inward pressure and makes it literal. Marina de Van’s film turns the body into both site and subject of horror, with pain, desire, and self-estrangement fused into something raw and invasive. It’s a harsher, more physical companion piece to Red Rooms’ cold psychological dread."
+  },
+  "Red Rooms::Inside (2007)": {
+    "primary_angle": "For viewers drawn to claustrophobic psychological horror that turns obsession into self-destruction.",
+    "supporting_points": [
+      "female protagonist driven by a morbid fixation",
+      "reality and fantasy start to blur",
+      "links to serial-killer obsession and psychological dread"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If Red Rooms hooked you on the slow, ugly trance of obsession, Inside (2007) is a sharp follow-up. Both films lean into intimate, nerve-rattling extremity and keep their focus on a woman trapped inside a nightmare logic that feels increasingly inescapable. The comparison is less about plot than pressure: the sense of a mind—and a body—being pushed past the point of safety."
+  },
+  "Red Rooms::Bug": {
+    "primary_angle": "A bleak psychological descent into obsession and paranoia, but with Friedkin’s feverish, intimate claustrophobia instead of Red Rooms’ true-crime chill.",
+    "supporting_points": [
+      "obsession-driven unraveling",
+      "paranoia and isolation",
+      "female protagonist in a sealed-off psychological trap"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "If Red Rooms works for you as a study in obsession curdling into self-destruction, Bug hits a related nerve from a different angle: less true-crime fixation, more feverish cabin-pressure paranoia. William Friedkin keeps it grim and intimate as a lonely motel setting and a desperate relationship turn into a sealed chamber of delusion. It’s a harsher, more theatrical descent, but the same attraction to minds slipping past the edge of reality."
+  },
+  "Red Rooms::My House Walkthrough": {
+    "primary_angle": "Internet-era obsession horror that turns interior space into a psychological trap",
+    "supporting_points": [
+      "shared fixation on blurred reality and private ritual",
+      "horror built from domestic space rather than overt spectacle",
+      "matches the source film’s morbid, inward-turning psychology"
+    ],
+    "source_signals": [
+      "manual_links",
+      "letterboxd_intro",
+      "tmdb_keywords"
+    ],
+    "blurb": "A tight adjacent pick for the same kind of unnerving descent: less procedural than psychological, and more haunted by private obsession than by plot. The appeal is the way ordinary space becomes a chamber of fixation, echoing Red Rooms’ interest in reality slipping under the pressure of obsession. If you were drawn to that film’s sealed-off, feverish atmosphere, this points in a similarly intimate and disturbing direction."
+  },
+  "Anora::The Florida Project": {
+    "primary_angle": "Sean Baker’s human-scale empathy, traded from adult chaos to childhood wonder",
+    "supporting_points": [
+      "same director: Sean Baker",
+      "marginal lives in vivid urban settings",
+      "blend of warmth and hardship"
+    ],
+    "source_signals": [
+      "director_match",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Anora is Baker turning a fast, bruised Cinderella story into romantic chaos, The Florida Project is the quieter, sadder counterpoint: another portrait of people on the edges, but seen through a child’s wide-open gaze. Both films are drawn to the beauty and instability of precarious lives, and both find tenderness inside rough surroundings. The shift from Brooklyn nightlife to a Florida motel gives the pairing a sharp contrast in tone without losing Baker’s compassionate eye."
+  },
+  "Anora::After Hours": {
+    "primary_angle": "A downtown New York spiral of bad luck and nocturnal absurdity, with the same city-as-maze energy that drives Anora.",
+    "supporting_points": [
+      "New York City as the central pressure cooker",
+      "romantic pursuit turned chaotic chase",
+      "comic menace with surreal detours"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_keywords",
+      "tmdb_overview"
+    ],
+    "blurb": "After Hours is the cleaner, meaner cousin to Anora’s New York chaos: another impulsive night that turns romance into a downtown ordeal. Where Anora moves from Cinderella wish-fulfillment into social warfare, Scorsese’s film traps its protagonist in a surreal city labyrinth of dates, subways, nightclubs, and escalating bad luck. If you liked Sean Baker’s appetite for nocturnal momentum and comic panic, this is the more feverish, prickly variation."
+  },
+  "Häxan::Freaks": {
+    "primary_angle": "A natural next stop if you want early horror that treats the grotesque as both spectacle and social critique.",
+    "supporting_points": [
+      "silent-era horror with a carnival-of-the-outcast sensibility",
+      "darkly comic use of bodies, superstition, and shock",
+      "pairs well with Häxan’s mix of horror and unsettling humor"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Häxan’s witches-and-hysteria mash-up worked for you, Freaks is the cleaner, more humanly cruel companion piece. Tod Browning turns the sideshow into a moral trap, building horror from bodies, desire, and revenge rather than gothic pageantry. It has the same old-world unease and grotesque humor, but trades medieval sabotage for circus intimacy."
+  },
+  "Häxan::Night of the Hunter": {
+    "primary_angle": "A good next stop if what you want from Häxan is witchy dread filtered through religious hypocrisy and theatrical menace.",
+    "supporting_points": [
+      "shared dark religious imagery",
+      "preacher/farce-of-faith tension",
+      "horror-thriller overlap"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_genres",
+      "tmdb_overview"
+    ],
+    "blurb": "If Häxan’s appeal for you is less its historical argument than its taste for blasphemy, accusation, and occult unease, Night of the Hunter sits nearby. It trades medieval witchcraft for a false preacher and a family trapped in his orbit, but keeps the same fascination with religious performance turning sinister. It’s a sharper, more modern kind of menace, yet still rooted in gothic dread."
+  },
+  "Possibly in Michigan::We're All Going to the World's Fair": {
+    "primary_angle": "A drift from analog body-horror weirdness into digital isolation and identity horror.",
+    "supporting_points": [
+      "shared surreal, off-kilter horror sensibility",
+      "female-centered menace and reversal of victim/aggressor roles",
+      "from mall stalking to bedroom/internet dread"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If Possibly in Michigan feels like horror sung through a dream of consumer spaces, We’re All Going to the World’s Fair carries that same unease into the glow of the laptop screen. Both films center women navigating threat, performance, and the unstable line between fear and agency, but Schoenbrun’s film swaps the mall’s grotesque physicality for internet solitude and identity blur. It’s a fitting next stop if you want your surreal horror colder, quieter, and more inwardly unnerving."
+  },
+  "Wax, or The Discovery of Television Among the Bees::We're All Going to the World's Fair": {
+    "primary_angle": "Analog-digital hallucination horror",
+    "supporting_points": [
+      "mind-bending reality blur",
+      "isolated bedroom/attic psychodrama",
+      "internet as a destabilizing space"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords"
+    ],
+    "blurb": "If Wax turns television into a psychedelic implant and lets the resulting hallucinations take over, We're All Going to the World's Fair updates that same unease for the internet age. Both films linger in the liminal zone where a private obsession starts rewriting reality, with isolated bedrooms, altered perception, and a creeping sense that the medium itself is contagious. Schoenbrun’s film is the colder, more contemporary echo of Blair’s fever dream."
+  },
+  "Summer Palace::Ash is Purest White": {
+    "primary_angle": "A natural next step if you want Chinese cinema where romance collides with history and social upheaval",
+    "supporting_points": [
+      "shared China setting",
+      "love story strained by violence and public change",
+      "from campus intimacy to criminal underworld displacement"
+    ],
+    "source_signals": [
+      "manual_links",
+      "tmdb_overview",
+      "letterboxd_intro"
+    ],
+    "blurb": "If Summer Palace’s mix of private desire and national rupture stayed with you, Ash Is Purest White carries that same charge into a very different register. Jia Zhangke turns a love story into a long aftermath of loyalty, betrayal, and survival, with China’s criminal underworld replacing Lou Ye’s campus unrest. It’s less feverish on the surface, but just as interested in how history keeps rearranging intimacy."
+  },
+  "Summer Palace::Raise the Red Lanter": {
+    "primary_angle": "A powerful follow-up for viewers drawn to women trapped inside rigid Chinese power structures, where desire becomes inseparable from social pressure.",
+    "supporting_points": [
+      "both center young women entering oppressive new worlds",
+      "romance collides with control, rivalry, and punishment",
+      "moves from campus unrest to a more formal, period-bound pressure cooker"
+    ],
+    "source_signals": [
+      "letterboxd_intro",
+      "tmdb_overview",
+      "tmdb_keywords",
+      "manual_links"
+    ],
+    "blurb": "If Summer Palace hit hardest for the way private longing gets crushed by larger systems, Raise the Red Lantern pushes that logic into an even colder architecture of control. Zhang Yimou turns a wealthy household into a battlefield of ritual, rivalry, and surveillance, where every favor has a cost. It’s less volatile than Lou Ye’s modern tragedy, but just as ruthless about how desire is managed and punished."
+  }
+}

@@ -7,63 +7,51 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=6" />
+    <link rel="stylesheet" href="./styles.css?v=25" />
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">Second Look</p>
-          <h1>Film recommendations built from your own hand-picked links.</h1>
+          <h1>
+            <span>Second</span>
+            <span class="hero-indent">Look</span>
+          </h1>
           <p class="hero-text">
-            Search for a source film from your curated list and this prototype returns
-            the titles you entered in the “Would also like” column. It is less black-box
-            recommender system, more personal recommendation map.
+            Search for a film you already love. Find perfectly-curated, AI and human-powered recommendations that you'll love. Stop streaming slop, start watching films.
+       
           </p>
         </div>
 
         <aside class="hero-panel">
-          <div class="panel-label">How this works</div>
-          <ol class="hero-steps">
-            <li>Choose one curated source film.</li>
-            <li>Return your hand-picked companion titles.</li>
-            <li>Build outward from there later with richer logic.</li>
-          </ol>
-          <p class="hero-panel-text">Search for a source film.</p>
+          <blockquote id="rotating-film-quote" class="rotating-film-quote" aria-live="polite"></blockquote>
         </aside>
       </header>
 
       <main class="layout">
         <section class="controls card">
           <div class="section-heading">
-            <h2>Choose a source film</h2>
+            <h2>Search films</h2>
+            <p>Search a film to see recommendations.</p>
           </div>
 
           <div class="search-area">
-            <label class="field-label" for="movie-search">Curated source films</label>
+            <label class="field-label" for="movie-search"></label>
             <div class="search-row">
               <input
                 id="movie-search"
                 type="text"
                 autocomplete="off"
-                placeholder="Search titles"
+                placeholder="Enter film name..."
               />
               <button id="add-first-match" class="ghost-button" type="button">
-                Add top match
+                Search
               </button>
             </div>
             <div id="search-results" class="search-results" aria-live="polite"></div>
-          </div>
-
-          <div class="selected-area">
-            <div class="field-label-row">
-              <span class="field-label">Selected source film</span>
-              <button id="clear-selections" class="text-button" type="button">Clear</button>
-            </div>
-            <div id="selected-movies" class="selected-movies"></div>
           </div>
 
           <div class="director-area">
@@ -76,15 +64,11 @@
 
         </section>
 
-        <section class="results">
+        <section class="results card">
           <div class="results-head">
             <div>
-              <p class="eyebrow">Recommendations</p>
               <h2 id="results-title">Your next watch starts here</h2>
             </div>
-            <p id="results-subtitle" class="results-subtitle">
-              Pick a few films to see the recommendation engine wake up.
-            </p>
           </div>
 
           <div id="results-grid" class="results-grid"></div>
@@ -93,6 +77,6 @@
       </main>
     </div>
 
-    <script src="./app.js?v=7"></script>
+    <script src="./app.js?v=23"></script>
   </body>
 </html>

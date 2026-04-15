@@ -121,6 +121,7 @@ def main() -> None:
                 "title": title,
                 "year": year,
                 "film_id": f"{slugify(title)}-{year}" if year else slugify(title),
+                "letterboxd_url": "",
                 "elliott_rating": None,
                 "manual_links": [],
                 "source_row_count": 0,
@@ -134,6 +135,10 @@ def main() -> None:
         ):
             group["elliott_rating"] = rating
 
+        cleaned_url = str(letterboxd_uri).strip()
+        if cleaned_url and not group["letterboxd_url"]:
+            group["letterboxd_url"] = cleaned_url
+
         group["manual_links"].extend(manual_links)
 
     output = []
@@ -146,6 +151,7 @@ def main() -> None:
             "film_id": group["film_id"],
             "title": group["title"],
             "year": group["year"],
+            "letterboxd_url": group["letterboxd_url"] or None,
             "elliott_rating": group["elliott_rating"],
             "manual_links": deduped_links,
             "source_row_count": group["source_row_count"],

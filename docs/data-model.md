@@ -57,6 +57,36 @@ Suggested fields:
 - `discovery_lanes`
 - `collections`
 
+### `data/node-enrichment-sources.json`
+
+Use this for film-level cultural and canon annotations that should not automatically act as graph edges.
+
+Suggested fields:
+
+- `id`
+- `source_name`
+- `source_type`
+- `title`
+- `weight`
+- `tags`
+- `film_ids`
+- `notes`
+
+### `data/connection-sources.json`
+
+Use this for multi-film editorial or programming groupings that are allowed to contribute relationship signals.
+
+Suggested fields:
+
+- `id`
+- `source_name`
+- `source_type`
+- `title`
+- `weight`
+- `tags`
+- `film_ids`
+- `notes`
+
 ## Why Split Them
 
 This split makes it easier to:
@@ -71,6 +101,7 @@ This split makes it easier to:
 1. Add a film to `data/films.json`
 2. Add its editorial layer to `data/curated-films.json`
 3. Merge those two datasets in the app when calculating recommendations
+4. Build optional source-layer maps from the closed catalogue with `python3 scripts/build_source_layers.py`
 
 ## Near-Term Shortcut
 

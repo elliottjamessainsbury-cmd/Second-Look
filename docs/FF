@@ -1,0 +1,86 @@
+# Frontend Feature Template
+
+Use this when implementing a frontend feature in the Second Look film app.
+
+## Task overview
+Implement the following frontend feature:
+
+[describe the feature in 1–3 sentences]
+
+Example:
+Rotate film quotes in the top-right card. Load quotes from `data/film-quotes.json`, show one at a time, and fade between them every 30 seconds.
+
+---
+
+## Project context
+- Frontend stack: vanilla JavaScript, HTML, CSS
+- Main files: `index.html`, `styles.css`, `app.js`
+- Data is loaded from local JSON files in `data/`
+- The site is a static frontend served locally
+- No frontend framework is used
+- JSON is typically loaded with `fetch(...)`
+- UI is rendered client-side in `app.js`
+
+---
+
+## Requirements
+- Add the minimum code needed to implement the feature
+- Reuse existing structure and styling patterns where possible
+- Do not introduce frameworks or unnecessary abstractions
+- Keep the implementation easy to understand and edit manually
+- Prefer small, targeted changes over broad rewrites
+
+---
+
+## Expected output
+Please provide:
+
+1. A short explanation of the implementation approach
+2. The exact code changes needed for:
+   - `index.html`
+   - `styles.css`
+   - `app.js`
+3. Any required JSON shape or data-file updates
+4. A brief validation checklist
+
+---
+
+## Constraints
+- Assume this runs in a static site environment
+- Assume data is local and fetched in-browser
+- Avoid build tools, bundlers, or framework-specific patterns
+- Keep DOM handling simple and explicit
+- Handle missing DOM elements and failed fetches gracefully
+
+---
+
+## File targets
+Use these files unless there is a strong reason not to:
+- `index.html`
+- `styles.css`
+- `app.js`
+- relevant file in `data/`
+
+---
+
+## Implementation notes
+When useful:
+- include a short comment block at the top of new functions
+- explain what DOM element IDs/classes are expected
+- note any timing dependencies between CSS transitions and JS timers
+- keep animations subtle and lightweight
+
+---
+
+## Validation
+Include a quick manual test plan, for example:
+- load the page locally
+- confirm the target UI element appears
+- confirm data loads successfully
+- confirm the interaction/animation works
+- confirm fallback behavior works if data is missing
+
+---
+
+## Feature request
+[paste feature request here]

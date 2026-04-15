@@ -3,16 +3,18 @@ import time
 import re
 import unicodedata
 import urllib.request
+import urllib.error
 import zipfile
 import xml.etree.ElementTree as ET
 from html import unescape
 from pathlib import Path
+from typing import Optional
 
 
 WORKBOOK_PATH = Path("/Users/elliott/Downloads/Film curation .xlsx")
 CURATED_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
 OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/film-metadata.json")
-FALLBACKS_PATH = Path("/Users/elliott/Documents/New project/data/letterboxd-fallbacks.json")
+RECOMMENDED_OVERRIDES_PATH = Path("/Users/elliott/Documents/New project/data/recommended-film-urls.json")
 CRITERION_PATH = Path("/Users/elliott/Documents/New project/data/criterion-closet-picks.json")
 
 NS = {
@@ -28,6 +30,37 @@ def normalize(value: str) -> str:
     normalized = re.sub(r"[’']", "", normalized)
     normalized = re.sub(r"[^a-z0-9]+", " ", normalized)
     return normalized.strip()
+
+
+def letterboxd_slug(title: str) -> str:
+    normalized = unicodedata.normalize("NFKD", str(title or ""))
+    normalized = normalized.encode("ascii", "ignore").decode("ascii").lower()
+    normalized = normalized.replace("&", " and ")
+    normalized = re.sub(r"\(.*?\)", "", normalized)
+    normalized = re.sub(r"[’']", "", normalized)
+    normalized = re.sub(r"[^a-z0-9]+", "-", normalized)
+    normalized = re.sub(r"-{2,}", "-", normalized).strip("-")
+
+    manual_overrides = {
+        "tar": "tar-2022",
+        "dune-part-two": "dune-part-two",
+        "dune-part-2": "dune-part-two",
+        "suspiria-guadagnino-version": "suspiria-2018",
+        "farwell-my-concubine": "farewell-my-concubine",
+        "the-talented-mr-ripley": "the-talented-mr-ripley-1999",
+        "inside": "inside-2007",
+        "braindead": "dead-alive",
+        "ali-fear-eats-the-soul": "fear-eats-the-soul",
+        "the-empire-strikes-back": "star-wars-episode-v-the-empire-strikes-back",
+        "night-of-the-hunter": "the-night-of-the-hunter",
+        "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb": "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb",
+    }
+
+    return manual_overrides.get(normalized, normalized)
+
+
+def guessed_letterboxd_url(title: str) -> str:
+    return f"https://letterboxd.com/film/{letterboxd_slug(title)}/"
 
 
 def read_xlsx_rows(path: Path) -> list[list[str]]:
@@ -151,8 +184,23 @@ def fetch_html(url: str) -> str:
     raise last_error
 
 
-def fetch_letterboxd_metadata(url: str) -> dict:
-    html = fetch_html(url)
+def fetch_html_if_exists(url: str) -> str:
+    try:
+        html = fetch_html(url)
+    except urllib.error.HTTPError as error:
+        if error.code == 404:
+            return ""
+        raise
+    except Exception:
+        return ""
+
+    if "Sorry, we can’t find the page you’ve asked for." in html:
+        return ""
+    return html
+
+
+def fetch_letterboxd_metadata(url: str, html: Optional[str] = None) -> dict:
+    html = html or fetch_html(url)
 
     page_type = extract_meta(html, "og:type")
     title_with_year = extract_meta(html, "og:title")
@@ -208,35 +256,66 @@ def fetch_letterboxd_metadata(url: str) -> dict:
     }
 
 
+def resolve_target_url(title: str, workbook_entry: Optional[dict], curated_url: str, recommended_url: str):
+    if curated_url:
+        if not workbook_entry:
+            workbook_entry = {"year": None}
+        return curated_url, workbook_entry
+
+    if recommended_url:
+        if not workbook_entry:
+            workbook_entry = {"year": None}
+        return recommended_url, workbook_entry
+
+    if workbook_entry:
+        return workbook_entry["letterboxd_uri"], workbook_entry
+
+    guessed_url = guessed_letterboxd_url(title)
+    html = fetch_html_if_exists(guessed_url)
+    if html:
+        return guessed_url, {"year": None, "prefetched_html": html}
+
+    return "", workbook_entry
+
+
 def main() -> None:
     curated = json.loads(CURATED_PATH.read_text())
     criterion = json.loads(CRITERION_PATH.read_text()) if CRITERION_PATH.exists() else []
+    existing_output = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else {}
     workbook_titles = title_map_from_workbook()
-    fallbacks = json.loads(FALLBACKS_PATH.read_text()) if FALLBACKS_PATH.exists() else {}
+    recommended_overrides = (
+        json.loads(RECOMMENDED_OVERRIDES_PATH.read_text())
+        if RECOMMENDED_OVERRIDES_PATH.exists()
+        else {}
+    )
 
     targets = set()
+    curated_url_map = {}
     for item in curated:
         targets.add(item["title"])
+        if item.get("letterboxd_url"):
+            curated_url_map[item["title"]] = item["letterboxd_url"]
         for manual_link in item["manual_links"]:
             targets.add(manual_link)
     for entry in criterion:
         for pick in entry["picks"]:
             targets.add(pick)
 
-    output = {}
+    output = dict(existing_output)
     missing = []
+    skipped_existing = 0
 
     for title in sorted(targets):
+        existing_meta = output.get(title) or {}
+        if existing_meta.get("intro") and existing_meta.get("average_rating"):
+            skipped_existing += 1
+            continue
+
         workbook_entry = workbook_titles.get(normalize(title))
-        target_url = ""
-        fallback_url = fallbacks.get(title)
-        if fallback_url:
-            target_url = fallback_url
-            if not workbook_entry:
-                workbook_entry = {"year": None}
-        elif workbook_entry:
-            target_url = workbook_entry["letterboxd_uri"]
-        else:
+        curated_url = curated_url_map.get(title)
+        recommended_url = recommended_overrides.get(title)
+        target_url, workbook_entry = resolve_target_url(title, workbook_entry, curated_url, recommended_url)
+        if not target_url:
             missing.append(title)
             continue
 
@@ -244,7 +323,7 @@ def main() -> None:
             workbook_entry = {"year": None}
 
         try:
-            meta = fetch_letterboxd_metadata(target_url)
+            meta = fetch_letterboxd_metadata(target_url, html=workbook_entry.get("prefetched_html"))
         except Exception:
             missing.append(title)
             continue
@@ -263,6 +342,7 @@ def main() -> None:
 
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
     print(f"Wrote {len(output)} metadata records to {OUTPUT_PATH}")
+    print(f"Skipped existing complete records: {skipped_existing}")
     print(f"Missing metadata for {len(missing)} titles")
     if missing:
         print("Examples:", ", ".join(missing[:20]))

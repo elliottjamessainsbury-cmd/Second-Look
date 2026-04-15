@@ -1,0 +1,61 @@
+[
+  {
+    "id": "sight-and-sound-greatest-films-2022",
+    "source_name": "Sight and Sound",
+    "source_type": "canon_list",
+    "title": "The Greatest Films of All Time (2022 Critics' Poll)",
+    "weight": 1.0,
+    "tags": [
+      "canon",
+      "critical-consensus",
+      "global-cinema"
+    ],
+    "film_ids": [
+      "citizen-kane-1941",
+      "vertigo-1958",
+      "persona-1966",
+      "rashomon-1950",
+      "chungking-express-1994",
+      "shoah-1985",
+      "spirited-away-2001"
+    ],
+    "notes": "Top-priority canon enrichment layer for cultural prestige and critical positioning."
+  },
+  {
+    "id": "afi-100-years-100-movies-2007",
+    "source_name": "American Film Institute",
+    "source_type": "canon_list",
+    "title": "AFI's 100 Years...100 Movies (10th Anniversary Edition)",
+    "weight": 0.4,
+    "tags": [
+      "american-canon",
+      "hollywood-classic",
+      "institutional-canon"
+    ],
+    "film_ids": [
+      "citizen-kane-1941",
+      "lawrence-of-arabia-1962",
+      "singin-in-the-rain-1952",
+      "all-about-eve-1950"
+    ],
+    "notes": "Useful as a lighter-touch American canon signal rather than a connection source."
+  },
+  {
+    "id": "afi-100-years-100-thrills-2001",
+    "source_name": "American Film Institute",
+    "source_type": "canon_list",
+    "title": "AFI's 100 Years...100 Thrills",
+    "weight": 0.4,
+    "tags": [
+      "american-genre-canon",
+      "thriller-canon",
+      "institutional-canon"
+    ],
+    "film_ids": [
+      "the-silence-of-the-lambs-1991",
+      "the-shining-1980",
+      "vertigo-1958"
+    ],
+    "notes": "Weak but still useful prestige signal for major American thrillers and horror-adjacent titles."
+  }
+]

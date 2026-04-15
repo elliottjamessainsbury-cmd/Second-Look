@@ -1,0 +1,41 @@
+issues:
+  - title: Missing metadata for Poor Things recommendations
+    description: Two recommendations surfaced from Poor Things did not resolve to dedicated metadata records, so their cards could fall back to placeholder poster blocks and search-based Letterboxd links instead of film-specific assets.
+    impacted_test: "a film thumbnail or poster area"
+    severity: medium
+    confidence: high
+    suggested_fix: Add dedicated Letterboxd URLs for Suspiria (Guadagnino version) and TAR to data/recommended-film-urls.json and ensure matching records exist in data/film-metadata.json so the UI can render proper posters and canonical links.
+    source_flow: QA/flows/search-poor-things.md
+    status: fixed
+  - title: See More recommendation copy still uses system-led phrasing
+    description: The expanded recommendation explanation strings referred to the system or engine surfacing titles, which conflicted with the QA requirement for a more editorial “we've picked” voice.
+    impacted_test: See More recommendation string should not reference 'the system recommending' a title, but replace this with 'we've picked' or 'we selected' type language
+    severity: medium
+    confidence: high
+    suggested_fix: Update reasonForRecommendation() in app.js so all branches use editorial wording like “we've picked” or “we selected” and remove references to the system or similarity engine surfacing titles.
+    source_flow: QA/flows/see-more-expansion.md
+    status: fixed
+  - title: See More recommendation explanations are not reliably unique per card
+    description: The expanded recommendation text is generated from a small set of fixed templates, so multiple cards can still produce very similar explanation strings instead of distinct card-specific reasons.
+    impacted_test: See More text recommendation string be unique to each card, AI-generated, explaining why the titles are the same in terms of genre, director or even reviews.
+    severity: medium
+    confidence: high
+    suggested_fix: Refactor reasonForRecommendation() in app.js to compose reasons from multiple signals and a rotating phrase bank so each card gets more distinct explanation text.
+    source_flow: QA/flows/see-more-expansion.md
+    status: fixed
+  - title: Many recommendation cards still resolve to search-based Letterboxd links
+    description: Recommendation cards for many manually linked titles lacked metadata records, so the UI fell back to Letterboxd search URLs instead of canonical film pages.
+    impacted_test: If a poster is shown, it should correspond to the linked film page rather than an unrelated search result.
+    severity: high
+    confidence: high
+    suggested_fix: Update app.js so makeLetterboxdUrl() falls back to a canonical Letterboxd film slug when metadata is missing, instead of linking to search results.
+    source_flow: QA/flows/poster-images.md
+    status: fixed
+  - title: Expanded cards do not yet use TMDb posters as a fallback
+    description: The app loads TMDb enrichment, but expanded recommendation cards still relied only on Letterboxd poster metadata and fell back to monograms when that data was missing.
+    impacted_test: All 'See more' views include a thumbnail pulled from either the Letterboxd URL or the web
+    severity: medium
+    confidence: high
+    suggested_fix: Update renderRecommendations() in app.js to use TMDb poster_path as a fallback image source when film-metadata.json does not provide poster_url.
+    source_flow: QA/flows/see-more-expansion.md
+    status: fixed

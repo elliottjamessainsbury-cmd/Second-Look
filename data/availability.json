@@ -1,0 +1,3300 @@
+{
+  "hard-truths-2024": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1013154-hard-truths/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Hard+Truths"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Hard+Truths"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Hard+Truths"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "one-battle-after-another-2025": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "HBO Max Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1054867-one-battle-after-another/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=One+Battle+After+Another"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=One+Battle+After+Another"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=One+Battle+After+Another"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "a-woman-under-the-influence-1974": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/29845-a-woman-under-the-influence/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:28+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=A+Woman+Under+the+Influence"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=A+Woman+Under+the+Influence"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=A+Woman+Under+the+Influence"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-voice-of-hind-rajab-2025": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1480382/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:28+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Voice+of+Hind+Rajab"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Voice+of+Hind+Rajab"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Voice+of+Hind+Rajab"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-secret-agent-2025": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:28+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Secret+Agent"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Secret+Agent"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Secret+Agent"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "story-of-women-1988": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:28+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Story+of+Women"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Story+of+Women"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Story+of+Women"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "aparajito-1956": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Amazon Prime Video",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Prime Video with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/897/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:28+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Aparajito"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Aparajito"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Aparajito"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "amadeus-1984": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/279-amadeus/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:29+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Amadeus"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Amadeus"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Amadeus"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "lawrence-of-arabia-1962": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/947-lawrence-of-arabia/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:29+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Lawrence+of+Arabia"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Lawrence+of+Arabia"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Lawrence+of+Arabia"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-substance-2024": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "MUBI",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "MUBI Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Paramount+ Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/933260-the-substance/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:29+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Substance"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Substance"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Substance"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "tropical-malady-2004": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:29+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Tropical+Malady"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Tropical+Malady"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Tropical+Malady"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "rope-1948": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1580-rope/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:30+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Rope"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Rope"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Rope"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-look-of-silence-2014": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/267480-the-look-of-silence/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:30+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Look+of+Silence"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Look+of+Silence"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Look+of+Silence"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "happy-together-1997": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/18329/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:30+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Happy+Together"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Happy+Together"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Happy+Together"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "bug-2006": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/12526-bug/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:30+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Bug"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Bug"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Bug"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "tar-2022": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/817758-tar/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:31+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=T%C3%81R"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=T%C3%81R"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=T%C3%81R"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "persona-1966": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "BFI Player",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Apple TV Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/797-persona/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:31+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Persona"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Persona"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Persona"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "harakiri-1962": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:31+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Harakiri"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Harakiri"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Harakiri"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "vertigo-1958": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/426-vertigo/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:31+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Vertigo"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Vertigo"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Vertigo"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "all-about-eve-1950": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/705-all-about-eve/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:31+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=All+About+Eve"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=All+About+Eve"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=All+About+Eve"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "cabaret-1972": {
+    "streaming": {
+      "providers": [],
+      "watch_url": "https://www.themoviedb.org/movie/10784-cabaret/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:32+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Cabaret"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Cabaret"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Cabaret"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "chungking-express-1994": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/11104/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:32+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Chungking+Express"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Chungking+Express"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Chungking+Express"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "paris-is-burning-1990": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "MUBI",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "MUBI Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/31225-paris-is-burning/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:32+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Paris+Is+Burning"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Paris+Is+Burning"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Paris+Is+Burning"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "oppenheimer-2023": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/872585-oppenheimer/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:32+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Oppenheimer"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Oppenheimer"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Oppenheimer"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "singin-in-the-rain-1952": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "HBO Max Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/872-singin-in-the-rain/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:33+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Singin%27+in+the+Rain"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Singin%27+in+the+Rain"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Singin%27+in+the+Rain"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "time-of-the-wolf-2003": {
+    "streaming": {
+      "providers": [],
+      "watch_url": "https://www.themoviedb.org/movie/80810-time-of-the-wolf/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:33+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Time+of+the+Wolf"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Time+of+the+Wolf"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Time+of+the+Wolf"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "dune-part-two-2024": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Amazon Prime Video",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "HBO Max Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Prime Video with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/693134-dune-part-two/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:33+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Dune%3A+Part+Two"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Dune%3A+Part+Two"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Dune%3A+Part+Two"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "poor-things-2023": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Disney Plus",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/792307-poor-things/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:33+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Poor+Things"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Poor+Things"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Poor+Things"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-silence-of-the-lambs-1991": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Amazon Prime Video",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "MUBI",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "MUBI Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Prime Video with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/274-the-silence-of-the-lambs/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:34+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Silence+of+the+Lambs"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Silence+of+the+Lambs"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Silence+of+the+Lambs"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "who-s-afraid-of-virginia-woolf-1966": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "HBO Max Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/396-who-s-afraid-of-virginia-woolf/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:34+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Who%27s+Afraid+of+Virginia+Woolf%3F"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Who%27s+Afraid+of+Virginia+Woolf%3F"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Who%27s+Afraid+of+Virginia+Woolf%3F"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-ascent-1977": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/516041-the-ascent/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:34+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Ascent"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Ascent"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Ascent"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "rashomon-1950": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Apple TV Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/548/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:34+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Rashomon"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Rashomon"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Rashomon"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "shoah-1985": {
+    "streaming": {
+      "providers": [],
+      "watch_url": "https://www.themoviedb.org/movie/42044-shoah/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:34+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Shoah"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Shoah"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Shoah"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/935-dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:35+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Dr.+Strangelove+or%3A+How+I+Learned+to+Stop+Worrying+and+Love+the+Bomb"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Dr.+Strangelove+or%3A+How+I+Learned+to+Stop+Worrying+and+Love+the+Bomb"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Dr.+Strangelove+or%3A+How+I+Learned+to+Stop+Worrying+and+Love+the+Bomb"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "threads-1984": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:35+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Threads"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Threads"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Threads"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "eraserhead-1977": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/985-eraserhead/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:35+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Eraserhead"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Eraserhead"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Eraserhead"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "autumn-sonata-1978": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "BFI Player",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Apple TV Channel",
+          "type": "flatrate",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/12761-hostsonaten/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:35+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Autumn+Sonata"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Autumn+Sonata"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Autumn+Sonata"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "beau-is-afraid-2023": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/798286-beau-is-afraid/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:36+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Beau+Is+Afraid"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Beau+Is+Afraid"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Beau+Is+Afraid"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-best-years-of-our-lives-1946": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Amazon Prime Video",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Prime Video with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/887-the-best-years-of-our-lives/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:36+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Best+Years+of+Our+Lives"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Best+Years+of+Our+Lives"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Best+Years+of+Our+Lives"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "citizen-kane-1941": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "BFI Player",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Apple TV Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/15-citizen-kane/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:36+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Citizen+Kane"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Citizen+Kane"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Citizen+Kane"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-texas-chain-saw-massacre-1974": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Shudder",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Shudder Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/30497-the-texas-chain-saw-massacre/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:36+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Texas+Chain+Saw+Massacre"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Texas+Chain+Saw+Massacre"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Texas+Chain+Saw+Massacre"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "the-shining-1980": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "HBO Max Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/694-the-shining/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:36+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=The+Shining"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=The+Shining"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=The+Shining"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "spirited-away-2001": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Netflix",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Netflix Standard with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/129/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:37+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Spirited+Away"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Spirited+Away"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Spirited+Away"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "ash-is-purest-white-2018": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/441393/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:37+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Ash+Is+Purest+White"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Ash+Is+Purest+White"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Ash+Is+Purest+White"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "hard-boiled-1992": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/11782/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:37+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Hard+Boiled"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Hard+Boiled"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Hard+Boiled"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "it-was-just-an-accident-2025": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "MUBI",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "MUBI Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1456349-un-simple-accident/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:37+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=It+Was+Just+an+Accident"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=It+Was+Just+an+Accident"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=It+Was+Just+an+Accident"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "28-years-later-2025": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1100988-28-years-later/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:38+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=28+Years+Later"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=28+Years+Later"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=28+Years+Later"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "barton-fink-1991": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/290-barton-fink/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:38+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Barton+Fink"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Barton+Fink"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Barton+Fink"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "red-rooms-2023": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "BFI Player",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Amazon Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "BFI Player Apple TV Channel",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Curzon Home Cinema",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/912480-les-chambres-rouges/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:38+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Red+Rooms"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Red+Rooms"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Red+Rooms"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "anora-2024": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Sky Go",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Now TV Cinema",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Apple TV Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Rakuten TV",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Google Play Movies",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Sky Store",
+          "type": "buy",
+          "region": "GB"
+        },
+        {
+          "provider_name": "YouTube",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/1064213-anora/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:38+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Anora"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Anora"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Anora"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "haxan-1922": {
+    "streaming": {
+      "providers": [
+        {
+          "provider_name": "Amazon Prime Video",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "GuideDoc",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Prime Video with Ads",
+          "type": "flatrate",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "rent",
+          "region": "GB"
+        },
+        {
+          "provider_name": "Amazon Video",
+          "type": "buy",
+          "region": "GB"
+        }
+      ],
+      "watch_url": "https://www.themoviedb.org/movie/57283-haxan/watch?locale=GB",
+      "last_checked": "2026-04-12T22:36:39+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=H%C3%A4xan"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=H%C3%A4xan"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=H%C3%A4xan"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "possibly-in-michigan-1983": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:39+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Possibly+in+Michigan"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Possibly+in+Michigan"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Possibly+in+Michigan"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "wax-or-the-discovery-of-television-among-the-bees-1991": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:39+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Wax%2C+or+The+Discovery+of+Television+Among+the+Bees"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Wax%2C+or+The+Discovery+of+Television+Among+the+Bees"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Wax%2C+or+The+Discovery+of+Television+Among+the+Bees"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  },
+  "summer-palace-2006": {
+    "streaming": {
+      "providers": [],
+      "watch_url": null,
+      "last_checked": "2026-04-12T22:36:39+00:00"
+    },
+    "physical_media": {
+      "ebay": [],
+      "retailer_search_links": [
+        {
+          "retailer": "Criterion",
+          "url": "https://www.criterion.com/search?q=Summer+Palace"
+        },
+        {
+          "retailer": "BFI Shop",
+          "url": "https://shop.bfi.org.uk/search.php?search_query=Summer+Palace"
+        },
+        {
+          "retailer": "HMV",
+          "url": "https://hmv.com/search?searchtext=Summer+Palace"
+        }
+      ],
+      "last_checked": "2026-04-12T22:36:27+00:00"
+    }
+  }
+}

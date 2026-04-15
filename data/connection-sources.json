@@ -1,0 +1,77 @@
+[
+  {
+    "id": "slant-100-essential-horror-films",
+    "source_name": "Slant Magazine",
+    "source_type": "editorial_article",
+    "title": "100 Essential Horror Films",
+    "weight": 0.8,
+    "tags": [
+      "horror",
+      "canon",
+      "formal-extremity"
+    ],
+    "film_ids": [
+      "haxan-1922",
+      "eraserhead-1977",
+      "the-texas-chain-saw-massacre-1974",
+      "the-shining-1980",
+      "the-silence-of-the-lambs-1991"
+    ],
+    "notes": "High-signal editorial grouping for horror adjacency and canonized extremity."
+  },
+  {
+    "id": "bfi-dream-palaces-great-musicals",
+    "source_name": "BFI Southbank",
+    "source_type": "curated_programme",
+    "title": "Dream Palaces: Great Musicals",
+    "weight": 0.9,
+    "tags": [
+      "musical",
+      "performance",
+      "studio-spectacle"
+    ],
+    "film_ids": [
+      "singin-in-the-rain-1952",
+      "cabaret-1972"
+    ],
+    "notes": "Repertory-programming signal for musical pathways and performance-driven recommendations."
+  },
+  {
+    "id": "prince-charles-stanley-kubrick-season",
+    "source_name": "Prince Charles Cinema",
+    "source_type": "curated_programme",
+    "title": "Stanley Kubrick Season",
+    "weight": 0.85,
+    "tags": [
+      "kubrick",
+      "repertory-cinema",
+      "cold-war-anxiety"
+    ],
+    "film_ids": [
+      "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964",
+      "the-shining-1980"
+    ],
+    "notes": "Useful repertory linkage between canonical Kubrick titles without turning the whole layer into director matching."
+  },
+  {
+    "id": "letterboxd-official-top-250-narrative-feature-films",
+    "source_name": "Letterboxd",
+    "source_type": "user_list",
+    "title": "The Official Top 250 Narrative Feature Films",
+    "weight": 0.25,
+    "tags": [
+      "narrative-feature",
+      "consensus-favorites",
+      "canon",
+      "user-list"
+    ],
+    "film_ids": [
+      "citizen-kane-1941",
+      "vertigo-1958",
+      "persona-1966",
+      "lawrence-of-arabia-1962",
+      "chungking-express-1994"
+    ],
+    "notes": "Low-signal community grouping that can add weak relational context without overpowering stronger editorial sources."
+  }
+]
