@@ -1207,6 +1207,7 @@ async function loadCuratedFilms() {
       graphOrigin: "source"
     }));
     state.curatedFilms = buildBidirectionalCuratedFilms(state.curatedSourceFilms);
+    state.quickPicks = shuffleList(state.curatedSourceFilms).slice(0, 12);
   } catch (error) {
     state.error = "The curated film file could not be loaded. Make sure the local server is running.";
   } finally {
