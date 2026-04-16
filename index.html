@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=26" />
+    <link rel="stylesheet" href="./styles.css?v=30" />
   </head>
   <body>
     <div class="page-shell">
@@ -57,7 +57,7 @@
           <div class="director-area">
             <div class="field-label-row">
               <span class="field-label">Quick picks</span>
-              <button id="reset-director" class="text-button" type="button">Reset</button>
+              <button id="reset-director" class="text-button" type="button">Refresh</button>
             </div>
             <div id="director-list" class="director-list"></div>
           </div>
@@ -69,6 +69,9 @@
             <div>
               <h2 id="results-title">Your next watch starts here</h2>
             </div>
+            <button id="clear-recommendations" class="text-button" type="button" hidden>
+              Clear recommendations
+            </button>
           </div>
 
           <div id="results-grid" class="results-grid"></div>
@@ -77,6 +80,6 @@
       </main>
     </div>
 
-    <script src="./app.js?v=25"></script>
+    <script src="./app.js?v=28"></script>
   </body>
 </html>

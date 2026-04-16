@@ -23,6 +23,7 @@ const elements = {
   searchResults: document.querySelector("#search-results"),
   directorList: document.querySelector("#director-list"),
   resetDirector: document.querySelector("#reset-director"),
+  clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title")
@@ -60,36 +61,61 @@ async function initRotatingFilmQuotes() {
 
     function formatQuote(entry) {
       if (typeof entry === "string") {
-        return entry;
+        return {
+          quote: entry,
+          filmLine: "",
+          creditLine: ""
+        };
       }
 
       if (entry && typeof entry === "object") {
         const quote = String(entry.quote || "").trim();
         const film = String(entry.film || "").trim();
         const director = String(entry.director || "").trim();
-        const year = entry.year ? ` (${entry.year})` : "";
+        const year = entry.year ? String(entry.year) : "";
 
         if (quote && film && director) {
-          return `${quote} — ${film}${year}, ${director}`;
+          return {
+            quote,
+            filmLine: film,
+            creditLine: year ? `${director}, ${year}` : director
+          };
         }
 
         if (quote && film) {
-          return `${quote} — ${film}${year}`;
+          return {
+            quote,
+            filmLine: film,
+            creditLine: year || ""
+          };
         }
 
         if (quote) {
-          return quote;
+          return {
+            quote,
+            filmLine: "",
+            creditLine: ""
+          };
         }
       }
 
-      return "Quote unavailable.";
+      return {
+        quote: "Quote unavailable.",
+        filmLine: "",
+        creditLine: ""
+      };
     }
 
     function showQuote(index) {
       quoteEl.classList.remove("is-visible");
 
       window.setTimeout(() => {
-        quoteEl.textContent = formatQuote(quotes[index]);
+        const formatted = formatQuote(quotes[index]);
+        quoteEl.innerHTML = `
+          <span class="quote-text">${formatted.quote}</span>
+          ${formatted.filmLine ? `<span class="quote-film">${formatted.filmLine}</span>` : ""}
+          ${formatted.creditLine ? `<span class="quote-credit">${formatted.creditLine}</span>` : ""}
+        `;
         quoteEl.classList.add("is-visible");
       }, 1200);
     }
@@ -799,6 +825,45 @@ function addFilm(filmId) {
   render();
 }
 
+function openRecommendationsForTitle(title) {
+  const curatedFilm = byTitle(state.curatedFilms, title);
+  if (curatedFilm) {
+    addFilm(curatedFilm.film_id);
+    return;
+  }
+
+  const sampleFilm = byTitle(state.sampleMovies, title);
+  if (sampleFilm) {
+    addFilm(sampleFilm.id || titleToId(sampleFilm.title, sampleFilm.year));
+    return;
+  }
+
+  const year = inferYearForTitle(title);
+  const metadata = metadataForTitle(title);
+  const tmdbMetadata = tmdbMetadataForTitle(title);
+
+  if (!metadata && !tmdbMetadata && !year) {
+    return;
+  }
+
+  const film = {
+    film_id: titleToId(title, year),
+    title,
+    year,
+    elliott_rating: null,
+    manual_links: [],
+    sourceType: metadata ? "graph" : "sample"
+  };
+
+  state.selectedFilmId = film.film_id;
+  state.selectedFilm = film;
+  state.recommendations = getHybridRecommendations(film);
+  state.expandedCardKey = "";
+  state.query = "";
+  elements.movieSearch.value = "";
+  render();
+}
+
 function clearSelectedFilm() {
   state.selectedFilmId = null;
   state.selectedFilm = null;
@@ -956,6 +1021,11 @@ function getQuickPicks() {
   return state.quickPicks;
 }
 
+function refreshQuickPicks() {
+  state.quickPicks = shuffleList(state.curatedSourceFilms).slice(0, 12);
+  renderQuickPicks();
+}
+
 function renderQuickPicks() {
   if (state.loading || state.error) {
     elements.directorList.innerHTML = "";
@@ -988,6 +1058,7 @@ function monogramForTitle(title) {
 
 function renderRecommendations() {
   if (!state.selectedFilm) {
+    elements.clearRecommendations.hidden = true;
     elements.resultsTitle.textContent = "Recommendations";
     elements.resultsGrid.innerHTML = `
       <div class="empty-state recommendations-empty-state">
@@ -1000,6 +1071,7 @@ function renderRecommendations() {
     return;
   }
 
+  elements.clearRecommendations.hidden = false;
   elements.resultsTitle.textContent = `${state.selectedFilm.title} leads to:`;
   const primaryRecommendations = state.recommendations.primary || [];
   const criterionRecommendations = state.recommendations.criterion || [];
@@ -1050,7 +1122,7 @@ function renderRecommendations() {
             ${posterMarkup}
           </div>
           <div class="card-body">
-            <div class="card-title">${title}</div>
+            <a class="card-title card-title-link" href="#results-title" data-open-title="${encodeURIComponent(title)}">${title}</a>
             ${expanded ? expandedPanel : ""}
             <div class="card-actions">
               <a class="card-link-button" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
@@ -1066,6 +1138,13 @@ function renderRecommendations() {
 
   elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
     button.addEventListener("click", () => toggleExpandedCard(button.dataset.toggleCard));
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-open-title]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openRecommendationsForTitle(decodeURIComponent(link.dataset.openTitle));
+    });
   });
 
   if (!criterionRecommendations.length) {
@@ -1130,7 +1209,7 @@ function renderRecommendations() {
                 ${posterMarkup}
               </div>
               <div class="card-body">
-                <div class="card-title">${title}</div>
+                <a class="card-title card-title-link" href="#results-title" data-open-title="${encodeURIComponent(title)}">${title}</a>
                 ${expanded ? expandedPanel : ""}
                 <div class="card-actions">
                   <a class="card-link-button" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
@@ -1148,6 +1227,13 @@ function renderRecommendations() {
 
   elements.criterionSection.querySelectorAll("[data-toggle-card]").forEach((button) => {
     button.addEventListener("click", () => toggleExpandedCard(button.dataset.toggleCard));
+  });
+
+  elements.criterionSection.querySelectorAll("[data-open-title]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openRecommendationsForTitle(decodeURIComponent(link.dataset.openTitle));
+    });
   });
 }
 
@@ -1249,6 +1335,10 @@ elements.directorList.addEventListener("click", (event) => {
 });
 
 elements.resetDirector.addEventListener("click", () => {
+  refreshQuickPicks();
+});
+
+elements.clearRecommendations.addEventListener("click", () => {
   clearSelectedFilm();
 });
 
