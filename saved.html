@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Films | Second Look</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=33" />
+  </head>
+  <body class="saved-page">
+    <div class="page-shell saved-page-shell">
+      <header class="card saved-page-header">
+        <div class="saved-page-header__copy">
+          <p class="eyebrow">Saved films</p>
+          <h1>Saved Films</h1>
+          <p class="hero-text">A compact list of everything you have bookmarked from discovery so far.</p>
+        </div>
+        <a href="./index.html" class="card-link-button saved-page-header__back">Back to discovery</a>
+      </header>
+
+      <main class="saved-page-main">
+        <section class="card saved-page-list-card">
+          <div id="saved-films-list" class="saved-films-list-shell" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js?v=31"></script>
+  </body>
+</html>

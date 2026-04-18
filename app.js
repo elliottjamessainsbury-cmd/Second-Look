@@ -1,6 +1,168 @@
+const SAVED_FILMS_STORAGE_KEY = "secondlook:savedFilmIds";
+const MAIN_PAGE_STATE_STORAGE_KEY = "secondlook:mainPageState";
+
+function getLocalStorage() {
+  if (typeof window === "undefined" || !window.localStorage) {
+    return null;
+  }
+
+  return window.localStorage;
+}
+
+function normalizeSavedFilmIds(ids) {
+  if (!Array.isArray(ids)) {
+    return [];
+  }
+
+  return ids.reduce((output, value) => {
+    const filmId = String(value || "").trim();
+    if (!filmId || output.includes(filmId)) {
+      return output;
+    }
+
+    output.push(filmId);
+    return output;
+  }, []);
+}
+
+function loadSavedFilmIds() {
+  try {
+    const storage = getLocalStorage();
+    if (!storage) {
+      return [];
+    }
+
+    const raw = storage.getItem(SAVED_FILMS_STORAGE_KEY);
+    if (!raw) {
+      return [];
+    }
+
+    return normalizeSavedFilmIds(JSON.parse(raw));
+  } catch (error) {
+    console.warn("Failed to load saved film ids.", error);
+    return [];
+  }
+}
+
+function saveSavedFilmIds(ids) {
+  try {
+    const storage = getLocalStorage();
+    if (!storage) {
+      return;
+    }
+
+    storage.setItem(SAVED_FILMS_STORAGE_KEY, JSON.stringify(normalizeSavedFilmIds(ids)));
+  } catch (error) {
+    console.warn("Failed to save film ids.", error);
+  }
+}
+
+function baseTasteProfile() {
+  return {
+    oldCinemaAffinity: 0,
+    worldCinemaAffinity: 0,
+    slowCinemaAffinity: 0,
+    weirdnessAffinity: 0,
+    craftAffinity: 0,
+    ambiguityAffinity: 0
+  };
+}
+
+function normalizeDiscoveryPageState(value) {
+  const discovery = value && typeof value === "object" ? value.discovery || {} : {};
+  const selectedFilmId =
+    value && typeof value === "object" && value.selectedFilmId ? String(value.selectedFilmId) : null;
+
+  return {
+    selectedFilmId,
+    expandedCardKey:
+      value && typeof value === "object" && typeof value.expandedCardKey === "string"
+        ? value.expandedCardKey
+        : "",
+    discovery: {
+      step:
+        discovery.step === "grid1" || discovery.step === "grid2" || discovery.step === "quiz"
+          ? discovery.step
+          : "quiz",
+      answers: discovery.answers && typeof discovery.answers === "object" ? discovery.answers : {},
+      tasteProfile: {
+        ...baseTasteProfile(),
+        ...(discovery.tasteProfile && typeof discovery.tasteProfile === "object"
+          ? discovery.tasteProfile
+          : {})
+      },
+      dismissedIds: normalizeSavedFilmIds(discovery.dismissedIds),
+      currentBatch: Array.isArray(discovery.currentBatch) ? discovery.currentBatch : [],
+      batchHistory: Array.isArray(discovery.batchHistory) ? discovery.batchHistory : []
+    }
+  };
+}
+
+function loadMainPageState() {
+  try {
+    const storage = getLocalStorage();
+    if (!storage) {
+      return normalizeDiscoveryPageState(null);
+    }
+
+    const raw = storage.getItem(MAIN_PAGE_STATE_STORAGE_KEY);
+    if (!raw) {
+      return normalizeDiscoveryPageState(null);
+    }
+
+    return normalizeDiscoveryPageState(JSON.parse(raw));
+  } catch (error) {
+    console.warn("Failed to load main page state.", error);
+    return normalizeDiscoveryPageState(null);
+  }
+}
+
+function shouldPersistMainPageState() {
+  return Boolean(
+    state.selectedFilmId ||
+      state.discovery.step !== "quiz" ||
+      state.discovery.dismissedIds.length
+  );
+}
+
+function saveMainPageState() {
+  try {
+    const storage = getLocalStorage();
+    if (!storage) {
+      return;
+    }
+
+    if (!shouldPersistMainPageState()) {
+      storage.removeItem(MAIN_PAGE_STATE_STORAGE_KEY);
+      return;
+    }
+
+    storage.setItem(
+      MAIN_PAGE_STATE_STORAGE_KEY,
+      JSON.stringify({
+        selectedFilmId: state.selectedFilmId,
+        expandedCardKey: state.expandedCardKey,
+        discovery: {
+          step: state.discovery.step,
+          answers: state.discovery.answers,
+          tasteProfile: state.discovery.tasteProfile,
+          dismissedIds: state.discovery.dismissedIds,
+          currentBatch: state.discovery.currentBatch,
+          batchHistory: state.discovery.batchHistory
+        }
+      })
+    );
+  } catch (error) {
+    console.warn("Failed to save main page state.", error);
+  }
+}
+
+const persistedMainPageState = loadMainPageState();
+
 const state = {
   curatedFilms: [],
   curatedSourceFilms: [],
+  discoveryFilms: [],
   quickPicks: [],
   metadataByTitle: {},
   recommendationBlurbsByPair: {},
@@ -9,25 +171,43 @@ const state = {
   sampleMovies: [],
   criterionClosetPicks: [],
   query: "",
-  selectedFilmId: null,
+  selectedFilmId: persistedMainPageState.selectedFilmId,
   selectedFilm: null,
-  expandedCardKey: "",
+  expandedCardKey: persistedMainPageState.expandedCardKey,
   recommendations: [],
+  discovery: {
+    step: persistedMainPageState.discovery.step,
+    answers: persistedMainPageState.discovery.answers,
+    tasteProfile: persistedMainPageState.discovery.tasteProfile,
+    bookmarkedIds: loadSavedFilmIds(),
+    dismissedIds: persistedMainPageState.discovery.dismissedIds,
+    currentBatch: persistedMainPageState.discovery.currentBatch,
+    batchHistory: persistedMainPageState.discovery.batchHistory
+  },
   loading: true,
   error: ""
 };
 
 const elements = {
+  savedFilmsList: document.querySelector("#saved-films-list"),
   movieSearch: document.querySelector("#movie-search"),
   addFirstMatch: document.querySelector("#add-first-match"),
   searchResults: document.querySelector("#search-results"),
   directorList: document.querySelector("#director-list"),
+  discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
   resetDirector: document.querySelector("#reset-director"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title")
 };
+
+const isSavedPage = Boolean(
+  typeof document !== "undefined" &&
+    document.body &&
+    document.body.classList &&
+    document.body.classList.contains("saved-page")
+);
 
 function shuffleList(values) {
   const shuffled = [...values];
@@ -36,6 +216,68 @@ function shuffleList(values) {
     [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
   }
   return shuffled;
+}
+
+const tasteQuizQuestions = [
+  {
+    id: "bw",
+    prompt: "Black & white films:",
+    answers: [
+      { id: "timeless", label: "Timeless" },
+      { id: "depends", label: "Depends" },
+      { id: "homework", label: "Homework" }
+    ]
+  },
+  {
+    id: "subtitles",
+    prompt: "Subtitles:",
+    answers: [
+      { id: "essential", label: "Essential" },
+      { id: "fine", label: "Fine if it's worth it" },
+      { id: "prefer_not", label: "Prefer not" }
+    ]
+  },
+  {
+    id: "slow",
+    prompt: "Slow films:",
+    answers: [
+      { id: "hypnotic", label: "Hypnotic" },
+      { id: "depends", label: "Depends" },
+      { id: "move_it", label: "Move it along" }
+    ]
+  },
+  {
+    id: "weird",
+    prompt: "Weirdness:",
+    answers: [
+      { id: "max", label: "As weird as it gets" },
+      { id: "medium", label: "A little strange is good" },
+      { id: "grounded", label: "Keep it grounded" }
+    ]
+  },
+  {
+    id: "craft_vs_feeling",
+    prompt: "What matters more:",
+    answers: [
+      { id: "craft", label: "How it's made" },
+      { id: "feeling", label: "How it makes me feel" }
+    ]
+  },
+  {
+    id: "ambiguity",
+    prompt: "Ambiguous endings:",
+    answers: [
+      { id: "love", label: "That's the point" },
+      { id: "sometimes", label: "Fine occasionally" },
+      { id: "clear", label: "Just tell me what happened" }
+    ]
+  }
+];
+
+function answerLabel(questionId, answerId) {
+  const question = tasteQuizQuestions.find((item) => item.id === questionId);
+  const answer = question?.answers.find((item) => item.id === answerId);
+  return answer?.label || "";
 }
 
 async function initRotatingFilmQuotes() {
@@ -140,6 +382,112 @@ function normalize(value) {
     .replace(/[’']/g, "")
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+}
+
+function mergeUniqueLists(...lists) {
+  const merged = new Map();
+
+  lists.flat().forEach((value) => {
+    const label = String(value || "").trim();
+    const key = normalize(label);
+    if (!key || merged.has(key)) {
+      return;
+    }
+    merged.set(key, label);
+  });
+
+  return Array.from(merged.values());
+}
+
+function createEmptyTasteProfile() {
+  return baseTasteProfile();
+}
+
+function scoreTasteProfile(answers) {
+  const profile = createEmptyTasteProfile();
+
+  switch (answers.bw) {
+    case "timeless":
+      profile.oldCinemaAffinity += 2;
+      break;
+    case "depends":
+      profile.oldCinemaAffinity += 1;
+      break;
+    case "homework":
+      profile.oldCinemaAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  switch (answers.subtitles) {
+    case "essential":
+      profile.worldCinemaAffinity += 2;
+      break;
+    case "fine":
+      profile.worldCinemaAffinity += 1;
+      break;
+    case "prefer_not":
+      profile.worldCinemaAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  switch (answers.slow) {
+    case "hypnotic":
+      profile.slowCinemaAffinity += 2;
+      break;
+    case "depends":
+      profile.slowCinemaAffinity += 1;
+      break;
+    case "move_it":
+      profile.slowCinemaAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  switch (answers.weird) {
+    case "max":
+      profile.weirdnessAffinity += 2;
+      break;
+    case "medium":
+      profile.weirdnessAffinity += 1;
+      break;
+    case "grounded":
+      profile.weirdnessAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  switch (answers.craft_vs_feeling) {
+    case "craft":
+      profile.craftAffinity += 2;
+      break;
+    case "feeling":
+      profile.craftAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  switch (answers.ambiguity) {
+    case "love":
+      profile.ambiguityAffinity += 2;
+      break;
+    case "sometimes":
+      profile.ambiguityAffinity += 1;
+      break;
+    case "clear":
+      profile.ambiguityAffinity -= 1;
+      break;
+    default:
+      break;
+  }
+
+  return profile;
 }
 
 function getSearchMatches() {
@@ -295,6 +643,15 @@ function makeLetterboxdUrl(title) {
   return `https://letterboxd.com/film/${makeLetterboxdSlug(title)}/`;
 }
 
+function renderPosterMarkup(title) {
+  const posterUrl = makePosterUrl(title);
+  if (posterUrl) {
+    return `<img class="poster-image" src="${posterUrl}" alt="Poster for ${title}" loading="lazy" />`;
+  }
+
+  return `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
+}
+
 function makePosterUrl(title) {
   const metadata = metadataForTitle(title);
   if (metadata?.poster_url) {
@@ -321,6 +678,38 @@ function synopsisForTitle(title) {
   }
 
   return "No extended synopsis available yet.";
+}
+
+function hasAvailabilityLinks(title) {
+  const availability = availabilityForTitle(title);
+  const retailerLinks = normalizedRetailerSearchLinks(
+    title,
+    availability?.physical_media?.retailer_search_links || []
+  );
+
+  return Boolean(
+    availability?.streaming?.providers?.length ||
+      availability?.physical_media?.ebay?.length ||
+      retailerLinks.length
+  );
+}
+
+function cardCoverageForTitle(title) {
+  const metadata = metadataForTitle(title);
+  const synopsis = synopsisForTitle(title);
+  const posterUrl = makePosterUrl(title);
+  const hasAverageRating = Boolean(metadata?.average_rating);
+  const hasSynopsis = synopsis !== "No extended synopsis available yet.";
+  const hasPoster = Boolean(posterUrl);
+  const hasAvailability = hasAvailabilityLinks(title);
+
+  return {
+    hasAverageRating,
+    hasSynopsis,
+    hasPoster,
+    hasAvailability,
+    isFull: hasAverageRating && hasSynopsis && hasPoster && hasAvailability
+  };
 }
 
 function cardKey(section, title) {
@@ -635,6 +1024,518 @@ function buildBidirectionalCuratedFilms(rawFilms) {
   return Array.from(graph.values()).sort((left, right) => left.title.localeCompare(right.title));
 }
 
+function buildDiscoveryFilmCatalog() {
+  const catalog = new Map();
+  const criterionTitles = [];
+  const criterionTitleKeys = new Set();
+
+  state.criterionClosetPicks.forEach((entry) => {
+    entry.picks.forEach((title) => {
+      const key = normalize(title);
+      if (criterionTitleKeys.has(key)) {
+        return;
+      }
+
+      criterionTitleKeys.add(key);
+      criterionTitles.push(title);
+    });
+  });
+
+  const allTitles = mergeUniqueLists(
+    state.curatedFilms.map((film) => film.title),
+    state.sampleMovies.map((film) => film.title),
+    criterionTitles
+  );
+
+  allTitles.forEach((titleOrKey) => {
+    const title =
+      state.curatedFilms.find((film) => normalize(film.title) === normalize(titleOrKey))?.title ||
+      state.sampleMovies.find((film) => normalize(film.title) === normalize(titleOrKey))?.title ||
+      Object.keys(state.tmdbMetadataByTitle).find((key) => normalize(key) === normalize(titleOrKey)) ||
+      titleOrKey;
+    const key = normalize(title);
+    const curated = byTitle(state.curatedFilms, title);
+    const sample = byTitle(state.sampleMovies, title);
+    const tmdb = tmdbMetadataForTitle(title) || {};
+    const metadata = metadataForTitle(title) || {};
+    const year = sample?.year || curated?.year || tmdb.year || metadata.year || inferYearForTitle(title);
+    const averageRating = Number.parseFloat(metadata.average_rating) || 0;
+    const coverage = cardCoverageForTitle(title);
+
+    catalog.set(key, {
+      id: curated?.film_id || sample?.id || titleToId(title, year),
+      title,
+      year,
+      director: sample?.director || tmdb.director || metadata.director || "",
+      countries: mergeUniqueLists(sample?.countries || []),
+      genres: mergeUniqueLists(sample?.genres || [], tmdb.genres || []),
+      themes: mergeUniqueLists(sample?.themes || []),
+      tone: mergeUniqueLists(sample?.tone || []),
+      tags: mergeUniqueLists(sample?.tags || [], tmdb.keywords || []),
+      manualLinks: dedupeTitles([...(curated?.manual_links || []), ...(sample?.manual_links || [])]),
+      editorialScore: sample?.editorial_score || 0,
+      elliottRating: curated?.elliott_rating || 0,
+      averageRating,
+      hasFullCardCoverage: coverage.isFull,
+      cardCoverage: coverage,
+      sourceKinds: mergeUniqueLists(
+        curated ? ["curated"] : [],
+        sample ? ["sample"] : [],
+        criterionTitleKeys.has(key) ? ["criterion"] : []
+      )
+    });
+  });
+
+  return Array.from(catalog.values()).filter((film) => film.title);
+}
+
+function getDiscoveryFilmById(filmId) {
+  return state.discoveryFilms.find((film) => film.id === filmId) || null;
+}
+
+function discoverySignalList(film) {
+  return [
+    ...film.tags,
+    ...film.tone,
+    ...film.themes,
+    ...film.genres
+  ].map(normalize);
+}
+
+function countMatches(values, signals) {
+  if (!values.length || !signals.length) {
+    return 0;
+  }
+
+  const signalSet = new Set(signals.map(normalize));
+  return values.reduce((total, value) => total + (signalSet.has(normalize(value)) ? 1 : 0), 0);
+}
+
+function discoveryBaseScore(film) {
+  let score = 0;
+
+  if (film.sourceKinds.includes("curated")) {
+    score += 5;
+  }
+  if (film.sourceKinds.includes("sample")) {
+    score += 4;
+  }
+  if (film.sourceKinds.includes("criterion")) {
+    score += 2;
+  }
+
+  score += Math.min(film.manualLinks.length, 5) * 1.2;
+  score += Math.min(film.editorialScore, 10) * 0.6;
+  score += Math.min(film.elliottRating || 0, 5) * 0.5;
+  score += Math.min(film.averageRating || 0, 5) * 0.35;
+
+  return score;
+}
+
+function scoreFilmForTasteProfile(film, tasteProfile) {
+  const signals = discoverySignalList(film);
+  let score = discoveryBaseScore(film);
+
+  if (film.year && film.year < 1970) {
+    score += tasteProfile.oldCinemaAffinity * 2;
+  } else if (film.year && film.year < 1990) {
+    score += tasteProfile.oldCinemaAffinity;
+  }
+
+  const countries = film.countries.map(normalize);
+  const nonEnglishLanguageWorldCinema = countries.filter(
+    (country) => !["usa", "united states", "uk", "united kingdom", "england"].includes(country)
+  );
+  if (nonEnglishLanguageWorldCinema.length) {
+    score += tasteProfile.worldCinemaAffinity * 2;
+  } else if (countries.length && !countries.includes("usa") && !countries.includes("united states")) {
+    score += tasteProfile.worldCinemaAffinity;
+  }
+
+  score += countMatches(signals, [
+    "hypnotic",
+    "sleepy",
+    "lyrical",
+    "immersive",
+    "observant",
+    "drifting",
+    "interiority"
+  ]) * tasteProfile.slowCinemaAffinity;
+
+  score += countMatches(signals, [
+    "surreal",
+    "dreamlike",
+    "off kilter",
+    "mysterious",
+    "symbolic",
+    "body horror",
+    "madness",
+    "provocative",
+    "cult horror",
+    "cult favorite"
+  ]) * tasteProfile.weirdnessAffinity;
+
+  score += countMatches(signals, [
+    "formal beauty",
+    "art film",
+    "art cinema",
+    "precise",
+    "austere",
+    "physical performance",
+    "creative life"
+  ]) * tasteProfile.craftAffinity;
+
+  score += countMatches(signals, [
+    "mysterious",
+    "symbolic",
+    "surreal",
+    "dreamlike",
+    "interiority",
+    "spiritual crisis"
+  ]) * tasteProfile.ambiguityAffinity;
+
+  return score;
+}
+
+function scoreFilmFromBookmarks(film, bookmarkedIds) {
+  const bookmarkedFilms = bookmarkedIds
+    .map((filmId) => getDiscoveryFilmById(filmId))
+    .filter(Boolean);
+
+  if (!bookmarkedFilms.length) {
+    return { score: 0, seedTitle: "" };
+  }
+
+  let score = 0;
+  let bestSeedTitle = "";
+  let bestPairScore = -Infinity;
+
+  bookmarkedFilms.forEach((bookmarkedFilm) => {
+    let pairScore = 0;
+
+    if (film.director && bookmarkedFilm.director && normalize(film.director) === normalize(bookmarkedFilm.director)) {
+      pairScore += 4;
+    }
+
+    pairScore += countMatches(film.genres, bookmarkedFilm.genres) * 1.4;
+    pairScore += countMatches(film.themes, bookmarkedFilm.themes) * 2;
+    pairScore += countMatches(film.tone, bookmarkedFilm.tone) * 1.7;
+    pairScore += countMatches(film.tags, bookmarkedFilm.tags) * 1.2;
+    pairScore += countMatches(film.countries, bookmarkedFilm.countries);
+
+    if (film.manualLinks.some((title) => normalize(title) === normalize(bookmarkedFilm.title))) {
+      pairScore += 3;
+    }
+    if (bookmarkedFilm.manualLinks.some((title) => normalize(title) === normalize(film.title))) {
+      pairScore += 3;
+    }
+
+    if (film.year && bookmarkedFilm.year) {
+      const yearGap = Math.abs(film.year - bookmarkedFilm.year);
+      if (yearGap <= 6) {
+        pairScore += 1.5;
+      } else if (eraBucket(film.year) === eraBucket(bookmarkedFilm.year)) {
+        pairScore += 1;
+      }
+    }
+
+    if (recommendationBlurbForPair(bookmarkedFilm.title, film.title)) {
+      pairScore += 2;
+    }
+
+    score += pairScore;
+
+    if (pairScore > bestPairScore) {
+      bestPairScore = pairScore;
+      bestSeedTitle = bookmarkedFilm.title;
+    }
+  });
+
+  return {
+    score,
+    seedTitle: bestSeedTitle
+  };
+}
+
+function pickScoredFilms(scoredFilms, count, usedIds) {
+  const picks = [];
+  const pickedDirectors = new Set();
+
+  [true, false].forEach((avoidDirectorRepeat) => {
+    scoredFilms.forEach((item) => {
+      if (picks.length >= count || usedIds.has(item.film.id)) {
+        return;
+      }
+
+      const directorKey = normalize(item.film.director);
+      if (avoidDirectorRepeat && directorKey && pickedDirectors.has(directorKey)) {
+        return;
+      }
+
+      picks.push(item);
+      usedIds.add(item.film.id);
+      if (directorKey) {
+        pickedDirectors.add(directorKey);
+      }
+    });
+  });
+
+  return picks.slice(0, count);
+}
+
+function describeTasteBridge(film, tasteProfile) {
+  const descriptors = [];
+  const signals = discoverySignalList(film);
+
+  if (tasteProfile.oldCinemaAffinity > 0 && film.year && film.year < 1990) {
+    descriptors.push("older cinema");
+  }
+
+  if (tasteProfile.worldCinemaAffinity > 0) {
+    const countries = film.countries.map(normalize);
+    if (countries.some((country) => !["usa", "united states", "uk", "united kingdom", "england"].includes(country))) {
+      descriptors.push("world cinema");
+    }
+  }
+
+  if (
+    tasteProfile.slowCinemaAffinity > 0 &&
+    countMatches(signals, ["hypnotic", "lyrical", "immersive", "sleepy", "observant", "interiority"])
+  ) {
+    descriptors.push("quieter, more hypnotic films");
+  }
+
+  if (
+    tasteProfile.weirdnessAffinity > 0 &&
+    countMatches(signals, ["surreal", "dreamlike", "off kilter", "mysterious", "symbolic", "madness"])
+  ) {
+    descriptors.push("stranger edges");
+  }
+
+  if (
+    tasteProfile.craftAffinity > 0 &&
+    countMatches(signals, ["formal beauty", "art film", "art cinema", "precise", "austere"])
+  ) {
+    descriptors.push("form and texture");
+  }
+
+  if (
+    tasteProfile.ambiguityAffinity > 0 &&
+    countMatches(signals, ["mysterious", "symbolic", "surreal", "dreamlike", "interiority"])
+  ) {
+    descriptors.push("open-ended moods");
+  }
+
+  return descriptors.slice(0, 2);
+}
+
+function discoveryAnswerSignals(answers) {
+  const signals = [];
+
+  if (answers.subtitles === "essential") {
+    signals.push("subtitles are essential");
+  } else if (answers.subtitles === "fine") {
+    signals.push("subtitles are worth it when the film earns them");
+  }
+
+  if (answers.slow === "hypnotic") {
+    signals.push("you like films with a hypnotic pace");
+  } else if (answers.slow === "depends") {
+    signals.push("you are open to slower films when the mood is right");
+  }
+
+  if (answers.weird === "max") {
+    signals.push("you want the stranger end of the spectrum");
+  } else if (answers.weird === "medium") {
+    signals.push("you like a little strangeness");
+  }
+
+  if (answers.bw === "timeless") {
+    signals.push("older cinema feels timeless to you");
+  } else if (answers.bw === "depends") {
+    signals.push("you will go with older films when the pull is strong");
+  }
+
+  if (answers.craft_vs_feeling === "craft") {
+    signals.push("form and craft matter to you");
+  } else if (answers.craft_vs_feeling === "feeling") {
+    signals.push("emotional impact matters most");
+  }
+
+  if (answers.ambiguity === "love") {
+    signals.push("you enjoy ambiguity");
+  } else if (answers.ambiguity === "sometimes") {
+    signals.push("you can go with ambiguity in the right film");
+  }
+
+  return signals.slice(0, 2);
+}
+
+function formatDiscoveryRationale(parts, ending) {
+  const cleanParts = parts.filter(Boolean);
+
+  if (!cleanParts.length) {
+    return ending;
+  }
+
+  if (cleanParts.length === 1) {
+    return `${cleanParts[0]}, so ${ending}`;
+  }
+
+  return `${cleanParts[0]} and ${cleanParts[1]}, so ${ending}`;
+}
+
+function buildDiscoveryRationale(film, context) {
+  const answerSignals = discoveryAnswerSignals(state.discovery.answers);
+  const descriptors = describeTasteBridge(film, context.tasteProfile);
+
+  if (context.seedTitle) {
+    const seedFilm = state.discoveryFilms.find((item) => normalize(item.title) === normalize(context.seedTitle));
+    const sharedMood =
+      seedFilm && (countMatches(film.tone, seedFilm.tone) || countMatches(film.themes, seedFilm.themes));
+    const seedClause = `you bookmarked ${context.seedTitle}`;
+    const tasteClause = answerSignals[0] || descriptors[0] || "";
+
+    if (sharedMood) {
+      return formatDiscoveryRationale(
+        [seedClause, tasteClause],
+        `${film.title} keeps some of that same mood while nudging you somewhere new.`
+      );
+    }
+
+    return formatDiscoveryRationale(
+      [seedClause, tasteClause],
+      `${film.title} felt like a strong next step for this batch.`
+    );
+  }
+
+  if (context.bucket === "wildcard") {
+    return formatDiscoveryRationale(
+      answerSignals,
+      `${film.title} is the wildcard here to keep some surprise in the mix.`
+    );
+  }
+
+  if (context.bucket === "stretch" && descriptors.length) {
+    return formatDiscoveryRationale(
+      [answerSignals[0], descriptors[0]],
+      `${film.title} reaches a little further without losing the thread of your answers.`
+    );
+  }
+
+  if (descriptors.length || answerSignals.length) {
+    return formatDiscoveryRationale(
+      [answerSignals[0], descriptors[0]],
+      `${film.title} felt like a strong fit for the taste profile you just gave us.`
+    );
+  }
+
+  return context.mode === "refined"
+    ? `${film.title} is a sharper follow-on based on what you saved.`
+    : `${film.title} is a broad discovery pick to open up the field.`;
+}
+
+function finalizeDiscoveryBatch(picks, context) {
+  return picks.map((item) => ({
+    filmId: item.film.id,
+    rationale: buildDiscoveryRationale(item.film, {
+      ...context,
+      bucket: item.bucket,
+      seedTitle: item.seedTitle
+    }),
+    bucket: item.bucket,
+    seedTitle: item.seedTitle || ""
+  }));
+}
+
+function getInitialDiscoveryBatch({ tasteProfile, allFilms, excludedIds = [] }) {
+  const excludedSet = new Set(excludedIds);
+  const eligibleFilms = allFilms.filter((film) => film.hasFullCardCoverage);
+  const scored = eligibleFilms
+    .filter((film) => !excludedSet.has(film.id))
+    .map((film) => ({
+      film,
+      score: scoreFilmForTasteProfile(film, tasteProfile),
+      baseScore: discoveryBaseScore(film)
+    }))
+    .sort((left, right) => right.score - left.score || right.baseScore - left.baseScore);
+
+  const usedIds = new Set();
+  const aligned = pickScoredFilms(scored.slice(0, 18), 5, usedIds).map((item) => ({
+    ...item,
+    bucket: "aligned"
+  }));
+  const stretch = pickScoredFilms(scored.slice(5, 32), 3, usedIds).map((item) => ({
+    ...item,
+    bucket: "stretch"
+  }));
+  const wildcardPool = shuffleList(scored.slice(10, 42));
+  const wildcard = pickScoredFilms(wildcardPool, 1, usedIds).map((item) => ({
+    ...item,
+    bucket: "wildcard"
+  }));
+  const fallback = pickScoredFilms(scored, 9 - aligned.length - stretch.length - wildcard.length, usedIds).map((item) => ({
+    ...item,
+    bucket: "aligned"
+  }));
+
+  return finalizeDiscoveryBatch([...aligned, ...stretch, ...wildcard, ...fallback].slice(0, 9), {
+    mode: "initial",
+    tasteProfile
+  });
+}
+
+function getRefinedDiscoveryBatch({
+  tasteProfile,
+  bookmarkedIds,
+  dismissedIds,
+  allFilms,
+  excludedIds = []
+}) {
+  const excludedSet = new Set([...dismissedIds, ...excludedIds]);
+  const eligibleFilms = allFilms.filter((film) => film.hasFullCardCoverage);
+  const scored = eligibleFilms
+    .filter((film) => !excludedSet.has(film.id))
+    .map((film) => {
+      const tasteScore = scoreFilmForTasteProfile(film, tasteProfile);
+      const bookmarkScore = scoreFilmFromBookmarks(film, bookmarkedIds);
+      const score = tasteScore + bookmarkScore.score * 1.6;
+
+      return {
+        film,
+        score,
+        baseScore: discoveryBaseScore(film),
+        seedTitle: bookmarkScore.seedTitle
+      };
+    })
+    .sort((left, right) => right.score - left.score || right.baseScore - left.baseScore);
+
+  const usedIds = new Set();
+  const aligned = pickScoredFilms(scored.slice(0, 18), 6, usedIds).map((item) => ({
+    ...item,
+    bucket: "aligned"
+  }));
+  const stretch = pickScoredFilms(scored.slice(6, 34), 2, usedIds).map((item) => ({
+    ...item,
+    bucket: "stretch"
+  }));
+  const wildcardPool = shuffleList(scored.slice(12, 44));
+  const wildcard = pickScoredFilms(wildcardPool, 1, usedIds).map((item) => ({
+    ...item,
+    bucket: "wildcard",
+    seedTitle: ""
+  }));
+  const fallback = pickScoredFilms(scored, 9 - aligned.length - stretch.length - wildcard.length, usedIds).map((item) => ({
+    ...item,
+    bucket: "aligned"
+  }));
+
+  return finalizeDiscoveryBatch([...aligned, ...stretch, ...wildcard, ...fallback].slice(0, 9), {
+    mode: "refined",
+    tasteProfile
+  });
+}
+
 function describeSearchMatch(film) {
   const year = film.year || "Year unknown";
   const director = directorForTitle(film.title);
@@ -821,8 +1722,47 @@ function addFilm(filmId) {
   state.recommendations = getHybridRecommendations(film);
   state.expandedCardKey = "";
   state.query = "";
-  elements.movieSearch.value = "";
+  if (elements.movieSearch) {
+    elements.movieSearch.value = "";
+  }
+  saveMainPageState();
   render();
+}
+
+function restoreSelectedFilmState() {
+  if (!state.selectedFilmId) {
+    return false;
+  }
+
+  let film = state.curatedFilms.find((item) => item.film_id === state.selectedFilmId);
+
+  if (!film) {
+    const sampleFilm = state.sampleMovies.find(
+      (item) => (item.id || titleToId(item.title, item.year)) === state.selectedFilmId
+    );
+    if (sampleFilm) {
+      film = {
+        film_id: sampleFilm.id || titleToId(sampleFilm.title, sampleFilm.year),
+        title: sampleFilm.title,
+        year: sampleFilm.year,
+        elliott_rating: null,
+        manual_links: [],
+        sourceType: "sample"
+      };
+    }
+  }
+
+  if (!film) {
+    state.selectedFilmId = null;
+    state.selectedFilm = null;
+    state.recommendations = [];
+    saveMainPageState();
+    return false;
+  }
+
+  state.selectedFilm = film;
+  state.recommendations = getHybridRecommendations(film);
+  return true;
 }
 
 function openRecommendationsForTitle(title) {
@@ -860,7 +1800,10 @@ function openRecommendationsForTitle(title) {
   state.recommendations = getHybridRecommendations(film);
   state.expandedCardKey = "";
   state.query = "";
-  elements.movieSearch.value = "";
+  if (elements.movieSearch) {
+    elements.movieSearch.value = "";
+  }
+  saveMainPageState();
   render();
 }
 
@@ -869,11 +1812,13 @@ function clearSelectedFilm() {
   state.selectedFilm = null;
   state.expandedCardKey = "";
   state.recommendations = [];
+  saveMainPageState();
   render();
 }
 
 function toggleExpandedCard(key) {
   state.expandedCardKey = state.expandedCardKey === key ? "" : key;
+  saveMainPageState();
   renderRecommendations();
 }
 
@@ -965,6 +1910,10 @@ function renderAvailabilityPanel(title) {
 }
 
 function renderSearchResults() {
+  if (!elements.searchResults) {
+    return;
+  }
+
   if (state.loading) {
     elements.searchResults.innerHTML = `
       <div class="empty-state">
@@ -1027,6 +1976,10 @@ function refreshQuickPicks() {
 }
 
 function renderQuickPicks() {
+  if (!elements.directorList) {
+    return;
+  }
+
   if (state.loading || state.error) {
     elements.directorList.innerHTML = "";
     return;
@@ -1047,6 +2000,148 @@ function renderQuickPicks() {
     .join("");
 }
 
+function renderDiscoveryBookmarks() {
+  if (!elements.discoveryBookmarks) {
+    return;
+  }
+
+  if (state.loading || state.error) {
+    elements.discoveryBookmarks.innerHTML = "";
+    return;
+  }
+
+  const savedCount = state.discovery.bookmarkedIds.length;
+
+  elements.discoveryBookmarks.innerHTML = `
+    <a class="card-link-button saved-sidebar-button" href="./saved.html">Your saved films</a>
+    <p class="saved-sidebar-summary">${savedCount ? `${savedCount} saved so far.` : "Nothing saved yet."}</p>
+  `;
+}
+
+function getSavedFilms() {
+  return normalizeSavedFilmIds(state.discovery.bookmarkedIds)
+    .map((filmId) => getDiscoveryFilmById(filmId))
+    .filter(Boolean);
+}
+
+function savedFilmReason(film) {
+  const fromDiscovery = state.discovery.currentBatch.find((item) => item.filmId === film.id);
+  if (fromDiscovery?.rationale) {
+    return fromDiscovery.rationale;
+  }
+
+  return "You saved this from your discovery shortlist.";
+}
+
+function renderSavedFilmDetail(title, reason) {
+  const posterMarkup = renderPosterMarkup(title);
+  const letterboxdUrl = makeLetterboxdUrl(title);
+
+  return `
+    <div class="saved-film-row__detail">
+      <div class="poster-block">
+        ${posterMarkup}
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">${title}</h3>
+        ${renderExpandedPanel(title, reason)}
+        <div class="card-actions">
+          <a class="card-link-button" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderSavedFilmsPage() {
+  if (!elements.savedFilmsList) {
+    return;
+  }
+
+  if (state.loading) {
+    elements.savedFilmsList.innerHTML = `
+      <div class="empty-state">
+        <h3>Loading saved films</h3>
+        <p>Pulling together your shortlist.</p>
+      </div>
+    `;
+    return;
+  }
+
+  if (state.error) {
+    elements.savedFilmsList.innerHTML = `
+      <div class="empty-state">
+        <h3>Couldn't load saved films</h3>
+        <p>${state.error}</p>
+      </div>
+    `;
+    return;
+  }
+
+  const savedFilms = getSavedFilms();
+
+  if (!savedFilms.length) {
+    elements.savedFilmsList.innerHTML = `
+      <div class="empty-state saved-films-empty-state">
+        <h3>No saved films yet</h3>
+        <p>Bookmark films from the discovery page and they will show up here.</p>
+        <a class="card-link-button saved-films-empty-state__link" href="./index.html">Back to discovery</a>
+      </div>
+    `;
+    return;
+  }
+
+  elements.savedFilmsList.innerHTML = `
+    <div class="saved-films-list">
+      ${savedFilms
+        .map((film) => {
+          const detailKey = cardKey("saved", film.title);
+          const expanded = state.expandedCardKey === detailKey;
+          const director = film.director || directorForTitle(film.title) || "Director unknown";
+
+          return `
+            <article class="saved-film-row ${expanded ? "saved-film-row-expanded" : ""}" data-saved-film="${film.id}">
+              <div class="saved-film-row__summary">
+                <div class="saved-film-row__meta">
+                  <h2 class="saved-film-row__title">${film.title}</h2>
+                  <p class="saved-film-row__subline">${film.year || "Year unknown"} • ${director}</p>
+                </div>
+                <div class="saved-film-row__actions">
+                  <button class="card-link-button card-link-button-tertiary saved-film-row__toggle" type="button" data-saved-toggle="${detailKey}">
+                    ${expanded ? "See less" : "See more"}
+                  </button>
+                  <button class="card-link-button saved-film-row__unsave" type="button" data-saved-unsave="${film.id}">
+                    Unsave
+                  </button>
+                </div>
+              </div>
+              ${expanded ? renderSavedFilmDetail(film.title, savedFilmReason(film)) : ""}
+            </article>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  elements.savedFilmsList.querySelectorAll("[data-saved-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.savedToggle;
+      state.expandedCardKey = state.expandedCardKey === key ? "" : key;
+      renderSavedFilmsPage();
+    });
+  });
+
+  elements.savedFilmsList.querySelectorAll("[data-saved-unsave]").forEach((button) => {
+    button.addEventListener("click", () => {
+      toggleDiscoveryBookmark(button.dataset.savedUnsave);
+      if (state.expandedCardKey === cardKey("saved", getDiscoveryFilmById(button.dataset.savedUnsave)?.title || "")) {
+        state.expandedCardKey = "";
+      }
+      renderSavedFilmsPage();
+    });
+  });
+}
+
 function monogramForTitle(title) {
   return title
     .split(" ")
@@ -1056,12 +2151,327 @@ function monogramForTitle(title) {
     .toUpperCase();
 }
 
+function renderExpandedPanel(title, reason) {
+  const metadata = metadataForTitle(title);
+  const availabilityPanel = renderAvailabilityPanel(title);
+  const letterboxdAverage = metadata?.average_rating || "Not available";
+
+  return `
+    <div class="card-expanded-panel">
+      <div class="expanded-stats">
+        <div class="expanded-stat">
+          <span class="expanded-stat-label">Average Letterboxd rating</span>
+          <strong>${letterboxdAverage}</strong>
+        </div>
+      </div>
+      <div class="expanded-reason">
+        <span class="expanded-reason-label">AI take on the fit</span>
+        <p class="expanded-reason-copy">${reason}</p>
+      </div>
+      ${availabilityPanel}
+      <p class="expanded-copy">${synopsisForTitle(title)}</p>
+    </div>
+  `;
+}
+
+function handleTasteQuizAnswer(questionId, answerId) {
+  state.discovery.answers[questionId] = answerId;
+  renderRecommendations();
+}
+
+function completeQuizAndGenerateFirstBatch() {
+  state.discovery.tasteProfile = scoreTasteProfile(state.discovery.answers);
+  state.discovery.currentBatch = getInitialDiscoveryBatch({
+    tasteProfile: state.discovery.tasteProfile,
+    allFilms: state.discoveryFilms,
+    excludedIds: []
+  });
+  state.discovery.batchHistory = [state.discovery.currentBatch.map((item) => item.filmId)];
+  state.discovery.step = "grid1";
+  state.expandedCardKey = "";
+
+  console.log("[taste-discovery] quiz complete", {
+    answers: state.discovery.answers,
+    tasteProfile: state.discovery.tasteProfile,
+    batchIds: state.discovery.currentBatch.map((item) => item.filmId)
+  });
+
+  saveMainPageState();
+  renderRecommendations();
+}
+
+function toggleDiscoveryBookmark(filmId) {
+  if (state.discovery.bookmarkedIds.includes(filmId)) {
+    state.discovery.bookmarkedIds = state.discovery.bookmarkedIds.filter((id) => id !== filmId);
+  } else {
+    state.discovery.bookmarkedIds = [filmId, ...state.discovery.bookmarkedIds];
+  }
+
+  saveSavedFilmIds(state.discovery.bookmarkedIds);
+  saveMainPageState();
+
+  console.log("[taste-discovery] bookmark", {
+    filmId,
+    bookmarkedIds: state.discovery.bookmarkedIds
+  });
+}
+
+function toggleDiscoveryDismiss(filmId) {
+  if (state.discovery.dismissedIds.includes(filmId)) {
+    state.discovery.dismissedIds = state.discovery.dismissedIds.filter((id) => id !== filmId);
+  } else {
+    state.discovery.dismissedIds = [...state.discovery.dismissedIds, filmId];
+  }
+
+  state.discovery.bookmarkedIds = state.discovery.bookmarkedIds.filter((id) => id !== filmId);
+  saveSavedFilmIds(state.discovery.bookmarkedIds);
+  saveMainPageState();
+
+  console.log("[taste-discovery] not-for-me", {
+    filmId,
+    dismissedIds: state.discovery.dismissedIds
+  });
+}
+
+function advanceDiscovery() {
+  const excludedIds = state.discovery.batchHistory.flat();
+  state.discovery.currentBatch = getRefinedDiscoveryBatch({
+    tasteProfile: state.discovery.tasteProfile,
+    bookmarkedIds: state.discovery.bookmarkedIds,
+    dismissedIds: state.discovery.dismissedIds,
+    allFilms: state.discoveryFilms,
+    excludedIds
+  });
+  state.discovery.batchHistory = [
+    ...state.discovery.batchHistory,
+    state.discovery.currentBatch.map((item) => item.filmId)
+  ];
+  state.discovery.step = "grid2";
+  state.expandedCardKey = "";
+
+  console.log("[taste-discovery] batch generated", {
+    step: state.discovery.step,
+    bookmarkedIds: state.discovery.bookmarkedIds,
+    dismissedIds: state.discovery.dismissedIds,
+    batchIds: state.discovery.currentBatch.map((item) => item.filmId)
+  });
+
+  saveMainPageState();
+  renderRecommendations();
+}
+
+function renderTasteQuiz() {
+  renderDiscoveryBookmarks();
+  elements.clearRecommendations.hidden = true;
+  elements.resultsTitle.textContent = "Taste discovery";
+  elements.resultsGrid.innerHTML = `
+    <section class="results-grid-span taste-quiz-shell" data-discovery-step="quiz">
+      <div class="taste-quiz-intro">
+        <p class="eyebrow">Onboarding</p>
+        <h3>Teach us your film taste</h3>
+        <p class="results-subtitle">Six quick questions, then we will open with a broad grid of films to explore.</p>
+      </div>
+      <div class="taste-quiz-list">
+        ${tasteQuizQuestions
+          .map((question) => {
+            const selectedAnswer = state.discovery.answers[question.id];
+
+            return `
+              <section class="taste-quiz-question" data-quiz-question="${question.id}">
+                <div class="taste-quiz-question__head">
+                  <span class="taste-quiz-question__count">${question.id.toUpperCase()}</span>
+                  <h4>${question.prompt}</h4>
+                </div>
+                <div class="taste-quiz-answers">
+                  ${question.answers
+                    .map(
+                      (answer) => `
+                        <button
+                          class="taste-quiz-answer ${selectedAnswer === answer.id ? "is-selected" : ""}"
+                          type="button"
+                          data-quiz-answer="${question.id}::${answer.id}"
+                        >
+                          ${answer.label}
+                        </button>
+                      `
+                    )
+                    .join("")}
+                </div>
+              </section>
+            `;
+          })
+          .join("")}
+      </div>
+      <div class="taste-quiz-footer">
+        <p class="taste-quiz-footer__copy">${Object.keys(state.discovery.answers).length} of ${tasteQuizQuestions.length} answered</p>
+        <button
+          id="taste-quiz-submit"
+          class="ghost-button taste-quiz-submit"
+          type="button"
+          ${Object.keys(state.discovery.answers).length < tasteQuizQuestions.length ? "disabled" : ""}
+        >
+          Show me films
+        </button>
+      </div>
+    </section>
+  `;
+  elements.criterionSection.innerHTML = "";
+
+  elements.resultsGrid.querySelectorAll("[data-quiz-answer]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const [questionId, answerId] = button.dataset.quizAnswer.split("::");
+      handleTasteQuizAnswer(questionId, answerId);
+    });
+  });
+
+  elements.resultsGrid.querySelector("#taste-quiz-submit")?.addEventListener("click", () => {
+    completeQuizAndGenerateFirstBatch();
+  });
+}
+
+function renderDiscoveryGrid() {
+  renderDiscoveryBookmarks();
+  elements.clearRecommendations.hidden = true;
+
+  const batchItems = state.discovery.currentBatch
+    .map((item) => ({
+      ...item,
+      film: getDiscoveryFilmById(item.filmId)
+    }))
+    .filter((item) => item.film);
+
+  const isRefined = state.discovery.step === "grid2";
+  const headerTitle = isRefined ? "Getting warmer" : "A first pass at your taste";
+  const headerCopy = isRefined
+    ? "Bookmark what lands. Use Not for me lightly, and we will keep some surprise in the mix."
+    : "Bookmark anything that pulls you in. We will use those saves to sharpen the next nine.";
+  const continueLabel = isRefined ? "Keep exploring" : "Refine these picks";
+
+  elements.resultsTitle.textContent = "Taste discovery";
+  elements.resultsGrid.innerHTML = `
+    <section class="results-grid-span discovery-shell" data-discovery-step="${state.discovery.step}">
+      <div class="discovery-shell__head">
+        <div>
+          <p class="eyebrow">Discovery</p>
+          <h3>${headerTitle}</h3>
+        </div>
+        <p class="results-subtitle">${headerCopy}</p>
+      </div>
+      <div class="discovery-grid-cards">
+        ${batchItems
+          .map((item) => {
+            const film = item.film;
+            const title = film.title;
+            const key = cardKey("discovery", `${state.discovery.step}:${title}`);
+            const expanded = state.expandedCardKey === key;
+            const posterUrl = makePosterUrl(title);
+            const posterMarkup = posterUrl
+              ? `<img class="poster-image" src="${posterUrl}" alt="Poster for ${title}" loading="lazy" />`
+              : `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
+            const letterboxdUrl = makeLetterboxdUrl(title);
+            const year = film.year ? `<span>${film.year}</span>` : "";
+            const director = film.director ? `<span>${film.director}</span>` : "";
+            const isBookmarked = state.discovery.bookmarkedIds.includes(film.id);
+            const isDismissed = state.discovery.dismissedIds.includes(film.id);
+
+            return `
+              <article
+                class="result-card discovery-card ${expanded ? "result-card-expanded" : ""} ${isDismissed ? "discovery-card-dismissed" : ""}"
+                data-discovery-card="${film.id}"
+              >
+                <div class="poster-block">
+                  ${posterMarkup}
+                </div>
+                <div class="card-body">
+                  <div class="discovery-card__meta">
+                    <h4 class="card-title">${title}</h4>
+                    <p class="match-meta">${[year, director].filter(Boolean).join(" • ")}</p>
+                    <p class="discovery-card__rationale">${item.rationale}</p>
+                  </div>
+                  ${expanded ? renderExpandedPanel(title, item.rationale) : ""}
+                  <div class="card-actions">
+                    <button class="card-link-button discovery-action-button ${isBookmarked ? "is-active" : ""}" type="button" data-discovery-bookmark="${film.id}">
+                      ${isBookmarked ? "Saved" : "Bookmark"}
+                    </button>
+                    ${
+                      isRefined
+                        ? `
+                          <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-discovery-dismiss="${film.id}">
+                            ${isDismissed ? "Undo not for me" : "Not for me"}
+                          </button>
+                        `
+                        : ""
+                    }
+                    <a class="card-link-button card-link-button-secondary" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
+                    <button class="card-link-button card-link-button-tertiary" type="button" data-discovery-toggle="${key}">
+                      ${expanded ? "See less" : "See more"}
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
+      <div class="discovery-shell__footer">
+        <p class="discovery-shell__summary">${state.discovery.bookmarkedIds.length} saved • ${state.discovery.dismissedIds.length} not for me</p>
+        <button class="ghost-button discovery-shell__continue" type="button" data-discovery-continue>${continueLabel}</button>
+      </div>
+    </section>
+  `;
+  elements.criterionSection.innerHTML = "";
+
+  elements.resultsGrid.querySelectorAll("[data-discovery-bookmark]").forEach((button) => {
+    button.addEventListener("click", () => {
+      toggleDiscoveryBookmark(button.dataset.discoveryBookmark);
+      renderDiscoveryGrid();
+    });
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-discovery-dismiss]").forEach((button) => {
+    button.addEventListener("click", () => {
+      toggleDiscoveryDismiss(button.dataset.discoveryDismiss);
+      renderDiscoveryGrid();
+    });
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-discovery-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextKey = button.dataset.discoveryToggle;
+      const isOpening = state.expandedCardKey !== nextKey;
+      state.expandedCardKey = isOpening ? nextKey : "";
+      if (isOpening) {
+        console.log("[taste-discovery] detail expand", { key: nextKey });
+      }
+      renderDiscoveryGrid();
+    });
+  });
+
+  elements.resultsGrid.querySelector("[data-discovery-continue]")?.addEventListener("click", () => {
+    advanceDiscovery();
+  });
+}
+
 function renderRecommendations() {
+  if (!elements.resultsGrid || !elements.resultsTitle || !elements.criterionSection || isSavedPage) {
+    return;
+  }
+
   if (!state.selectedFilm) {
+    if (!state.loading && !state.error) {
+      if (state.discovery.step === "quiz") {
+        renderTasteQuiz();
+        return;
+      }
+
+      renderDiscoveryGrid();
+      return;
+    }
+
     elements.clearRecommendations.hidden = true;
     elements.resultsTitle.textContent = "Recommendations";
     elements.resultsGrid.innerHTML = `
-      <div class="empty-state recommendations-empty-state">
+      <div class="empty-state recommendations-empty-state results-grid-span">
         <p>
           Select a film you've watched, and recommendations will appear here. Curated by us, with some AI magic.
         </p>
@@ -1238,8 +2648,14 @@ function renderRecommendations() {
 }
 
 function render() {
+  if (isSavedPage) {
+    renderSavedFilmsPage();
+    return;
+  }
+
   renderSearchResults();
   renderQuickPicks();
+  renderDiscoveryBookmarks();
   renderRecommendations();
 }
 
@@ -1293,6 +2709,7 @@ async function loadCuratedFilms() {
       graphOrigin: "source"
     }));
     state.curatedFilms = buildBidirectionalCuratedFilms(state.curatedSourceFilms);
+    state.discoveryFilms = buildDiscoveryFilmCatalog();
     state.quickPicks = shuffleList(state.curatedSourceFilms).slice(0, 12);
   } catch (error) {
     state.error = "The curated film file could not be loaded. Make sure the local server is running.";
@@ -1302,45 +2719,57 @@ async function loadCuratedFilms() {
   }
 }
 
-elements.movieSearch.addEventListener("input", (event) => {
-  state.query = event.target.value;
-  renderSearchResults();
-});
+if (elements.movieSearch) {
+  elements.movieSearch.addEventListener("input", (event) => {
+    state.query = event.target.value;
+    renderSearchResults();
+  });
+}
 
-elements.addFirstMatch.addEventListener("click", () => {
-  const firstMatch = getSearchMatches()[0];
-  if (!firstMatch) {
-    return;
-  }
+if (elements.addFirstMatch) {
+  elements.addFirstMatch.addEventListener("click", () => {
+    const firstMatch = getSearchMatches()[0];
+    if (!firstMatch) {
+      return;
+    }
 
-  addFilm(firstMatch.film_id);
-});
+    addFilm(firstMatch.film_id);
+  });
+}
 
-elements.searchResults.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-add-film]");
-  if (!button) {
-    return;
-  }
+if (elements.searchResults) {
+  elements.searchResults.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-add-film]");
+    if (!button) {
+      return;
+    }
 
-  addFilm(button.dataset.addFilm);
-});
+    addFilm(button.dataset.addFilm);
+  });
+}
 
-elements.directorList.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-quick-pick]");
-  if (!button) {
-    return;
-  }
+if (elements.directorList) {
+  elements.directorList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-quick-pick]");
+    if (!button) {
+      return;
+    }
 
-  addFilm(button.dataset.quickPick);
-});
+    addFilm(button.dataset.quickPick);
+  });
+}
 
-elements.resetDirector.addEventListener("click", () => {
-  refreshQuickPicks();
-});
+if (elements.resetDirector) {
+  elements.resetDirector.addEventListener("click", () => {
+    refreshQuickPicks();
+  });
+}
 
-elements.clearRecommendations.addEventListener("click", () => {
-  clearSelectedFilm();
-});
+if (elements.clearRecommendations) {
+  elements.clearRecommendations.addEventListener("click", () => {
+    clearSelectedFilm();
+  });
+}
 
 render();
 loadCuratedFilms();

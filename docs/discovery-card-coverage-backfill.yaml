@@ -1,0 +1,40 @@
+how_to_use:
+  - "Paste titles from these lists back into Codex and ask it to propagate them through the existing JSON files."
+  - "For curated titles, the usual propagation targets are data/film-metadata.json and, if needed, data/availability.json."
+  - "For discovery/sample titles, the usual propagation targets are data/film-metadata.json and data/tmdb-metadata.json."
+
+curated_titles_missing_average_rating:
+  - Hard Truths
+  - One Battle After Another
+  - A Woman Under the Influence
+  - Amadeus
+  - Lawrence of Arabia
+  - The Substance
+  - Tropical Malady
+  - Bug
+  - TÁR
+  - Persona
+  - All About Eve
+  - Oppenheimer
+  - Dune: Part Two
+  - Poor Things
+  - The Silence of the Lambs
+  - Threads
+  - Autumn Sonata
+
+sample_titles_missing_card_metadata:
+  - Aftersun
+  - The Souvenir
+  - The Long Day Closes
+  - Petite Maman
+  - Morvern Callar
+  - Ratcatcher
+  - Beau Travail
+  - Trouble Every Day
+  - Theorem
+  - Mikey and Nicky
+  - California Split
+  - The Killing of a Chinese Bookie
+  - The Long Goodbye
+  - Possession
+  - Distant Voices, Still Lives
