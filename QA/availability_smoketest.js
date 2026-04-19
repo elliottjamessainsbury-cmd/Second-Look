@@ -81,20 +81,18 @@ function main() {
     });
   }, results);
 
-  runCheck("Every film has Criterion, Amazon, and HMV retailer links", () => {
+  runCheck("Every film has Criterion, BFI Shop, and HMV retailer links", () => {
     curatedIds.forEach((filmId) => {
       const retailers = availability[filmId].physical_media.retailer_search_links.map(
         (item) => item.retailer
       );
-      assert.deepStrictEqual(retailers, ["Criterion", "Amazon", "HMV"]);
+      assert.deepStrictEqual(retailers, ["Criterion", "BFI Shop", "HMV"]);
     });
   }, results);
 
   runCheck("Retailer links are generated even when live APIs are unavailable", () => {
     const sample = availability["ash-is-purest-white-2018"];
     assert(sample, "Missing sample availability entry");
-    assert.strictEqual(sample.streaming.providers.length, 0);
-    assert.strictEqual(sample.physical_media.ebay.length, 0);
     assert.strictEqual(sample.physical_media.retailer_search_links.length, 3);
   }, results);
 

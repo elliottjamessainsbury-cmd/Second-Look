@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=33" />
+    <link rel="stylesheet" href="./styles.css?v=34" />
   </head>
   <body>
     <div class="page-shell">
@@ -21,8 +21,7 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Search for a film you already love. Find perfectly-curated, AI and human-powered recommendations that you'll love. Stop streaming slop, start watching films.
-       
+            Start from your taste, not a catalogue search. Use guided curated seeds, a few quick questions, and one optional outside film to open up recommendations that stay strictly inside our hand-built universe.
           </p>
         </div>
 
@@ -34,8 +33,8 @@
       <main class="layout">
         <section class="controls card">
           <div class="section-heading">
-            <h2>Search films</h2>
-            <p>Search a film to see recommendations.</p>
+            <h2>Start From Any Film</h2>
+            <p>Optional: use one outside film as a temporary taste input. It will never enter the internal catalogue.</p>
           </div>
 
           <div class="search-area">
@@ -45,10 +44,10 @@
                 id="movie-search"
                 type="text"
                 autocomplete="off"
-                placeholder="Enter film name..."
+                placeholder="Use a film you like as a starting point..."
               />
               <button id="add-first-match" class="ghost-button" type="button">
-                Search
+                Use top match
               </button>
             </div>
             <div id="search-results" class="search-results" aria-live="polite"></div>
@@ -56,15 +55,16 @@
 
           <div class="director-area">
             <div class="field-label-row">
-              <span class="field-label">Quick picks</span>
-              <button id="reset-director" class="text-button" type="button">Refresh</button>
+              <span class="field-label">Guided seed picks</span>
+              <button id="reset-director" class="text-button" type="button">Refresh picks</button>
             </div>
+            <div id="selected-seeds" class="selected-seeds" aria-live="polite"></div>
             <div id="director-list" class="director-list"></div>
           </div>
 
           <div class="bookmarks-area">
             <div class="field-label-row">
-              <span class="field-label">Saved from discovery</span>
+              <span class="field-label">Saved films</span>
               <a href="./saved.html" class="text-button">Open page</a>
             </div>
             <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
@@ -78,7 +78,7 @@
               <h2 id="results-title">Your next watch starts here</h2>
             </div>
             <button id="clear-recommendations" class="text-button" type="button" hidden>
-              Clear recommendations
+              Reset session
             </button>
           </div>
 
@@ -88,6 +88,7 @@
       </main>
     </div>
 
-    <script src="./app.js?v=31"></script>
+    <script src="./lib/recommendation-engine.js"></script>
+    <script src="./app.js?v=40"></script>
   </body>
 </html>

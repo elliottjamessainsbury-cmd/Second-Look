@@ -478,6 +478,38 @@ input:focus {
   margin-top: 14px;
 }
 
+.selected-seeds {
+  margin-bottom: 12px;
+}
+
+.selected-seed-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.selected-seed-chip {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: none;
+}
+
+.selected-seed-chip-secondary {
+  color: var(--accent);
+}
+
+.selected-seed-empty {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 .search-result {
   display: flex;
   align-items: center;

@@ -30,7 +30,7 @@
       "year": 1980
     },
     {
-      "quote": "A few words about your duties.",
+      "quote": "I'm sorry, Dave. I'm afraid I can't do that",
       "film": "2001: A Space Odyssey",
       "director": "Stanley Kubrick",
       "year": 1968
@@ -106,5 +106,11 @@
       "film": "Bug",
       "director": "William Friedkin",
       "year": 2006
-    }
+    },
+    {
+        "quote": "They're eating me!",
+        "film": "Bug",
+        "director": "William Friedkin",
+        "year": 2006
+      }
   ]

@@ -317,8 +317,8 @@ def retailer_search_links(title: str) -> list[dict]:
             "url": f"https://www.criterion.com/search?q={encoded}",
         },
         {
-            "retailer": "Amazon",
-            "url": f"https://www.amazon.co.uk/s?k={encoded}&i=dvd",
+            "retailer": "BFI Shop",
+            "url": f"https://shop.bfi.org.uk/search.php?search_query={encoded}",
         },
         {
             "retailer": "HMV",
