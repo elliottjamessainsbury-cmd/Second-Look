@@ -77,3 +77,35 @@ Shape:
 - No duplicate films per cinema per day
 - Showtimes aggregated correctly
 - Frontend renders without error
+
+## Data acquisition rules
+
+Use public HTML listing pages as the primary source for cinema programming.
+
+Do not use PDFs, screenshots, OCR, or other document-extraction approaches unless explicitly approved.
+
+Priority order for sources:
+1. Public HTML webpages for each cinema
+2. Structured embedded data on webpages (JSON-LD, script tags, predictable listing markup)
+3. Public APIs, only if already available and low-cost
+4. PDFs only as a last resort, and only if no HTML source exists
+
+Constraints:
+- Prefer simple requests + HTML parsing over heavyweight extraction
+- Do not introduce PDF parsing for v1
+- Do not use OCR for cinema listings
+- If a cinema site is JS-heavy or difficult to parse, log and skip it rather than switching to PDF
+- Partial output is acceptable if one venue cannot be parsed
+
+Implementation guidance:
+- Each cinema should have a dedicated HTML parser function
+- Parse title, date, time, and booking URL from webpage markup
+- Use PDF parsing only if the spec is later updated to allow it
+
+## Out of scope for v1
+
+- PDF parsing
+- OCR-based extraction
+- Screenshot-based extraction
+- Browser automation unless HTML parsing is impossible
+- Paid scraping services
