@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=34" />
+    <link rel="stylesheet" href="./styles.css?v=35" />
   </head>
   <body>
     <div class="page-shell">
@@ -86,9 +86,22 @@
           <div id="criterion-section" class="criterion-section"></div>
         </section>
       </main>
+
+      <section class="cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
+        <div class="cinema-showtimes__head">
+          <div>
+            <p class="panel-label">Cinema calendar</p>
+            <h2 id="cinema-showtimes-title">Playing in London</h2>
+            <p id="cinema-showtimes-updated" class="cinema-showtimes__updated">Loading showtimes...</p>
+          </div>
+        </div>
+
+        <div id="cinema-showtimes-calendar" class="cinema-showtimes__calendar" aria-label="Choose a showtimes date"></div>
+        <div id="cinema-showtimes-list" class="cinema-showtimes__list" aria-live="polite"></div>
+      </section>
     </div>
 
     <script src="./lib/recommendation-engine.js"></script>
-    <script src="./app.js?v=40"></script>
+    <script src="./app.js?v=41"></script>
   </body>
 </html>

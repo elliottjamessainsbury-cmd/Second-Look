@@ -154,6 +154,11 @@ const state = {
   recommendationBlurbsByPairId: {},
   recommendationBlurbsByPairTitle: {},
   availabilityByFilmId: {},
+  cinemaShowtimes: {
+    generatedAt: "",
+    days: [],
+  },
+  selectedCinemaShowtimesDate: "",
   query: "",
   externalSearchResults: [],
   quickPicks: [],
@@ -183,6 +188,10 @@ const elements = {
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
+  cinemaShowtimesSection: document.querySelector("#cinema-showtimes-section"),
+  cinemaShowtimesCalendar: document.querySelector("#cinema-showtimes-calendar"),
+  cinemaShowtimesList: document.querySelector("#cinema-showtimes-list"),
+  cinemaShowtimesUpdated: document.querySelector("#cinema-showtimes-updated"),
 };
 
 const isSavedPage = Boolean(
@@ -1341,11 +1350,145 @@ function renderSavedFilmsPage() {
   });
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function formatShowtimesDate(value) {
+  const date = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  }).format(date);
+}
+
+function formatShowtimesUpdated(value) {
+  if (!value) {
+    return "Showtimes update automatically.";
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return "Showtimes update automatically.";
+  }
+
+  return `Updated ${new Intl.DateTimeFormat("en-GB", {
+    day: "numeric",
+    month: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date)}`;
+}
+
+function renderCinemaShowtimes() {
+  if (
+    !elements.cinemaShowtimesSection ||
+    !elements.cinemaShowtimesCalendar ||
+    !elements.cinemaShowtimesList ||
+    isSavedPage
+  ) {
+    return;
+  }
+
+  const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
+  if (!days.length) {
+    elements.cinemaShowtimesCalendar.innerHTML = "";
+    elements.cinemaShowtimesList.innerHTML = `
+      <div class="empty-state cinema-showtimes__empty">
+        <h3>No cinema showtimes available yet</h3>
+        <p>Run the showtimes builder or check back after the next scheduled update.</p>
+      </div>
+    `;
+    if (elements.cinemaShowtimesUpdated) {
+      elements.cinemaShowtimesUpdated.textContent = "Showtimes unavailable.";
+    }
+    return;
+  }
+
+  const selectedDate =
+    days.some((day) => day.date === state.selectedCinemaShowtimesDate)
+      ? state.selectedCinemaShowtimesDate
+      : days[0].date;
+  state.selectedCinemaShowtimesDate = selectedDate;
+
+  if (elements.cinemaShowtimesUpdated) {
+    elements.cinemaShowtimesUpdated.textContent = formatShowtimesUpdated(state.cinemaShowtimes.generatedAt);
+  }
+
+  elements.cinemaShowtimesCalendar.innerHTML = days
+    .map((day) => {
+      const films = Array.isArray(day.films) ? day.films : [];
+      const screeningCount = films.reduce((count, film) => {
+        const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
+        return count + Math.max(showtimes.length, 1);
+      }, 0);
+      return `
+        <button class="cinema-date-button ${day.date === selectedDate ? "is-active" : ""}" type="button" data-cinema-date="${escapeHtml(day.date)}">
+          <span class="cinema-date-button__day">${escapeHtml(day.label || formatShowtimesDate(day.date))}</span>
+          <span class="cinema-date-button__date">${escapeHtml(formatShowtimesDate(day.date))}</span>
+          <span class="cinema-date-button__count">${screeningCount} screenings</span>
+        </button>
+      `;
+    })
+    .join("");
+
+  const selectedDay = days.find((day) => day.date === selectedDate);
+  const films = selectedDay && Array.isArray(selectedDay.films) ? selectedDay.films : [];
+  const screenings = films.flatMap((film) => {
+    const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : ["Time TBC"];
+    return showtimes.map((showtime) => ({ ...film, showtime }));
+  });
+
+  elements.cinemaShowtimesList.innerHTML = screenings.length
+    ? screenings
+        .map((film) => {
+          return `
+            <article class="cinema-screening-card">
+              <div class="cinema-screening-card__time">${escapeHtml(film.showtime)}</div>
+              <div class="cinema-screening-card__body">
+                <h3>${escapeHtml(film.displayTitle || "Untitled screening")}</h3>
+                <p>${escapeHtml(film.cinema || "Cinema TBC")}</p>
+              </div>
+              ${
+                film.ticketUrl
+                  ? `<a class="card-link-button cinema-screening-card__link" href="${escapeHtml(film.ticketUrl)}" target="_blank" rel="noreferrer">Book tickets</a>`
+                  : `<span class="cinema-screening-card__missing-link">Booking link unavailable</span>`
+              }
+            </article>
+          `;
+        })
+        .join("")
+    : `
+      <div class="empty-state cinema-showtimes__empty">
+        <h3>No screenings listed for ${escapeHtml(formatShowtimesDate(selectedDate))}</h3>
+        <p>Try another date in the calendar.</p>
+      </div>
+    `;
+
+  elements.cinemaShowtimesCalendar.querySelectorAll("[data-cinema-date]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedCinemaShowtimesDate = button.dataset.cinemaDate || "";
+      renderCinemaShowtimes();
+    });
+  });
+}
+
 function render() {
   renderSelectedSeeds();
   renderSearchResults();
   renderQuickPicks();
   renderSavedSidebar();
+  renderCinemaShowtimes();
 
   if (isSavedPage) {
     renderSavedFilmsPage();
@@ -1426,6 +1569,28 @@ function attachBaseEventHandlers() {
   elements.clearRecommendations?.addEventListener("click", () => {
     clearSessionAndReturnToOnboarding();
   });
+}
+
+async function loadCinemaShowtimes() {
+  try {
+    const response = await fetch("./data/cinema-showtimes.json");
+    if (!response.ok) {
+      console.warn(`Cinema showtimes unavailable (HTTP ${response.status}).`);
+      return null;
+    }
+
+    const showtimes = await response.json();
+    state.cinemaShowtimes = {
+      generatedAt: showtimes.generatedAt || "",
+      days: Array.isArray(showtimes.days) ? showtimes.days : [],
+    };
+    state.selectedCinemaShowtimesDate = state.cinemaShowtimes.days[0]?.date || "";
+    renderCinemaShowtimes();
+    return showtimes;
+  } catch (error) {
+    console.warn("Cinema showtimes unavailable.", error);
+    return null;
+  }
 }
 
 async function loadAppData() {
@@ -1513,3 +1678,4 @@ attachBaseEventHandlers();
 initRotatingFilmQuotes();
 render();
 loadAppData();
+loadCinemaShowtimes();
