@@ -191,6 +191,7 @@ const elements = {
   cinemaShowtimesSection: document.querySelector("#cinema-showtimes-section"),
   cinemaShowtimesCalendar: document.querySelector("#cinema-showtimes-calendar"),
   cinemaShowtimesList: document.querySelector("#cinema-showtimes-list"),
+  cinemaShowtimesIntro: document.querySelector("#cinema-showtimes-intro"),
   cinemaShowtimesUpdated: document.querySelector("#cinema-showtimes-updated"),
 };
 
@@ -1400,6 +1401,11 @@ function renderCinemaShowtimes() {
     return;
   }
 
+  if (elements.cinemaShowtimesIntro) {
+    elements.cinemaShowtimesIntro.textContent =
+      "A curated mix of films from some of London’s best and most cutting-edge cinemas to supplement your film discovery.";
+  }
+
   const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
   if (!days.length) {
     elements.cinemaShowtimesCalendar.innerHTML = "";
@@ -1444,26 +1450,24 @@ function renderCinemaShowtimes() {
 
   const selectedDay = days.find((day) => day.date === selectedDate);
   const films = selectedDay && Array.isArray(selectedDay.films) ? selectedDay.films : [];
-  const screenings = films.flatMap((film) => {
-    const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : ["Time TBC"];
-    return showtimes.map((showtime) => ({ ...film, showtime }));
-  });
-
-  elements.cinemaShowtimesList.innerHTML = screenings.length
-    ? screenings
+  elements.cinemaShowtimesList.innerHTML = films.length
+    ? films
         .map((film) => {
+          const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : ["Time TBC"];
           return `
-            <article class="cinema-screening-card">
-              <div class="cinema-screening-card__time">${escapeHtml(film.showtime)}</div>
-              <div class="cinema-screening-card__body">
-                <h3>${escapeHtml(film.displayTitle || "Untitled screening")}</h3>
-                <p>${escapeHtml(film.cinema || "Cinema TBC")}</p>
+            <article class="cinema-showtimes-card">
+              <div class="card-body cinema-showtimes-card__body">
+                <h3 class="card-title">${escapeHtml(film.displayTitle || "Untitled screening")}</h3>
+                <p class="match-meta">${escapeHtml(film.cinema || "Cinema TBC")}</p>
+                <p class="cinema-showtimes-card__times">${escapeHtml(showtimes.join(" • "))}</p>
+                <div class="card-actions cinema-showtimes-card__actions">
+                  ${
+                    film.ticketUrl
+                      ? `<a class="card-link-button" href="${escapeHtml(film.ticketUrl)}" target="_blank" rel="noreferrer">Book tickets</a>`
+                      : `<span class="cinema-showtimes-card__missing-link">Booking link unavailable</span>`
+                  }
+                </div>
               </div>
-              ${
-                film.ticketUrl
-                  ? `<a class="card-link-button cinema-screening-card__link" href="${escapeHtml(film.ticketUrl)}" target="_blank" rel="noreferrer">Book tickets</a>`
-                  : `<span class="cinema-screening-card__missing-link">Booking link unavailable</span>`
-              }
             </article>
           `;
         })
