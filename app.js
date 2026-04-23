@@ -16,6 +16,8 @@ if (!window.SecondLookEngine) {
   throw new Error("SecondLookEngine failed to load.");
 }
 
+let tasteCardSwapIndex = 0;
+
 function getLocalStorage() {
   if (typeof window === "undefined" || !window.localStorage) {
     return null;
@@ -163,6 +165,9 @@ const state = {
   externalSearchResults: [],
   quickPicks: [],
   recommendations: [],
+  resultsMode: "discover",
+  isRefineExpanded: false,
+  isCinemaCalendarExpanded: false,
   userProfile: loadUserProfile(),
   session: {
     answers: persistedSession.answers,
@@ -182,6 +187,8 @@ const elements = {
   directorList: document.querySelector("#director-list"),
   selectedSeeds: document.querySelector("#selected-seeds"),
   discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
+  tasteRefineSection: document.querySelector("#taste-refine-section"),
+  toggleRefinePanel: document.querySelector("#toggle-refine-panel"),
   resetDirector: document.querySelector("#reset-director"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
@@ -189,10 +196,12 @@ const elements = {
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
   cinemaShowtimesSection: document.querySelector("#cinema-showtimes-section"),
+  cinemaShowtimesTitle: document.querySelector("#cinema-showtimes-title"),
   cinemaShowtimesCalendar: document.querySelector("#cinema-showtimes-calendar"),
   cinemaShowtimesList: document.querySelector("#cinema-showtimes-list"),
   cinemaShowtimesIntro: document.querySelector("#cinema-showtimes-intro"),
   cinemaShowtimesUpdated: document.querySelector("#cinema-showtimes-updated"),
+  toggleCinemaCalendar: document.querySelector("#toggle-cinema-calendar"),
 };
 
 const isSavedPage = Boolean(
@@ -778,6 +787,7 @@ function regenerateIfActive() {
 }
 
 function toggleSeedFilm(filmId) {
+  state.resultsMode = "discover";
   if (state.session.seedFilmIds.includes(filmId)) {
     state.session.seedFilmIds = state.session.seedFilmIds.filter((id) => id !== filmId);
   } else {
@@ -800,6 +810,7 @@ function setExternalSeed(seed) {
 }
 
 function clearSessionAndReturnToOnboarding() {
+  state.resultsMode = "discover";
   state.session = {
     answers: {},
     seedFilmIds: [],
@@ -862,7 +873,7 @@ function searchExternalSeeds(query) {
 }
 
 function refreshQuickPicks() {
-  state.quickPicks = shuffleList(state.internalFilms).slice(0, 12);
+  state.quickPicks = shuffleList(state.internalFilms).slice(0, 8);
 }
 
 function renderSelectedSeeds() {
@@ -871,6 +882,7 @@ function renderSelectedSeeds() {
   }
 
   const selectedSeeds = getSelectedSeedFilms();
+  const selectedIds = new Set(selectedSeeds.map((film) => film.filmId));
   const chips = selectedSeeds.map(
     (film) => `
       <button class="selected-seed-chip" type="button" data-remove-seed="${film.filmId}">
@@ -885,12 +897,32 @@ function renderSelectedSeeds() {
     );
   }
 
-  elements.selectedSeeds.innerHTML = chips.length
-    ? `<div class="selected-seed-list">${chips.join("")}</div>`
-    : `<p class="selected-seed-empty">Pick up to three internal seed films, or add one outside film as a temporary taste input.</p>`;
+  const suggestedChips = state.quickPicks
+    .filter((film) => !selectedIds.has(film.filmId))
+    .slice(0, chips.length ? 3 : 5)
+    .map(
+      (film) => `
+        <button class="selected-seed-chip selected-seed-chip-suggestion" type="button" data-summary-quick-pick="${film.filmId}">
+          ${film.title}
+        </button>
+      `
+    );
+
+  elements.selectedSeeds.innerHTML = `
+    <div class="selected-seed-list">${[...chips, ...suggestedChips].join("")}</div>
+    ${
+      chips.length
+        ? ""
+        : `<p class="selected-seed-empty">Choose a suggested seed, or expand for the full guided set.</p>`
+    }
+  `;
 
   elements.selectedSeeds.querySelectorAll("[data-remove-seed]").forEach((button) => {
     button.addEventListener("click", () => toggleSeedFilm(button.dataset.removeSeed));
+  });
+
+  elements.selectedSeeds.querySelectorAll("[data-summary-quick-pick]").forEach((button) => {
+    button.addEventListener("click", () => toggleSeedFilm(button.dataset.summaryQuickPick));
   });
 
   elements.selectedSeeds.querySelector("[data-clear-external]")?.addEventListener("click", () => {
@@ -975,9 +1007,28 @@ function renderSavedSidebar() {
 
   const savedCount = state.userProfile.savedFilmIds.length;
   elements.discoveryBookmarks.innerHTML = `
-    <a class="card-link-button saved-sidebar-button" href="./saved.html">Your saved films</a>
+    <button class="card-link-button saved-sidebar-button ${state.resultsMode === "saved" ? "is-active" : ""}" type="button" data-open-saved>
+      ${savedCount ? `Saved films (${savedCount})` : "Saved films"}
+    </button>
     <p class="saved-sidebar-summary">${savedCount ? `${savedCount} saved so far.` : "Nothing saved yet."}</p>
   `;
+
+  elements.discoveryBookmarks.querySelector("[data-open-saved]")?.addEventListener("click", () => {
+    state.resultsMode = "saved";
+    state.session.expandedCardKey = "";
+    render();
+  });
+}
+
+function renderRefinePanelState() {
+  if (elements.tasteRefineSection) {
+    elements.tasteRefineSection.classList.toggle("is-expanded", state.isRefineExpanded);
+  }
+
+  if (elements.toggleRefinePanel) {
+    elements.toggleRefinePanel.textContent = state.isRefineExpanded ? "Hide seeds" : "Show all seeds";
+    elements.toggleRefinePanel.setAttribute("aria-expanded", state.isRefineExpanded ? "true" : "false");
+  }
 }
 
 function providerActionLabel(provider) {
@@ -1095,6 +1146,81 @@ function cardKey(section, filmId) {
   return `${section}:${filmId}`;
 }
 
+function normalizeScreeningTitle(value) {
+  return normalize(
+    String(value || "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\(.*?\)/g, "")
+      .replace(/\+.*$/g, "")
+      .replace(/\b(anniversary|restoration|preview|screening)\b/gi, "")
+  );
+}
+
+function londonTodayDate() {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/London",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
+}
+
+function allScreenings() {
+  const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
+  const today = londonTodayDate();
+  return days.flatMap((day) =>
+    day.date >= today
+      ? (Array.isArray(day.films) ? day.films : []).flatMap((film) => {
+          const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : [""];
+          return showtimes.map((time) => ({
+            date: day.date,
+            dayLabel: day.label || formatShowtimesDate(day.date),
+            title: film.displayTitle || "",
+            cinema: film.cinema || "",
+            time,
+            ticketUrl: film.ticketUrl || "",
+          }));
+        })
+      : []
+  );
+}
+
+function findScreeningForFilm(film) {
+  const filmKey = normalizeScreeningTitle(film?.title);
+  if (!filmKey) {
+    return null;
+  }
+
+  return (
+    allScreenings()
+      .filter((screening) => normalizeScreeningTitle(screening.title) === filmKey)
+      .sort((left, right) => `${left.date} ${left.time}`.localeCompare(`${right.date} ${right.time}`))[0] || null
+  );
+}
+
+function renderScreeningPreview(film) {
+  const screening = findScreeningForFilm(film);
+  if (!screening) {
+    return "";
+  }
+
+  const timeLabel = [formatShowtimesDate(screening.date), screening.time].filter(Boolean).join(" • ");
+  return `
+    <div class="film-screening-preview">
+      <p class="screening-kicker">Playing nearby</p>
+      <p class="screening-meta">${escapeHtml(screening.cinema)} • ${escapeHtml(timeLabel)}</p>
+      ${
+        screening.ticketUrl
+          ? `<a class="card-link-button screening-book-button" href="${escapeHtml(screening.ticketUrl)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}" data-outbound-kind="screening">Book tickets</a>`
+          : ""
+      }
+    </div>
+  `;
+}
+
 function renderRecommendationCards() {
   return state.recommendations
     .map((item) => {
@@ -1103,14 +1229,13 @@ function renderRecommendationCards() {
       const expanded = state.session.expandedCardKey === key;
       const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
       const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
-      const letterboxdUrl = makeLetterboxdUrl(film.title);
 
       return `
-        <article class="result-card ${expanded ? "result-card-expanded" : ""}">
+        <article class="result-card film-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
             ${renderPosterMarkup(film.title)}
           </div>
-          <div class="card-body">
+          <div class="card-body film-card-body">
             <h3 class="card-title">${film.title}</h3>
             <p class="match-meta">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
             ${
@@ -1118,19 +1243,19 @@ function renderRecommendationCards() {
                 ? `<p class="discovery-card__rationale">${film.cardTags.slice(0, 3).join(" • ")}</p>`
                 : ""
             }
-            ${expanded ? renderExpandedPanel(film, item.explanation) : ""}
-            <div class="card-actions">
+            <div class="card-actions film-actions">
               <button class="card-link-button discovery-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
                 ${isSaved ? "Saved" : "Save"}
               </button>
               <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
                 ${isDismissed ? "Not for me" : "Not for me"}
               </button>
-              <a class="card-link-button card-link-button-secondary" href="${letterboxdUrl}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
-              <button class="card-link-button card-link-button-tertiary" type="button" data-toggle-card="${key}">
-                ${expanded ? "See less" : "See more"}
-              </button>
             </div>
+            ${renderScreeningPreview(film)}
+            ${expanded ? renderExpandedPanel(film, item.explanation) : ""}
+            <button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">
+              ${expanded ? "See less" : "See more"}
+            </button>
           </div>
         </article>
       `;
@@ -1138,10 +1263,55 @@ function renderRecommendationCards() {
     .join("");
 }
 
+function setTasteCardSwapActive(cards, activeIndex) {
+  const total = cards.length;
+  if (!total) {
+    return;
+  }
+
+  cards.forEach((card, cardIndex) => {
+    const offset = (cardIndex - activeIndex + total) % total;
+    card.classList.toggle("is-active", offset === 0);
+    card.classList.toggle("is-next", offset === 1);
+    card.classList.toggle("is-third", offset === 2);
+    card.classList.toggle("is-hidden", offset > 2);
+    card.setAttribute("aria-hidden", offset === 0 ? "false" : "true");
+
+    card.querySelectorAll("button").forEach((button) => {
+      button.tabIndex = offset === 0 ? 0 : -1;
+    });
+  });
+}
+
+function initTasteCardSwap() {
+  const swapRoot = elements.resultsGrid?.querySelector("[data-taste-card-swap]");
+  if (!swapRoot) {
+    return;
+  }
+
+  const cards = Array.from(swapRoot.querySelectorAll("[data-swap-card]"));
+  if (!cards.length) {
+    return;
+  }
+
+  tasteCardSwapIndex %= cards.length;
+  const applyActiveCard = () => setTasteCardSwapActive(cards, tasteCardSwapIndex);
+  const advanceCard = () => {
+    tasteCardSwapIndex = (tasteCardSwapIndex + 1) % cards.length;
+    applyActiveCard();
+  };
+
+  applyActiveCard();
+
+  swapRoot.querySelector("[data-swap-next]")?.addEventListener("click", advanceCard);
+}
+
 function renderOnboarding() {
   if (!elements.resultsGrid || !elements.resultsTitle || !elements.clearRecommendations) {
     return;
   }
+
+  const unansweredQuestions = tasteQuizQuestions.filter((question) => !state.session.answers[question.id]);
 
   elements.clearRecommendations.hidden = true;
   elements.resultsTitle.textContent = "Curated taste onboarding";
@@ -1150,40 +1320,69 @@ function renderOnboarding() {
       <div class="taste-quiz-intro">
         <p class="eyebrow">Onboarding</p>
         <h3>Start with your taste, not a catalogue search</h3>
-        <p class="results-subtitle">Pick up to three curated films from the left, answer the quick taste questions, or add one outside film as a temporary seed. Recommendations will always stay inside the curated universe.</p>
+        <p class="results-subtitle">Pick up to three curated films from the left and answer the quick taste questions. Recommendations will always stay inside the curated universe.</p>
       </div>
-      <div class="taste-quiz-list">
-        ${tasteQuizQuestions
-          .map((question) => {
-            const selectedAnswer = state.session.answers[question.id];
-            return `
-              <section class="taste-quiz-question">
-                <div class="taste-quiz-question__head">
-                  <span class="taste-quiz-question__count">${question.id.toUpperCase()}</span>
-                  <h4>${question.prompt}</h4>
+      <div class="taste-card-swap-layout">
+        <div class="taste-card-swap-copy">
+          <p class="eyebrow">Card stack</p>
+          <h4>Answer one card at a time.</h4>
+          <p>Pick an option and that card leaves the deck. Use next card if you want to answer them in a different order.</p>
+        </div>
+        <div class="taste-card-swap" data-taste-card-swap>
+          <div class="taste-card-swap-stage">
+            ${
+              unansweredQuestions.length
+                ? unansweredQuestions
+                    .map((question) => {
+                      return `
+                        <section class="taste-quiz-question taste-swap-card" data-swap-card>
+                          <div class="taste-quiz-question__head">
+                            <span class="taste-quiz-question__count">${question.id.toUpperCase()}</span>
+                            <h4>${question.prompt}</h4>
+                          </div>
+                          <div class="taste-quiz-answers">
+                            ${question.answers
+                              .map(
+                                (answer) => `
+                                  <button
+                                    class="taste-quiz-answer"
+                                    type="button"
+                                    data-quiz-answer="${question.id}::${answer.id}"
+                                  >
+                                    ${answer.label}
+                                  </button>
+                                `
+                              )
+                              .join("")}
+                          </div>
+                        </section>
+                      `;
+                    })
+                    .join("")
+                : `
+                  <section class="taste-quiz-question taste-swap-card is-active taste-swap-card-complete">
+                    <div class="taste-quiz-question__head">
+                      <span class="taste-quiz-question__count">DONE</span>
+                      <h4>Your taste cards are complete.</h4>
+                    </div>
+                    <p class="taste-card-swap-note">You can generate recommendations now, or add curated seeds from the list first.</p>
+                  </section>
+                `
+            }
+          </div>
+          ${
+            unansweredQuestions.length > 1
+              ? `
+                <div class="taste-card-swap-controls">
+                  <button class="card-link-button" type="button" data-swap-next>Next card</button>
                 </div>
-                <div class="taste-quiz-answers">
-                  ${question.answers
-                    .map(
-                      (answer) => `
-                        <button
-                          class="taste-quiz-answer ${selectedAnswer === answer.id ? "is-selected" : ""}"
-                          type="button"
-                          data-quiz-answer="${question.id}::${answer.id}"
-                        >
-                          ${answer.label}
-                        </button>
-                      `
-                    )
-                    .join("")}
-                </div>
-              </section>
-            `;
-          })
-          .join("")}
+              `
+              : ""
+          }
+        </div>
       </div>
       <div class="taste-quiz-footer">
-        <p class="taste-quiz-footer__copy">${state.session.seedFilmIds.length} curated seeds • ${state.session.externalSeed ? "1 outside seed" : "0 outside seeds"} • ${answerCount()} of ${tasteQuizQuestions.length} answers</p>
+        <p class="taste-quiz-footer__copy">${state.session.seedFilmIds.length} curated seeds • ${answerCount()} of ${tasteQuizQuestions.length} answers</p>
         <button
           id="taste-quiz-submit"
           class="ghost-button taste-quiz-submit"
@@ -1200,6 +1399,7 @@ function renderOnboarding() {
   elements.resultsGrid.querySelectorAll("[data-quiz-answer]").forEach((button) => {
     button.addEventListener("click", () => {
       const [questionId, answerId] = button.dataset.quizAnswer.split("::");
+      tasteCardSwapIndex = 0;
       handleQuizAnswer(questionId, answerId);
     });
   });
@@ -1208,6 +1408,8 @@ function renderOnboarding() {
     generateRecommendations();
     render();
   });
+
+  initTasteCardSwap();
 }
 
 function renderRecommendations() {
@@ -1221,6 +1423,7 @@ function renderRecommendations() {
   }
 
   elements.clearRecommendations.hidden = false;
+  elements.clearRecommendations.textContent = "Reset session";
   elements.resultsTitle.textContent = "Your next watches";
   elements.resultsGrid.innerHTML = renderRecommendationCards();
   elements.criterionSection.innerHTML = "";
@@ -1240,6 +1443,87 @@ function renderRecommendations() {
 
   elements.resultsGrid.querySelectorAll("[data-dismiss-film]").forEach((button) => {
     button.addEventListener("click", () => handleFilmInteraction(button.dataset.dismissFilm, "not_for_me"));
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-outbound-film]").forEach((link) => {
+    link.addEventListener("click", () => {
+      handleFilmInteraction(link.dataset.outboundFilm, "outbound_click");
+    });
+  });
+}
+
+function renderSavedResults() {
+  if (!elements.resultsGrid || !elements.resultsTitle || !elements.clearRecommendations || isSavedPage) {
+    return;
+  }
+
+  const savedFilms = state.userProfile.savedFilmIds.map((filmId) => getInternalFilmById(filmId)).filter(Boolean);
+  const backLabel =
+    state.session.hasGenerated && state.recommendations.length ? "Back to recommendations" : "Back to discovery";
+
+  elements.clearRecommendations.hidden = false;
+  elements.clearRecommendations.textContent = backLabel;
+  elements.resultsTitle.textContent = "Your saved films";
+  elements.criterionSection.innerHTML = "";
+
+  if (!savedFilms.length) {
+    elements.resultsGrid.innerHTML = `
+      <div class="empty-state results-grid-span saved-results-empty-state">
+        <h3>No saved films yet</h3>
+        <p>Save films from your recommendation cards and they’ll stay here for later.</p>
+      </div>
+    `;
+    return;
+  }
+
+  elements.resultsGrid.innerHTML = savedFilms
+    .map((film) => {
+      const key = cardKey("saved", film.filmId);
+      const expanded = state.session.expandedCardKey === key;
+      return `
+        <article class="result-card ${expanded ? "result-card-expanded" : ""}">
+          <div class="poster-block">
+            ${renderPosterMarkup(film.title)}
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${film.title}</h3>
+            <p class="match-meta">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
+            ${
+              film.cardTags.length
+                ? `<p class="discovery-card__rationale">${film.cardTags.slice(0, 3).join(" • ")}</p>`
+                : ""
+            }
+            ${expanded ? renderExpandedPanel(film, "You saved this one to revisit when the timing feels right.") : ""}
+            <div class="card-actions">
+              <button class="card-link-button discovery-action-button is-active" type="button" data-saved-unsave="${film.filmId}">
+                Remove
+              </button>
+              <a class="card-link-button card-link-button-secondary" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+                See Letterboxd reviews
+              </a>
+              <button class="card-link-button card-link-button-tertiary" type="button" data-toggle-saved-card="${key}">
+                ${expanded ? "See less" : "See more"}
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-saved-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleSavedCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderSavedResults();
+    });
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-saved-unsave]").forEach((button) => {
+    button.addEventListener("click", () => {
+      removeSavedFilm(button.dataset.savedUnsave);
+    });
   });
 
   elements.resultsGrid.querySelectorAll("[data-outbound-film]").forEach((link) => {
@@ -1391,6 +1675,27 @@ function formatShowtimesUpdated(value) {
   }).format(date)}`;
 }
 
+function renderCinemaScreeningCard(screening, compact = false) {
+  return `
+    <article class="cinema-showtimes-card ${compact ? "cinema-showtimes-card-compact" : ""}">
+      <div class="card-body cinema-showtimes-card__body">
+        <h3 class="card-title">${escapeHtml(screening.title || "Untitled screening")}</h3>
+        <p class="match-meta">${escapeHtml(screening.cinema || "Cinema TBC")}</p>
+        <p class="cinema-showtimes-card__times">${escapeHtml(
+          compact ? `${formatShowtimesDate(screening.date)} • ${screening.time || "Time TBC"}` : screening.time || "Time TBC"
+        )}</p>
+        <div class="card-actions cinema-showtimes-card__actions">
+          ${
+            screening.ticketUrl
+              ? `<a class="card-link-button" href="${escapeHtml(screening.ticketUrl)}" target="_blank" rel="noreferrer">Book tickets</a>`
+              : `<span class="cinema-showtimes-card__missing-link">Booking link unavailable</span>`
+          }
+        </div>
+      </div>
+    </article>
+  `;
+}
+
 function renderCinemaShowtimes() {
   if (
     !elements.cinemaShowtimesSection ||
@@ -1401,9 +1706,19 @@ function renderCinemaShowtimes() {
     return;
   }
 
+  const isExpanded = state.isCinemaCalendarExpanded;
+  elements.cinemaShowtimesSection.classList.toggle("is-expanded", isExpanded);
+  if (elements.cinemaShowtimesTitle) {
+    elements.cinemaShowtimesTitle.textContent = isExpanded ? "Full London calendar" : "Playing in London this week";
+  }
   if (elements.cinemaShowtimesIntro) {
-    elements.cinemaShowtimesIntro.textContent =
-      "A curated mix of films from some of London’s best and most cutting-edge cinemas to supplement your film discovery.";
+    elements.cinemaShowtimesIntro.textContent = isExpanded
+      ? "Browse the wider listings when you want the full picture."
+      : "A small action layer beneath your recommendations, not a separate listings product.";
+  }
+  if (elements.toggleCinemaCalendar) {
+    elements.toggleCinemaCalendar.textContent = isExpanded ? "Collapse calendar" : "Open full calendar";
+    elements.toggleCinemaCalendar.setAttribute("aria-expanded", isExpanded ? "true" : "false");
   }
 
   const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
@@ -1418,6 +1733,51 @@ function renderCinemaShowtimes() {
     if (elements.cinemaShowtimesUpdated) {
       elements.cinemaShowtimesUpdated.textContent = "Showtimes unavailable.";
     }
+    return;
+  }
+
+  if (!isExpanded) {
+    const previewScreenings = allScreenings()
+      .sort((left, right) => `${left.date} ${left.time}`.localeCompare(`${right.date} ${right.time}`))
+      .slice(0, 4);
+
+    if (elements.cinemaShowtimesUpdated) {
+      elements.cinemaShowtimesUpdated.textContent = formatShowtimesUpdated(state.cinemaShowtimes.generatedAt);
+    }
+
+    elements.cinemaShowtimesCalendar.innerHTML = days
+      .slice(0, 7)
+      .map((day) => {
+        const films = Array.isArray(day.films) ? day.films : [];
+        const screeningCount = films.reduce((count, film) => {
+          const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
+          return count + Math.max(showtimes.length, 1);
+        }, 0);
+        return `
+          <button class="cinema-date-button cinema-date-button-preview" type="button" data-preview-cinema-date="${escapeHtml(day.date)}">
+            <span class="cinema-date-button__day">${escapeHtml(day.label || formatShowtimesDate(day.date))}</span>
+            <span class="cinema-date-button__count">${screeningCount} screenings</span>
+          </button>
+        `;
+      })
+      .join("");
+
+    elements.cinemaShowtimesList.innerHTML = previewScreenings.length
+      ? previewScreenings.map((screening) => renderCinemaScreeningCard(screening, true)).join("")
+      : `
+        <div class="empty-state cinema-showtimes__empty">
+          <h3>No screenings available yet</h3>
+          <p>Open the full calendar or check back after the next update.</p>
+        </div>
+      `;
+
+    elements.cinemaShowtimesCalendar.querySelectorAll("[data-preview-cinema-date]").forEach((button) => {
+      button.addEventListener("click", () => {
+        state.selectedCinemaShowtimesDate = button.dataset.previewCinemaDate || "";
+        state.isCinemaCalendarExpanded = true;
+        renderCinemaShowtimes();
+      });
+    });
     return;
   }
 
@@ -1454,22 +1814,16 @@ function renderCinemaShowtimes() {
     ? films
         .map((film) => {
           const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : ["Time TBC"];
-          return `
-            <article class="cinema-showtimes-card">
-              <div class="card-body cinema-showtimes-card__body">
-                <h3 class="card-title">${escapeHtml(film.displayTitle || "Untitled screening")}</h3>
-                <p class="match-meta">${escapeHtml(film.cinema || "Cinema TBC")}</p>
-                <p class="cinema-showtimes-card__times">${escapeHtml(showtimes.join(" • "))}</p>
-                <div class="card-actions cinema-showtimes-card__actions">
-                  ${
-                    film.ticketUrl
-                      ? `<a class="card-link-button" href="${escapeHtml(film.ticketUrl)}" target="_blank" rel="noreferrer">Book tickets</a>`
-                      : `<span class="cinema-showtimes-card__missing-link">Booking link unavailable</span>`
-                  }
-                </div>
-              </div>
-            </article>
-          `;
+          return renderCinemaScreeningCard(
+            {
+              date: selectedDate,
+              title: film.displayTitle || "Untitled screening",
+              cinema: film.cinema || "Cinema TBC",
+              time: showtimes.join(" • "),
+              ticketUrl: film.ticketUrl || "",
+            },
+            false
+          );
         })
         .join("")
     : `
@@ -1492,10 +1846,16 @@ function render() {
   renderSearchResults();
   renderQuickPicks();
   renderSavedSidebar();
+  renderRefinePanelState();
   renderCinemaShowtimes();
 
   if (isSavedPage) {
     renderSavedFilmsPage();
+    return;
+  }
+
+  if (state.resultsMode === "saved") {
+    renderSavedResults();
     return;
   }
 
@@ -1567,10 +1927,28 @@ function attachBaseEventHandlers() {
 
   elements.resetDirector?.addEventListener("click", () => {
     refreshQuickPicks();
+    renderSelectedSeeds();
     renderQuickPicks();
   });
 
+  elements.toggleRefinePanel?.addEventListener("click", () => {
+    state.isRefineExpanded = !state.isRefineExpanded;
+    renderRefinePanelState();
+  });
+
+  elements.toggleCinemaCalendar?.addEventListener("click", () => {
+    state.isCinemaCalendarExpanded = !state.isCinemaCalendarExpanded;
+    renderCinemaShowtimes();
+  });
+
   elements.clearRecommendations?.addEventListener("click", () => {
+    if (state.resultsMode === "saved") {
+      state.resultsMode = "discover";
+      state.session.expandedCardKey = "";
+      render();
+      return;
+    }
+
     clearSessionAndReturnToOnboarding();
   });
 }
@@ -1589,7 +1967,7 @@ async function loadCinemaShowtimes() {
       days: Array.isArray(showtimes.days) ? showtimes.days : [],
     };
     state.selectedCinemaShowtimesDate = state.cinemaShowtimes.days[0]?.date || "";
-    renderCinemaShowtimes();
+    render();
     return showtimes;
   } catch (error) {
     console.warn("Cinema showtimes unavailable.", error);
@@ -1659,7 +2037,7 @@ async function loadAppData() {
     state.recommendationBlurbsByPairTitle = blurbs.byTitle;
 
     state.externalSeedPool = buildExternalSeedPool(state.tmdbMetadataByTitle, state.internalFilmByTitleKey);
-    if (persistedSession.externalSeedTitle) {
+    if (persistedSession.externalSeedTitle && elements.movieSearch) {
       state.session.externalSeed =
         state.externalSeedPool.find((seed) => normalize(seed.title) === normalize(persistedSession.externalSeedTitle)) || null;
     }

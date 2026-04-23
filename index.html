@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=35" />
+    <link rel="stylesheet" href="./styles.css?v=37" />
   </head>
   <body>
     <div class="page-shell">
@@ -21,7 +21,7 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Start from your taste, not a catalogue search. Use guided curated seeds, a few quick questions, and one optional outside film to open up recommendations that stay strictly inside our hand-built universe.
+            Start from your taste, not a catalogue search. Use guided curated seeds and a few quick questions to open up recommendations that stay strictly inside our hand-built universe.
           </p>
         </div>
 
@@ -30,49 +30,38 @@
         </aside>
       </header>
 
-      <main class="layout">
-        <section class="controls card">
-          <div class="section-heading">
-            <h2>Start From Any Film</h2>
-            <p>Optional: use one outside film as a temporary taste input. It will never enter the internal catalogue.</p>
+      <main class="home-flow">
+        <section class="taste-refine-section card" id="taste-refine-section">
+          <div class="taste-refine-head">
+            <div class="section-heading">
+              <p class="panel-label">Refinement</p>
+              <h2>Refine your taste</h2>
+              <p>Pick up to three curated seeds, then let the recommendations take the lead.</p>
+            </div>
+            <button id="toggle-refine-panel" class="card-link-button taste-refine-toggle" type="button">
+              Show all seeds
+            </button>
           </div>
 
-          <div class="search-area">
-            <label class="field-label" for="movie-search"></label>
-            <div class="search-row">
-              <input
-                id="movie-search"
-                type="text"
-                autocomplete="off"
-                placeholder="Use a film you like as a starting point..."
-              />
-              <button id="add-first-match" class="ghost-button" type="button">
-                Use top match
-              </button>
-            </div>
-            <div id="search-results" class="search-results" aria-live="polite"></div>
-          </div>
-
-          <div class="director-area">
-            <div class="field-label-row">
-              <span class="field-label">Guided seed picks</span>
-              <button id="reset-director" class="text-button" type="button">Refresh picks</button>
-            </div>
+          <div class="taste-refine-summary">
             <div id="selected-seeds" class="selected-seeds" aria-live="polite"></div>
-            <div id="director-list" class="director-list"></div>
-          </div>
-
-          <div class="bookmarks-area">
-            <div class="field-label-row">
-              <span class="field-label">Saved films</span>
-              <a href="./saved.html" class="text-button">Open page</a>
+            <div class="bookmarks-area">
+              <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
             </div>
-            <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
           </div>
 
+          <div class="taste-refine-panel" id="taste-refine-panel">
+            <div class="director-area">
+              <div class="field-label-row">
+                <span class="field-label">Guided seed picks</span>
+                <button id="reset-director" class="text-button" type="button">Refresh picks</button>
+              </div>
+              <div id="director-list" class="director-list"></div>
+            </div>
+          </div>
         </section>
 
-        <section class="results card">
+        <section class="recommendations-section results card">
           <div class="results-head">
             <div>
               <h2 id="results-title">Your next watch starts here</h2>
@@ -85,24 +74,27 @@
           <div id="results-grid" class="results-grid"></div>
           <div id="criterion-section" class="criterion-section"></div>
         </section>
-      </main>
 
-      <section class="cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
-        <div class="cinema-showtimes__head">
-          <div>
-            <p class="panel-label">Cinema calendar</p>
-            <h2 id="cinema-showtimes-title">Playing in London</h2>
-            <p id="cinema-showtimes-intro" class="cinema-showtimes__intro"></p>
-            <p id="cinema-showtimes-updated" class="cinema-showtimes__updated">Loading showtimes...</p>
+        <section class="calendar-preview-section cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
+          <div class="cinema-showtimes__head">
+            <div>
+              <p class="panel-label">Cinema layer</p>
+              <h2 id="cinema-showtimes-title">Playing in London this week</h2>
+              <p id="cinema-showtimes-intro" class="cinema-showtimes__intro"></p>
+              <p id="cinema-showtimes-updated" class="cinema-showtimes__updated">Loading showtimes...</p>
+            </div>
+            <button id="toggle-cinema-calendar" class="text-button cinema-showtimes__toggle" type="button">
+              Open full calendar
+            </button>
           </div>
-        </div>
 
-        <div id="cinema-showtimes-calendar" class="cinema-showtimes__calendar" aria-label="Choose a showtimes date"></div>
-        <div id="cinema-showtimes-list" class="cinema-showtimes__list" aria-live="polite"></div>
-      </section>
+          <div id="cinema-showtimes-calendar" class="cinema-showtimes__calendar" aria-label="Choose a showtimes date"></div>
+          <div id="cinema-showtimes-list" class="cinema-showtimes__list" aria-live="polite"></div>
+        </section>
+      </main>
     </div>
 
     <script src="./lib/recommendation-engine.js"></script>
-    <script src="./app.js?v=41"></script>
+    <script src="./app.js?v=43"></script>
   </body>
 </html>

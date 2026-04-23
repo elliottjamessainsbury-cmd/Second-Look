@@ -43,7 +43,7 @@ button {
 }
 
 .page-shell {
-  width: min(1500px, calc(100% - 36px));
+  width: min(1440px, calc(100% - 48px));
   margin: 0 auto;
   padding: 20px 0 44px;
 }
@@ -165,6 +165,24 @@ button {
 
 .text-button:hover {
   color: var(--accent);
+}
+
+.saved-sidebar-button {
+  width: 100%;
+  min-height: 52px;
+}
+
+.saved-sidebar-button.is-active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.saved-sidebar-summary {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.6;
 }
 
 .hero {
@@ -327,11 +345,10 @@ h1 {
   color: rgba(255, 255, 255, 0.64);
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: minmax(290px, 0.72fr) minmax(0, 1.52fr);
-  gap: 18px;
-  align-items: start;
+.home-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .card {
@@ -344,23 +361,17 @@ h1 {
 }
 
 .section-heading {
-  margin-bottom: 22px;
+  margin-bottom: 0;
   padding-top: 8px;
 }
 
-.section-heading h2 {
-  font-size: clamp(3rem, 7vw, 6rem);
+.section-heading h2,
+.results-head h2 {
+  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
   text-transform: none;
 }
 
 .results-head h2 {
-  font-size: clamp(1.3rem, 2.2vw, 2.1rem);
-  text-transform: none;
-  white-space: nowrap;
-}
-
-.controls .section-heading h2 {
-  font-size: clamp(1.3rem, 2.2vw, 2.1rem);
   white-space: nowrap;
 }
 
@@ -390,10 +401,65 @@ h1 {
   align-items: center;
 }
 
+.taste-refine-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px 20px;
+  background: rgba(236, 235, 230, 0.72);
+}
+
+.taste-refine-head,
+.taste-refine-summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.taste-refine-head .section-heading {
+  max-width: 56ch;
+}
+
+.taste-refine-head .section-heading p:last-child {
+  margin-top: 8px;
+}
+
+.taste-refine-toggle {
+  width: auto;
+  min-width: 150px;
+  min-height: 46px;
+  flex-shrink: 0;
+}
+
+.taste-refine-summary {
+  align-items: center;
+}
+
+.taste-refine-summary .selected-seeds {
+  flex: 1;
+  margin: 0;
+}
+
+.taste-refine-panel {
+  display: none;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.taste-refine-section.is-expanded .taste-refine-panel {
+  display: block;
+}
+
 .search-area,
 .director-area,
 .bookmarks-area {
   margin-bottom: 24px;
+}
+
+.controls .director-area:last-of-type,
+.controls .bookmarks-area:last-of-type {
+  margin-bottom: 0;
 }
 
 .search-row {
@@ -486,7 +552,7 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0;
 }
 
 .selected-seed-chip {
@@ -503,8 +569,13 @@ input:focus {
   color: var(--accent);
 }
 
+.selected-seed-chip-suggestion {
+  background: rgba(245, 244, 240, 0.68);
+  color: var(--text);
+}
+
 .selected-seed-empty {
-  margin: 0 0 12px;
+  margin: 8px 0 0;
   color: var(--muted);
   font-size: 0.8rem;
   line-height: 1.5;
@@ -558,6 +629,7 @@ input:focus {
 .discovery-bookmarks {
   display: grid;
   gap: 10px;
+  min-width: 190px;
 }
 
 .discovery-bookmarks__empty {
@@ -626,6 +698,10 @@ input:focus {
   gap: 22px;
 }
 
+.recommendations-section {
+  background: var(--panel);
+}
+
 .results-head {
   display: flex;
   justify-content: space-between;
@@ -663,12 +739,16 @@ input:focus {
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 24px;
 }
 
 .results-grid-span {
   grid-column: 1 / -1;
+}
+
+.saved-results-empty-state {
+  min-height: 220px;
 }
 
 .taste-quiz-shell,
@@ -691,6 +771,112 @@ input:focus {
 .taste-quiz-list {
   display: grid;
   gap: 14px;
+}
+
+.taste-card-swap-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.62fr) minmax(320px, 1fr);
+  gap: 24px;
+  align-items: center;
+  min-height: 360px;
+}
+
+.taste-card-swap-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 260px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(159, 69, 39, 0.16), transparent 32%),
+    linear-gradient(145deg, #f7f0df 0%, #e7e2d6 100%);
+}
+
+.taste-card-swap-copy h4 {
+  margin: 0 0 10px;
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+  line-height: 0.98;
+  text-transform: none;
+}
+
+.taste-card-swap-copy p:last-child,
+.taste-card-swap-note {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.taste-card-swap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.taste-card-swap-stage {
+  position: relative;
+  min-height: 300px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.taste-swap-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(calc(100% - 78px), 560px);
+  min-height: 235px;
+  border-radius: 26px;
+  box-shadow: 0 28px 70px rgba(28, 24, 18, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(calc(-50% + 84px), calc(-50% - 72px)) scale(0.88) rotate(8deg) skewY(4deg);
+  transition:
+    opacity 0.32s ease,
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.32s ease;
+  will-change: transform, opacity;
+}
+
+.taste-swap-card.is-active {
+  z-index: 4;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1) rotate(-1deg) skewY(0deg);
+}
+
+.taste-swap-card.is-next {
+  z-index: 3;
+  opacity: 0.78;
+  transform: translate(calc(-50% + 38px), calc(-50% - 28px)) scale(0.96) rotate(2deg) skewY(2deg);
+}
+
+.taste-swap-card.is-third {
+  z-index: 2;
+  opacity: 0.46;
+  transform: translate(calc(-50% + 72px), calc(-50% - 54px)) scale(0.92) rotate(5deg) skewY(3deg);
+}
+
+.taste-swap-card.is-hidden {
+  opacity: 0;
+}
+
+.taste-swap-card-complete {
+  background:
+    radial-gradient(circle at 85% 10%, rgba(159, 69, 39, 0.18), transparent 30%),
+    #efeee8;
+}
+
+.taste-card-swap-controls {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .taste-quiz-question {
@@ -786,7 +972,14 @@ input:focus {
 }
 
 .discovery-card__rationale {
-  min-height: 2.8em;
+  min-height: 0;
+}
+
+.film-card .discovery-card__rationale {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .discovery-action-button.is-active {
@@ -810,6 +1003,7 @@ input:focus {
   flex-direction: column;
   overflow: hidden;
   background: var(--paper);
+  min-height: 100%;
 }
 
 .result-card-expanded {
@@ -862,6 +1056,7 @@ input:focus {
   display: flex;
   flex: 1;
   flex-direction: column;
+  gap: 10px;
   min-width: 0;
   padding: 14px 14px 16px;
 }
@@ -891,8 +1086,65 @@ input:focus {
 }
 
 .card-actions {
-  margin-top: 14px;
+  margin-top: auto;
   flex-direction: column;
+}
+
+.film-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.film-actions .card-link-button {
+  width: auto;
+  min-height: 46px;
+}
+
+.film-actions .discovery-dismiss-button {
+  min-width: 112px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.card-detail-toggle {
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
+.film-screening-preview {
+  display: grid;
+  gap: 8px;
+  margin-top: 2px;
+  padding: 12px;
+  border: 1px solid rgba(19, 81, 170, 0.28);
+  background: var(--accent-soft);
+}
+
+.screening-kicker,
+.screening-meta {
+  margin: 0;
+}
+
+.screening-kicker {
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.screening-meta {
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.screening-book-button {
+  min-height: 42px;
 }
 
 .result-card-expanded .card-actions {
@@ -927,6 +1179,22 @@ input:focus {
 
 .card-link-button-tertiary {
   background: var(--paper);
+}
+
+.film-actions .discovery-action-button {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.film-actions .discovery-action-button.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.screening-book-button {
+  background: var(--accent);
+  color: #fff;
 }
 
 .card-expanded-panel {
@@ -1084,8 +1352,13 @@ input:focus {
   color: var(--text);
 }
 
+.calendar-preview-section {
+  background: rgba(236, 235, 230, 0.62);
+  padding: 20px;
+  border-color: rgba(199, 199, 199, 0.78);
+}
+
 .cinema-showtimes {
-  margin-top: 18px;
   overflow: hidden;
 }
 
@@ -1094,11 +1367,11 @@ input:focus {
   justify-content: space-between;
   gap: 24px;
   align-items: flex-start;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .cinema-showtimes__head h2 {
-  font-size: clamp(2.8rem, 6vw, 6rem);
+  font-size: clamp(1.5rem, 2.4vw, 2.4rem);
 }
 
 .cinema-showtimes__intro {
@@ -1118,16 +1391,21 @@ input:focus {
   text-transform: uppercase;
 }
 
+.cinema-showtimes__toggle {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
 .cinema-showtimes__calendar {
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .cinema-date-button {
-  min-height: 118px;
-  padding: 14px;
+  min-height: 74px;
+  padding: 12px;
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
@@ -1173,14 +1451,14 @@ input:focus {
 }
 
 .cinema-date-button__count {
-  margin-top: 18px;
+  margin-top: 10px;
   color: var(--muted);
 }
 
 .cinema-showtimes__list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
 }
 
 .cinema-showtimes-card {
@@ -1193,7 +1471,7 @@ input:focus {
 }
 
 .cinema-showtimes-card__body {
-  padding: 16px;
+  padding: 14px;
 }
 
 .cinema-showtimes-card__body .match-meta {
@@ -1212,8 +1490,27 @@ input:focus {
 }
 
 .cinema-showtimes-card__actions {
-  margin-top: 16px;
+  margin-top: 12px;
   align-items: stretch;
+}
+
+.cinema-showtimes-card-compact .card-title {
+  font-size: clamp(1.1rem, 1.6vw, 1.45rem);
+}
+
+.cinema-showtimes.is-expanded .cinema-showtimes__calendar {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  margin-bottom: 18px;
+}
+
+.cinema-showtimes.is-expanded .cinema-date-button {
+  min-height: 118px;
+  padding: 14px;
+}
+
+.cinema-showtimes.is-expanded .cinema-showtimes__list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
 }
 
 .cinema-showtimes-card__missing-link {
@@ -1252,6 +1549,9 @@ input:focus {
   .results-head,
   .criterion-head,
   .saved-page-header,
+  .taste-refine-head,
+  .taste-refine-summary,
+  .cinema-showtimes__head,
   .taste-quiz-footer,
   .discovery-shell__footer,
   .discovery-shell__head {
@@ -1264,6 +1564,21 @@ input:focus {
   .cinema-showtimes__calendar,
   .cinema-showtimes__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .taste-card-swap-layout {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .taste-card-swap-copy {
+    min-height: 0;
+  }
+
+  .taste-refine-toggle,
+  .cinema-showtimes__toggle,
+  .discovery-bookmarks {
+    width: 100%;
   }
 }
 
@@ -1302,6 +1617,14 @@ input:focus {
     grid-template-columns: 1fr;
   }
 
+  .film-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .film-actions .card-link-button {
+    width: 100%;
+  }
+
   .cinema-date-button {
     min-height: 0;
   }
@@ -1333,5 +1656,27 @@ input:focus {
   .taste-quiz-shell,
   .discovery-shell {
     padding: 18px;
+  }
+
+  .taste-card-swap-stage {
+    min-height: 340px;
+  }
+
+  .taste-swap-card {
+    width: calc(100% - 34px);
+    min-height: 290px;
+    padding: 18px;
+  }
+
+  .taste-swap-card.is-next {
+    transform: translate(calc(-50% + 16px), calc(-50% - 18px)) scale(0.96) rotate(2deg) skewY(1deg);
+  }
+
+  .taste-swap-card.is-third {
+    transform: translate(calc(-50% + 28px), calc(-50% - 34px)) scale(0.92) rotate(4deg) skewY(2deg);
+  }
+
+  .taste-card-swap-controls {
+    justify-content: stretch;
   }
 }
