@@ -284,6 +284,23 @@ h1 {
   color: var(--text);
 }
 
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.hero-cta-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
+}
+
 .hero-panel {
   display: flex;
   flex-direction: column;
