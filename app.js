@@ -1688,12 +1688,28 @@ function formatShowtimesUpdated(value) {
   }).format(date)}`;
 }
 
+const CINEMA_LOGOS = {
+  "BFI Southbank": "assets/images/cinema-logos/bfi-southbank.png",
+  "Prince Charles Cinema": "assets/images/cinema-logos/prince-charles-cinema.png",
+  "The Garden Cinema": "assets/images/cinema-logos/garden-cinema.png",
+  "Close-Up Cinema": "assets/images/cinema-logos/close-up-cinema.png",
+};
+
+function getCinemaLogoPath(cinemaName) {
+  return CINEMA_LOGOS[cinemaName] || null;
+}
+
 function renderCinemaScreeningCard(screening, compact = false) {
+  const cinemaName = screening.cinema || "Cinema TBC";
+  const logoPath = getCinemaLogoPath(cinemaName);
   return `
     <article class="cinema-showtimes-card ${compact ? "cinema-showtimes-card-compact" : ""}">
       <div class="card-body cinema-showtimes-card__body">
         <h3 class="card-title">${escapeHtml(screening.title || "Untitled screening")}</h3>
-        <p class="match-meta">${escapeHtml(screening.cinema || "Cinema TBC")}</p>
+        <div class="cinema-showtimes-card__cinema">
+          ${logoPath ? `<img class="cinema-logo" src="${escapeHtml(logoPath)}" alt="" aria-hidden="true">` : ""}
+          <p class="match-meta">${escapeHtml(cinemaName)}</p>
+        </div>
         <p class="cinema-showtimes-card__times">${escapeHtml(
           compact ? `${formatShowtimesDate(screening.date)} • ${screening.time || "Time TBC"}` : screening.time || "Time TBC"
         )}</p>

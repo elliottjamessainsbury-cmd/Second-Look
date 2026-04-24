@@ -1491,8 +1491,23 @@ input:focus {
   padding: 14px;
 }
 
-.cinema-showtimes-card__body .match-meta {
+.cinema-showtimes-card__cinema {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.cinema-showtimes-card__cinema .match-meta {
+  margin-top: 0;
+}
+
+.cinema-logo {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .cinema-showtimes-card__times {
