@@ -190,6 +190,7 @@ const elements = {
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   toggleRefinePanel: document.querySelector("#toggle-refine-panel"),
   resetDirector: document.querySelector("#reset-director"),
+  updatePreferences: document.querySelector("#update-preferences"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   criterionSection: document.querySelector("#criterion-section"),
@@ -828,6 +829,15 @@ function clearSessionAndReturnToOnboarding() {
   render();
 }
 
+function updatePreferencesAndReturnToOnboarding() {
+  state.session.answers = {};
+  state.session.hasGenerated = false;
+  state.session.expandedCardKey = "";
+  state.recommendations = [];
+  saveSessionState();
+  render();
+}
+
 function handleQuizAnswer(questionId, answerId) {
   state.session.answers[questionId] = answerId;
   saveSessionState();
@@ -1313,6 +1323,7 @@ function renderOnboarding() {
 
   const unansweredQuestions = tasteQuizQuestions.filter((question) => !state.session.answers[question.id]);
 
+  elements.updatePreferences.hidden = true;
   elements.clearRecommendations.hidden = true;
   elements.resultsTitle.textContent = "Curated taste onboarding";
   elements.resultsGrid.innerHTML = `
@@ -1422,6 +1433,7 @@ function renderRecommendations() {
     return;
   }
 
+  elements.updatePreferences.hidden = false;
   elements.clearRecommendations.hidden = false;
   elements.clearRecommendations.textContent = "Reset session";
   elements.resultsTitle.textContent = "Your next watches";
@@ -1461,6 +1473,7 @@ function renderSavedResults() {
   const backLabel =
     state.session.hasGenerated && state.recommendations.length ? "Back to recommendations" : "Back to discovery";
 
+  elements.updatePreferences.hidden = true;
   elements.clearRecommendations.hidden = false;
   elements.clearRecommendations.textContent = backLabel;
   elements.resultsTitle.textContent = "Your saved films";
@@ -1939,6 +1952,10 @@ function attachBaseEventHandlers() {
   elements.toggleCinemaCalendar?.addEventListener("click", () => {
     state.isCinemaCalendarExpanded = !state.isCinemaCalendarExpanded;
     renderCinemaShowtimes();
+  });
+
+  elements.updatePreferences?.addEventListener("click", () => {
+    updatePreferencesAndReturnToOnboarding();
   });
 
   elements.clearRecommendations?.addEventListener("click", () => {
