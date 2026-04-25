@@ -1689,10 +1689,10 @@ function formatShowtimesUpdated(value) {
 }
 
 const CINEMA_LOGOS = {
-  "BFI Southbank": "assets/images/cinema-logos/bfi-southbank.png",
-  "Prince Charles Cinema": "assets/images/cinema-logos/prince-charles-cinema.png",
-  "The Garden Cinema": "assets/images/cinema-logos/garden-cinema.png",
-  "Close-Up Cinema": "assets/images/cinema-logos/close-up-cinema.png",
+  "BFI Southbank": "assets/images/cinema-logos/bfi-southbank.svg",
+  "Prince Charles Cinema": "assets/images/cinema-logos/prince-charles-cinema.svg",
+  "The Garden Cinema": "assets/images/cinema-logos/garden-cinema.svg",
+  "Close-Up Cinema": "assets/images/cinema-logos/close-up-cinema.svg",
 };
 
 function getCinemaLogoPath(cinemaName) {

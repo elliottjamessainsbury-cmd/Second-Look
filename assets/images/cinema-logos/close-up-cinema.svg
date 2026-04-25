@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 32" width="130" height="32">
+  <rect width="130" height="32" rx="2" fill="#ffffff" stroke="#222222" stroke-width="1.5"/>
+  <text x="65" y="13" font-family="Arial, sans-serif" font-size="7" font-weight="700" letter-spacing="2.5" fill="#222222" text-anchor="middle">CLOSE-UP</text>
+  <text x="65" y="25" font-family="Arial, sans-serif" font-size="7" font-weight="400" letter-spacing="2.5" fill="#222222" text-anchor="middle">CINEMA</text>
+</svg>
