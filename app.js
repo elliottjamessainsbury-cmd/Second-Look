@@ -27,6 +27,29 @@ if (!window.SecondLookEditorial) {
 
 let tasteCardSwapIndex = 0;
 
+function initHeroHeaderImageRotation() {
+  const hero = document.querySelector(".hero-copy");
+  if (!hero) {
+    return;
+  }
+
+  const heroImages = [
+    "28548_073_Current_medium.jpg",
+    "Funeral-Parade-HERO.jpg",
+    "MV5BODI3OTY3MTAyNl5BMl5BanBnXkFtZTcwNDQ2MjMzMw@@._V1_.jpg",
+    "The_Ascent_2.jpg",
+    "Zerkalo_01_1080.png",
+    "akira_1280.jpg",
+    "header-film-still.jpg",
+    "seconds-1200-1200-675-675-crop-000000.jpg",
+    "story-of-women-1.jpg",
+    "vertigo-fr-1748625916.jpg",
+  ];
+
+  const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
+  hero.style.setProperty("--hero-image", `url("./assets/images/hero/${pick}")`);
+}
+
 function getLocalStorage() {
   if (typeof window === "undefined" || !window.localStorage) {
     return null;
@@ -1959,6 +1982,7 @@ async function loadAppData() {
 }
 
 attachBaseEventHandlers();
+initHeroHeaderImageRotation();
 initRotatingFilmQuotes();
 render();
 loadAppData();

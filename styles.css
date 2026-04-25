@@ -222,7 +222,7 @@ button {
   padding: 28px;
   background:
     linear-gradient(180deg, rgba(236, 235, 230, 0.2), rgba(236, 235, 230, 0.88)),
-    url("./assets/images/hero/header-film-still.jpg"),
+    var(--hero-image, url("./assets/images/hero/header-film-still.jpg")),
     var(--panel);
   background-size: cover;
   background-position: center;

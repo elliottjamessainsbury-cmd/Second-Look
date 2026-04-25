@@ -1,4 +1,17 @@
 .cursor/
+.venv/
+
+# macOS
 .DS_Store
 **/.DS_Store
-.venv/
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor/OS caches
+*.swp
+*.swo
