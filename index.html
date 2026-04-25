@@ -21,7 +21,7 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Start from your taste, not a catalogue search. Use guided curated seeds and a few quick questions to open up recommendations that stay strictly inside our hand-built universe.
+            Start from your taste, not a catalogue search. Use guided curated films and a few quick questions to open up recommendations that stay strictly inside our hand-built universe.
           </p>
         </div>
 
@@ -31,36 +31,6 @@
       </header>
 
       <main class="home-flow">
-        <section class="taste-refine-section card" id="taste-refine-section">
-          <div class="taste-refine-head">
-            <div class="section-heading">
-              <p class="panel-label">Refinement</p>
-              <h2>Refine your taste</h2>
-              <p>Pick up to three curated seeds, then let the recommendations take the lead.</p>
-            </div>
-            <button id="toggle-refine-panel" class="card-link-button taste-refine-toggle" type="button">
-              Show all seeds
-            </button>
-          </div>
-
-          <div class="taste-refine-summary">
-            <div id="selected-seeds" class="selected-seeds" aria-live="polite"></div>
-            <div class="bookmarks-area">
-              <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
-            </div>
-          </div>
-
-          <div class="taste-refine-panel" id="taste-refine-panel">
-            <div class="director-area">
-              <div class="field-label-row">
-                <span class="field-label">Guided seed picks</span>
-                <button id="reset-director" class="text-button" type="button">Refresh picks</button>
-              </div>
-              <div id="director-list" class="director-list"></div>
-            </div>
-          </div>
-        </section>
-
         <section class="recommendations-section results card">
           <div class="results-head">
             <div>
@@ -73,6 +43,28 @@
 
           <div id="results-grid" class="results-grid"></div>
           <div id="criterion-section" class="criterion-section"></div>
+        </section>
+
+        <section class="taste-refine-section card" id="taste-refine-section">
+          <div class="taste-refine-summary">
+            <div class="taste-refine-summary__copy">
+              <h2>Refine your taste</h2>
+              <p>Pick up to three curated films, then let the recommendations take the lead.</p>
+            </div>
+            <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
+          </div>
+
+          <div id="selected-seeds" class="selected-seeds" aria-live="polite"></div>
+
+          <div class="taste-refine-panel" id="taste-refine-panel">
+            <div class="director-area">
+              <div class="field-label-row">
+                <span class="field-label">Guided film picks</span>
+                <button id="reset-director" class="text-button" type="button">Refresh picks</button>
+              </div>
+              <div id="director-list" class="director-list"></div>
+            </div>
+          </div>
         </section>
 
         <section class="calendar-preview-section cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
@@ -95,6 +87,7 @@
     </div>
 
     <script src="./lib/recommendation-engine.js"></script>
-    <script src="./app.js?v=43"></script>
+    <script src="./lib/editorial-copy.js"></script>
+    <script src="./app.js?v=44"></script>
   </body>
 </html>

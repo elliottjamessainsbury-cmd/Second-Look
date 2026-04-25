@@ -1,0 +1,64 @@
+{
+  "scenarios": [
+    {
+      "id": "oppenheimer-epic-lineage",
+      "label": "Oppenheimer seed",
+      "seedFilmIds": ["oppenheimer-2023"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": ["lawrence-of-arabia-1962"]
+    },
+    {
+      "id": "citizen-kane-epic-lineage",
+      "label": "Citizen Kane seed",
+      "seedFilmIds": ["citizen-kane-1941"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": ["lawrence-of-arabia-1962"]
+    },
+    {
+      "id": "bug-cassavetes-rupture",
+      "label": "Bug seed",
+      "seedFilmIds": ["bug-2006"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": ["a-woman-under-the-influence-1974"]
+    },
+    {
+      "id": "persona-fracture",
+      "label": "Persona seed",
+      "seedFilmIds": ["persona-1966"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": ["a-woman-under-the-influence-1974"]
+    },
+    {
+      "id": "happy-together-drift",
+      "label": "Happy Together seed",
+      "seedFilmIds": ["happy-together-1997"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": ["chungking-express-1994"]
+    },
+    {
+      "id": "look-of-silence-witness",
+      "label": "The Look of Silence seed",
+      "seedFilmIds": ["the-look-of-silence-2014"],
+      "questionnaireAnswers": {},
+      "topN": 4,
+      "requiredCandidateIds": []
+    }
+  ],
+  "comparison_groups": [
+    {
+      "id": "lawrence-different-seeds",
+      "candidateFilmId": "lawrence-of-arabia-1962",
+      "scenarioIds": ["oppenheimer-epic-lineage", "citizen-kane-epic-lineage"]
+    },
+    {
+      "id": "cassavetes-different-seeds",
+      "candidateFilmId": "a-woman-under-the-influence-1974",
+      "scenarioIds": ["bug-cassavetes-rupture", "persona-fracture"]
+    }
+  ]
+}

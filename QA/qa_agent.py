@@ -23,6 +23,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -34,9 +35,12 @@ import yaml
 
 BASE_DIR = Path("QA")
 PROMPT_PATH = BASE_DIR / "qa-agent-prompt.md"
+BLURB_PROMPT_PATH = BASE_DIR / "blurb-quality-agent-prompt.md"
 SMOKETEST_PATH = BASE_DIR / "smoketest.md"
 FLOWS_DIR = BASE_DIR / "flows"
 ISSUES_PATH = BASE_DIR / "issues.yaml"
+BLURB_CASES_PATH = FLOWS_DIR / "blurb_quality_cases.json"
+BLURB_SMOKETEST_SCRIPT = BASE_DIR / "blurb_quality_smoketest.js"
 RESPONSES_API_URL = "https://api.openai.com/v1/responses"
 DEFAULT_MODEL = "gpt-5.4-mini"
 MAX_STEPS = 8
@@ -66,6 +70,16 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=MAX_STEPS,
         help=f"Maximum investigation steps per flow (default: {MAX_STEPS}).",
+    )
+    parser.add_argument(
+        "--blurb-audit",
+        action="store_true",
+        help="Run the structured blurb-quality audit instead of the stepwise QA flow agent.",
+    )
+    parser.add_argument(
+        "--cases",
+        default=str(BLURB_CASES_PATH),
+        help=f"Cases file for --blurb-audit (default: {BLURB_CASES_PATH}).",
     )
     return parser.parse_args()
 
@@ -420,6 +434,62 @@ def append_issue_if_new(issue: dict[str, Any]) -> bool:
     return True
 
 
+def normalize_blurb_issue(issue: dict[str, Any]) -> dict[str, Any]:
+    normalized = {
+        "id": str(issue.get("id", "")).strip(),
+        "severity": str(issue.get("severity", "medium")).strip().lower() or "medium",
+        "type": str(issue.get("type", "blurb_genericity")).strip(),
+        "title": str(issue.get("title") or issue.get("summary") or "Blurb quality issue").strip(),
+        "summary": str(issue.get("summary") or issue.get("title") or "").strip(),
+        "evidence": str(issue.get("evidence", "")).strip(),
+        "suggested_fix": str(issue.get("suggested_fix", "")).strip(),
+        "source_flow": str(issue.get("source_flow", BLURB_CASES_PATH.as_posix())).strip(),
+        "status": str(issue.get("status", "open")).strip().lower() or "open",
+    }
+    return normalized
+
+
+def run_blurb_audit(cases_path: str) -> int:
+    read_text(BLURB_PROMPT_PATH)
+    if not BLURB_SMOKETEST_SCRIPT.exists():
+        raise SystemExit(f"Required blurb smoke test not found: {BLURB_SMOKETEST_SCRIPT}")
+
+    completed = subprocess.run(
+        ["node", BLURB_SMOKETEST_SCRIPT.as_posix(), "--json", "--cases", cases_path],
+        cwd=Path("."),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+
+    stdout = completed.stdout.strip()
+    if not stdout:
+        raise SystemExit(
+            "Blurb audit did not return JSON output."
+            + (f" Stderr: {completed.stderr.strip()}" if completed.stderr.strip() else "")
+        )
+
+    try:
+        payload = json.loads(stdout)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Could not parse blurb audit JSON output: {exc}\n{stdout}") from exc
+
+    issues = [normalize_blurb_issue(issue) for issue in payload.get("issues", []) if isinstance(issue, dict)]
+    created = 0
+    for issue in issues:
+        if append_issue_if_new(issue):
+            created += 1
+
+    summary = payload.get("summary", {})
+    print("Blurb quality audit complete.")
+    print(f"Cases: {cases_path}")
+    print(f"Failures: {summary.get('failed', 0)}")
+    print(f"Issues found: {len(issues)}")
+    print(f"New issues written: {created}")
+
+    return 1 if int(summary.get("failed", 0) or 0) > 0 else 0
+
+
 def run_flow(flow_path: Path, *, model: str, max_steps: int) -> dict[str, Any]:
     system_prompt = read_text(PROMPT_PATH)
     smoketest_rules = read_text(SMOKETEST_PATH)
@@ -510,6 +580,9 @@ def run_flow(flow_path: Path, *, model: str, max_steps: int) -> dict[str, Any]:
 
 def main() -> int:
     args = parse_args()
+    if args.blurb_audit:
+        return run_blurb_audit(args.cases)
+
     model = os.environ.get("OPENAI_MODEL", DEFAULT_MODEL)
     flow_paths = get_flow_paths(args.flow)
 

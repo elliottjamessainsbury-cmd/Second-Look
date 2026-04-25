@@ -4,6 +4,8 @@ const path = require("path");
 const vm = require("vm");
 
 const ROOT = "/Users/elliott/Documents/New project";
+const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
+const editorial = require(path.join(ROOT, "lib", "editorial-copy.js"));
 
 class MockElement {
   constructor(id = "") {
@@ -12,6 +14,10 @@ class MockElement {
     this.hidden = false;
     this.value = "";
     this.listeners = {};
+    this.attributes = {};
+    this.classList = {
+      toggle() {}
+    };
   }
 
   addEventListener(type, handler) {
@@ -24,6 +30,10 @@ class MockElement {
 
   querySelector() {
     return null;
+  }
+
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
   }
 }
 
@@ -58,12 +68,20 @@ async function createHarness() {
     "#add-first-match",
     "#search-results",
     "#director-list",
+    "#selected-seeds",
     "#discovery-bookmarks",
     "#reset-director",
     "#clear-recommendations",
     "#results-grid",
     "#criterion-section",
-    "#results-title"
+    "#results-title",
+    "#cinema-showtimes-section",
+    "#cinema-showtimes-title",
+    "#cinema-showtimes-calendar",
+    "#cinema-showtimes-list",
+    "#cinema-showtimes-intro",
+    "#cinema-showtimes-updated",
+    "#toggle-cinema-calendar"
   ];
   const elementMap = new Map(selectors.map((selector) => [selector, new MockElement(selector)]));
 
@@ -73,7 +91,9 @@ async function createHarness() {
       setTimeout,
       setInterval,
       clearTimeout,
-      clearInterval
+      clearInterval,
+      SecondLookEngine: engine,
+      SecondLookEditorial: editorial
     },
     document: {
       querySelector(selector) {
@@ -103,15 +123,24 @@ async function createHarness() {
 globalThis.__cardMetadataHarness = {
   state,
   elements,
-  addFilm,
   renderRecommendations,
   cardKey,
-  cardCoverageForTitle
+  toggleSeedFilm,
+  generateRecommendations,
+  metadataForTitle
 };`;
 
   vm.createContext(context);
   vm.runInContext(wrapped, context, { filename: "app.js" });
-  await new Promise((resolve) => setTimeout(resolve, 40));
+
+  // Wait for loadAppData() to complete (it runs at module load).
+  const waitStart = Date.now();
+  while (context.__cardMetadataHarness?.state?.loading) {
+    if (Date.now() - waitStart > 5000) {
+      throw new Error("Timed out waiting for app data to load.");
+    }
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
 
   return {
     app: context.__cardMetadataHarness,
@@ -119,27 +148,23 @@ globalThis.__cardMetadataHarness = {
   };
 }
 
-function pickSeed(app) {
-  for (const film of app.state.curatedSourceFilms) {
-    app.addFilm(film.film_id);
-
-    const primaryCard = (app.state.recommendations.primary || []).find(
-      (item) => app.cardCoverageForTitle(item.title).isFull
-    );
-    const criterionCard = (app.state.recommendations.criterion || []).find(
-      (item) => app.cardCoverageForTitle(item.title).isFull
-    );
-
-    if (primaryCard && criterionCard) {
-      return {
-        seed: film.title,
-        primaryCard,
-        criterionCard
-      };
-    }
+function pickScenario(app) {
+  const seed = app.state.internalFilms.find((film) => film && film.source === "internal") || null;
+  if (!seed) {
+    return null;
   }
 
-  return null;
+  app.state.session.seedFilmIds = [seed.filmId];
+  app.generateRecommendations();
+  app.renderRecommendations();
+
+  const picks = Array.isArray(app.state.recommendations) ? app.state.recommendations : [];
+  const primaryPick = picks[0]?.film ? picks[0].film : null;
+  if (!primaryPick) {
+    return null;
+  }
+
+  return { seed, primaryPick };
 }
 
 async function main() {
@@ -149,10 +174,10 @@ async function main() {
 
   const { app, elementMap } = await createHarness();
   const results = [];
-  const scenario = pickSeed(app);
+  const scenario = pickScenario(app);
 
-  runCheck("Found a seed film with covered primary and criterion cards", () => {
-    assert(scenario, "No suitable seed film found");
+  runCheck("Found a seed film that generates recommendations", () => {
+    assert(scenario, "No suitable seed film found / no recommendations generated");
   }, results);
 
   if (!scenario) {
@@ -161,33 +186,25 @@ async function main() {
     return;
   }
 
-  app.state.expandedCardKey = app.cardKey("primary", scenario.primaryCard.title);
+  app.state.session.expandedCardKey = app.cardKey("recommendation", scenario.primaryPick.filmId);
   app.renderRecommendations();
 
-  runCheck("Expanded primary card includes explanation, synopsis, rating, and availability", () => {
+  runCheck("Expanded recommendation card includes explanation, synopsis, and availability", () => {
     const html = elementMap.get("#results-grid").innerHTML;
-    assert(html.includes(scenario.primaryCard.title), `Primary title missing: ${scenario.primaryCard.title}`);
-    assert(html.includes("expanded-reason-copy"), "Primary explanation missing");
-    assert(html.includes("Average Letterboxd rating"), "Primary rating label missing");
-    assert(html.includes("expanded-copy"), "Primary synopsis missing");
-    assert(html.includes("Search Criterion"), "Primary retailer links missing");
-    assert(!html.includes("BFI"), "Primary card should not show BFI links");
+    assert(html.includes(scenario.primaryPick.title), `Recommendation title missing: ${scenario.primaryPick.title}`);
+    assert(html.includes("expanded-reason-copy"), "Explanation missing");
+    assert(html.includes("expanded-copy"), "Synopsis missing");
+    assert(html.includes("Search Criterion"), "Retailer links missing");
+
+    const metadata = app.metadataForTitle(scenario.primaryPick.title);
+    if (metadata && metadata.average_rating) {
+      assert(html.includes("Average Letterboxd rating"), "Rating label missing for film with rating metadata");
+    } else {
+      assert(!html.includes("Average Letterboxd rating"), "Rating label should be omitted when rating metadata is missing");
+    }
   }, results);
 
-  app.state.expandedCardKey = app.cardKey("criterion", scenario.criterionCard.title);
-  app.renderRecommendations();
-
-  runCheck("Expanded criterion card includes explanation, synopsis, rating, and availability", () => {
-    const html = elementMap.get("#criterion-section").innerHTML;
-    assert(html.includes(scenario.criterionCard.title), `Criterion title missing: ${scenario.criterionCard.title}`);
-    assert(html.includes("expanded-reason-copy"), "Criterion explanation missing");
-    assert(html.includes("Average Letterboxd rating"), "Criterion rating label missing");
-    assert(html.includes("expanded-copy"), "Criterion synopsis missing");
-    assert(html.includes("Search Criterion"), "Criterion retailer links missing");
-    assert(!html.includes("BFI"), "Criterion card should not show BFI links");
-  }, results);
-
-  app.state.expandedCardKey = "";
+  app.state.session.expandedCardKey = "";
   app.renderRecommendations();
 
   runCheck("Collapsing cards returns the layout to normal", () => {

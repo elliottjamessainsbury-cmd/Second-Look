@@ -11,9 +11,18 @@ const {
   scoreCandidate,
   updateUserProfileFromInteraction,
 } = window.SecondLookEngine || {};
+const {
+  formatList,
+  buildBlurbIndices,
+  explanationForCandidate: buildEditorialExplanation,
+} = window.SecondLookEditorial || {};
 
 if (!window.SecondLookEngine) {
   throw new Error("SecondLookEngine failed to load.");
+}
+
+if (!window.SecondLookEditorial) {
+  throw new Error("SecondLookEditorial failed to load.");
 }
 
 let tasteCardSwapIndex = 0;
@@ -166,7 +175,6 @@ const state = {
   quickPicks: [],
   recommendations: [],
   resultsMode: "discover",
-  isRefineExpanded: false,
   isCinemaCalendarExpanded: false,
   userProfile: loadUserProfile(),
   session: {
@@ -188,7 +196,6 @@ const elements = {
   selectedSeeds: document.querySelector("#selected-seeds"),
   discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
   tasteRefineSection: document.querySelector("#taste-refine-section"),
-  toggleRefinePanel: document.querySelector("#toggle-refine-panel"),
   resetDirector: document.querySelector("#reset-director"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
@@ -438,78 +445,6 @@ function monogramForTitle(title) {
     .toUpperCase();
 }
 
-function buildBlurbIndices(rawBlurbs, internalFilmByTitleKey) {
-  const byTitle = {};
-  const byId = {};
-
-  Object.entries(rawBlurbs).forEach(([key, value]) => {
-    const [leftTitle, rightTitle] = key.split("::");
-    if (!leftTitle || !rightTitle) {
-      return;
-    }
-
-    byTitle[`${normalize(leftTitle)}::${normalize(rightTitle)}`] = value;
-
-    const leftFilm = internalFilmByTitleKey[normalize(leftTitle)];
-    const rightFilm = internalFilmByTitleKey[normalize(rightTitle)];
-    if (leftFilm && rightFilm) {
-      byId[`${leftFilm.filmId}::${rightFilm.filmId}`] = value;
-    }
-  });
-
-  return { byId, byTitle };
-}
-
-function blurbForPair(seed, candidate) {
-  if (!seed || !candidate) {
-    return null;
-  }
-
-  function reverseToForward(entry, leftTitle, rightTitle) {
-    const points = (entry.supporting_points || []).slice(0, 3);
-    if (points.length) {
-      return {
-        ...entry,
-        blurb: `${leftTitle} and ${rightTitle} connect through ${formatList(points)}. That shared terrain is why ${rightTitle} feels like a strong follow-on from ${leftTitle}.`,
-      };
-    }
-
-    if (entry.primary_angle) {
-      const angle = entry.primary_angle.replace(/\.$/, "");
-      return {
-        ...entry,
-        blurb: `${leftTitle} and ${rightTitle} sit in related territory: ${angle.toLowerCase()}. That is what makes ${rightTitle} feel closely linked to ${leftTitle}.`,
-      };
-    }
-
-    return entry;
-  }
-
-  if (seed.filmId && candidate.filmId) {
-    const directId = state.recommendationBlurbsByPairId[`${seed.filmId}::${candidate.filmId}`];
-    if (directId) {
-      return directId;
-    }
-
-    const reverseId = state.recommendationBlurbsByPairId[`${candidate.filmId}::${seed.filmId}`];
-    if (reverseId) {
-      return reverseToForward(reverseId, seed.title, candidate.title);
-    }
-  }
-
-  const titleKey = `${normalize(seed.title)}::${normalize(candidate.title)}`;
-  if (state.recommendationBlurbsByPairTitle[titleKey]) {
-    return state.recommendationBlurbsByPairTitle[titleKey];
-  }
-
-  const reverseTitleKey = `${normalize(candidate.title)}::${normalize(seed.title)}`;
-  if (state.recommendationBlurbsByPairTitle[reverseTitleKey]) {
-    return reverseToForward(state.recommendationBlurbsByPairTitle[reverseTitleKey], seed.title, candidate.title);
-  }
-
-  return null;
-}
-
 function deriveMoodSignalsFromText(keywords, text) {
   const haystack = `${(keywords || []).join(" ")} ${text || ""}`.toLowerCase();
   const matches = [];
@@ -639,69 +574,19 @@ function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeed) {
   return bestSeed;
 }
 
-function formatList(values) {
-  if (!values.length) {
-    return "";
-  }
-  if (values.length === 1) {
-    return values[0];
-  }
-  if (values.length === 2) {
-    return `${values[0]} and ${values[1]}`;
-  }
-  return `${values.slice(0, -1).join(", ")}, and ${values[values.length - 1]}`;
-}
-
-function buildFallbackExplanation(candidate, scoreData, bestSeed) {
-  if (bestSeed) {
-    if (scoreData.directSources.length) {
-      return `${candidate.title} is one of our direct next-step picks out of ${bestSeed.title}, so it gets the strongest recommendation boost in this pass.`;
-    }
-
-    if (scoreData.moodOverlap.length && scoreData.themeOverlap.length) {
-      return `${candidate.title} stays close to ${bestSeed.title} through ${formatList(scoreData.moodOverlap)} mood and ${formatList(scoreData.themeOverlap)} thematic overlap.`;
-    }
-
-    if (scoreData.moodOverlap.length) {
-      return `${candidate.title} keeps some of the same emotional register as ${bestSeed.title}, especially around ${formatList(scoreData.moodOverlap)} moods.`;
-    }
-
-    if (scoreData.themeOverlap.length) {
-      return `${candidate.title} circles many of the same ideas as ${bestSeed.title}, especially ${formatList(scoreData.themeOverlap)}.`;
-    }
-
-    if (scoreData.sameDirector) {
-      return `${candidate.title} keeps the same directorial voice as ${bestSeed.title}, but with a lighter score than a hand-authored direct recommendation.`;
-    }
-  }
-
-  const likedMood = Object.entries(state.userProfile.moodAffinity)
-    .filter(([, value]) => value > 1)
-    .map(([key]) => key);
-  const likedTheme = Object.entries(state.userProfile.themeAffinity)
-    .filter(([, value]) => value > 1)
-    .map(([key]) => key);
-
-  const moodHit = candidate.mood.find((value) => likedMood.includes(normalize(value)));
-  if (moodHit) {
-    return `You’ve been saving films with a ${moodHit} pull, so ${candidate.title} rises because it fits that mood memory.`;
-  }
-
-  const themeHit = candidate.themes.find((value) => likedTheme.includes(normalize(value)));
-  if (themeHit) {
-    return `Your recent saves keep leaning toward ${themeHit}, and ${candidate.title} fits that thread.`;
-  }
-
-  return `${candidate.title} feels like a strong fit for the taste profile built from your quiz, seed picks, and recent interactions.`;
-}
-
 function explanationForCandidate(candidate, scoreData, bestSeed) {
-  const blurb = blurbForPair(bestSeed, candidate);
-  if (blurb?.blurb) {
-    return blurb.blurb;
-  }
+  const explanation = buildEditorialExplanation({
+    candidate,
+    scoreData,
+    bestSeed,
+    lookups: {
+      blurbsByPairId: state.recommendationBlurbsByPairId,
+      blurbsByPairTitle: state.recommendationBlurbsByPairTitle,
+    },
+    userProfile: state.userProfile,
+  });
 
-  return buildFallbackExplanation(candidate, scoreData, bestSeed);
+  return explanation.text;
 }
 
 function generateRecommendations() {
@@ -913,7 +798,7 @@ function renderSelectedSeeds() {
     ${
       chips.length
         ? ""
-        : `<p class="selected-seed-empty">Choose a suggested seed, or expand for the full guided set.</p>`
+        : `<p class="selected-seed-empty">Choose a suggested film, or pick from the guided set below.</p>`
     }
   `;
 
@@ -943,7 +828,7 @@ function renderSearchResults() {
   if (!state.externalSearchResults.length) {
     elements.searchResults.innerHTML = `
       <div class="empty-state search-empty-state">
-        <h3>No external seed in the local cache yet</h3>
+        <h3>No external film in the local cache yet</h3>
         <p>Try another title, or use one of the curated starting films below.</p>
       </div>
     `;
@@ -958,7 +843,7 @@ function renderSearchResults() {
             <strong>${seed.title}</strong>
             <div class="match-meta">${[seed.year || "Year unknown", seed.director || "Director unknown"].join(" • ")}</div>
           </div>
-          <button type="button" data-external-seed="${encodeURIComponent(seed.title)}">Use as seed</button>
+          <button type="button" data-external-seed="${encodeURIComponent(seed.title)}">Use film</button>
         </div>
       `
     )
@@ -1021,14 +906,7 @@ function renderSavedSidebar() {
 }
 
 function renderRefinePanelState() {
-  if (elements.tasteRefineSection) {
-    elements.tasteRefineSection.classList.toggle("is-expanded", state.isRefineExpanded);
-  }
-
-  if (elements.toggleRefinePanel) {
-    elements.toggleRefinePanel.textContent = state.isRefineExpanded ? "Hide seeds" : "Show all seeds";
-    elements.toggleRefinePanel.setAttribute("aria-expanded", state.isRefineExpanded ? "true" : "false");
-  }
+  // Refine panel is always visible; retain method for render() call sites.
 }
 
 function providerActionLabel(provider) {
@@ -1122,16 +1000,21 @@ function renderAvailabilityPanel(film) {
 
 function renderExpandedPanel(film, explanation) {
   const metadata = metadataForTitle(film.title);
-  const letterboxdAverage = metadata?.average_rating || "Not available";
-
-  return `
-    <div class="card-expanded-panel">
+  const letterboxdAverage = metadata?.average_rating ? String(metadata.average_rating) : "";
+  const ratingMarkup = letterboxdAverage
+    ? `
       <div class="expanded-stats">
         <div class="expanded-stat">
           <span class="expanded-stat-label">Average Letterboxd rating</span>
           <strong>${letterboxdAverage}</strong>
         </div>
       </div>
+    `
+    : "";
+
+  return `
+    <div class="card-expanded-panel">
+      ${ratingMarkup}
       <div class="expanded-reason">
         <span class="expanded-reason-label">Why we think you’ll like this</span>
         <p class="expanded-reason-copy">${explanation}</p>
@@ -1244,7 +1127,7 @@ function renderRecommendationCards() {
                 : ""
             }
             <div class="card-actions film-actions">
-              <button class="card-link-button discovery-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
+              <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
                 ${isSaved ? "Saved" : "Save"}
               </button>
               <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
@@ -1365,7 +1248,7 @@ function renderOnboarding() {
                       <span class="taste-quiz-question__count">DONE</span>
                       <h4>Your taste cards are complete.</h4>
                     </div>
-                    <p class="taste-card-swap-note">You can generate recommendations now, or add curated seeds from the list first.</p>
+                    <p class="taste-card-swap-note">You can generate recommendations now, or add curated films from the list first.</p>
                   </section>
                 `
             }
@@ -1382,7 +1265,7 @@ function renderOnboarding() {
         </div>
       </div>
       <div class="taste-quiz-footer">
-        <p class="taste-quiz-footer__copy">${state.session.seedFilmIds.length} curated seeds • ${answerCount()} of ${tasteQuizQuestions.length} answers</p>
+        <p class="taste-quiz-footer__copy">${state.session.seedFilmIds.length} curated films • ${answerCount()} of ${tasteQuizQuestions.length} answers</p>
         <button
           id="taste-quiz-submit"
           class="ghost-button taste-quiz-submit"
@@ -1675,12 +1558,36 @@ function formatShowtimesUpdated(value) {
   }).format(date)}`;
 }
 
+const CINEMA_LOGO_PATHS = {
+  [normalize("BFI Southbank")]: "./assets/images/cinema-logos/bfi-southbank.png",
+  [normalize("Prince Charles Cinema")]: "./assets/images/cinema-logos/prince-charles-cinema.png",
+  [normalize("The Garden Cinema")]: "./assets/images/cinema-logos/garden-cinema.png",
+  [normalize("Garden Cinema")]: "./assets/images/cinema-logos/garden-cinema.png",
+  [normalize("Close-Up Cinema")]: "./assets/images/cinema-logos/close-up-cinema.png",
+  [normalize("Close Up Cinema")]: "./assets/images/cinema-logos/close-up-cinema.png",
+};
+
+function getCinemaLogoPath(cinemaName) {
+  const cinemaKey = normalize(cinemaName || "");
+  return CINEMA_LOGO_PATHS[cinemaKey] || "";
+}
+
 function renderCinemaScreeningCard(screening, compact = false) {
+  const cinemaName = screening.cinema || "Cinema TBC";
+  const cinemaLogoPath = getCinemaLogoPath(cinemaName);
+
   return `
     <article class="cinema-showtimes-card ${compact ? "cinema-showtimes-card-compact" : ""}">
       <div class="card-body cinema-showtimes-card__body">
         <h3 class="card-title">${escapeHtml(screening.title || "Untitled screening")}</h3>
-        <p class="match-meta">${escapeHtml(screening.cinema || "Cinema TBC")}</p>
+        <p class="match-meta cinema-showtimes-card__cinema">
+          ${
+            cinemaLogoPath
+              ? `<span class="cinema-showtimes-card__logo"><img src="${escapeHtml(cinemaLogoPath)}" alt="" loading="lazy" decoding="async"></span>`
+              : ""
+          }
+          <span class="cinema-showtimes-card__cinema-name">${escapeHtml(cinemaName)}</span>
+        </p>
         <p class="cinema-showtimes-card__times">${escapeHtml(
           compact ? `${formatShowtimesDate(screening.date)} • ${screening.time || "Time TBC"}` : screening.time || "Time TBC"
         )}</p>
@@ -1929,11 +1836,6 @@ function attachBaseEventHandlers() {
     refreshQuickPicks();
     renderSelectedSeeds();
     renderQuickPicks();
-  });
-
-  elements.toggleRefinePanel?.addEventListener("click", () => {
-    state.isRefineExpanded = !state.isRefineExpanded;
-    renderRefinePanelState();
   });
 
   elements.toggleCinemaCalendar?.addEventListener("click", () => {

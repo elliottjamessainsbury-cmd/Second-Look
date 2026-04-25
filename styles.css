@@ -9,11 +9,15 @@
   --line: #c7c7c7;
   --accent: #1351aa;
   --accent-soft: #dbe6f6;
+  --save: #0f4d2c;
+  --save-soft: #cfe5d6;
+  --save-ink: #0f3b25;
   --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", "Courier New", monospace;
   --radius-lg: 26px;
   --radius-md: 18px;
+  --radius-pill: 999px;
 }
 
 * {
@@ -169,7 +173,7 @@ button {
 
 .saved-sidebar-button {
   width: 100%;
-  min-height: 52px;
+  min-height: 46px;
 }
 
 .saved-sidebar-button.is-active {
@@ -404,12 +408,11 @@ h1 {
 .taste-refine-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 16px 18px;
   background: rgba(236, 235, 230, 0.72);
 }
 
-.taste-refine-head,
 .taste-refine-summary {
   display: flex;
   justify-content: space-between;
@@ -417,23 +420,21 @@ h1 {
   align-items: flex-start;
 }
 
-.taste-refine-head .section-heading {
+.taste-refine-summary {
+  align-items: center;
+}
+
+.taste-refine-summary__copy {
+  min-width: 0;
   max-width: 56ch;
 }
 
-.taste-refine-head .section-heading p:last-child {
-  margin-top: 8px;
+.taste-refine-summary__copy h2 {
+  font-size: clamp(1.3rem, 2vw, 2rem);
 }
 
-.taste-refine-toggle {
-  width: auto;
-  min-width: 150px;
-  min-height: 46px;
-  flex-shrink: 0;
-}
-
-.taste-refine-summary {
-  align-items: center;
+.taste-refine-summary__copy p {
+  margin: 8px 0 0;
 }
 
 .taste-refine-summary .selected-seeds {
@@ -442,13 +443,9 @@ h1 {
 }
 
 .taste-refine-panel {
-  display: none;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.taste-refine-section.is-expanded .taste-refine-panel {
   display: block;
+  padding-top: 8px;
+  border-top: 1px solid rgba(199, 199, 199, 0.72);
 }
 
 .search-area,
@@ -507,7 +504,7 @@ input:focus {
 .director-pill,
 .card-link-button {
   border: 1px solid var(--line);
-  border-radius: 0;
+  border-radius: var(--radius-pill);
   background: var(--paper);
 }
 
@@ -558,6 +555,7 @@ input:focus {
 .selected-seed-chip {
   padding: 9px 12px;
   border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--ink);
   font-size: 0.8rem;
@@ -914,6 +912,7 @@ input:focus {
 
 .taste-quiz-answer {
   border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
   background: var(--paper);
   padding: 11px 14px;
   color: var(--ink);
@@ -1181,15 +1180,16 @@ input:focus {
   background: var(--paper);
 }
 
-.film-actions .discovery-action-button {
-  border-color: var(--accent);
-  background: var(--accent);
+.film-actions .save-action-button {
+  border-color: var(--save);
+  background: var(--save);
   color: #fff;
 }
 
-.film-actions .discovery-action-button.is-active {
-  background: var(--accent-soft);
-  color: var(--accent);
+.film-actions .save-action-button.is-active {
+  border-color: rgba(15, 77, 44, 0.45);
+  background: var(--save-soft);
+  color: var(--save-ink);
 }
 
 .screening-book-button {
@@ -1269,6 +1269,7 @@ input:focus {
   min-height: 38px;
   padding: 8px 12px;
   border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--ink);
   text-decoration: none;
@@ -1407,6 +1408,7 @@ input:focus {
   min-height: 74px;
   padding: 12px;
   border: 1px solid var(--line);
+  border-radius: var(--radius-md);
   background: var(--paper);
   color: var(--ink);
   text-align: left;
@@ -1476,6 +1478,33 @@ input:focus {
 
 .cinema-showtimes-card__body .match-meta {
   margin-top: 8px;
+}
+
+.cinema-showtimes-card__cinema {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cinema-showtimes-card__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  max-width: 96px;
+}
+
+.cinema-showtimes-card__logo img {
+  display: block;
+  width: auto;
+  height: 24px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.cinema-showtimes-card__cinema-name {
+  min-width: 0;
 }
 
 .cinema-showtimes-card__times {
