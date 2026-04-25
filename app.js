@@ -190,6 +190,7 @@ const elements = {
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   toggleRefinePanel: document.querySelector("#toggle-refine-panel"),
   resetDirector: document.querySelector("#reset-director"),
+  savedFilmsBanner: document.querySelector("#saved-films-banner"),
   updatePreferences: document.querySelector("#update-preferences"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
@@ -1584,65 +1585,51 @@ function renderSavedFilmsPage() {
     return;
   }
 
-  elements.savedFilmsList.innerHTML = `
-    <div class="saved-films-list">
-      ${savedFilms
-        .map((film) => {
-          const key = cardKey("saved", film.filmId);
-          const expanded = state.session.expandedCardKey === key;
-          return `
-            <article class="saved-film-row ${expanded ? "saved-film-row-expanded" : ""}">
-              <div class="saved-film-row__summary">
-                <div class="saved-film-row__meta">
-                  <h2 class="saved-film-row__title">${film.title}</h2>
-                  <p class="saved-film-row__subline">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
-                </div>
-                <div class="saved-film-row__actions">
-                  <button class="card-link-button card-link-button-tertiary saved-film-row__toggle" type="button" data-saved-toggle="${key}">
-                    ${expanded ? "See less" : "See more"}
-                  </button>
-                  <button class="card-link-button saved-film-row__unsave" type="button" data-saved-unsave="${film.filmId}">
-                    Remove
-                  </button>
-                </div>
-              </div>
-              ${
-                expanded
-                  ? `
-                    <div class="saved-film-row__detail">
-                      <div class="poster-block">
-                        ${renderPosterMarkup(film.title)}
-                      </div>
-                      <div class="card-body">
-                        <h3 class="card-title">${film.title}</h3>
-                        ${renderExpandedPanel(film, "You saved this film as part of your evolving taste profile.")}
-                        <div class="card-actions">
-                          <a class="card-link-button" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
-                        </div>
-                      </div>
-                    </div>
-                  `
-                  : ""
-              }
-            </article>
-          `;
-        })
-        .join("")}
-    </div>
-  `;
+  elements.savedFilmsList.innerHTML = savedFilms
+    .map((film) => {
+      const key = cardKey("saved", film.filmId);
+      const expanded = state.session.expandedCardKey === key;
+      const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
+      return `
+        <article class="result-card film-card ${expanded ? "result-card-expanded" : ""}">
+          <div class="poster-block">
+            ${renderPosterMarkup(film.title)}
+          </div>
+          <div class="card-body film-card-body">
+            <h3 class="card-title">${film.title}</h3>
+            <p class="match-meta">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
+            ${
+              film.cardTags.length
+                ? `<p class="discovery-card__rationale">${film.cardTags.slice(0, 3).join(" • ")}</p>`
+                : ""
+            }
+            <div class="card-actions film-actions">
+              <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-saved-film="${film.filmId}">
+                Not for me
+              </button>
+            </div>
+            ${expanded ? renderExpandedPanel(film, "You saved this film to revisit when the timing feels right.") : ""}
+            <button class="text-button card-detail-toggle" type="button" data-toggle-saved-card="${key}">
+              ${expanded ? "See less" : "See more"}
+            </button>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
 
-  elements.savedFilmsList.querySelectorAll("[data-saved-toggle]").forEach((button) => {
+  elements.savedFilmsList.querySelectorAll("[data-toggle-saved-card]").forEach((button) => {
     button.addEventListener("click", () => {
-      const key = button.dataset.savedToggle;
+      const key = button.dataset.toggleSavedCard;
       state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
       saveSessionState();
       renderSavedFilmsPage();
     });
   });
 
-  elements.savedFilmsList.querySelectorAll("[data-saved-unsave]").forEach((button) => {
+  elements.savedFilmsList.querySelectorAll("[data-dismiss-saved-film]").forEach((button) => {
     button.addEventListener("click", () => {
-      removeSavedFilm(button.dataset.savedUnsave);
+      handleFilmInteraction(button.dataset.dismissSavedFilm, "not_for_me");
       renderSavedFilmsPage();
     });
   });
@@ -1870,6 +1857,13 @@ function renderCinemaShowtimes() {
   });
 }
 
+function renderSavedFilmsBanner() {
+  if (!elements.savedFilmsBanner || isSavedPage) {
+    return;
+  }
+  elements.savedFilmsBanner.hidden = state.userProfile.savedFilmIds.length === 0;
+}
+
 function render() {
   renderSelectedSeeds();
   renderSearchResults();
@@ -1877,6 +1871,7 @@ function render() {
   renderSavedSidebar();
   renderRefinePanelState();
   renderCinemaShowtimes();
+  renderSavedFilmsBanner();
 
   if (isSavedPage) {
     renderSavedFilmsPage();

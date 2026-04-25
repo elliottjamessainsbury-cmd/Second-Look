@@ -368,6 +368,26 @@ h1 {
   gap: 24px;
 }
 
+.saved-films-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  flex-wrap: wrap;
+}
+
+.saved-films-banner__text {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.saved-films-grid {
+  padding: 0;
+}
+
 .card {
   padding: 24px;
 }
