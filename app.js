@@ -47,7 +47,8 @@ function initHeroHeaderImageRotation() {
   ];
 
   const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
-  hero.style.setProperty("--hero-image", `url("./assets/images/hero/${pick}")`);
+  const cacheBust = Date.now();
+  hero.style.setProperty("--hero-image", `url("./assets/images/hero/${pick}?v=${cacheBust}")`);
 }
 
 function getLocalStorage() {
@@ -1582,12 +1583,12 @@ function formatShowtimesUpdated(value) {
 }
 
 const CINEMA_LOGO_PATHS = {
-  [normalize("BFI Southbank")]: "./assets/images/cinema-logos/bfi-southbank.png",
-  [normalize("Prince Charles Cinema")]: "./assets/images/cinema-logos/prince-charles-cinema.png",
+  [normalize("BFI Southbank")]: "./assets/images/cinema-logos/BFI Southbank logo.jpg",
+  [normalize("Prince Charles Cinema")]: "./assets/images/cinema-logos/Prince Charles Cinema logo.jpg",
   [normalize("The Garden Cinema")]: "./assets/images/cinema-logos/garden-cinema.png",
   [normalize("Garden Cinema")]: "./assets/images/cinema-logos/garden-cinema.png",
-  [normalize("Close-Up Cinema")]: "./assets/images/cinema-logos/close-up-cinema.png",
-  [normalize("Close Up Cinema")]: "./assets/images/cinema-logos/close-up-cinema.png",
+  [normalize("Close-Up Cinema")]: "./assets/images/cinema-logos/Close-Up Cinema.jpeg",
+  [normalize("Close Up Cinema")]: "./assets/images/cinema-logos/Close-Up Cinema.jpeg",
 };
 
 function getCinemaLogoPath(cinemaName) {
