@@ -70,14 +70,25 @@
         <section class="calendar-preview-section cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
           <div class="cinema-showtimes__head">
             <div>
-              <p class="panel-label">Cinema layer</p>
               <h2 id="cinema-showtimes-title">Playing in London this week</h2>
               <p id="cinema-showtimes-intro" class="cinema-showtimes__intro"></p>
               <p id="cinema-showtimes-updated" class="cinema-showtimes__updated">Loading showtimes...</p>
             </div>
-            <button id="toggle-cinema-calendar" class="text-button cinema-showtimes__toggle" type="button">
-              Open full calendar
-            </button>
+          </div>
+
+          <div class="cinema-showtimes__filters" aria-label="Filter cinema showtimes">
+            <label class="cinema-showtimes__filter">
+              <span class="cinema-showtimes__filter-label">Film</span>
+              <select id="cinema-showtimes-film-filter" class="cinema-showtimes__filter-select">
+                <option value="">All films</option>
+              </select>
+            </label>
+            <label class="cinema-showtimes__filter">
+              <span class="cinema-showtimes__filter-label">Cinema</span>
+              <select id="cinema-showtimes-cinema-filter" class="cinema-showtimes__filter-select">
+                <option value="">All cinemas</option>
+              </select>
+            </label>
           </div>
 
           <div id="cinema-showtimes-calendar" class="cinema-showtimes__calendar" aria-label="Choose a showtimes date"></div>
@@ -88,6 +99,6 @@
 
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=44"></script>
+    <script src="./app.js?v=45"></script>
   </body>
 </html>

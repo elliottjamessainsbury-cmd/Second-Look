@@ -1365,9 +1365,8 @@ input:focus {
 
 .cinema-showtimes__head {
   display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: flex-start;
+  gap: 16px;
+  align-items: flex-end;
   margin-bottom: 18px;
 }
 
@@ -1376,15 +1375,15 @@ input:focus {
 }
 
 .cinema-showtimes__intro {
-  margin: 12px 0 0;
-  max-width: 62ch;
+  margin: 10px 0 0;
+  max-width: 48ch;
   color: var(--muted);
   font-size: 0.82rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .cinema-showtimes__updated {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   font-family: var(--mono);
   color: var(--muted);
   font-size: 0.78rem;
@@ -1392,26 +1391,55 @@ input:focus {
   text-transform: uppercase;
 }
 
-.cinema-showtimes__toggle {
-  flex-shrink: 0;
-  margin-top: 4px;
-}
-
-.cinema-showtimes__calendar {
+.cinema-showtimes__filters {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 14px;
 }
 
+.cinema-showtimes__filter {
+  display: grid;
+  gap: 6px;
+}
+
+.cinema-showtimes__filter-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cinema-showtimes__filter-select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  appearance: none;
+}
+
+.cinema-showtimes__calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(84px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
 .cinema-date-button {
-  min-height: 74px;
-  padding: 12px;
+  min-height: 118px;
+  padding: 12px 12px 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--paper);
   color: var(--ink);
-  text-align: left;
+  text-align: center;
   transition:
     background-color 0.25s linear,
     border-color 0.25s linear,
@@ -1426,16 +1454,27 @@ input:focus {
 }
 
 .cinema-date-button__day,
+.cinema-date-button__number,
 .cinema-date-button__date,
 .cinema-date-button__count {
   display: block;
 }
 
 .cinema-date-button__day {
-  font-family: var(--display);
-  font-size: 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cinema-date-button__number {
+  margin-top: 10px;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.95;
 }
 
 .cinema-date-button__date,
@@ -1449,17 +1488,17 @@ input:focus {
 }
 
 .cinema-date-button__date {
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .cinema-date-button__count {
-  margin-top: 10px;
+  margin-top: 8px;
   color: var(--muted);
 }
 
 .cinema-showtimes__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -1476,39 +1515,43 @@ input:focus {
   padding: 14px;
 }
 
-.cinema-showtimes-card__body .match-meta {
-  margin-top: 8px;
+.cinema-showtimes-card__header {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
 }
 
-.cinema-showtimes-card__cinema {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+.cinema-showtimes-card__meta {
+  min-width: 0;
+  text-align: left;
 }
 
 .cinema-showtimes-card__logo {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 auto;
-  max-width: 96px;
+  width: 72px;
+  height: 72px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #f2f0ea;
 }
 
 .cinema-showtimes-card__logo img {
   display: block;
-  width: auto;
-  height: 24px;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .cinema-showtimes-card__cinema-name {
-  min-width: 0;
+  margin: 8px 0 0;
 }
 
 .cinema-showtimes-card__times {
-  margin: 12px 0 0;
+  margin: 10px 0 0;
   font-family: var(--mono);
   color: var(--text);
   font-size: 0.78rem;
@@ -1525,21 +1568,6 @@ input:focus {
 
 .cinema-showtimes-card-compact .card-title {
   font-size: clamp(1.1rem, 1.6vw, 1.45rem);
-}
-
-.cinema-showtimes.is-expanded .cinema-showtimes__calendar {
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  margin-bottom: 18px;
-}
-
-.cinema-showtimes.is-expanded .cinema-date-button {
-  min-height: 118px;
-  padding: 14px;
-}
-
-.cinema-showtimes.is-expanded .cinema-showtimes__list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
 }
 
 .cinema-showtimes-card__missing-link {
@@ -1590,9 +1618,12 @@ input:focus {
 
   .results-grid,
   .discovery-grid-cards,
-  .cinema-showtimes__calendar,
   .cinema-showtimes__list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cinema-showtimes__filters {
+    grid-template-columns: 1fr;
   }
 
   .taste-card-swap-layout {
@@ -1605,7 +1636,6 @@ input:focus {
   }
 
   .taste-refine-toggle,
-  .cinema-showtimes__toggle,
   .discovery-bookmarks {
     width: 100%;
   }
@@ -1641,7 +1671,6 @@ input:focus {
 
   .results-grid,
   .discovery-grid-cards,
-  .cinema-showtimes__calendar,
   .cinema-showtimes__list {
     grid-template-columns: 1fr;
   }
@@ -1656,6 +1685,15 @@ input:focus {
 
   .cinema-date-button {
     min-height: 0;
+  }
+
+  .cinema-showtimes-card__header {
+    grid-template-columns: 1fr;
+  }
+
+  .cinema-showtimes-card__logo {
+    width: 64px;
+    height: 64px;
   }
 
   .result-card-expanded {
