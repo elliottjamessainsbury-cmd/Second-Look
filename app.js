@@ -9,6 +9,7 @@ const {
   normalizeUserProfile,
   buildSeedProfile,
   scoreCandidate,
+  diversifyRecommendations,
   updateUserProfileFromInteraction,
 } = window.SecondLookEngine || {};
 const {
@@ -498,6 +499,11 @@ function deriveMoodSignalsFromText(keywords, text) {
   return unique(matches);
 }
 
+function parseRatingValue(value) {
+  const numeric = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
+  return Number.isFinite(numeric) ? numeric : 0;
+}
+
 function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies, availabilityByFilmId) {
   const internalTitleToId = curated.reduce((output, film) => {
     output[normalize(film.title)] = film.film_id;
@@ -511,14 +517,15 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     const tmdb = tmdbByTitle[curatedFilm.title] || tmdbMetadataForTitle(curatedFilm.title) || {};
     const sample = sampleByTitle[normalize(curatedFilm.title)] || {};
     const directRecommendations = unique(
-      (curatedFilm.manual_links || [])
+      [...(curatedFilm.manual_links || []), ...(sample.manual_links || []), ...(sample.similar_to || [])]
         .map((title) => internalTitleToId[normalize(title)])
         .filter(Boolean)
     );
     const themes = mergeLists(sample.themes || [], tmdb.keywords || []);
+    const tone = unique(sample.tone || []);
     const mood = mergeLists(
       curatedFilm.mood || [],
-      sample.tone || [],
+      tone,
       deriveMoodSignalsFromText(tmdb.keywords || [], `${metadata.intro || ""} ${tmdb.overview || ""}`)
     );
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
@@ -529,11 +536,15 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       title: curatedFilm.title,
       year: curatedFilm.year || metadata.year || tmdb.year || null,
       director: metadata.director || tmdb.director || sample.director || "",
+      countries: unique(sample.countries || []),
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
       themes,
+      tone,
       mood,
+      pace: sample.pace || "",
       directRecommendations,
       cardTags,
+      averageRating: parseRatingValue(metadata.average_rating || metadata.review_rating),
       tmdbId: tmdb.tmdb_id || null,
       availability: availabilityByFilmId[curatedFilm.film_id] || {},
     };
@@ -548,9 +559,13 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       title,
       year: tmdb.year || null,
       director: tmdb.director || "",
+      countries: [],
       genres: unique(tmdb.genres || []),
       themes: unique(tmdb.keywords || []),
+      tone: [],
       mood: deriveMoodSignalsFromText(tmdb.keywords || [], tmdb.overview || ""),
+      pace: "",
+      averageRating: 0,
       tmdbId: tmdb.tmdb_id || null,
     }))
     .filter((seed) => seed.title && (seed.themes.length || seed.mood.length || seed.director))
@@ -583,15 +598,20 @@ function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeed) {
     let score = 0;
     const moodOverlap = (candidate.mood || []).filter((value) => (seed.mood || []).some((seedMood) => normalize(seedMood) === normalize(value)));
     const themeOverlap = (candidate.themes || []).filter((value) => (seed.themes || []).some((seedTheme) => normalize(seedTheme) === normalize(value)));
+    const toneOverlap = (candidate.tone || []).filter((value) => (seed.tone || []).some((seedTone) => normalize(seedTone) === normalize(value)));
+    const paceMatch =
+      candidate.pace && seed.pace && normalize(candidate.pace) === normalize(seed.pace);
     score += moodOverlap.length * 4;
-    score += themeOverlap.length * 3;
+    score += themeOverlap.length * 5;
+    score += toneOverlap.length * 4;
+    score += paceMatch ? 3 : 0;
 
     if (seed.director && candidate.director && normalize(seed.director) === normalize(candidate.director)) {
-      score += 2;
+      score += 6;
     }
 
     if (seed.year && candidate.year && Math.abs(seed.year - candidate.year) <= 6) {
-      score += 1;
+      score += 2;
     }
 
     if (score > bestScore) {
@@ -621,15 +641,25 @@ function explanationForCandidate(candidate, scoreData, bestSeed) {
 function generateRecommendations() {
   const seedFilms = getSelectedSeedFilms();
   const externalSeed = state.session.externalSeed;
+  const signalFilmIds = new Set(seedFilms.map((film) => film.filmId));
+  const profileFilms = unique([...state.userProfile.savedFilmIds, ...state.userProfile.likedFilmIds])
+    .filter((filmId) => !signalFilmIds.has(filmId))
+    .map((filmId) => getInternalFilmById(filmId))
+    .filter(Boolean);
+  const dislikedFilms = state.userProfile.dislikedFilmIds.map((filmId) => getInternalFilmById(filmId)).filter(Boolean);
   const seedProfile = buildSeedProfile({
     questionnaireAnswers: state.session.answers,
     seedFilms,
     externalSeed,
     userProfile: state.userProfile,
+    profileFilms,
+    dislikedFilms,
   });
 
   const excludedIds = new Set([
     ...seedProfile.explicitSeedFilmIds,
+    ...state.userProfile.savedFilmIds,
+    ...state.userProfile.likedFilmIds,
     ...state.userProfile.dislikedFilmIds,
   ]);
 
@@ -647,34 +677,7 @@ function generateRecommendations() {
     })
     .sort((left, right) => right.scoreData.totalScore - left.scoreData.totalScore);
 
-  const picks = [];
-  const directorCounts = {};
-
-  scored.forEach((item) => {
-    if (picks.length >= 8) {
-      return;
-    }
-
-    const directorKey = normalize(item.film.director);
-    const maxPerDirector = item.scoreData.directSources.length ? 2 : 1;
-    if (directorKey && Number(directorCounts[directorKey] || 0) >= maxPerDirector) {
-      return;
-    }
-
-    picks.push(item);
-    if (directorKey) {
-      directorCounts[directorKey] = Number(directorCounts[directorKey] || 0) + 1;
-    }
-  });
-
-  scored.forEach((item) => {
-    if (picks.length >= 8 || picks.some((existing) => existing.film.filmId === item.film.filmId)) {
-      return;
-    }
-    picks.push(item);
-  });
-
-  state.recommendations = picks.slice(0, 8);
+  state.recommendations = diversifyRecommendations(scored, 8);
   state.session.hasGenerated = true;
   state.session.expandedCardKey = "";
   saveSessionState();

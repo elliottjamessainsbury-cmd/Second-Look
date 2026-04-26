@@ -27,11 +27,12 @@ import urllib.request
 from pathlib import Path
 
 
-CURATED_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
-FILM_METADATA_PATH = Path("/Users/elliott/Documents/New project/data/film-metadata.json")
-TMDB_METADATA_PATH = Path("/Users/elliott/Documents/New project/data/tmdb-metadata.json")
-SAMPLE_MOVIES_PATH = Path("/Users/elliott/Documents/New project/data/sample-movies.json")
-OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/recommendation-blurbs.json")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CURATED_PATH = REPO_ROOT / "data/curated-films.json"
+FILM_METADATA_PATH = REPO_ROOT / "data/film-metadata.json"
+TMDB_METADATA_PATH = REPO_ROOT / "data/tmdb-metadata.json"
+SAMPLE_MOVIES_PATH = REPO_ROOT / "data/sample-movies.json"
+OUTPUT_PATH = REPO_ROOT / "data/recommendation-blurbs.json"
 RESPONSES_API_URL = "https://api.openai.com/v1/responses"
 DEFAULT_MODEL = "gpt-5.4-mini"
 
@@ -46,38 +47,34 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Only process the first N source/recommendation pairs.",
     )
+    parser.add_argument(
+        "--refresh-existing",
+        action="store_true",
+        help="Regenerate existing cached blurbs instead of skipping them.",
+    )
     return parser.parse_args()
 
 
 SYSTEM_PROMPT = """
-You are writing recommendation rationale copy for Second Look, a taste-led film app.
+You are writing recommendation copy for Second Look, a curated indie / arthouse / world cinema discovery app.
 
-Write like a sharp programmer at an excellent independent cinema, not like a streaming platform.
-Do not describe the recommended film in isolation. Explain why it follows from the seed film.
+The product is taste-led, editorial, and discovery-first. Avoid generic streaming-platform language.
 
-Return valid JSON only:
-{
-  "primary_angle": "string",
-  "supporting_points": ["string", "string", "string"],
-  "source_signals": ["string", "string", "string"],
-  "blurb": "string"
-}
+Never say only that two films share a genre, country, director, or vibe. Explain the deeper connection:
+- theme
+- emotional texture
+- pacing
+- formal style
+- protagonist type
+- moral tension
+- visual rhythm
+- political / social undercurrent
+- cinematic movement
+- why this is an unexpected but credible next step
 
-Rules:
-- Write like a smart, concise film journalist or festival programmer.
-- Be specific, vivid, and human.
-- Sound confident and editorial, not soft or algorithmic.
-- Prefer concrete shared emotional, thematic, or stylistic links.
-- Surface contrast when it sharpens the recommendation.
-- Do not invent facts not present in the provided data.
-- Focus on the strongest 1 to 2 recommendation angles, not everything.
-- Avoid vague filler like "compelling narrative" or "masterpiece".
-- Avoid generic curation phrases such as "another thoughtful drama", "fans of X will appreciate Y", "similarly atmospheric", or "emotionally resonant" unless they are grounded in a specific shared trait.
-- Do not rely on the phrase "the system recommends".
-- If data is thin, write cautiously and narrowly.
-- Keep the blurb to 1 to 2 sentences and ideally 28 to 55 words.
-- supporting_points should be short, machine-usable phrases, not long prose.
-- source_signals should be short references to what evidence was used, e.g. tmdb_keywords, sample_themes, director_match, manual_edge.
+Write like a sharp film programmer, not a marketing copywriter.
+Keep it concise, specific, and human.
+Return strict JSON only.
 """.strip()
 
 
@@ -217,56 +214,102 @@ def build_prompt(
     shared_themes = shared_values(source_sample.get("themes"), recommended_sample.get("themes"))
     shared_tone = shared_values(source_sample.get("tone"), recommended_sample.get("tone"))
     shared_genres = shared_values(source_tmdb_metadata.get("genres"), recommended_tmdb_metadata.get("genres"))
+    shared_keywords = shared_values(source_tmdb_metadata.get("keywords"), recommended_tmdb_metadata.get("keywords"))
+    shared_countries = shared_values(source_sample.get("countries"), recommended_sample.get("countries"))
+    shared_pace = []
+    if source_sample.get("pace") and recommended_sample.get("pace"):
+        if normalize(source_sample.get("pace")) == normalize(recommended_sample.get("pace")):
+            shared_pace = [source_sample.get("pace")]
     same_director = (
         normalize(source_tmdb_metadata.get("director")) != ""
         and normalize(source_tmdb_metadata.get("director"))
         == normalize(recommended_tmdb_metadata.get("director"))
     )
+    curated_connection = {
+        "is_manual_edge": bool(
+            source_film.get("manual_links") and recommended_title in source_film.get("manual_links", [])
+        ),
+        "source_manual_links": source_film.get("manual_links", []),
+        "source_sample_manual_links": source_sample.get("manual_links", []),
+        "source_similar_to": source_sample.get("similar_to", []),
+    }
 
     evidence_hints = []
-    if source_film.get("manual_links") and recommended_title in source_film.get("manual_links", []):
+    if curated_connection["is_manual_edge"]:
         evidence_hints.append("manual_edge")
     if shared_themes:
         evidence_hints.append("shared_sample_themes")
     if shared_tone:
         evidence_hints.append("shared_sample_tone")
+    if shared_pace:
+        evidence_hints.append("shared_sample_pace")
+    if shared_keywords:
+        evidence_hints.append("shared_tmdb_keywords")
     if shared_genres:
         evidence_hints.append("shared_tmdb_genres")
+    if shared_countries:
+        evidence_hints.append("shared_sample_countries")
     if same_director:
         evidence_hints.append("same_director")
 
-    payload = {
-        "source_film": {
-            "title": source_film["title"],
-            "year": source_film.get("year"),
-            "manual_links": source_film.get("manual_links", []),
-            "sample": source_sample,
-            "letterboxd": source_film_metadata,
-            "tmdb": source_tmdb_metadata,
-        },
-        "recommended_film": {
-            "title": recommended_title,
-            "sample": recommended_sample,
-            "letterboxd": recommended_film_metadata,
-            "tmdb": recommended_tmdb_metadata,
-        },
-        "editorial_brief": {
-            "shared_themes": shared_themes,
-            "shared_tone": shared_tone,
-            "shared_genres": shared_genres,
-            "same_director": same_director,
-            "evidence_hints": evidence_hints,
-        },
+    shared_signals = {
+        "themes": shared_themes,
+        "tone": shared_tone,
+        "pace": shared_pace,
+        "genres": shared_genres,
+        "keywords": shared_keywords,
+        "countries": shared_countries,
+        "same_director": same_director,
+        "source_editorial_notes": source_sample.get("editorial_notes", []),
+        "recommended_editorial_notes": recommended_sample.get("editorial_notes", []),
+        "evidence_hints": evidence_hints,
     }
 
-    return (
-        "Write an editorial recommendation explanation for this exact seed/recommendation pair.\n"
-        "Do not describe the recommendation by itself. Explain why it follows from the seed.\n"
-        "Prioritize the most specific shared emotional, thematic, or stylistic thread.\n"
-        "Avoid generic arthouse boilerplate.\n\n"
-        "Return one JSON object only. Do not use markdown fences. Do not add trailing commas. Do not add text before or after the JSON.\n\n"
-        f"{json.dumps(payload, ensure_ascii=False, indent=2)}"
-    )
+    source_payload = {
+        "title": source_film["title"],
+        "year": source_film.get("year"),
+        "sample": source_sample,
+        "letterboxd": source_film_metadata,
+        "tmdb": source_tmdb_metadata,
+    }
+    recommended_payload = {
+        "title": recommended_title,
+        "sample": recommended_sample,
+        "letterboxd": recommended_film_metadata,
+        "tmdb": recommended_tmdb_metadata,
+    }
+
+    return f"""
+Source film:
+{json.dumps(source_payload, ensure_ascii=False, indent=2)}
+
+Recommended film:
+{json.dumps(recommended_payload, ensure_ascii=False, indent=2)}
+
+Known shared signals:
+{json.dumps(shared_signals, ensure_ascii=False, indent=2)}
+
+Curated graph connection:
+{json.dumps(curated_connection, ensure_ascii=False, indent=2)}
+
+Task:
+Write a short recommendation rationale explaining why someone who liked the source film might like the recommended film.
+
+Return strict JSON:
+{{
+  "primary_angle": "specific editorial connection",
+  "supporting_points": ["point 1", "point 2"],
+  "source_signals": ["signal 1", "signal 2"],
+  "blurb": "1-2 sentence user-facing recommendation copy"
+}}
+
+Rules:
+- Do not use generic phrases like "if you enjoyed X, you'll love Y"
+- Do not over-rely on genre
+- Do not mention unavailable data
+- Be specific enough that the blurb could not apply to any random film
+- Return JSON only. Do not use markdown fences or extra commentary.
+""".strip()
 
 
 def save_output(output: dict) -> None:
@@ -306,7 +349,7 @@ def main() -> None:
 
     for index, (source_film, recommended_title, key) in enumerate(pairs, start=1):
         print(f"[{index}/{total_pairs}] {key}")
-        if key in output and output[key].get("blurb"):
+        if not args.refresh_existing and key in output and output[key].get("blurb"):
             skipped += 1
             print("  Skipping: already cached")
             continue
