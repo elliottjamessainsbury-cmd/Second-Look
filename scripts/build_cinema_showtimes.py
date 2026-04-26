@@ -103,7 +103,7 @@ def target_dates() -> list[date]:
     day_count = int(os.environ.get("CINEMA_SHOWTIMES_DAYS", DEFAULT_DAY_COUNT))
     if day_count < 1:
         raise CinemaParseError("CINEMA_SHOWTIMES_DAYS must be at least 1")
-    return [today + timedelta(days=offset) for offset in range(1, day_count + 1)]
+    return [today + timedelta(days=offset) for offset in range(day_count)]
 
 
 def fetch_url(url: str, cinema: str, expect_bytes: bool = False) -> str | bytes:
@@ -273,6 +273,50 @@ def parse_close_up(target_dates: set[str]) -> list[Screening]:
     return screenings
 
 
+def parse_ica_date_label(value: str) -> str:
+    label = clean_text(value)
+    today = current_london_date()
+    parsed = datetime.strptime(f"{label} {today.year}", "%A, %d %B %Y").date()
+    if parsed < today - timedelta(days=30):
+        parsed = parsed.replace(year=parsed.year + 1)
+    return parsed.isoformat()
+
+
+def parse_ica(target_dates: set[str]) -> list[Screening]:
+    cinema = "ICA"
+    html_text = fetch_url("https://www.ica.art/next-7-days", cinema)
+    screenings: list[Screening] = []
+
+    for heading_match, section in split_sections(html_text, r'<div class="docket-date">([^<]+)</div>'):
+        date_iso = parse_ica_date_label(heading_match.group(1))
+        if date_iso not in target_dates:
+            continue
+
+        for chunk in section.split('<div class="item films "')[1:]:
+            href_match = re.search(r'<a href="(/films/[^"]+)">', chunk)
+            title_matches = re.findall(r'<div class="title[^"]*">(.*?)</div>', chunk, re.S)
+            time_matches = re.findall(r'<div class="time-slot">(.*?)</div>', chunk, re.S)
+            if not href_match or not title_matches or not time_matches:
+                continue
+
+            href = href_match.group(1)
+            title = clean_text(title_matches[-1])
+            ticket_url = urljoin("https://www.ica.art", href)
+
+            for raw_time in time_matches:
+                screenings.append(
+                    Screening(
+                        date=date_iso,
+                        cinema=cinema,
+                        display_title=title,
+                        showtime=normalize_showtime(raw_time),
+                        ticket_url=ticket_url,
+                    )
+                )
+
+    return screenings
+
+
 def format_bfi_search_date(day: date) -> str:
     return f"{day.year}-{day.month}-{day.day}"
 
@@ -432,6 +476,7 @@ def build_payload() -> tuple[dict, dict[str, str | None]]:
         ("BFI Southbank", parse_bfi_southbank),
         ("Prince Charles Cinema", parse_prince_charles),
         ("The Garden Cinema", parse_garden_cinema),
+        ("ICA", parse_ica),
         ("Close-Up Cinema", parse_close_up),
     ]
 

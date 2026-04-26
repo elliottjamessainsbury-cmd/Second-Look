@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=37" />
+    <link rel="stylesheet" href="./styles.css?v=38" />
   </head>
   <body>
     <div class="page-shell">
@@ -74,15 +74,13 @@
               <p id="cinema-showtimes-intro" class="cinema-showtimes__intro"></p>
               <p id="cinema-showtimes-updated" class="cinema-showtimes__updated">Loading showtimes...</p>
             </div>
+            <div class="cinema-showtimes__head-tools">
+              <p id="cinema-showtimes-month" class="cinema-showtimes__month"></p>
+              <button id="cinema-showtimes-today" class="cinema-showtimes__today" type="button">Today</button>
+            </div>
           </div>
 
           <div class="cinema-showtimes__filters" aria-label="Filter cinema showtimes">
-            <label class="cinema-showtimes__filter">
-              <span class="cinema-showtimes__filter-label">Film</span>
-              <select id="cinema-showtimes-film-filter" class="cinema-showtimes__filter-select">
-                <option value="">All films</option>
-              </select>
-            </label>
             <label class="cinema-showtimes__filter">
               <span class="cinema-showtimes__filter-label">Cinema</span>
               <select id="cinema-showtimes-cinema-filter" class="cinema-showtimes__filter-select">
@@ -92,6 +90,12 @@
           </div>
 
           <div id="cinema-showtimes-calendar" class="cinema-showtimes__calendar" aria-label="Choose a showtimes date"></div>
+          <div class="cinema-showtimes__list-head">
+            <p id="cinema-showtimes-selection" class="cinema-showtimes__selection" aria-live="polite"></p>
+            <button id="clear-cinema-showtimes-film" class="text-button cinema-showtimes__clear-film" type="button" hidden>
+              Clear film
+            </button>
+          </div>
           <div id="cinema-showtimes-list" class="cinema-showtimes__list" aria-live="polite"></div>
         </section>
       </main>
@@ -99,6 +103,6 @@
 
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=45"></script>
+    <script src="./app.js?v=46"></script>
   </body>
 </html>
