@@ -708,6 +708,85 @@ input:focus {
   padding-top: 0;
 }
 
+.browse-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.browse-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at top left, rgba(159, 69, 39, 0.08), transparent 34%),
+    var(--paper);
+}
+
+.browse-filters__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.browse-filters__head h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+  text-transform: none;
+}
+
+.browse-filters__summary {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.browse-filters__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.browse-filter {
+  display: grid;
+  gap: 6px;
+}
+
+.browse-filter__label {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.browse-filter__select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  appearance: none;
+}
+
+.browse-results {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+.browse-results__grid {
+  gap: 18px;
+}
+
 .results-subtitle {
   max-width: 36ch;
 }
@@ -960,6 +1039,10 @@ input:focus {
   gap: 16px;
 }
 
+.recommendation-stack {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .discovery-card__meta {
   display: flex;
   flex-direction: column;
@@ -979,6 +1062,10 @@ input:focus {
   overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.browse-film-card .card-detail-toggle {
+  margin-top: 0;
 }
 
 .discovery-action-button.is-active {
@@ -1747,6 +1834,10 @@ input:focus {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .browse-layout {
+    grid-template-columns: 1fr;
+  }
+
   .cinema-showtimes__filters {
     grid-template-columns: 1fr;
   }
@@ -1802,6 +1893,10 @@ input:focus {
   .results-grid,
   .discovery-grid-cards,
   .cinema-showtimes__list {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendation-stack {
     grid-template-columns: 1fr;
   }
 

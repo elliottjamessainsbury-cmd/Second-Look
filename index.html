@@ -21,7 +21,7 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Start from your taste, not a catalogue search. Use guided curated films and a few quick questions to open up recommendations that stay strictly inside our hand-built universe.
+            Start from your taste, not a catalogue search. Filter the curated universe by platform, language, genre, and mood, then let your saves and dismissals shape what comes next.
           </p>
         </div>
 
@@ -34,37 +34,57 @@
         <section class="recommendations-section results card">
           <div class="results-head">
             <div>
-              <h2 id="results-title">Your next watch starts here</h2>
+              <h2 id="results-title">Browse curated films</h2>
             </div>
             <button id="clear-recommendations" class="text-button" type="button" hidden>
               Reset session
             </button>
           </div>
 
-          <div id="results-grid" class="results-grid"></div>
-          <div id="criterion-section" class="criterion-section"></div>
-        </section>
-
-        <section class="taste-refine-section card" id="taste-refine-section">
-          <div class="taste-refine-summary">
-            <div class="taste-refine-summary__copy">
-              <h2>Refine your taste</h2>
-              <p>Pick up to three curated films, then let the recommendations take the lead.</p>
-            </div>
-            <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
-          </div>
-
-          <div id="selected-seeds" class="selected-seeds" aria-live="polite"></div>
-
-          <div class="taste-refine-panel" id="taste-refine-panel">
-            <div class="director-area">
-              <div class="field-label-row">
-                <span class="field-label">Guided film picks</span>
-                <button id="reset-director" class="text-button" type="button">Refresh picks</button>
+          <div class="browse-layout">
+            <aside class="browse-filters card" id="taste-refine-section" aria-labelledby="browse-filters-title">
+              <div class="browse-filters__head">
+                <div>
+                  <p class="eyebrow">Curated taste card</p>
+                  <h3 id="browse-filters-title">Filter the universe</h3>
+                </div>
+                <button id="reset-filters" class="text-button" type="button">Reset filters</button>
               </div>
-              <div id="director-list" class="director-list"></div>
+              <p id="browse-summary" class="browse-filters__summary"></p>
+              <div class="browse-filters__grid" aria-label="Filter curated films">
+                <label class="browse-filter">
+                  <span class="browse-filter__label">Platform</span>
+                  <select id="browse-platform-filter" class="browse-filter__select">
+                    <option value="">All platforms</option>
+                  </select>
+                </label>
+                <label class="browse-filter">
+                  <span class="browse-filter__label">Language</span>
+                  <select id="browse-language-filter" class="browse-filter__select">
+                    <option value="">All languages</option>
+                  </select>
+                </label>
+                <label class="browse-filter">
+                  <span class="browse-filter__label">Genre</span>
+                  <select id="browse-genre-filter" class="browse-filter__select">
+                    <option value="">All genres</option>
+                  </select>
+                </label>
+                <label class="browse-filter">
+                  <span class="browse-filter__label">Mood</span>
+                  <select id="browse-mood-filter" class="browse-filter__select">
+                    <option value="">All moods</option>
+                  </select>
+                </label>
+              </div>
+              <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
+            </aside>
+
+            <div class="browse-results">
+              <div id="results-grid" class="results-grid browse-results__grid" aria-live="polite"></div>
             </div>
           </div>
+          <div id="criterion-section" class="criterion-section"></div>
         </section>
 
         <section class="calendar-preview-section cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">

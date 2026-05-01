@@ -194,6 +194,12 @@ const state = {
     generatedAt: "",
     days: [],
   },
+  browseFilters: {
+    platform: "",
+    language: "",
+    genre: "",
+    mood: "",
+  },
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
   query: "",
@@ -222,8 +228,14 @@ const elements = {
   discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   resetDirector: document.querySelector("#reset-director"),
+  resetFilters: document.querySelector("#reset-filters"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
+  browseSummary: document.querySelector("#browse-summary"),
+  browsePlatformFilter: document.querySelector("#browse-platform-filter"),
+  browseLanguageFilter: document.querySelector("#browse-language-filter"),
+  browseGenreFilter: document.querySelector("#browse-genre-filter"),
+  browseMoodFilter: document.querySelector("#browse-mood-filter"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -502,6 +514,109 @@ function parseRatingValue(value) {
   return Number.isFinite(numeric) ? numeric : 0;
 }
 
+const COUNTRY_LANGUAGE_MAP = {
+  UK: ["English"],
+  USA: ["English"],
+  Ireland: ["English"],
+  Australia: ["English"],
+  Canada: ["English", "French"],
+  France: ["French"],
+  Belgium: ["French", "Dutch"],
+  Switzerland: ["French", "German", "Italian"],
+  Germany: ["German"],
+  Austria: ["German"],
+  Italy: ["Italian"],
+  Spain: ["Spanish"],
+  Japan: ["Japanese"],
+  "South Korea": ["Korean"],
+  China: ["Mandarin"],
+  Taiwan: ["Mandarin"],
+  "Hong Kong": ["Cantonese"],
+  Sweden: ["Swedish"],
+  Norway: ["Norwegian"],
+  Denmark: ["Danish"],
+  Poland: ["Polish"],
+  Romania: ["Romanian"],
+  Turkey: ["Turkish"],
+  Iran: ["Persian"],
+};
+
+function normalizePlatformName(providerName) {
+  const value = String(providerName || "").trim();
+  const key = normalize(value);
+
+  if (!key) {
+    return "";
+  }
+  if (key.includes("mubi")) {
+    return "MUBI";
+  }
+  if (key.includes("bfi player")) {
+    return "BFI Player";
+  }
+  if (key.includes("amazon prime")) {
+    return "Amazon Prime Video";
+  }
+  if (key.includes("amazon video")) {
+    return "Amazon Video";
+  }
+  if (key.includes("apple tv")) {
+    return "Apple TV";
+  }
+  if (key.includes("netflix")) {
+    return "Netflix";
+  }
+  if (key.includes("curzon")) {
+    return "Curzon Home Cinema";
+  }
+  if (key.includes("now tv")) {
+    return "NOW";
+  }
+  if (key.includes("sky go")) {
+    return "Sky Go";
+  }
+  if (key.includes("sky store")) {
+    return "Sky Store";
+  }
+  if (key.includes("google play")) {
+    return "Google Play";
+  }
+  if (key.includes("rakuten")) {
+    return "Rakuten TV";
+  }
+  if (key.includes("youtube")) {
+    return "YouTube";
+  }
+  if (key.includes("shudder")) {
+    return "Shudder";
+  }
+  if (key.includes("disney plus")) {
+    return "Disney+";
+  }
+  if (key.includes("guidedoc")) {
+    return "GuideDoc";
+  }
+  if (key.includes("paramount")) {
+    return "Paramount+";
+  }
+  if (key.includes("hbo max")) {
+    return "HBO Max";
+  }
+
+  return value;
+}
+
+function platformsFromAvailability(availability) {
+  const providers = availability?.streaming?.providers || [];
+  return unique(providers.map((provider) => normalizePlatformName(provider.provider_name)).filter(Boolean));
+}
+
+function inferLanguagesFromCountries(countries) {
+  return unique(
+    (countries || []).flatMap((country) => COUNTRY_LANGUAGE_MAP[String(country || "").trim()] || [])
+  );
+}
+
 function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies, availabilityByFilmId) {
   const internalTitleToId = curated.reduce((output, film) => {
     output[normalize(film.title)] = film.film_id;
@@ -527,6 +642,10 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       deriveMoodSignalsFromText(tmdb.keywords || [], `${metadata.intro || ""} ${tmdb.overview || ""}`)
     );
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
+    const availability = availabilityByFilmId[curatedFilm.film_id] || {};
+    const countries = unique(sample.countries || []);
+    const platforms = platformsFromAvailability(availability);
+    const languages = inferLanguagesFromCountries(countries);
 
     return {
       source: "internal",
@@ -534,7 +653,9 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       title: curatedFilm.title,
       year: curatedFilm.year || metadata.year || tmdb.year || null,
       director: metadata.director || tmdb.director || sample.director || "",
-      countries: unique(sample.countries || []),
+      countries,
+      languages,
+      platforms,
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
       themes,
       tone,
@@ -544,7 +665,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       cardTags,
       averageRating: parseRatingValue(metadata.average_rating || metadata.review_rating),
       tmdbId: tmdb.tmdb_id || null,
-      availability: availabilityByFilmId[curatedFilm.film_id] || {},
+      availability,
     };
   });
 }
@@ -558,6 +679,8 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       year: tmdb.year || null,
       director: tmdb.director || "",
       countries: [],
+      languages: [],
+      platforms: [],
       genres: unique(tmdb.genres || []),
       themes: unique(tmdb.keywords || []),
       tone: [],
@@ -692,7 +815,7 @@ function canGenerateRecommendations() {
 }
 
 function regenerateIfActive() {
-  if (!state.session.hasGenerated) {
+  if (!canGenerateRecommendations()) {
     render();
     return;
   }
@@ -1141,8 +1264,145 @@ function renderScreeningPreview(film) {
   `;
 }
 
-function renderRecommendationCards() {
-  return state.recommendations
+function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
+  if (!element) {
+    return;
+  }
+
+  element.innerHTML = [
+    `<option value="">${escapeHtml(allLabel)}</option>`,
+    ...options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`),
+  ].join("");
+  element.value = selectedValue;
+}
+
+function getBrowseFilterOptions() {
+  const platforms = new Map();
+  const languages = new Map();
+  const genres = new Map();
+  const moods = new Map();
+
+  state.internalFilms.forEach((film) => {
+    (film.platforms || []).forEach((platform) => platforms.set(normalize(platform), platform));
+    (film.languages || []).forEach((language) => languages.set(normalize(language), language));
+    (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
+    (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
+  });
+
+  return {
+    platforms: Array.from(platforms.values()).sort((left, right) => left.localeCompare(right)),
+    languages: Array.from(languages.values()).sort((left, right) => left.localeCompare(right)),
+    genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
+    moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
+  };
+}
+
+function getFilteredBrowseFilms() {
+  const { platform, language, genre, mood } = state.browseFilters;
+
+  return state.internalFilms.filter((film) => {
+    if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
+      return false;
+    }
+    if (platform && !(film.platforms || []).includes(platform)) {
+      return false;
+    }
+    if (language && !(film.languages || []).includes(language)) {
+      return false;
+    }
+    if (genre && !(film.genres || []).includes(genre)) {
+      return false;
+    }
+    if (mood && !(film.mood || []).includes(mood)) {
+      return false;
+    }
+    return true;
+  });
+}
+
+function renderBrowseGridCards() {
+  if (state.loading) {
+    return `
+      <div class="empty-state results-grid-span recommendations-empty-state">
+        <p>Loading the curated film universe…</p>
+      </div>
+    `;
+  }
+
+  if (state.error) {
+    return `
+      <div class="empty-state results-grid-span recommendations-empty-state">
+        <p>${escapeHtml(state.error)}</p>
+      </div>
+    `;
+  }
+
+  const filteredFilms = getFilteredBrowseFilms()
+    .slice()
+    .sort((left, right) => left.title.localeCompare(right.title));
+
+  const activeFilterCount = Object.values(state.browseFilters).filter(Boolean).length;
+  const options = getBrowseFilterOptions();
+
+  renderBrowseFilterSelect(elements.browsePlatformFilter, options.platforms, state.browseFilters.platform, "All platforms");
+  renderBrowseFilterSelect(elements.browseLanguageFilter, options.languages, state.browseFilters.language, "All languages");
+  renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
+  renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
+
+  if (elements.browseSummary) {
+    elements.browseSummary.textContent = activeFilterCount
+      ? `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your current filters. Saves and dismissals will keep training the profile.`
+      : `Browse the full curated set, then save or dismiss films to shape the recommendation card below.`;
+  }
+
+  if (!filteredFilms.length) {
+    return `
+      <div class="empty-state results-grid-span recommendations-empty-state">
+        <p>No films match this filter combination yet. Try clearing one filter to widen the curated set.</p>
+      </div>
+    `;
+  }
+
+  return filteredFilms
+    .map((film) => {
+      const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
+      const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
+      const surfaceTags = unique([...(film.platforms || []).slice(0, 2), ...(film.mood || []).slice(0, 1)]);
+
+      return `
+        <article class="result-card film-card browse-film-card">
+          <div class="poster-block">
+            ${renderPosterMarkup(film.title)}
+          </div>
+          <div class="card-body film-card-body">
+            <h3 class="card-title">${film.title}</h3>
+            <p class="match-meta">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
+            ${
+              surfaceTags.length
+                ? `<p class="discovery-card__rationale">${surfaceTags.join(" • ")}</p>`
+                : ""
+            }
+            <div class="card-actions film-actions">
+              <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
+                ${isSaved ? "Saved" : "Save"}
+              </button>
+              <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
+                Not for me
+              </button>
+            </div>
+            ${renderScreeningPreview(film)}
+            <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+              See Letterboxd reviews
+            </a>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderRecommendationCards(items) {
+  return (items || state.recommendations)
     .map((item) => {
       const film = item.film;
       const key = cardKey("recommendation", film.filmId);
@@ -1181,6 +1441,50 @@ function renderRecommendationCards() {
       `;
     })
     .join("");
+}
+
+function renderAlgorithmRecommendationCard() {
+  if (!elements.criterionSection) {
+    return;
+  }
+
+  if (state.loading) {
+    elements.criterionSection.innerHTML = "";
+    return;
+  }
+
+  const recommendations = state.recommendations.slice(0, 4);
+  if (!recommendations.length) {
+    elements.criterionSection.innerHTML = `
+      <section class="discovery-shell">
+        <div class="discovery-shell__head">
+          <div>
+            <p class="eyebrow">Recommended films</p>
+            <h3>Recommended by your profile</h3>
+          </div>
+        </div>
+        <div class="empty-state recommendations-empty-state">
+          <p>Save, dismiss, or open films from the curated grid above and this section will start adapting to your taste profile.</p>
+        </div>
+      </section>
+    `;
+    return;
+  }
+
+  elements.criterionSection.innerHTML = `
+    <section class="discovery-shell">
+      <div class="discovery-shell__head">
+        <div>
+          <p class="eyebrow">Recommended films</p>
+          <h3>Recommended by your profile</h3>
+        </div>
+        <p class="discovery-shell__summary">These are shaped by your saved films, dismissals, outbound clicks, and any onboarding taste signals still in session.</p>
+      </div>
+      <div class="discovery-grid-cards recommendation-stack">
+        ${renderRecommendationCards(recommendations)}
+      </div>
+    </section>
+  `;
 }
 
 function setTasteCardSwapActive(cards, activeIndex) {
@@ -1337,25 +1641,10 @@ function renderRecommendations() {
     return;
   }
 
-  if (!state.session.hasGenerated || !state.recommendations.length) {
-    renderOnboarding();
-    return;
-  }
-
-  elements.clearRecommendations.hidden = false;
-  elements.clearRecommendations.textContent = "Reset session";
-  elements.resultsTitle.textContent = "Your next watches";
-  elements.resultsGrid.innerHTML = renderRecommendationCards();
-  elements.criterionSection.innerHTML = "";
-
-  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const key = button.dataset.toggleCard;
-      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
-      saveSessionState();
-      renderRecommendations();
-    });
-  });
+  elements.clearRecommendations.hidden = true;
+  elements.resultsTitle.textContent = "Browse curated films";
+  elements.resultsGrid.innerHTML = renderBrowseGridCards();
+  renderAlgorithmRecommendationCard();
 
   elements.resultsGrid.querySelectorAll("[data-save-film]").forEach((button) => {
     button.addEventListener("click", () => handleFilmInteraction(button.dataset.saveFilm, "save"));
@@ -1366,6 +1655,29 @@ function renderRecommendations() {
   });
 
   elements.resultsGrid.querySelectorAll("[data-outbound-film]").forEach((link) => {
+    link.addEventListener("click", () => {
+      handleFilmInteraction(link.dataset.outboundFilm, "outbound_click");
+    });
+  });
+
+  elements.criterionSection.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderRecommendations();
+    });
+  });
+
+  elements.criterionSection.querySelectorAll("[data-save-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.saveFilm, "save"));
+  });
+
+  elements.criterionSection.querySelectorAll("[data-dismiss-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.dismissFilm, "not_for_me"));
+  });
+
+  elements.criterionSection.querySelectorAll("[data-outbound-film]").forEach((link) => {
     link.addEventListener("click", () => {
       handleFilmInteraction(link.dataset.outboundFilm, "outbound_click");
     });
@@ -2003,6 +2315,36 @@ function attachBaseEventHandlers() {
     refreshQuickPicks();
     renderSelectedSeeds();
     renderQuickPicks();
+  });
+
+  elements.browsePlatformFilter?.addEventListener("change", (event) => {
+    state.browseFilters.platform = event.target.value || "";
+    renderRecommendations();
+  });
+
+  elements.browseLanguageFilter?.addEventListener("change", (event) => {
+    state.browseFilters.language = event.target.value || "";
+    renderRecommendations();
+  });
+
+  elements.browseGenreFilter?.addEventListener("change", (event) => {
+    state.browseFilters.genre = event.target.value || "";
+    renderRecommendations();
+  });
+
+  elements.browseMoodFilter?.addEventListener("change", (event) => {
+    state.browseFilters.mood = event.target.value || "";
+    renderRecommendations();
+  });
+
+  elements.resetFilters?.addEventListener("click", () => {
+    state.browseFilters = {
+      platform: "",
+      language: "",
+      genre: "",
+      mood: "",
+    };
+    renderRecommendations();
   });
 
   elements.cinemaShowtimesCinemaFilter?.addEventListener("change", (event) => {
