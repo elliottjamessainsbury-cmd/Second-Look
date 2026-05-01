@@ -195,7 +195,6 @@ const state = {
     days: [],
   },
   selectedCinemaShowtimesDate: "",
-  selectedCinemaShowtimesFilm: "",
   selectedCinemaShowtimesCinema: "",
   query: "",
   externalSearchResults: [],
@@ -238,7 +237,6 @@ const elements = {
   cinemaShowtimesMonth: document.querySelector("#cinema-showtimes-month"),
   cinemaShowtimesToday: document.querySelector("#cinema-showtimes-today"),
   cinemaShowtimesSelection: document.querySelector("#cinema-showtimes-selection"),
-  clearCinemaShowtimesFilm: document.querySelector("#clear-cinema-showtimes-film"),
 };
 
 const isSavedPage = Boolean(
@@ -1083,6 +1081,13 @@ function londonTodayDate() {
   return `${values.year}-${values.month}-${values.day}`;
 }
 
+function formatDateKey(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function allScreenings() {
   const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
   const today = londonTodayDate();
@@ -1669,9 +1674,30 @@ function getCinemaInitials(cinemaName) {
 }
 
 function getUpcomingShowtimeDays() {
-  const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
-  const today = londonTodayDate();
-  return days.filter((day) => day.date >= today).slice(0, 7);
+  const sourceDays = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
+  if (!sourceDays.length) {
+    return [];
+  }
+  const daysByDate = new Map(sourceDays.map((day) => [day.date, day]));
+  const startDate = new Date(`${londonTodayDate()}T12:00:00`);
+
+  if (Number.isNaN(startDate.getTime())) {
+    return sourceDays.slice(0, 7);
+  }
+
+  return Array.from({ length: 7 }, (_, index) => {
+    const nextDate = new Date(startDate);
+    nextDate.setDate(startDate.getDate() + index);
+    const dateKey = formatDateKey(nextDate);
+    const existingDay = daysByDate.get(dateKey);
+    return (
+      existingDay || {
+        date: dateKey,
+        label: formatShowtimesDate(dateKey),
+        films: [],
+      }
+    );
+  });
 }
 
 function getSelectedShowtimesDay() {
@@ -1759,22 +1785,6 @@ function renderCinemaScreeningCard(screening, compact = false) {
   `;
 }
 
-function renderCalendarFilmButton(film, date, isActive) {
-  const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : ["Time TBC"];
-  return `
-    <button
-      class="cinema-week-film ${isActive ? "is-active" : ""}"
-      type="button"
-      data-cinema-film-date="${escapeHtml(date)}"
-      data-cinema-film-title="${escapeHtml(film.displayTitle || "")}"
-    >
-      <span class="cinema-week-film__time">${escapeHtml(showtimes[0])}</span>
-      <span class="cinema-week-film__title">${escapeHtml(film.displayTitle || "Untitled screening")}</span>
-      <span class="cinema-week-film__cinema">${escapeHtml(film.cinema || "Cinema TBC")}</span>
-    </button>
-  `;
-}
-
 function renderCinemaShowtimes() {
   if (
     !elements.cinemaShowtimesSection ||
@@ -1789,7 +1799,7 @@ function renderCinemaShowtimes() {
     elements.cinemaShowtimesTitle.textContent = "Playing in London this week";
   }
   if (elements.cinemaShowtimesIntro) {
-    elements.cinemaShowtimesIntro.textContent = "Choose a day or film in the week view, then use the cinema filter to narrow the listings below.";
+    elements.cinemaShowtimesIntro.textContent = "Choose a day in the week view, then browse that day's listings below.";
   }
 
   const days = getUpcomingShowtimeDays();
@@ -1803,9 +1813,6 @@ function renderCinemaShowtimes() {
     }
     if (elements.cinemaShowtimesSelection) {
       elements.cinemaShowtimesSelection.textContent = "";
-    }
-    if (elements.clearCinemaShowtimesFilm) {
-      elements.clearCinemaShowtimesFilm.hidden = true;
     }
     elements.cinemaShowtimesList.innerHTML = `
       <div class="empty-state cinema-showtimes__empty">
@@ -1845,16 +1852,11 @@ function renderCinemaShowtimes() {
   const selectedDay = getSelectedShowtimesDay();
   const selectedDate = selectedDay?.date || days[0].date;
   const selectedDayFilms = getCalendarFilmsForDay(selectedDay);
-  if (
-    state.selectedCinemaShowtimesFilm &&
-    !selectedDayFilms.some((film) => film.displayTitle === state.selectedCinemaShowtimesFilm)
-  ) {
-    state.selectedCinemaShowtimesFilm = "";
-  }
 
   elements.cinemaShowtimesCalendar.innerHTML = days
     .map((day) => {
       const films = getCalendarFilmsForDay(day);
+      const filmCount = films.length;
       const screeningCount = films.reduce((count, film) => {
         const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
         return count + Math.max(showtimes.length, 1);
@@ -1865,41 +1867,20 @@ function renderCinemaShowtimes() {
             <span class="cinema-week-day__label">${escapeHtml(formatShowtimesDayLabel(day.date))}</span>
             <span class="cinema-week-day__number">${escapeHtml(formatShowtimesDayNumber(day.date))}</span>
             <span class="cinema-week-day__month">${escapeHtml(formatShowtimesMonthLabel(day.date))}</span>
-            <span class="cinema-week-day__count">${screeningCount} screenings</span>
+            <span class="cinema-week-day__count">${filmCount} film${filmCount === 1 ? "" : "s"}</span>
+            <span class="cinema-week-day__summary">${screeningCount} screening${screeningCount === 1 ? "" : "s"}</span>
           </button>
-          <div class="cinema-week-day__films">
-            ${
-              films.length
-                ? films
-                    .map((film) =>
-                      renderCalendarFilmButton(
-                        film,
-                        day.date,
-                        day.date === selectedDate && film.displayTitle === state.selectedCinemaShowtimesFilm
-                      )
-                    )
-                    .join("")
-                : `<p class="cinema-week-day__empty">No film listings</p>`
-            }
-          </div>
         </article>
       `;
     })
     .join("");
 
-  const filteredFilms = selectedDayFilms.filter((film) => {
-    const matchesFilm =
-      !state.selectedCinemaShowtimesFilm || film.displayTitle === state.selectedCinemaShowtimesFilm;
-    return matchesFilm;
-  });
+  const filteredFilms = selectedDayFilms;
 
   if (elements.cinemaShowtimesSelection) {
-    elements.cinemaShowtimesSelection.textContent = state.selectedCinemaShowtimesFilm
-      ? `${formatShowtimesDate(selectedDate)} · ${state.selectedCinemaShowtimesFilm}`
-      : `${formatShowtimesDate(selectedDate)} · ${filteredFilms.length} listing${filteredFilms.length === 1 ? "" : "s"}`;
-  }
-  if (elements.clearCinemaShowtimesFilm) {
-    elements.clearCinemaShowtimesFilm.hidden = !state.selectedCinemaShowtimesFilm;
+    elements.cinemaShowtimesSelection.textContent = `${formatShowtimesDate(selectedDate)} · ${filteredFilms.length} film${
+      filteredFilms.length === 1 ? "" : "s"
+    }`;
   }
 
   elements.cinemaShowtimesList.innerHTML = filteredFilms.length
@@ -1928,17 +1909,6 @@ function renderCinemaShowtimes() {
   elements.cinemaShowtimesCalendar.querySelectorAll("[data-cinema-date]").forEach((button) => {
     button.addEventListener("click", () => {
       state.selectedCinemaShowtimesDate = button.dataset.cinemaDate || "";
-      state.selectedCinemaShowtimesFilm = "";
-      renderCinemaShowtimes();
-      scrollCinemaShowtimesListIntoView();
-    });
-  });
-
-  elements.cinemaShowtimesCalendar.querySelectorAll("[data-cinema-film-date]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      state.selectedCinemaShowtimesDate = button.dataset.cinemaFilmDate || "";
-      state.selectedCinemaShowtimesFilm = button.dataset.cinemaFilmTitle || "";
       renderCinemaShowtimes();
       scrollCinemaShowtimesListIntoView();
     });
@@ -2045,14 +2015,8 @@ function attachBaseEventHandlers() {
     state.selectedCinemaShowtimesDate = getUpcomingShowtimeDays().some((day) => day.date === today)
       ? today
       : getUpcomingShowtimeDays()[0]?.date || "";
-    state.selectedCinemaShowtimesFilm = "";
     renderCinemaShowtimes();
     scrollCinemaShowtimesListIntoView();
-  });
-
-  elements.clearCinemaShowtimesFilm?.addEventListener("click", () => {
-    state.selectedCinemaShowtimesFilm = "";
-    renderCinemaShowtimes();
   });
 
   elements.clearRecommendations?.addEventListener("click", () => {
@@ -2158,7 +2122,7 @@ async function loadAppData() {
 
     refreshQuickPicks();
 
-    if (state.session.hasGenerated && canGenerateRecommendations()) {
+    if (canGenerateRecommendations()) {
       generateRecommendations();
     }
   } catch (error) {

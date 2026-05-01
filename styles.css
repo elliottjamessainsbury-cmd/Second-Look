@@ -1478,7 +1478,7 @@ input:focus {
 .cinema-week-day {
   display: flex;
   flex-direction: column;
-  min-height: 360px;
+  min-height: 0;
   padding: 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 30px;
@@ -1497,16 +1497,22 @@ input:focus {
 }
 
 .cinema-week-day__button {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
   padding: 0;
   border: 0;
   background: transparent;
   color: inherit;
   text-align: left;
+  cursor: pointer;
 }
 
 .cinema-week-day__label,
 .cinema-week-day__month,
-.cinema-week-day__count {
+.cinema-week-day__count,
+.cinema-week-day__summary {
   font-family: var(--mono);
   font-size: 0.68rem;
   font-weight: 700;
@@ -1541,72 +1547,9 @@ input:focus {
   color: rgba(255, 255, 255, 0.66);
 }
 
-.cinema-week-day__films {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 18px;
-  overflow-y: auto;
-  padding-right: 2px;
-}
-
-.cinema-week-day__empty {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.46);
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
-
-.cinema-week-film {
-  padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
-  background: rgba(8, 14, 13, 0.88);
-  color: #ffffff;
-  text-align: left;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s linear,
-    background-color 0.2s linear;
-}
-
-.cinema-week-film:hover,
-.cinema-week-film.is-active {
-  border-color: rgba(212, 231, 223, 0.45);
-  background: #0c1715;
-  transform: translateY(-1px);
-}
-
-.cinema-week-film__time,
-.cinema-week-film__cinema {
+.cinema-week-day__summary {
   display: block;
-  font-family: var(--mono);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.cinema-week-film__time {
-  color: rgba(255, 255, 255, 0.58);
-}
-
-.cinema-week-film__title {
-  display: -webkit-box;
-  margin-top: 8px;
-  overflow: hidden;
-  color: #ffffff;
-  font-family: var(--display);
-  font-size: 0.98rem;
-  font-weight: 700;
-  line-height: 1.15;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.cinema-week-film__cinema {
-  margin-top: 8px;
+  margin-top: 10px;
   color: rgba(255, 255, 255, 0.42);
 }
 
