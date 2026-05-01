@@ -196,7 +196,7 @@ const state = {
   },
   browseFilters: {
     platform: "",
-    language: "",
+    format: "",
     genre: "",
     mood: "",
   },
@@ -233,7 +233,7 @@ const elements = {
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
   browsePlatformFilter: document.querySelector("#browse-platform-filter"),
-  browseLanguageFilter: document.querySelector("#browse-language-filter"),
+  browseFormatFilter: document.querySelector("#browse-format-filter"),
   browseGenreFilter: document.querySelector("#browse-genre-filter"),
   browseMoodFilter: document.querySelector("#browse-mood-filter"),
   criterionSection: document.querySelector("#criterion-section"),
@@ -514,33 +514,6 @@ function parseRatingValue(value) {
   return Number.isFinite(numeric) ? numeric : 0;
 }
 
-const COUNTRY_LANGUAGE_MAP = {
-  UK: ["English"],
-  USA: ["English"],
-  Ireland: ["English"],
-  Australia: ["English"],
-  Canada: ["English", "French"],
-  France: ["French"],
-  Belgium: ["French", "Dutch"],
-  Switzerland: ["French", "German", "Italian"],
-  Germany: ["German"],
-  Austria: ["German"],
-  Italy: ["Italian"],
-  Spain: ["Spanish"],
-  Japan: ["Japanese"],
-  "South Korea": ["Korean"],
-  China: ["Mandarin"],
-  Taiwan: ["Mandarin"],
-  "Hong Kong": ["Cantonese"],
-  Sweden: ["Swedish"],
-  Norway: ["Norwegian"],
-  Denmark: ["Danish"],
-  Poland: ["Polish"],
-  Romania: ["Romanian"],
-  Turkey: ["Turkish"],
-  Iran: ["Persian"],
-};
-
 function normalizePlatformName(providerName) {
   const value = String(providerName || "").trim();
   const key = normalize(value);
@@ -611,10 +584,18 @@ function platformsFromAvailability(availability) {
   return unique(providers.map((provider) => normalizePlatformName(provider.provider_name)).filter(Boolean));
 }
 
-function inferLanguagesFromCountries(countries) {
-  return unique(
-    (countries || []).flatMap((country) => COUNTRY_LANGUAGE_MAP[String(country || "").trim()] || [])
-  );
+function deriveFormats(sample, tmdb) {
+  const sampleFormats = Array.isArray(sample?.formats) ? sample.formats : [];
+  if (sampleFormats.length) {
+    return unique(sampleFormats);
+  }
+
+  const keywords = Array.isArray(tmdb?.keywords) ? tmdb.keywords.map((keyword) => normalize(keyword)) : [];
+  if (keywords.includes("black and white")) {
+    return ["Black & white"];
+  }
+
+  return [];
 }
 
 function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies, availabilityByFilmId) {
@@ -645,7 +626,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
     const countries = unique(sample.countries || []);
     const platforms = platformsFromAvailability(availability);
-    const languages = inferLanguagesFromCountries(countries);
+    const formats = deriveFormats(sample, tmdb);
 
     return {
       source: "internal",
@@ -654,7 +635,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       year: curatedFilm.year || metadata.year || tmdb.year || null,
       director: metadata.director || tmdb.director || sample.director || "",
       countries,
-      languages,
+      formats,
       platforms,
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
       themes,
@@ -679,7 +660,7 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       year: tmdb.year || null,
       director: tmdb.director || "",
       countries: [],
-      languages: [],
+      formats: [],
       platforms: [],
       genres: unique(tmdb.genres || []),
       themes: unique(tmdb.keywords || []),
@@ -1278,27 +1259,27 @@ function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
 
 function getBrowseFilterOptions() {
   const platforms = new Map();
-  const languages = new Map();
+  const formats = new Map();
   const genres = new Map();
   const moods = new Map();
 
   state.internalFilms.forEach((film) => {
     (film.platforms || []).forEach((platform) => platforms.set(normalize(platform), platform));
-    (film.languages || []).forEach((language) => languages.set(normalize(language), language));
+    (film.formats || []).forEach((format) => formats.set(normalize(format), format));
     (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
     (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
   });
 
   return {
     platforms: Array.from(platforms.values()).sort((left, right) => left.localeCompare(right)),
-    languages: Array.from(languages.values()).sort((left, right) => left.localeCompare(right)),
+    formats: Array.from(formats.values()).sort((left, right) => left.localeCompare(right)),
     genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
     moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
   };
 }
 
 function getFilteredBrowseFilms() {
-  const { platform, language, genre, mood } = state.browseFilters;
+  const { platform, format, genre, mood } = state.browseFilters;
 
   return state.internalFilms.filter((film) => {
     if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
@@ -1307,7 +1288,7 @@ function getFilteredBrowseFilms() {
     if (platform && !(film.platforms || []).includes(platform)) {
       return false;
     }
-    if (language && !(film.languages || []).includes(language)) {
+    if (format && !(film.formats || []).includes(format)) {
       return false;
     }
     if (genre && !(film.genres || []).includes(genre)) {
@@ -1345,7 +1326,7 @@ function renderBrowseGridCards() {
   const options = getBrowseFilterOptions();
 
   renderBrowseFilterSelect(elements.browsePlatformFilter, options.platforms, state.browseFilters.platform, "All platforms");
-  renderBrowseFilterSelect(elements.browseLanguageFilter, options.languages, state.browseFilters.language, "All languages");
+  renderBrowseFilterSelect(elements.browseFormatFilter, options.formats, state.browseFilters.format, "All formats");
   renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
   renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
 
@@ -2322,8 +2303,8 @@ function attachBaseEventHandlers() {
     renderRecommendations();
   });
 
-  elements.browseLanguageFilter?.addEventListener("change", (event) => {
-    state.browseFilters.language = event.target.value || "";
+  elements.browseFormatFilter?.addEventListener("change", (event) => {
+    state.browseFilters.format = event.target.value || "";
     renderRecommendations();
   });
 
@@ -2340,7 +2321,7 @@ function attachBaseEventHandlers() {
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
       platform: "",
-      language: "",
+      format: "",
       genre: "",
       mood: "",
     };

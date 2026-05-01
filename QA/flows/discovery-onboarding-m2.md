@@ -1,28 +1,28 @@
 id: discovery-onboarding-m2
 priority: high
-purpose: verify the new taste-discovery onboarding flow renders before the legacy recommendation grid and supports the first two discovery rounds.
+purpose: verify the filter-first homepage discovery flow and the secondary profile-driven recommendation module.
 setup:
   - Start the app locally at http://localhost:4173/
   - Use a clean browser state
-  - Land on the home page with no selected film
+  - Land on the home page
 steps:
-  - Confirm the right-hand panel shows the six-question taste quiz instead of the legacy empty recommendations state
-  - Answer all six quiz questions and submit the quiz
-  - Confirm a 3x3 grid of nine discovery recommendations appears
-  - Confirm each card has poster imagery or the monogram fallback, a short rationale, a Bookmark action, and a See more action
-  - Expand one card and confirm the expanded panel shows the AI-fit explanation, average rating, synopsis, and any availability details present for that film
-  - Bookmark at least two titles and confirm they appear in the left-hand Saved from discovery rail
-  - Continue to the second discovery grid
-  - Confirm the second grid again shows nine titles, still supports Bookmark and See more, and now also shows Not for me
-  - Mark one title as Not for me and continue again
-  - Confirm the dismissed title does not reappear in the next discovery batch
+  - Confirm the homepage opens with a filter-first browse layout rather than an onboarding-first quiz
+  - Confirm the left card contains platform, format, genre, and mood filters plus a reset action
+  - Confirm the right grid shows curated browse cards with poster image or monogram fallback, metadata, Save, Not for me, and outbound review link
+  - Change one filter and confirm the grid updates
+  - Apply multiple filters and confirm the result set narrows as an intersection
+  - Click Reset filters and confirm all filter values return to All
+  - Save at least one film from the browse grid and confirm the button state updates immediately
+  - Confirm the lower recommendation section appears or refreshes after the save
+  - Mark one visible browse card as Not for me and confirm it no longer appears in the browse grid
+  - Refresh the page and confirm the saved / dismissed state still affects the homepage
 expected:
-  - The quiz is the first experience shown before any legacy recommendation state
-  - The first discovery grid contains exactly nine unique titles
-  - The first discovery grid never shows Not for me
-  - Expanded discovery cards include answer-aware AI rationale copy
-  - Saved titles appear in the left rail as soon as they are bookmarked
-  - The second discovery grid contains exactly nine unique titles and introduces Not for me
-  - Dismissed titles are excluded from subsequent discovery batches
+  - The homepage is browse-first, not quiz-first
+  - The top grid responds to platform, format, genre, and mood filters
+  - Filter combinations behave as an intersection
+  - Saved titles update profile state immediately
+  - Dismissed titles are excluded from future browse results
+  - A lower recommendation module is driven by the evolving taste profile
+  - Returning users still receive profile-shaped homepage content after reload
 notes:
-  - This flow is covered by QA/discovery_onboarding_smoketest.js for logic and rendered-markup verification
+  - Recommendation ranking logic is covered in `QA/flows/recommendation-model-v1.md`
