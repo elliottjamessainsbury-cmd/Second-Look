@@ -196,6 +196,7 @@ const state = {
   },
   browseFilters: {
     platform: "",
+    decade: "",
     format: "",
     genre: "",
     mood: "",
@@ -232,9 +233,15 @@ const elements = {
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
+  browsePlatformFilterWrap: document.querySelector("#browse-platform-filter-wrap"),
   browsePlatformFilter: document.querySelector("#browse-platform-filter"),
+  browseDecadeFilterWrap: document.querySelector("#browse-decade-filter-wrap"),
+  browseDecadeFilter: document.querySelector("#browse-decade-filter"),
+  browseFormatFilterWrap: document.querySelector("#browse-format-filter-wrap"),
   browseFormatFilter: document.querySelector("#browse-format-filter"),
+  browseGenreFilterWrap: document.querySelector("#browse-genre-filter-wrap"),
   browseGenreFilter: document.querySelector("#browse-genre-filter"),
+  browseMoodFilterWrap: document.querySelector("#browse-mood-filter-wrap"),
   browseMoodFilter: document.querySelector("#browse-mood-filter"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
@@ -1257,47 +1264,155 @@ function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
   element.value = selectedValue;
 }
 
+function getPlatformFilterValues(film) {
+  const platforms = unique((film.platforms || []).filter(Boolean));
+  return platforms.length ? platforms : ["Not currently streaming"];
+}
+
+function getDecadeLabel(year) {
+  const numericYear = Number(year);
+  if (!Number.isFinite(numericYear)) {
+    return "";
+  }
+
+  return `${Math.floor(numericYear / 10) * 10}s`;
+}
+
+function getDecadeFilterValues(film) {
+  const decade = getDecadeLabel(film.year);
+  return decade ? [decade] : [];
+}
+
+const BROWSE_FILTER_DEFINITIONS = [
+  {
+    key: "platform",
+    label: "Platform",
+    optionKey: "platforms",
+    allLabel: "All platforms",
+    wrapKey: "browsePlatformFilterWrap",
+    elementKey: "browsePlatformFilter",
+    getValues: getPlatformFilterValues,
+    isSupported(films) {
+      return films.every((film) => film.availability && film.availability.streaming);
+    },
+  },
+  {
+    key: "decade",
+    label: "Era",
+    optionKey: "decades",
+    allLabel: "All eras",
+    wrapKey: "browseDecadeFilterWrap",
+    elementKey: "browseDecadeFilter",
+    getValues: getDecadeFilterValues,
+    isSupported(films) {
+      return films.every((film) => Boolean(getDecadeLabel(film.year)));
+    },
+  },
+  {
+    key: "format",
+    label: "Format",
+    optionKey: "formats",
+    allLabel: "All formats",
+    wrapKey: "browseFormatFilterWrap",
+    elementKey: "browseFormatFilter",
+    getValues(film) {
+      return unique((film.formats || []).filter(Boolean));
+    },
+    isSupported(films) {
+      return films.every((film) => Array.isArray(film.formats) && film.formats.length);
+    },
+  },
+  {
+    key: "genre",
+    label: "Genre",
+    optionKey: "genres",
+    allLabel: "All genres",
+    wrapKey: "browseGenreFilterWrap",
+    elementKey: "browseGenreFilter",
+    getValues(film) {
+      return unique((film.genres || []).filter(Boolean));
+    },
+    isSupported(films) {
+      return films.every((film) => Array.isArray(film.genres) && film.genres.length);
+    },
+  },
+  {
+    key: "mood",
+    label: "Mood",
+    optionKey: "moods",
+    allLabel: "All moods",
+    wrapKey: "browseMoodFilterWrap",
+    elementKey: "browseMoodFilter",
+    getValues(film) {
+      return unique((film.mood || []).filter(Boolean));
+    },
+    isSupported(films) {
+      return films.every((film) => Array.isArray(film.mood) && film.mood.length);
+    },
+  },
+];
+
+function getBrowseFilterValuesForFilm(film, definitionOrKey) {
+  const definition =
+    typeof definitionOrKey === "string"
+      ? BROWSE_FILTER_DEFINITIONS.find((entry) => entry.key === definitionOrKey)
+      : definitionOrKey;
+
+  if (!definition || !film) {
+    return [];
+  }
+
+  return unique((definition.getValues(film) || []).filter(Boolean));
+}
+
+function getSupportedBrowseFilters() {
+  return BROWSE_FILTER_DEFINITIONS.filter((definition) => definition.isSupported(state.internalFilms));
+}
+
 function getBrowseFilterOptions() {
-  const platforms = new Map();
-  const formats = new Map();
-  const genres = new Map();
-  const moods = new Map();
+  const supportedFilters = getSupportedBrowseFilters();
+  const optionMaps = supportedFilters.reduce((output, definition) => {
+    output[definition.optionKey] = new Map();
+    return output;
+  }, {});
 
   state.internalFilms.forEach((film) => {
-    (film.platforms || []).forEach((platform) => platforms.set(normalize(platform), platform));
-    (film.formats || []).forEach((format) => formats.set(normalize(format), format));
-    (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
-    (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
+    supportedFilters.forEach((definition) => {
+      getBrowseFilterValuesForFilm(film, definition).forEach((value) => {
+        optionMaps[definition.optionKey].set(normalize(value), value);
+      });
+    });
   });
 
+  const options = supportedFilters.reduce((output, definition) => {
+    output[definition.optionKey] = Array.from(optionMaps[definition.optionKey].values()).sort((left, right) =>
+      left.localeCompare(right)
+    );
+    return output;
+  }, {});
+
   return {
-    platforms: Array.from(platforms.values()).sort((left, right) => left.localeCompare(right)),
-    formats: Array.from(formats.values()).sort((left, right) => left.localeCompare(right)),
-    genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
-    moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
+    supportedFilters,
+    options,
   };
 }
 
 function getFilteredBrowseFilms() {
-  const { platform, format, genre, mood } = state.browseFilters;
+  const { supportedFilters } = getBrowseFilterOptions();
 
   return state.internalFilms.filter((film) => {
     if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
       return false;
     }
-    if (platform && !(film.platforms || []).includes(platform)) {
-      return false;
-    }
-    if (format && !(film.formats || []).includes(format)) {
-      return false;
-    }
-    if (genre && !(film.genres || []).includes(genre)) {
-      return false;
-    }
-    if (mood && !(film.mood || []).includes(mood)) {
-      return false;
-    }
-    return true;
+
+    return supportedFilters.every((definition) => {
+      const selectedValue = state.browseFilters[definition.key];
+      if (!selectedValue) {
+        return true;
+      }
+
+      return getBrowseFilterValuesForFilm(film, definition).includes(selectedValue);
+    });
   });
 }
 
@@ -1322,18 +1437,44 @@ function renderBrowseGridCards() {
     .slice()
     .sort((left, right) => left.title.localeCompare(right.title));
 
-  const activeFilterCount = Object.values(state.browseFilters).filter(Boolean).length;
-  const options = getBrowseFilterOptions();
+  const { supportedFilters, options } = getBrowseFilterOptions();
+  const supportedKeys = new Set(supportedFilters.map((definition) => definition.key));
 
-  renderBrowseFilterSelect(elements.browsePlatformFilter, options.platforms, state.browseFilters.platform, "All platforms");
-  renderBrowseFilterSelect(elements.browseFormatFilter, options.formats, state.browseFilters.format, "All formats");
-  renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
-  renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
+  BROWSE_FILTER_DEFINITIONS.forEach((definition) => {
+    const wrap = elements[definition.wrapKey];
+    const select = elements[definition.elementKey];
+    const isSupported = supportedKeys.has(definition.key);
+
+    if (!isSupported) {
+      state.browseFilters[definition.key] = "";
+    }
+
+    if (wrap) {
+      wrap.hidden = !isSupported;
+    }
+
+    if (!select) {
+      return;
+    }
+
+    if (!isSupported) {
+      select.innerHTML = `<option value="">${escapeHtml(definition.allLabel)}</option>`;
+      select.value = "";
+      return;
+    }
+
+    renderBrowseFilterSelect(select, options[definition.optionKey] || [], state.browseFilters[definition.key], definition.allLabel);
+  });
+
+  const activeFilterCount = supportedFilters.filter((definition) => Boolean(state.browseFilters[definition.key])).length;
 
   if (elements.browseSummary) {
+    const supportedFilterLabels = supportedFilters.map((definition) => definition.label.toLowerCase());
     elements.browseSummary.textContent = activeFilterCount
       ? `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your current filters. Saves and dismissals will keep training the profile.`
-      : `Browse the full curated set, then save or dismiss films to shape the recommendation card below.`;
+      : supportedFilterLabels.length
+        ? `Browse using ${formatList(supportedFilterLabels)}, then save or dismiss films to shape the recommendation card below.`
+        : `No universal browse filters are available yet across the full set. Save or dismiss films to keep shaping the recommendation card below.`;
   }
 
   if (!filteredFilms.length) {
@@ -1958,7 +2099,10 @@ function getCinemaLogoPath(cinemaName) {
 }
 
 function getCinemaInitials(cinemaName) {
-  const words = clean_text(cinemaName)
+  const words = String(cinemaName || "")
+    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim()
     .split(" ")
     .filter(Boolean)
     .filter((word) => !["the", "cinema"].includes(word.toLowerCase()));
@@ -2303,6 +2447,11 @@ function attachBaseEventHandlers() {
     renderRecommendations();
   });
 
+  elements.browseDecadeFilter?.addEventListener("change", (event) => {
+    state.browseFilters.decade = event.target.value || "";
+    renderRecommendations();
+  });
+
   elements.browseFormatFilter?.addEventListener("change", (event) => {
     state.browseFilters.format = event.target.value || "";
     renderRecommendations();
@@ -2321,6 +2470,7 @@ function attachBaseEventHandlers() {
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
       platform: "",
+      decade: "",
       format: "",
       genre: "",
       mood: "",
