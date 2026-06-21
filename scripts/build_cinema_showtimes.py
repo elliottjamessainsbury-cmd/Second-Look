@@ -25,7 +25,7 @@ OUTPUT_PATH = ROOT / "data" / "cinema-showtimes.json"
 LONDON_TZ = ZoneInfo("Europe/London")
 USER_AGENT = "SecondLook-CinemaShowtimes/1.0"
 BFI_SEARCH_ID = "25E7EA2E-291F-44F9-8EBC-E560154FDAEB"
-BFI_TEXT_RENDERER_PREFIX = "https://r.jina.ai/http://r.jina.ai/http://"
+BFI_TEXT_RENDERER_PREFIX = "https://r.jina.ai/"
 DEFAULT_DAY_COUNT = 7
 
 
