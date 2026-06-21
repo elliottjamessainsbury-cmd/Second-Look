@@ -25,7 +25,7 @@ OUTPUT_PATH = ROOT / "data" / "cinema-showtimes.json"
 LONDON_TZ = ZoneInfo("Europe/London")
 USER_AGENT = "SecondLook-CinemaShowtimes/1.0"
 BFI_SEARCH_ID = "25E7EA2E-291F-44F9-8EBC-E560154FDAEB"
-BFI_TEXT_RENDERER_PREFIX = "https://r.jina.ai/"
+JINA_PREFIX = "https://r.jina.ai/"
 DEFAULT_DAY_COUNT = 7
 
 
@@ -337,20 +337,10 @@ def build_bfi_search_url(start_date: date, end_date: date) -> str:
     return f"https://whatson.bfi.org.uk/Online/default.asp?{urlencode(query)}"
 
 
-def fetch_bfi_listing_page(start_date: date, end_date: date) -> str:
-    url = build_bfi_search_url(start_date, end_date)
-    try:
-        return fetch_url(url, "BFI Southbank")
-    except CinemaParseError as error:
-        if "Cloudflare challenge" not in str(error):
-            raise
-
-    return fetch_url(f"{BFI_TEXT_RENDERER_PREFIX}{url}", "BFI Southbank")
-
-
 def parse_bfi_southbank(target_dates: set[str]) -> list[Screening]:
     target_days = sorted(datetime.strptime(value, "%Y-%m-%d").date() for value in target_dates)
-    page_text = fetch_bfi_listing_page(target_days[0], target_days[-1])
+    bfi_url = build_bfi_search_url(target_days[0], target_days[-1])
+    page_text = fetch_url(f"{JINA_PREFIX}{bfi_url}", "BFI Southbank")
     screenings = parse_bfi_listing_text(page_text, target_dates)
 
     if not screenings:
