@@ -21,8 +21,12 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Start from your taste, not a catalogue search. Filter the curated universe by platform, format, genre, and mood, then let your saves and dismissals shape what comes next.
+            Start from your taste, not a catalogue search. Browse our curated picks — updated weekly — by genre, mood, and country, then let your saves and dismissals shape what comes next.
           </p>
+          <div class="hero-ctas">
+            <button class="ghost-button" id="cta-search" type="button">Search by film</button>
+            <button class="ghost-button" id="cta-browse" type="button">Browse films</button>
+          </div>
         </div>
 
         <aside class="hero-panel">
@@ -46,24 +50,16 @@
               <div class="browse-filters__head">
                 <div>
                   <p class="eyebrow">Curated taste card</p>
-                  <h3 id="browse-filters-title">Filter the universe</h3>
+                  <h3 id="browse-filters-title">Refine your picks</h3>
                 </div>
                 <button id="reset-filters" class="text-button" type="button">Reset filters</button>
               </div>
+              <div class="browse-search">
+                <input id="movie-search" type="text" autocomplete="off" placeholder="Search for a film…" class="browse-search__input" />
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+              </div>
               <p id="browse-summary" class="browse-filters__summary"></p>
               <div class="browse-filters__grid" aria-label="Filter curated films">
-                <label class="browse-filter">
-                  <span class="browse-filter__label">Platform</span>
-                  <select id="browse-platform-filter" class="browse-filter__select">
-                    <option value="">All platforms</option>
-                  </select>
-                </label>
-                <label class="browse-filter">
-                  <span class="browse-filter__label">Format</span>
-                  <select id="browse-format-filter" class="browse-filter__select">
-                    <option value="">All formats</option>
-                  </select>
-                </label>
                 <label class="browse-filter">
                   <span class="browse-filter__label">Genre</span>
                   <select id="browse-genre-filter" class="browse-filter__select">
@@ -74,6 +70,12 @@
                   <span class="browse-filter__label">Mood</span>
                   <select id="browse-mood-filter" class="browse-filter__select">
                     <option value="">All moods</option>
+                  </select>
+                </label>
+                <label class="browse-filter">
+                  <span class="browse-filter__label">Country</span>
+                  <select id="browse-country-filter" class="browse-filter__select">
+                    <option value="">All countries</option>
                   </select>
                 </label>
               </div>
