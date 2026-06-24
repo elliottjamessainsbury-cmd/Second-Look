@@ -21,12 +21,18 @@
             <span class="hero-indent">Look</span>
           </h1>
           <p class="hero-text">
-            Start from your taste, not a catalogue search. Browse our curated picks — updated weekly — by genre, mood, and country, then let your saves and dismissals shape what comes next.
+            Second Look is a small, hand-built cinema of films worth seeking out — drawn from across the world, its eras, and its genres, and chosen with a blend of human taste and machine intelligence. Pick a mood, a place, or a feeling, and let it lead you somewhere new.
           </p>
-          <div class="hero-ctas">
-            <button class="ghost-button" id="cta-search" type="button">Search by film</button>
-            <button class="ghost-button" id="cta-browse" type="button">Browse films</button>
-          </div>
+          <nav class="hero-links" aria-label="Explore Second Look">
+            <a class="hero-link" id="link-curated" href="#taste-refine-section">
+              <span class="hero-link__title">Discover films curated by us</span>
+              <span class="hero-link__hint">Browse the collection by mood, genre &amp; country →</span>
+            </a>
+            <a class="hero-link" id="link-listings" href="#cinema-showtimes-section">
+              <span class="hero-link__title">Discover the best film listings in London</span>
+              <span class="hero-link__hint">See what's screening at the city's finest cinemas →</span>
+            </a>
+          </nav>
         </div>
 
         <aside class="hero-panel">
@@ -59,25 +65,19 @@
                 <div id="search-results" class="search-results" aria-live="polite"></div>
               </div>
               <p id="browse-summary" class="browse-filters__summary"></p>
-              <div class="browse-filters__grid" aria-label="Filter curated films">
-                <label class="browse-filter">
-                  <span class="browse-filter__label">Genre</span>
-                  <select id="browse-genre-filter" class="browse-filter__select">
-                    <option value="">All genres</option>
-                  </select>
-                </label>
-                <label class="browse-filter">
-                  <span class="browse-filter__label">Mood</span>
-                  <select id="browse-mood-filter" class="browse-filter__select">
-                    <option value="">All moods</option>
-                  </select>
-                </label>
-                <label class="browse-filter">
-                  <span class="browse-filter__label">Country</span>
-                  <select id="browse-country-filter" class="browse-filter__select">
-                    <option value="">All countries</option>
-                  </select>
-                </label>
+              <div class="browse-facets" aria-label="Filter curated films">
+                <div class="browse-facet">
+                  <span class="browse-facet__label">Genre</span>
+                  <div class="browse-facet__options" id="facet-genres" role="group" aria-label="Filter by genre"></div>
+                </div>
+                <div class="browse-facet">
+                  <span class="browse-facet__label">Mood</span>
+                  <div class="browse-facet__options" id="facet-moods" role="group" aria-label="Filter by mood"></div>
+                </div>
+                <div class="browse-facet">
+                  <span class="browse-facet__label">Country</span>
+                  <div class="browse-facet__options" id="facet-countries" role="group" aria-label="Filter by country"></div>
+                </div>
               </div>
               <div id="discovery-bookmarks" class="discovery-bookmarks" aria-live="polite"></div>
             </aside>
