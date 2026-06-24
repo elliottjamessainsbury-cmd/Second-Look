@@ -1305,7 +1305,7 @@ function renderBrowseGridCards() {
   if (state.loading) {
     return `
       <div class="empty-state results-grid-span recommendations-empty-state">
-        <p>Loading the curated film universe…</p>
+        <p>Loading curated picks…</p>
       </div>
     `;
   }
@@ -1525,7 +1525,7 @@ function renderOnboarding() {
       <div class="taste-quiz-intro">
         <p class="eyebrow">Onboarding</p>
         <h3>Start with your taste, not a catalogue search</h3>
-        <p class="results-subtitle">Pick up to three curated films from the left and answer the quick taste questions. Recommendations will always stay inside the curated universe.</p>
+        <p class="results-subtitle">Pick up to three curated films from the left and answer the quick taste questions. Recommendations will always stay within our curated picks.</p>
       </div>
       <div class="taste-card-swap-layout">
         <div class="taste-card-swap-copy">
@@ -1958,7 +1958,7 @@ function getCinemaLogoPath(cinemaName) {
 }
 
 function getCinemaInitials(cinemaName) {
-  const words = clean_text(cinemaName)
+  const words = cinemaName.trim()
     .split(" ")
     .filter(Boolean)
     .filter((word) => !["the", "cinema"].includes(word.toLowerCase()));
