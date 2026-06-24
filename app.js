@@ -195,10 +195,9 @@ const state = {
     days: [],
   },
   browseFilters: {
-    platform: "",
-    format: "",
     genre: "",
     mood: "",
+    country: "",
   },
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
@@ -232,10 +231,11 @@ const elements = {
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
-  browsePlatformFilter: document.querySelector("#browse-platform-filter"),
-  browseFormatFilter: document.querySelector("#browse-format-filter"),
   browseGenreFilter: document.querySelector("#browse-genre-filter"),
   browseMoodFilter: document.querySelector("#browse-mood-filter"),
+  browseCountryFilter: document.querySelector("#browse-country-filter"),
+  ctaSearch: document.querySelector("#cta-search"),
+  ctaBrowse: document.querySelector("#cta-browse"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -624,7 +624,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     );
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
-    const countries = unique(sample.countries || []);
+    const countries = unique([...(sample.countries || []), ...(tmdb.countries || [])]);
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
 
@@ -1258,43 +1258,37 @@ function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
 }
 
 function getBrowseFilterOptions() {
-  const platforms = new Map();
-  const formats = new Map();
   const genres = new Map();
   const moods = new Map();
+  const countries = new Map();
 
   state.internalFilms.forEach((film) => {
-    (film.platforms || []).forEach((platform) => platforms.set(normalize(platform), platform));
-    (film.formats || []).forEach((format) => formats.set(normalize(format), format));
     (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
     (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
+    (film.countries || []).forEach((country) => countries.set(normalize(country), country));
   });
 
   return {
-    platforms: Array.from(platforms.values()).sort((left, right) => left.localeCompare(right)),
-    formats: Array.from(formats.values()).sort((left, right) => left.localeCompare(right)),
     genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
     moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
+    countries: Array.from(countries.values()).sort((left, right) => left.localeCompare(right)),
   };
 }
 
 function getFilteredBrowseFilms() {
-  const { platform, format, genre, mood } = state.browseFilters;
+  const { genre, mood, country } = state.browseFilters;
 
   return state.internalFilms.filter((film) => {
     if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
-      return false;
-    }
-    if (platform && !(film.platforms || []).includes(platform)) {
-      return false;
-    }
-    if (format && !(film.formats || []).includes(format)) {
       return false;
     }
     if (genre && !(film.genres || []).includes(genre)) {
       return false;
     }
     if (mood && !(film.mood || []).includes(mood)) {
+      return false;
+    }
+    if (country && !(film.countries || []).includes(country)) {
       return false;
     }
     return true;
@@ -1325,10 +1319,9 @@ function renderBrowseGridCards() {
   const activeFilterCount = Object.values(state.browseFilters).filter(Boolean).length;
   const options = getBrowseFilterOptions();
 
-  renderBrowseFilterSelect(elements.browsePlatformFilter, options.platforms, state.browseFilters.platform, "All platforms");
-  renderBrowseFilterSelect(elements.browseFormatFilter, options.formats, state.browseFilters.format, "All formats");
   renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
   renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
+  renderBrowseFilterSelect(elements.browseCountryFilter, options.countries, state.browseFilters.country, "All countries");
 
   if (elements.browseSummary) {
     elements.browseSummary.textContent = activeFilterCount
@@ -2298,16 +2291,6 @@ function attachBaseEventHandlers() {
     renderQuickPicks();
   });
 
-  elements.browsePlatformFilter?.addEventListener("change", (event) => {
-    state.browseFilters.platform = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.browseFormatFilter?.addEventListener("change", (event) => {
-    state.browseFilters.format = event.target.value || "";
-    renderRecommendations();
-  });
-
   elements.browseGenreFilter?.addEventListener("change", (event) => {
     state.browseFilters.genre = event.target.value || "";
     renderRecommendations();
@@ -2318,12 +2301,25 @@ function attachBaseEventHandlers() {
     renderRecommendations();
   });
 
+  elements.browseCountryFilter?.addEventListener("change", (event) => {
+    state.browseFilters.country = event.target.value || "";
+    renderRecommendations();
+  });
+
+  elements.ctaSearch?.addEventListener("click", () => {
+    elements.movieSearch?.scrollIntoView({ behavior: "smooth", block: "center" });
+    elements.movieSearch?.focus();
+  });
+
+  elements.ctaBrowse?.addEventListener("click", () => {
+    elements.resultsGrid?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
-      platform: "",
-      format: "",
       genre: "",
       mood: "",
+      country: "",
     };
     renderRecommendations();
   });

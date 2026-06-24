@@ -93,6 +93,8 @@ def fetch_movie_enrichment(movie_id: int, api_key: str) -> dict:
     release_date = details.get("release_date") or ""
     year = int(release_date[:4]) if len(release_date) >= 4 and release_date[:4].isdigit() else None
 
+    countries = [c["iso_3166_1"] for c in details.get("production_countries", [])]
+
     return {
         "tmdb_id": details.get("id"),
         "title": details.get("title", ""),
@@ -103,6 +105,7 @@ def fetch_movie_enrichment(movie_id: int, api_key: str) -> dict:
         "cast": cast,
         "overview": details.get("overview", ""),
         "poster_path": details.get("poster_path", ""),
+        "countries": countries,
     }
 
 
