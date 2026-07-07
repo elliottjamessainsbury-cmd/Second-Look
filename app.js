@@ -483,30 +483,6 @@ function monogramForTitle(title) {
     .toUpperCase();
 }
 
-function deriveMoodSignalsFromText(keywords, text) {
-  const haystack = `${(keywords || []).join(" ")} ${text || ""}`.toLowerCase();
-  const matches = [];
-
-  const moodMap = [
-    { mood: "melancholy", needles: ["memory", "loss", "grief", "loneliness", "longing", "distance"] },
-    { mood: "meditative", needles: ["silence", "slow", "contemplative", "drift", "journey"] },
-    { mood: "dreamlike", needles: ["dream", "surreal", "nightmare", "hallucination", "ghost"] },
-    { mood: "intense", needles: ["violence", "obsession", "pressure", "revenge", "war"] },
-    { mood: "tender", needles: ["childhood", "family", "friendship", "coming of age", "love"] },
-    { mood: "unsettling", needles: ["horror", "murder", "occult", "body", "paranoia"] },
-    { mood: "precise", needles: ["ritual", "form", "control", "performance", "discipline"] },
-    { mood: "romantic", needles: ["romance", "desire", "marriage", "relationship"] },
-  ];
-
-  moodMap.forEach((entry) => {
-    if (entry.needles.some((needle) => haystack.includes(needle))) {
-      matches.push(entry.mood);
-    }
-  });
-
-  return unique(matches);
-}
-
 function parseRatingValue(value) {
   const numeric = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
   return Number.isFinite(numeric) ? numeric : 0;
@@ -615,11 +591,6 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     );
     const themes = mergeLists(sample.themes || [], tmdb.keywords || []);
     const tone = unique(sample.tone || []);
-    const mood = mergeLists(
-      curatedFilm.mood || [],
-      tone,
-      deriveMoodSignalsFromText(tmdb.keywords || [], `${metadata.intro || ""} ${tmdb.overview || ""}`)
-    );
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
     const countries = unique([...(sample.countries || []), ...(tmdb.countries || [])]);
@@ -638,7 +609,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
       themes,
       tone,
-      mood,
+      mood: [],
       pace: sample.pace || "",
       directRecommendations,
       cardTags,
@@ -663,12 +634,12 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       genres: unique(tmdb.genres || []),
       themes: unique(tmdb.keywords || []),
       tone: [],
-      mood: deriveMoodSignalsFromText(tmdb.keywords || [], tmdb.overview || ""),
+      mood: [],
       pace: "",
       averageRating: 0,
       tmdbId: tmdb.tmdb_id || null,
     }))
-    .filter((seed) => seed.title && (seed.themes.length || seed.mood.length || seed.director))
+    .filter((seed) => seed.title && (seed.themes.length || seed.director))
     .sort((left, right) => left.title.localeCompare(right.title));
 }
 
@@ -696,12 +667,10 @@ function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeed) {
 
   allSeeds.forEach((seed) => {
     let score = 0;
-    const moodOverlap = (candidate.mood || []).filter((value) => (seed.mood || []).some((seedMood) => normalize(seedMood) === normalize(value)));
     const themeOverlap = (candidate.themes || []).filter((value) => (seed.themes || []).some((seedTheme) => normalize(seedTheme) === normalize(value)));
     const toneOverlap = (candidate.tone || []).filter((value) => (seed.tone || []).some((seedTone) => normalize(seedTone) === normalize(value)));
     const paceMatch =
       candidate.pace && seed.pace && normalize(candidate.pace) === normalize(seed.pace);
-    score += moodOverlap.length * 4;
     score += themeOverlap.length * 5;
     score += toneOverlap.length * 4;
     score += paceMatch ? 3 : 0;
@@ -1372,7 +1341,7 @@ function renderBrowseGridCards() {
     .map((film) => {
       const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
       const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
-      const surfaceTags = unique([...(film.platforms || []).slice(0, 2), ...(film.mood || []).slice(0, 1)]);
+      const surfaceTags = unique([...(film.platforms || []).slice(0, 2)]);
 
       return `
         <article class="result-card film-card browse-film-card">
