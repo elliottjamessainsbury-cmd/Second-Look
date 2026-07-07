@@ -1163,6 +1163,14 @@ input:focus {
   margin-top: 0;
 }
 
+.browse-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: 6px;
+}
+
 .discovery-action-button.is-active {
   border-color: var(--accent);
   background: var(--accent-soft);

@@ -1117,17 +1117,34 @@ function renderExpandedPanel(film, explanation) {
     `
     : "";
 
-  return `
-    <div class="card-expanded-panel">
-      ${ratingMarkup}
+  const reasonMarkup = explanation
+    ? `
       <div class="expanded-reason">
         <span class="expanded-reason-label">Why we think you’ll like this</span>
         <p class="expanded-reason-copy">${explanation}</p>
       </div>
+    `
+    : "";
+
+  const synopsis = metadata?.intro || tmdbMetadataForTitle(film.title)?.overview || "";
+  const synopsisMarkup = synopsis ? `<p class="expanded-copy">${synopsis}</p>` : "";
+
+  return `
+    <div class="card-expanded-panel">
+      ${ratingMarkup}
+      ${reasonMarkup}
       ${renderAvailabilityPanel(film)}
-      <p class="expanded-copy">${synopsisForTitle(film.title)}</p>
+      ${synopsisMarkup}
     </div>
   `;
+}
+
+function filmHasExpandableDetail(film) {
+  return Boolean(
+    synopsisForTitle(film.title) ||
+      renderAvailabilityPanel(film) ||
+      metadataForTitle(film.title)?.average_rating
+  );
 }
 
 function cardKey(section, filmId) {
@@ -1357,9 +1374,12 @@ function renderBrowseGridCards() {
       const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
       const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
       const surfaceTags = unique([...(film.platforms || []).slice(0, 2)]);
+      const key = cardKey("browse", film.filmId);
+      const expanded = state.session.expandedCardKey === key;
+      const hasDetail = filmHasExpandableDetail(film);
 
       return `
-        <article class="result-card film-card browse-film-card">
+        <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
             ${renderPosterMarkup(film.title)}
           </div>
@@ -1380,9 +1400,17 @@ function renderBrowseGridCards() {
               </button>
             </div>
             ${renderScreeningPreview(film)}
-            <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
-              See Letterboxd reviews
-            </a>
+            ${expanded ? renderExpandedPanel(film) : ""}
+            <div class="browse-card-links">
+              ${
+                hasDetail
+                  ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>`
+                  : ""
+              }
+              <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+                See Letterboxd reviews
+              </a>
+            </div>
           </div>
         </article>
       `;
@@ -1646,6 +1674,15 @@ function renderRecommendations() {
   elements.resultsGrid.querySelectorAll("[data-outbound-film]").forEach((link) => {
     link.addEventListener("click", () => {
       handleFilmInteraction(link.dataset.outboundFilm, "outbound_click");
+    });
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderRecommendations();
     });
   });
 
