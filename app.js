@@ -595,7 +595,10 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     const tone = unique(sample.tone || []);
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
-    const countries = unique([curatedFilm.country, ...(sample.countries || []), ...(tmdb.countries || [])].filter(Boolean));
+    // Country facet uses the hand-curated primary country as the source of truth.
+    // TMDB emits ISO codes (US/GB) that would splinter into duplicate chips
+    // (USA vs US) after an enrichment refresh, so it is intentionally excluded here.
+    const countries = unique([curatedFilm.country, ...(sample.countries || [])].filter(Boolean));
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
 
