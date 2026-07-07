@@ -196,7 +196,7 @@ const state = {
   },
   browseFilters: {
     genres: [],
-    moods: [],
+    eras: [],
     countries: [],
   },
   selectedCinemaShowtimesDate: "",
@@ -232,7 +232,7 @@ const elements = {
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
   facetGenres: document.querySelector("#facet-genres"),
-  facetMoods: document.querySelector("#facet-moods"),
+  facetEras: document.querySelector("#facet-eras"),
   facetCountries: document.querySelector("#facet-countries"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
@@ -1261,31 +1261,42 @@ function renderFacetButtons(element, kind, options, selectedValues) {
     .join("");
 }
 
+function filmDecade(film) {
+  const year = Number(film?.year);
+  if (!Number.isFinite(year) || year <= 0) {
+    return "";
+  }
+  return `${Math.floor(year / 10) * 10}s`;
+}
+
 function getBrowseFilterOptions() {
   const genres = new Map();
-  const moods = new Map();
+  const eras = new Set();
   const countries = new Map();
 
   state.internalFilms.forEach((film) => {
     (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
-    (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
+    const decade = filmDecade(film);
+    if (decade) {
+      eras.add(decade);
+    }
     (film.countries || []).forEach((country) => countries.set(normalize(country), country));
   });
 
   return {
     genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
-    moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
+    eras: Array.from(eras).sort((left, right) => parseInt(left, 10) - parseInt(right, 10)),
     countries: Array.from(countries.values()).sort((left, right) => left.localeCompare(right)),
   };
 }
 
 function browseFilterCount() {
-  const { genres, moods, countries } = state.browseFilters;
-  return genres.length + moods.length + countries.length;
+  const { genres, eras, countries } = state.browseFilters;
+  return genres.length + eras.length + countries.length;
 }
 
 function getFilteredBrowseFilms() {
-  const { genres, moods, countries } = state.browseFilters;
+  const { genres, eras, countries } = state.browseFilters;
 
   // Selecting within a facet is OR; across facets is AND.
   return state.internalFilms.filter((film) => {
@@ -1295,7 +1306,7 @@ function getFilteredBrowseFilms() {
     if (genres.length && !genres.some((value) => (film.genres || []).includes(value))) {
       return false;
     }
-    if (moods.length && !moods.some((value) => (film.mood || []).includes(value))) {
+    if (eras.length && !eras.includes(filmDecade(film))) {
       return false;
     }
     if (countries.length && !countries.some((value) => (film.countries || []).includes(value))) {
@@ -1326,17 +1337,17 @@ function renderBrowseGridCards() {
   const options = getBrowseFilterOptions();
 
   renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
-  renderFacetButtons(elements.facetMoods, "moods", options.moods, state.browseFilters.moods);
+  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras);
   renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
 
   if (!activeFilterCount) {
     if (elements.browseSummary) {
-      elements.browseSummary.textContent = "Choose a genre, mood, or country to begin.";
+      elements.browseSummary.textContent = "Choose a genre, era, or country to begin.";
     }
     return `
       <div class="empty-state results-grid-span recommendations-empty-state browse-empty-state">
         <h3>Start exploring the collection</h3>
-        <p>Pick a few genres, moods, or countries on the left — combine as many as you like — and the films that match will appear here.</p>
+        <p>Pick a few genres, eras, or countries on the left — combine as many as you like — and the films that match will appear here.</p>
       </div>
     `;
   }
@@ -2311,7 +2322,7 @@ function attachBaseEventHandlers() {
     renderQuickPicks();
   });
 
-  [elements.facetGenres, elements.facetMoods, elements.facetCountries].forEach((container) => {
+  [elements.facetGenres, elements.facetEras, elements.facetCountries].forEach((container) => {
     container?.addEventListener("click", (event) => {
       const chip = event.target.closest("[data-facet-kind]");
       if (!chip) {
@@ -2336,7 +2347,7 @@ function attachBaseEventHandlers() {
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
       genres: [],
-      moods: [],
+      eras: [],
       countries: [],
     };
     renderRecommendations();
