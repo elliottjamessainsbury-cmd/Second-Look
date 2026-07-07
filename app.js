@@ -195,9 +195,9 @@ const state = {
     days: [],
   },
   browseFilters: {
-    genre: "",
-    mood: "",
-    country: "",
+    genres: [],
+    moods: [],
+    countries: [],
   },
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
@@ -231,11 +231,9 @@ const elements = {
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
-  browseGenreFilter: document.querySelector("#browse-genre-filter"),
-  browseMoodFilter: document.querySelector("#browse-mood-filter"),
-  browseCountryFilter: document.querySelector("#browse-country-filter"),
-  ctaSearch: document.querySelector("#cta-search"),
-  ctaBrowse: document.querySelector("#cta-browse"),
+  facetGenres: document.querySelector("#facet-genres"),
+  facetMoods: document.querySelector("#facet-moods"),
+  facetCountries: document.querySelector("#facet-countries"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -1245,16 +1243,22 @@ function renderScreeningPreview(film) {
   `;
 }
 
-function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
+function renderFacetButtons(element, kind, options, selectedValues) {
   if (!element) {
     return;
   }
 
-  element.innerHTML = [
-    `<option value="">${escapeHtml(allLabel)}</option>`,
-    ...options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`),
-  ].join("");
-  element.value = selectedValue;
+  if (!options.length) {
+    element.innerHTML = `<p class="browse-facet__empty">None available yet</p>`;
+    return;
+  }
+
+  element.innerHTML = options
+    .map((option) => {
+      const active = selectedValues.includes(option);
+      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(option)}</button>`;
+    })
+    .join("");
 }
 
 function getBrowseFilterOptions() {
@@ -1275,20 +1279,26 @@ function getBrowseFilterOptions() {
   };
 }
 
-function getFilteredBrowseFilms() {
-  const { genre, mood, country } = state.browseFilters;
+function browseFilterCount() {
+  const { genres, moods, countries } = state.browseFilters;
+  return genres.length + moods.length + countries.length;
+}
 
+function getFilteredBrowseFilms() {
+  const { genres, moods, countries } = state.browseFilters;
+
+  // Selecting within a facet is OR; across facets is AND.
   return state.internalFilms.filter((film) => {
     if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
       return false;
     }
-    if (genre && !(film.genres || []).includes(genre)) {
+    if (genres.length && !genres.some((value) => (film.genres || []).includes(value))) {
       return false;
     }
-    if (mood && !(film.mood || []).includes(mood)) {
+    if (moods.length && !moods.some((value) => (film.mood || []).includes(value))) {
       return false;
     }
-    if (country && !(film.countries || []).includes(country)) {
+    if (countries.length && !countries.some((value) => (film.countries || []).includes(value))) {
       return false;
     }
     return true;
@@ -1312,27 +1322,37 @@ function renderBrowseGridCards() {
     `;
   }
 
+  const activeFilterCount = browseFilterCount();
+  const options = getBrowseFilterOptions();
+
+  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
+  renderFacetButtons(elements.facetMoods, "moods", options.moods, state.browseFilters.moods);
+  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
+
+  if (!activeFilterCount) {
+    if (elements.browseSummary) {
+      elements.browseSummary.textContent = "Choose a genre, mood, or country to begin.";
+    }
+    return `
+      <div class="empty-state results-grid-span recommendations-empty-state browse-empty-state">
+        <h3>Start exploring the collection</h3>
+        <p>Pick a few genres, moods, or countries on the left — combine as many as you like — and the films that match will appear here.</p>
+      </div>
+    `;
+  }
+
   const filteredFilms = getFilteredBrowseFilms()
     .slice()
     .sort((left, right) => left.title.localeCompare(right.title));
 
-  const activeFilterCount = Object.values(state.browseFilters).filter(Boolean).length;
-  const options = getBrowseFilterOptions();
-
-  renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
-  renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
-  renderBrowseFilterSelect(elements.browseCountryFilter, options.countries, state.browseFilters.country, "All countries");
-
   if (elements.browseSummary) {
-    elements.browseSummary.textContent = activeFilterCount
-      ? `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your current filters. Saves and dismissals will keep training the profile.`
-      : `Browse the full curated set, then save or dismiss films to shape the recommendation card below.`;
+    elements.browseSummary.textContent = `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your selection. Save or dismiss to shape the recommendation card below.`;
   }
 
   if (!filteredFilms.length) {
     return `
       <div class="empty-state results-grid-span recommendations-empty-state">
-        <p>No films match this filter combination yet. Try clearing one filter to widen the curated set.</p>
+        <p>No films match this combination yet. Try removing a filter to widen the set.</p>
       </div>
     `;
   }
@@ -2291,35 +2311,33 @@ function attachBaseEventHandlers() {
     renderQuickPicks();
   });
 
-  elements.browseGenreFilter?.addEventListener("change", (event) => {
-    state.browseFilters.genre = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.browseMoodFilter?.addEventListener("change", (event) => {
-    state.browseFilters.mood = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.browseCountryFilter?.addEventListener("change", (event) => {
-    state.browseFilters.country = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.ctaSearch?.addEventListener("click", () => {
-    elements.movieSearch?.scrollIntoView({ behavior: "smooth", block: "center" });
-    elements.movieSearch?.focus();
-  });
-
-  elements.ctaBrowse?.addEventListener("click", () => {
-    elements.resultsGrid?.scrollIntoView({ behavior: "smooth", block: "start" });
+  [elements.facetGenres, elements.facetMoods, elements.facetCountries].forEach((container) => {
+    container?.addEventListener("click", (event) => {
+      const chip = event.target.closest("[data-facet-kind]");
+      if (!chip) {
+        return;
+      }
+      const kind = chip.dataset.facetKind;
+      const value = chip.dataset.facetValue;
+      const selected = state.browseFilters[kind];
+      if (!Array.isArray(selected)) {
+        return;
+      }
+      const index = selected.indexOf(value);
+      if (index === -1) {
+        selected.push(value);
+      } else {
+        selected.splice(index, 1);
+      }
+      renderRecommendations();
+    });
   });
 
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
-      genre: "",
-      mood: "",
-      country: "",
+      genres: [],
+      moods: [],
+      countries: [],
     };
     renderRecommendations();
   });
