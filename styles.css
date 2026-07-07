@@ -302,10 +302,10 @@ h1 {
   flex: 1 1 240px;
   min-width: 220px;
   padding: 16px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid #ffffff;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
+  background: #ffffff;
+  color: #111111;
   text-decoration: none;
   transition:
     background-color 0.25s ease,
@@ -314,8 +314,8 @@ h1 {
 }
 
 .hero-link:hover {
-  border-color: rgba(255, 255, 255, 0.42);
-  background: rgba(255, 255, 255, 0.12);
+  background: #f2f2f2;
+  border-color: #f2f2f2;
   transform: translateY(-2px);
 }
 
@@ -324,12 +324,13 @@ h1 {
   font-size: 1.02rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: #111111;
 }
 
 .hero-link__hint {
   font-size: 0.82rem;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(17, 17, 17, 0.66);
 }
 
 .browse-search {

@@ -80,7 +80,8 @@
       "Pather Pachali",
       "Late Spring"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "amadeus-1984",
@@ -215,7 +216,8 @@
       "A Woman Under the Influence",
       "Autumn Sonata"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "bw": true
   },
   {
     "film_id": "harakiri-1962",
@@ -226,7 +228,8 @@
     "manual_links": [
       "Rashomon"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "vertigo-1958",
@@ -249,7 +252,8 @@
     "manual_links": [
       "Gloria"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "cabaret-1972",
@@ -370,7 +374,8 @@
       "Persona",
       "A Woman Under the Influence"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "the-ascent-1977",
@@ -383,7 +388,8 @@
       "Shoah",
       "Ordet"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "rashomon-1950",
@@ -396,7 +402,8 @@
       "Ran",
       "Woman in the Dunes"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "shoah-1985",
@@ -422,7 +429,8 @@
       "The War Games",
       "Triangle of Sadness"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "threads-1984",
@@ -446,7 +454,8 @@
       "Inland Empire",
       "Mulholland Drive"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "autumn-sonata-1978",
@@ -481,7 +490,8 @@
     "manual_links": [
       "Lawrence of Arabia"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "citizen-kane-1941",
@@ -493,7 +503,8 @@
       "The Best Years of Our Lives",
       "Lawrence of Arabia"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "the-texas-chain-saw-massacre-1974",
@@ -625,7 +636,8 @@
       "Freaks",
       "Night of the Hunter"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true
   },
   {
     "film_id": "possibly-in-michigan-1983",
@@ -911,7 +923,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "fallen-leaves-2023",
@@ -1035,7 +1048,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "20-days-in-mariupol-2023",
@@ -1121,7 +1135,8 @@
       "raw_extra": "Yes",
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "yentl-1983",
@@ -1207,7 +1222,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "the-exorcist-iii-1990",
@@ -1257,7 +1273,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "radio-on-1979",
@@ -1273,7 +1290,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "sleepaway-camp-ii-unhappy-campers-1988",
@@ -1361,7 +1379,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "71-fragments-of-a-chronology-of-chance-1994",
@@ -1423,7 +1442,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "the-train-1964",
@@ -1445,7 +1465,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true
   },
   {
     "film_id": "peter-hujar-s-day-2025",
