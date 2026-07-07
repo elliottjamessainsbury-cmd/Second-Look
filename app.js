@@ -595,7 +595,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     const tone = unique(sample.tone || []);
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
-    const countries = unique([...(sample.countries || []), ...(tmdb.countries || [])]);
+    const countries = unique([curatedFilm.country, ...(sample.countries || []), ...(tmdb.countries || [])].filter(Boolean));
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
 
