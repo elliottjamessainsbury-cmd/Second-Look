@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { execFileSync } = require("child_process");
 
-const ROOT = "/Users/elliott/Documents/New project";
+const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT, "data");
 const BUILD_SCRIPT = path.join(ROOT, "scripts", "build_availability_data.py");
 

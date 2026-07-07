@@ -2,7 +2,7 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = "/Users/elliott/Documents/New project";
+const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT, "data");
 const CASES_PATH = path.join(ROOT, "QA", "flows", "blurb_quality_cases.json");
 
