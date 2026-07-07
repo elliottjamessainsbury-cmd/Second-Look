@@ -198,6 +198,7 @@ const state = {
     genres: [],
     eras: [],
     countries: [],
+    colours: [],
   },
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
@@ -234,6 +235,7 @@ const elements = {
   facetGenres: document.querySelector("#facet-genres"),
   facetEras: document.querySelector("#facet-eras"),
   facetCountries: document.querySelector("#facet-countries"),
+  facetColours: document.querySelector("#facet-colours"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -610,6 +612,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       themes,
       tone,
       mood: [],
+      bw: Boolean(curatedFilm.bw),
       pace: sample.pace || "",
       directRecommendations,
       cardTags,
@@ -635,6 +638,7 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       themes: unique(tmdb.keywords || []),
       tone: [],
       mood: [],
+      bw: false,
       pace: "",
       averageRating: 0,
       tmdbId: tmdb.tmdb_id || null,
@@ -1238,10 +1242,15 @@ function filmDecade(film) {
   return `${Math.floor(year / 10) * 10}s`;
 }
 
+function filmColour(film) {
+  return film?.bw ? "Black & white" : "Colour";
+}
+
 function getBrowseFilterOptions() {
   const genres = new Map();
   const eras = new Set();
   const countries = new Map();
+  const colours = new Set();
 
   state.internalFilms.forEach((film) => {
     (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
@@ -1250,22 +1259,24 @@ function getBrowseFilterOptions() {
       eras.add(decade);
     }
     (film.countries || []).forEach((country) => countries.set(normalize(country), country));
+    colours.add(filmColour(film));
   });
 
   return {
     genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
     eras: Array.from(eras).sort((left, right) => parseInt(left, 10) - parseInt(right, 10)),
     countries: Array.from(countries.values()).sort((left, right) => left.localeCompare(right)),
+    colours: Array.from(colours).sort((left, right) => left.localeCompare(right)),
   };
 }
 
 function browseFilterCount() {
-  const { genres, eras, countries } = state.browseFilters;
-  return genres.length + eras.length + countries.length;
+  const { genres, eras, countries, colours } = state.browseFilters;
+  return genres.length + eras.length + countries.length + colours.length;
 }
 
 function getFilteredBrowseFilms() {
-  const { genres, eras, countries } = state.browseFilters;
+  const { genres, eras, countries, colours } = state.browseFilters;
 
   // Selecting within a facet is OR; across facets is AND.
   return state.internalFilms.filter((film) => {
@@ -1279,6 +1290,9 @@ function getFilteredBrowseFilms() {
       return false;
     }
     if (countries.length && !countries.some((value) => (film.countries || []).includes(value))) {
+      return false;
+    }
+    if (colours.length && !colours.includes(filmColour(film))) {
       return false;
     }
     return true;
@@ -1308,15 +1322,16 @@ function renderBrowseGridCards() {
   renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
   renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras);
   renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
+  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours);
 
   if (!activeFilterCount) {
     if (elements.browseSummary) {
-      elements.browseSummary.textContent = "Choose a genre, era, or country to begin.";
+      elements.browseSummary.textContent = "Choose a genre, era, country, or colour to begin.";
     }
     return `
       <div class="empty-state results-grid-span recommendations-empty-state browse-empty-state">
         <h3>Start exploring the collection</h3>
-        <p>Pick a few genres, eras, or countries on the left — combine as many as you like — and the films that match will appear here.</p>
+        <p>Pick from genre, era, country, or colour on the left — combine as many as you like — and the films that match will appear here.</p>
       </div>
     `;
   }
@@ -2291,7 +2306,7 @@ function attachBaseEventHandlers() {
     renderQuickPicks();
   });
 
-  [elements.facetGenres, elements.facetEras, elements.facetCountries].forEach((container) => {
+  [elements.facetGenres, elements.facetEras, elements.facetCountries, elements.facetColours].forEach((container) => {
     container?.addEventListener("click", (event) => {
       const chip = event.target.closest("[data-facet-kind]");
       if (!chip) {
@@ -2318,6 +2333,7 @@ function attachBaseEventHandlers() {
       genres: [],
       eras: [],
       countries: [],
+      colours: [],
     };
     renderRecommendations();
   });
