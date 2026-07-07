@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-const ROOT = "/Users/elliott/Documents/New project";
+const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
 const editorial = require(path.join(ROOT, "lib", "editorial-copy.js"));
 

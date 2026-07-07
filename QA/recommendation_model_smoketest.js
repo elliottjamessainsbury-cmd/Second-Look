@@ -1,5 +1,7 @@
 const assert = require("assert");
-const engine = require("/Users/elliott/Documents/New Project/lib/recommendation-engine.js");
+const path = require("path");
+const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
+const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
 
 function runCheck(label, fn, results) {
   try {
