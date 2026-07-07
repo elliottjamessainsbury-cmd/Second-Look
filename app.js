@@ -1330,7 +1330,7 @@ function renderBrowseGridCards() {
     }
     return `
       <div class="empty-state results-grid-span recommendations-empty-state browse-empty-state">
-        <h3>Start exploring the collection</h3>
+        <h3>Explore the collection</h3>
         <p>Pick from genre, era, country, or colour on the left — combine as many as you like — and the films that match will appear here.</p>
       </div>
     `;
