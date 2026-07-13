@@ -1,5 +1,5 @@
 /**
- * Option 1 prototype — "Pick films you love → recommendations from the curated universe".
+ * Option 1 prototype — "Pick films you love → recommendations from the curated collection".
  * Self-contained: does not touch the production app. Reuses the data files.
  *
  * In production, the anchor search below is replaced by live TMDB /search/movie,
@@ -125,7 +125,7 @@ async function boot() {
   const fmByTitle = {};
   Object.entries(fmRaw).forEach(([title, v]) => (fmByTitle[normalize(title)] = v));
 
-  // Build the enriched curated universe (the recommendation pool).
+  // Build the enriched curated collection (the recommendation pool).
   state.curated = curatedRaw.map((film) => {
     const key = normalize(film.title);
     const tmdb = tmdbByTitle[key] || {};
@@ -292,7 +292,7 @@ function renderRecs() {
     })
     .slice(0, 8);
 
-  els.recsHead.textContent = `From your taste — ${scored.length} picks from the curated universe`;
+  els.recsHead.textContent = `From your taste — ${scored.length} picks from our collection`;
 
   if (!scored.length) {
     els.recs.innerHTML = `<p class="proto-muted">Nothing in the curated set matched those signals yet. Try a different film — or this is where richer enrichment would widen the net.</p>`;
