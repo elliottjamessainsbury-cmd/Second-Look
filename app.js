@@ -200,6 +200,10 @@ const state = {
     countries: [],
     colours: [],
   },
+  tasteAnchors: [],
+  tastePicks: [],
+  tasteQuery: "",
+  tasteGenerated: false,
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
   query: "",
@@ -236,6 +240,13 @@ const elements = {
   facetEras: document.querySelector("#facet-eras"),
   facetCountries: document.querySelector("#facet-countries"),
   facetColours: document.querySelector("#facet-colours"),
+  tasteSearchSection: document.querySelector("#taste-search-section"),
+  tasteSearchInput: document.querySelector("#taste-search-input"),
+  tasteSearchResults: document.querySelector("#taste-search-results"),
+  tastePicks: document.querySelector("#taste-picks"),
+  tasteGenerate: document.querySelector("#taste-generate"),
+  tasteRecsHead: document.querySelector("#taste-recs-head"),
+  tasteRecs: document.querySelector("#taste-recs"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -2256,6 +2267,229 @@ function renderCinemaShowtimes() {
   });
 }
 
+// --- Taste search: "films you love" -> recommendations from the collection ---
+function tasteDecade(year) {
+  const y = Number(year);
+  return Number.isFinite(y) && y > 0 ? Math.floor(y / 10) * 10 : null;
+}
+
+function bindFilmCardActions(container) {
+  if (!container) {
+    return;
+  }
+  container.querySelectorAll("[data-save-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.saveFilm, "save"));
+  });
+  container.querySelectorAll("[data-dismiss-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.dismissFilm, "not_for_me"));
+  });
+  container.querySelectorAll("[data-outbound-film]").forEach((link) => {
+    link.addEventListener("click", () => handleFilmInteraction(link.dataset.outboundFilm, "outbound_click"));
+  });
+  container.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      render();
+    });
+  });
+}
+
+function renderTasteSearch() {
+  if (!elements.tasteSearchResults) {
+    return;
+  }
+  const query = normalize(state.tasteQuery || "");
+  if (!query) {
+    elements.tasteSearchResults.innerHTML = "";
+    return;
+  }
+  const matches = state.tasteAnchors
+    .filter((anchor) => normalize(anchor.title).includes(query))
+    .filter((anchor) => !state.tastePicks.some((pick) => normalize(pick.title) === normalize(anchor.title)))
+    .slice(0, 6);
+
+  if (!matches.length) {
+    elements.tasteSearchResults.innerHTML = `<p class="taste-search__muted">No match in the demo set yet. (Live search will cover all of TMDB.)</p>`;
+    return;
+  }
+
+  elements.tasteSearchResults.innerHTML = matches
+    .map(
+      (anchor) => `
+      <button class="taste-result" type="button" data-taste-add="${escapeHtml(anchor.title)}">
+        <span class="taste-result__title">${escapeHtml(anchor.title)}</span>
+        <span class="taste-result__meta">${escapeHtml([anchor.year, anchor.director, (anchor.genres || []).join(", ")].filter(Boolean).join(" · "))}</span>
+      </button>`
+    )
+    .join("");
+
+  elements.tasteSearchResults.querySelectorAll("[data-taste-add]").forEach((button) => {
+    button.addEventListener("click", () => addTastePick(button.dataset.tasteAdd));
+  });
+}
+
+function addTastePick(title) {
+  const anchor = state.tasteAnchors.find((item) => normalize(item.title) === normalize(title));
+  if (!anchor || state.tastePicks.length >= 3 || state.tastePicks.some((pick) => normalize(pick.title) === normalize(title))) {
+    return;
+  }
+  state.tastePicks.push(anchor);
+  state.tasteQuery = "";
+  if (elements.tasteSearchInput) {
+    elements.tasteSearchInput.value = "";
+  }
+  state.tasteGenerated = false;
+  renderTasteSearch();
+  renderTastePicks();
+  renderTasteRecs();
+}
+
+function removeTastePick(title) {
+  state.tastePicks = state.tastePicks.filter((pick) => normalize(pick.title) !== normalize(title));
+  state.tasteGenerated = false;
+  renderTastePicks();
+  renderTasteRecs();
+}
+
+function renderTastePicks() {
+  if (!elements.tastePicks) {
+    return;
+  }
+  const chips = state.tastePicks
+    .map(
+      (pick) => `
+      <span class="taste-chip">${escapeHtml(pick.title)}
+        <button class="taste-chip__x" type="button" data-taste-remove="${escapeHtml(pick.title)}" aria-label="Remove ${escapeHtml(pick.title)}">×</button>
+      </span>`
+    )
+    .join("");
+  const ghost =
+    state.tastePicks.length < 3
+      ? `<span class="taste-chip taste-chip--ghost">${state.tastePicks.length ? "Add another (optional)" : "Search and add up to 3"}</span>`
+      : "";
+  elements.tastePicks.innerHTML = chips + ghost;
+
+  elements.tastePicks.querySelectorAll("[data-taste-remove]").forEach((button) => {
+    button.addEventListener("click", () => removeTastePick(button.dataset.tasteRemove));
+  });
+
+  if (elements.tasteGenerate) {
+    elements.tasteGenerate.disabled = state.tastePicks.length === 0;
+    elements.tasteGenerate.textContent = state.tastePicks.length === 0 ? "Add a film to begin" : "Show me recommendations";
+  }
+}
+
+function buildTasteSignal() {
+  const signal = { genres: new Set(), keywords: new Set(), countries: new Set(), directors: new Set(), decades: new Set() };
+  state.tastePicks.forEach((pick) => {
+    (pick.genres || []).forEach((value) => signal.genres.add(value));
+    (pick.keywords || []).forEach((value) => signal.keywords.add(value));
+    if (pick.country) signal.countries.add(pick.country);
+    if (pick.director) signal.directors.add(pick.director);
+    const decade = tasteDecade(pick.year);
+    if (decade) signal.decades.add(decade);
+  });
+  return signal;
+}
+
+function scoreTasteCandidate(film, signal) {
+  const reasons = [];
+  let score = 0;
+  const sharedGenres = (film.genres || []).filter((value) => signal.genres.has(value));
+  if (sharedGenres.length) {
+    score += 3 * sharedGenres.length;
+    reasons.push(...sharedGenres);
+  }
+  const sharedKeywords = (film.themes || []).filter((value) => signal.keywords.has(value));
+  if (sharedKeywords.length) {
+    score += 2 * sharedKeywords.length;
+    reasons.push(...sharedKeywords.slice(0, 2));
+  }
+  const sharedCountry = (film.countries || []).filter((value) => signal.countries.has(value));
+  if (sharedCountry.length) {
+    score += 4;
+    reasons.push(...sharedCountry);
+  }
+  if (film.director && signal.directors.has(film.director)) {
+    score += 8;
+    reasons.push(`dir. ${film.director}`);
+  }
+  const decade = tasteDecade(film.year);
+  if (decade && signal.decades.has(decade)) {
+    score += 2;
+  }
+  return { score, reasons: unique(reasons).slice(0, 4) };
+}
+
+function renderTasteCard(film, reasons) {
+  const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
+  const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
+  const key = cardKey("taste", film.filmId);
+  const expanded = state.session.expandedCardKey === key;
+  const hasDetail = filmHasExpandableDetail(film);
+  const meta = [film.year || "Year unknown", film.director || "Director unknown", ...(film.countries || []).slice(0, 1)]
+    .filter(Boolean)
+    .join(" • ");
+
+  return `
+    <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
+      <div class="poster-block">${renderPosterMarkup(film.title)}</div>
+      <div class="card-body film-card-body">
+        <h3 class="card-title">${escapeHtml(film.title)}</h3>
+        <p class="match-meta">${escapeHtml(meta)}</p>
+        ${reasons.length ? `<p class="discovery-card__rationale">${escapeHtml(reasons.join(" • "))}</p>` : ""}
+        <div class="card-actions film-actions">
+          <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
+            ${isSaved ? "Saved" : "Save"}
+          </button>
+          <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
+            Not for me
+          </button>
+        </div>
+        ${expanded ? renderExpandedPanel(film) : ""}
+        <div class="browse-card-links">
+          ${hasDetail ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>` : ""}
+          <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+            See Letterboxd reviews
+          </a>
+        </div>
+      </div>
+    </article>`;
+}
+
+function renderTasteRecs() {
+  if (!elements.tasteRecs) {
+    return;
+  }
+  if (!state.tasteGenerated || !state.tastePicks.length) {
+    if (elements.tasteRecsHead) elements.tasteRecsHead.textContent = "";
+    elements.tasteRecs.innerHTML = "";
+    return;
+  }
+
+  const signal = buildTasteSignal();
+  const scored = state.internalFilms
+    .filter((film) => !state.userProfile.dislikedFilmIds.includes(film.filmId))
+    .map((film) => ({ film, ...scoreTasteCandidate(film, signal) }))
+    .filter((entry) => entry.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 8);
+
+  if (elements.tasteRecsHead) {
+    elements.tasteRecsHead.textContent = `From your taste — ${scored.length} pick${scored.length === 1 ? "" : "s"} from our collection`;
+  }
+
+  if (!scored.length) {
+    elements.tasteRecs.innerHTML = `<p class="taste-search__muted">Nothing matched those signals yet — try another film.</p>`;
+    return;
+  }
+
+  elements.tasteRecs.innerHTML = scored.map(({ film, reasons }) => renderTasteCard(film, reasons)).join("");
+  bindFilmCardActions(elements.tasteRecs);
+}
+
 function render() {
   renderSelectedSeeds();
   renderSearchResults();
@@ -2263,6 +2497,9 @@ function render() {
   renderSavedSidebar();
   renderRefinePanelState();
   renderCinemaShowtimes();
+  renderTasteSearch();
+  renderTastePicks();
+  renderTasteRecs();
 
   if (isSavedPage) {
     renderSavedFilmsPage();
@@ -2330,6 +2567,17 @@ function initRotatingFilmQuotes() {
 function attachBaseEventHandlers() {
   elements.movieSearch?.addEventListener("input", (event) => {
     handleExternalSearchInput(event.target.value);
+  });
+
+  elements.tasteSearchInput?.addEventListener("input", (event) => {
+    state.tasteQuery = event.target.value;
+    renderTasteSearch();
+  });
+
+  elements.tasteGenerate?.addEventListener("click", () => {
+    state.tasteGenerated = true;
+    renderTasteRecs();
+    elements.tasteRecs?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   });
 
   elements.addFirstMatch?.addEventListener("click", () => {
@@ -2428,7 +2676,7 @@ async function loadCinemaShowtimes() {
 
 async function loadAppData() {
   try {
-    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse] =
+    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse, anchorsResponse] =
       await Promise.all([
         fetch("./data/curated-films.json"),
         fetch("./data/film-metadata.json"),
@@ -2436,6 +2684,7 @@ async function loadAppData() {
         fetch("./data/tmdb-metadata.json"),
         fetch("./data/availability.json"),
         fetch("./data/sample-movies.json"),
+        fetch("./data/taste-anchor-films.json"),
       ]);
 
     if (!curatedResponse.ok) {
@@ -2448,6 +2697,8 @@ async function loadAppData() {
     state.tmdbMetadataByTitle = tmdbResponse.ok ? await tmdbResponse.json() : {};
     state.availabilityByFilmId = availabilityResponse.ok ? await availabilityResponse.json() : {};
     const sampleMovies = sampleResponse.ok ? await sampleResponse.json() : [];
+    const anchorData = anchorsResponse.ok ? await anchorsResponse.json() : {};
+    state.tasteAnchors = Array.isArray(anchorData.films) ? anchorData.films : [];
 
     const metadataByTitleKey = buildTitleIndex(
       Object.entries(state.metadataByTitle).map(([title, value]) => ({ title, value })),

@@ -915,6 +915,111 @@ input:focus {
   gap: 24px;
 }
 
+/* --- Taste search ("films you love") --- */
+.taste-search__sub {
+  max-width: 60ch;
+  margin: 4px 0 18px;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+.taste-search__input {
+  width: 100%;
+  max-width: 640px;
+  padding: 13px 16px;
+  font-size: 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+.taste-search__input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.taste-search__results {
+  display: grid;
+  gap: 6px;
+  max-width: 640px;
+  margin-top: 8px;
+}
+.taste-result {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+.taste-result:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.taste-result__title {
+  font-weight: 700;
+  color: var(--ink);
+}
+.taste-result__meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.taste-search__muted {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 8px 2px;
+}
+.taste-picks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 6px;
+}
+.taste-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--save);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.taste-chip--ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  font-weight: 500;
+}
+.taste-chip__x {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+.taste-search__generate {
+  margin-top: 16px;
+}
+.taste-recs-head {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  margin: 22px 0 0;
+}
+.taste-recs:not(:empty) {
+  margin-top: 16px;
+}
+
 .results-grid-span {
   grid-column: 1 / -1;
 }

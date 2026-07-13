@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=42" />
+    <link rel="stylesheet" href="./styles.css?v=43" />
   </head>
   <body>
     <div class="page-shell">
@@ -24,12 +24,12 @@
             Second Look is a small, hand-built cinema of films worth seeking out — drawn from across the world, its eras, and its genres, and chosen with a blend of human taste and machine intelligence. Pick a mood, a place, or a feeling, and let it lead you somewhere new.
           </p>
           <nav class="hero-links" aria-label="Explore Second Look">
-            <a class="hero-link" id="link-curated" href="#taste-refine-section">
-              <span class="hero-link__title">Discover films curated by us</span>
-              <span class="hero-link__hint">Browse the collection by genre, era &amp; country →</span>
+            <a class="hero-link" id="link-search" href="#taste-search-section">
+              <span class="hero-link__title">Start from films you love</span>
+              <span class="hero-link__hint">Name three favourites → we recommend from our collection →</span>
             </a>
             <a class="hero-link" id="link-listings" href="#cinema-showtimes-section">
-              <span class="hero-link__title">Discover the best film listings in London</span>
+              <span class="hero-link__title">The best film listings in London</span>
               <span class="hero-link__hint">See what's screening at the city's finest cinemas →</span>
             </a>
           </nav>
@@ -41,6 +41,18 @@
       </header>
 
       <main class="home-flow">
+        <section class="taste-search card" id="taste-search-section" aria-labelledby="taste-search-title">
+          <p class="eyebrow">Start from your taste</p>
+          <h2 id="taste-search-title">Which films do you love?</h2>
+          <p class="taste-search__sub">Search up to three films that capture your taste — we read the signal and point you to films from our collection.</p>
+          <input id="taste-search-input" type="text" autocomplete="off" placeholder="Search for a film you love…" class="taste-search__input" />
+          <div id="taste-search-results" class="taste-search__results" aria-live="polite"></div>
+          <div id="taste-picks" class="taste-picks"></div>
+          <button id="taste-generate" class="ghost-button taste-search__generate" type="button" disabled>Add a film to begin</button>
+          <p id="taste-recs-head" class="taste-recs-head"></p>
+          <div id="taste-recs" class="results-grid taste-recs" aria-live="polite"></div>
+        </section>
+
         <section class="recommendations-section results card">
           <div class="results-head">
             <div>
@@ -126,6 +138,6 @@
 
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=50"></script>
+    <script src="./app.js?v=51"></script>
   </body>
 </html>
