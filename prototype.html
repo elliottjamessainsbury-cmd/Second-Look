@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second Look — Taste Prototype</title>
+    <style>
+      :root {
+        --ink: #17201d;
+        --muted: #6b7a74;
+        --line: #d9e0dc;
+        --paper: #ffffff;
+        --bg: #eef1ef;
+        --accent: #1f4f43;
+        --accent-soft: #e4efe9;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.5;
+      }
+      .proto-shell { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
+      .proto-hero__eyebrow { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin: 0 0 8px; }
+      .proto-hero h1 { font-size: 2.2rem; margin: 0 0 10px; letter-spacing: -0.02em; }
+      .proto-hero p { max-width: 60ch; color: var(--muted); margin: 0 0 6px; }
+      .proto-badge { display: inline-block; margin-top: 14px; font-size: 0.72rem; color: var(--muted); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+
+      .proto-card-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 24px; margin-top: 28px; }
+      .proto-step { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 4px; }
+      .proto-panel-title { font-size: 1.3rem; margin: 0 0 4px; }
+      .proto-panel-sub { color: var(--muted); margin: 0 0 18px; font-size: 0.95rem; }
+
+      .proto-search-wrap { position: relative; }
+      #anchor-search {
+        width: 100%; padding: 13px 16px; font-size: 1rem; border-radius: 12px;
+        border: 1px solid var(--line); background: #fff; color: var(--ink);
+      }
+      #anchor-search:focus { outline: none; border-color: var(--accent); }
+      #anchor-results { display: grid; gap: 6px; margin-top: 8px; }
+      .proto-result {
+        display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+        gap: 2px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px;
+        background: #fff; cursor: pointer; transition: border-color 0.15s, background 0.15s;
+      }
+      .proto-result:hover { border-color: var(--accent); background: var(--accent-soft); }
+      .proto-result__title { font-weight: 700; }
+      .proto-result__meta { font-size: 0.82rem; color: var(--muted); }
+      .proto-muted { color: var(--muted); font-size: 0.88rem; margin: 8px 2px; }
+
+      #pick-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; }
+      .proto-chip {
+        display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+        background: var(--accent); color: #fff; font-weight: 600; font-size: 0.9rem;
+      }
+      .proto-chip--ghost { background: transparent; color: var(--muted); border: 1px dashed var(--line); font-weight: 500; }
+      .proto-chip__x { border: 0; background: transparent; color: #fff; cursor: pointer; font-size: 1.1rem; line-height: 1; padding: 0; }
+
+      #generate {
+        margin-top: 16px; padding: 12px 22px; border-radius: 999px; border: 0; cursor: pointer;
+        background: var(--accent); color: #fff; font-weight: 700; font-size: 0.98rem;
+      }
+      #generate:disabled { background: #c3cec9; cursor: not-allowed; }
+
+      #recs-head { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 0 16px; }
+      #recs { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; }
+      .proto-empty { color: var(--muted); padding: 30px 0; }
+      .proto-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.15s, border-color 0.15s; }
+      .proto-card.is-liked { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+      .proto-card__poster { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; background: #e7ece9; display: block; }
+      .proto-card__poster--mono { display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; color: #b7c4bd; }
+      .proto-card__body { padding: 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+      .proto-card__title { font-size: 1.02rem; margin: 0; }
+      .proto-card__meta { font-size: 0.8rem; color: var(--muted); margin: 0; }
+      .proto-card__why { font-size: 0.8rem; margin: 4px 0 0; color: var(--ink); }
+      .proto-card__why span { color: var(--accent); font-weight: 700; text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.1em; }
+      .proto-card__actions { margin-top: auto; display: flex; flex-wrap: wrap; gap: 8px; padding-top: 10px; }
+      .proto-btn { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink); cursor: pointer; font-size: 0.82rem; font-weight: 600; text-decoration: none; }
+      .proto-btn--on { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .proto-btn--ghost { color: var(--muted); }
+      .proto-btn--link { color: var(--accent); border-color: transparent; }
+    </style>
+  </head>
+  <body>
+    <div class="proto-shell">
+      <header class="proto-hero">
+        <p class="proto-hero__eyebrow">Second Look · concept prototype</p>
+        <h1>Start with films you already love</h1>
+        <p>Search for up to three films that are the very essence of your taste. We read the signal — genre, mood, era, country — and point you to films from our hand-built curated collection.</p>
+        <span class="proto-badge">Prototype: searches a demo set of ~36 films · production searches all of TMDB</span>
+      </header>
+
+      <section class="proto-card-panel">
+        <p class="proto-step">Step 1</p>
+        <h2 class="proto-panel-title">Which films do you love?</h2>
+        <p class="proto-panel-sub">Try “Parasite”, “Whiplash”, “Portrait of a Lady on Fire”…</p>
+        <div class="proto-search-wrap">
+          <input id="anchor-search" type="text" autocomplete="off" placeholder="Search for a film you love…" />
+          <div id="anchor-results" aria-live="polite"></div>
+        </div>
+        <div id="pick-chips"></div>
+        <button id="generate" type="button" disabled>Add a film to begin</button>
+      </section>
+
+      <section class="proto-card-panel" id="step-2">
+        <p class="proto-step">Step 2</p>
+        <h2 class="proto-panel-title">Recommended for you</h2>
+        <p class="proto-panel-sub">From the curated universe, ranked by how well they echo your picks. Like to reinforce, dismiss to refine.</p>
+        <p id="recs-head"></p>
+        <div id="recs"></div>
+      </section>
+    </div>
+
+    <script src="./prototype.js?v=1"></script>
+  </body>
+</html>
