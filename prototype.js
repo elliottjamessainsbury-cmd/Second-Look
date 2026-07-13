@@ -59,6 +59,57 @@ async function loadJson(url) {
   return res.json();
 }
 
+// --- Hero: rotating header image + rotating film quote (ported from the app) ---
+function initHeroImage() {
+  const hero = document.querySelector(".hero-copy");
+  if (!hero) return;
+  const heroImages = [
+    "28548_073_Current_medium.jpg",
+    "Funeral-Parade-HERO.jpg",
+    "MV5BODI3OTY3MTAyNl5BMl5BanBnXkFtZTcwNDQ2MjMzMw@@._V1_.jpg",
+    "The_Ascent_2.jpg",
+    "Zerkalo_01_1080.png",
+    "akira_1280.jpg",
+    "header-film-still.jpg",
+    "seconds-1200-1200-675-675-crop-000000.jpg",
+    "story-of-women-1.jpg",
+    "vertigo-fr-1748625916.jpg",
+  ];
+  const pick = heroImages[Math.floor(Math.random() * heroImages.length)];
+  hero.style.setProperty("--hero-image", `url("./assets/images/hero/${pick}?v=${Date.now()}")`);
+}
+
+async function initQuotes() {
+  const el = document.getElementById("rotating-film-quote");
+  if (!el) return;
+  let quotes = [];
+  try {
+    quotes = await loadJson("./data/film-quotes.json");
+  } catch (e) {
+    return;
+  }
+  if (!Array.isArray(quotes) || !quotes.length) return;
+
+  let i = Math.floor(Math.random() * quotes.length);
+  const render = (index) => {
+    const entry = quotes[index] || {};
+    const quote = typeof entry === "string" ? entry : entry.quote || "";
+    const film = typeof entry === "object" ? entry.film || "" : "";
+    const credit = typeof entry === "object" ? [entry.director || "", entry.year || ""].filter(Boolean).join(", ") : "";
+    el.innerHTML = `
+      <span class="quote-text">${quote}</span>
+      ${film ? `<span class="quote-film">${film}</span>` : ""}
+      ${credit ? `<span class="quote-credit">${credit}</span>` : ""}`;
+    el.classList.add("is-visible");
+  };
+  render(i);
+  window.setInterval(() => {
+    i = (i + 1) % quotes.length;
+    el.classList.remove("is-visible");
+    window.setTimeout(() => render(i), 400);
+  }, 30000);
+}
+
 async function boot() {
   const [anchorsRaw, curatedRaw, tmdbRaw, fmRaw] = await Promise.all([
     loadJson("./data/taste-anchor-films.json"),
@@ -100,6 +151,8 @@ async function boot() {
     els.step2.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
+  initHeroImage();
+  initQuotes();
   renderPicks();
   renderSearch();
 }
@@ -221,10 +274,10 @@ function scoreFilm(film, signal) {
 
 function renderRecs() {
   if (!state.generated || !state.picks.length) {
-    els.recsHead.textContent = "";
-    els.recs.innerHTML = `<div class="proto-empty">Pick a film or two you love, then hit “Show me recommendations”.</div>`;
+    els.step2.hidden = true;
     return;
   }
+  els.step2.hidden = false;
 
   const signal = buildSignal();
   const scored = state.curated
@@ -242,7 +295,7 @@ function renderRecs() {
   els.recsHead.textContent = `From your taste — ${scored.length} picks from the curated universe`;
 
   if (!scored.length) {
-    els.recs.innerHTML = `<div class="proto-empty">Nothing in the curated set matched those signals yet. Try a different film — or this is where richer enrichment would widen the net.</div>`;
+    els.recs.innerHTML = `<p class="proto-muted">Nothing in the curated set matched those signals yet. Try a different film — or this is where richer enrichment would widen the net.</p>`;
     return;
   }
 
