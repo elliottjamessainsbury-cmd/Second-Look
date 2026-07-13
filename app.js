@@ -203,6 +203,7 @@ const state = {
   tasteAnchors: [],
   tastePicks: [],
   tasteQuery: "",
+  tasteSearchResults: [],
   tasteGenerated: false,
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
@@ -1122,12 +1123,12 @@ function renderExpandedPanel(film, explanation) {
   const letterboxdAverage = metadata?.average_rating ? String(metadata.average_rating) : "";
   const ratingMarkup = letterboxdAverage
     ? `
-      <div class="expanded-stats">
+      <a class="expanded-stats expanded-stats-link" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
         <div class="expanded-stat">
           <span class="expanded-stat-label">Average Letterboxd rating</span>
           <strong>${letterboxdAverage}</strong>
         </div>
-      </div>
+      </a>
     `
     : "";
 
@@ -1415,16 +1416,13 @@ function renderBrowseGridCards() {
             </div>
             ${renderScreeningPreview(film)}
             ${expanded ? renderExpandedPanel(film) : ""}
-            <div class="browse-card-links">
-              ${
-                hasDetail
-                  ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>`
-                  : ""
-              }
-              <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
-                See Letterboxd reviews
-              </a>
-            </div>
+            ${
+              hasDetail
+                ? `<div class="browse-card-links">
+              <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
+            </div>`
+                : ""
+            }
           </div>
         </article>
       `;
@@ -2296,52 +2294,143 @@ function bindFilmCardActions(container) {
   });
 }
 
-function renderTasteSearch() {
+let tasteSearchToken = 0;
+
+async function runTasteSearch(rawQuery) {
+  state.tasteQuery = rawQuery;
+  const query = String(rawQuery || "").trim();
+  if (!query) {
+    state.tasteSearchResults = [];
+    renderTasteSearchResults();
+    return;
+  }
+
+  const token = ++tasteSearchToken;
+  let results = null;
+
+  // Live TMDB search via the serverless proxy (active once TMDB_API_KEY is set).
+  try {
+    const response = await fetch(`/api/tmdb-search?q=${encodeURIComponent(query)}`);
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data.results) && data.results.length) {
+        results = data.results.map((item) => ({
+          source: "tmdb",
+          id: item.id,
+          title: item.title,
+          year: item.year || null,
+          meta: [item.year].filter(Boolean).join(""),
+        }));
+      }
+    }
+  } catch (error) {
+    /* fall back to the local anchor set below */
+  }
+
+  // Fallback: local anchor set (used before a TMDB key is configured, or offline).
+  if (!results) {
+    const needle = normalize(query);
+    results = state.tasteAnchors
+      .filter((anchor) => normalize(anchor.title).includes(needle))
+      .slice(0, 6)
+      .map((anchor) => ({
+        source: "anchor",
+        title: anchor.title,
+        year: anchor.year || null,
+        director: anchor.director || "",
+        country: anchor.country || "",
+        genres: anchor.genres || [],
+        keywords: anchor.keywords || [],
+        meta: [anchor.year, anchor.director].filter(Boolean).join(" · "),
+      }));
+  }
+
+  if (token !== tasteSearchToken) {
+    return; // a newer keystroke superseded this search
+  }
+  state.tasteSearchResults = results.filter(
+    (result) => !state.tastePicks.some((pick) => normalize(pick.title) === normalize(result.title))
+  );
+  renderTasteSearchResults();
+}
+
+function renderTasteSearchResults() {
   if (!elements.tasteSearchResults) {
     return;
   }
-  const query = normalize(state.tasteQuery || "");
-  if (!query) {
+  if (!String(state.tasteQuery || "").trim()) {
     elements.tasteSearchResults.innerHTML = "";
     return;
   }
-  const matches = state.tasteAnchors
-    .filter((anchor) => normalize(anchor.title).includes(query))
-    .filter((anchor) => !state.tastePicks.some((pick) => normalize(pick.title) === normalize(anchor.title)))
-    .slice(0, 6);
-
-  if (!matches.length) {
-    elements.tasteSearchResults.innerHTML = `<p class="taste-search__muted">No match in the demo set yet. (Live search will cover all of TMDB.)</p>`;
+  const results = state.tasteSearchResults || [];
+  if (!results.length) {
+    elements.tasteSearchResults.innerHTML = `<p class="taste-search__muted">No matches yet — try another title.</p>`;
     return;
   }
-
-  elements.tasteSearchResults.innerHTML = matches
+  elements.tasteSearchResults.innerHTML = results
     .map(
-      (anchor) => `
-      <button class="taste-result" type="button" data-taste-add="${escapeHtml(anchor.title)}">
-        <span class="taste-result__title">${escapeHtml(anchor.title)}</span>
-        <span class="taste-result__meta">${escapeHtml([anchor.year, anchor.director, (anchor.genres || []).join(", ")].filter(Boolean).join(" · "))}</span>
+      (result, index) => `
+      <button class="taste-result" type="button" data-taste-index="${index}">
+        <span class="taste-result__title">${escapeHtml(result.title)}</span>
+        <span class="taste-result__meta">${escapeHtml(result.meta || "")}</span>
       </button>`
     )
     .join("");
 
-  elements.tasteSearchResults.querySelectorAll("[data-taste-add]").forEach((button) => {
-    button.addEventListener("click", () => addTastePick(button.dataset.tasteAdd));
+  elements.tasteSearchResults.querySelectorAll("[data-taste-index]").forEach((button) => {
+    button.addEventListener("click", () => pickTasteResult(Number(button.dataset.tasteIndex)));
   });
 }
 
-function addTastePick(title) {
-  const anchor = state.tasteAnchors.find((item) => normalize(item.title) === normalize(title));
-  if (!anchor || state.tastePicks.length >= 3 || state.tastePicks.some((pick) => normalize(pick.title) === normalize(title))) {
+async function pickTasteResult(index) {
+  const result = (state.tasteSearchResults || [])[index];
+  if (!result || state.tastePicks.length >= 3) {
     return;
   }
-  state.tastePicks.push(anchor);
+
+  let pick;
+  if (result.source === "anchor") {
+    pick = {
+      title: result.title,
+      year: result.year,
+      director: result.director,
+      country: result.country,
+      genres: result.genres || [],
+      keywords: result.keywords || [],
+    };
+  } else {
+    pick = { title: result.title, year: result.year, director: "", country: "", genres: [], keywords: [] };
+    try {
+      const response = await fetch(`/api/tmdb-film?id=${encodeURIComponent(result.id)}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.film) {
+          pick = {
+            title: data.film.title || result.title,
+            year: data.film.year || result.year,
+            director: data.film.director || "",
+            country: data.film.country || "",
+            genres: data.film.genres || [],
+            keywords: data.film.keywords || [],
+          };
+        }
+      }
+    } catch (error) {
+      /* keep the minimal pick */
+    }
+  }
+
+  if (state.tastePicks.some((existing) => normalize(existing.title) === normalize(pick.title))) {
+    return;
+  }
+  state.tastePicks.push(pick);
   state.tasteQuery = "";
+  state.tasteSearchResults = [];
   if (elements.tasteSearchInput) {
     elements.tasteSearchInput.value = "";
   }
   state.tasteGenerated = false;
-  renderTasteSearch();
+  renderTasteSearchResults();
   renderTastePicks();
   renderTasteRecs();
 }
@@ -2449,12 +2538,13 @@ function renderTasteCard(film, reasons) {
           </button>
         </div>
         ${expanded ? renderExpandedPanel(film) : ""}
-        <div class="browse-card-links">
-          ${hasDetail ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>` : ""}
-          <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
-            See Letterboxd reviews
-          </a>
-        </div>
+        ${
+          hasDetail
+            ? `<div class="browse-card-links">
+          <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
+        </div>`
+            : ""
+        }
       </div>
     </article>`;
 }
@@ -2497,7 +2587,7 @@ function render() {
   renderSavedSidebar();
   renderRefinePanelState();
   renderCinemaShowtimes();
-  renderTasteSearch();
+  renderTasteSearchResults();
   renderTastePicks();
   renderTasteRecs();
 
@@ -2569,9 +2659,12 @@ function attachBaseEventHandlers() {
     handleExternalSearchInput(event.target.value);
   });
 
+  let tasteSearchDebounce;
   elements.tasteSearchInput?.addEventListener("input", (event) => {
-    state.tasteQuery = event.target.value;
-    renderTasteSearch();
+    const value = event.target.value;
+    state.tasteQuery = value;
+    clearTimeout(tasteSearchDebounce);
+    tasteSearchDebounce = setTimeout(() => runTasteSearch(value), 250);
   });
 
   elements.tasteGenerate?.addEventListener("click", () => {

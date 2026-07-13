@@ -911,7 +911,7 @@ input:focus {
 
 .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   gap: 24px;
 }
 
@@ -1503,6 +1503,44 @@ input:focus {
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 14px;
+}
+
+/* Rating block links out to Letterboxd */
+a.expanded-stats-link {
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-md);
+  transition: opacity 0.2s ease;
+}
+a.expanded-stats-link:hover {
+  opacity: 0.72;
+}
+a.expanded-stats-link:hover .expanded-stat-label {
+  color: var(--accent);
+}
+a.expanded-stats-link:hover strong {
+  text-decoration: underline;
+}
+
+/* Prominent "See more" toggle on film cards */
+.card-detail-toggle--prominent {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.card-detail-toggle--prominent:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .expanded-stat {
