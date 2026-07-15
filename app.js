@@ -1248,7 +1248,7 @@ function renderScreeningPreview(film) {
   `;
 }
 
-function renderFacetButtons(element, kind, options, selectedValues) {
+function renderFacetButtons(element, kind, options, selectedValues, availableSet) {
   if (!element) {
     return;
   }
@@ -1261,9 +1261,43 @@ function renderFacetButtons(element, kind, options, selectedValues) {
   element.innerHTML = options
     .map((option) => {
       const active = selectedValues.includes(option);
-      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(option)}</button>`;
+      const disabled = !active && availableSet && !availableSet.has(option);
+      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}"${disabled ? " disabled" : ""}>${escapeHtml(option)}</button>`;
     })
     .join("");
+}
+
+// For each facet, which option values still yield >=1 film given the OTHER
+// facets' current selections (OR within a facet, AND across facets). Used to
+// grey out dead-end combinations.
+function getAvailableFacetOptions() {
+  const { genres, eras, countries, colours } = state.browseFilters;
+  const films = state.internalFilms.filter(
+    (film) => !state.userProfile.dislikedFilmIds.includes(film.filmId)
+  );
+
+  const matchesGenre = (film) => !genres.length || genres.some((value) => (film.genres || []).includes(value));
+  const matchesEra = (film) => !eras.length || eras.includes(filmDecade(film));
+  const matchesCountry = (film) => !countries.length || countries.some((value) => (film.countries || []).includes(value));
+  const matchesColour = (film) => !colours.length || colours.includes(filmColour(film));
+
+  const available = { genres: new Set(), eras: new Set(), countries: new Set(), colours: new Set() };
+  films.forEach((film) => {
+    if (matchesEra(film) && matchesCountry(film) && matchesColour(film)) {
+      (film.genres || []).forEach((value) => available.genres.add(value));
+    }
+    if (matchesGenre(film) && matchesCountry(film) && matchesColour(film)) {
+      const decade = filmDecade(film);
+      if (decade) available.eras.add(decade);
+    }
+    if (matchesGenre(film) && matchesEra(film) && matchesColour(film)) {
+      (film.countries || []).forEach((value) => available.countries.add(value));
+    }
+    if (matchesGenre(film) && matchesEra(film) && matchesCountry(film)) {
+      available.colours.add(filmColour(film));
+    }
+  });
+  return available;
 }
 
 function filmDecade(film) {
@@ -1351,10 +1385,11 @@ function renderBrowseGridCards() {
   const activeFilterCount = browseFilterCount();
   const options = getBrowseFilterOptions();
 
-  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
-  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras);
-  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
-  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours);
+  const available = getAvailableFacetOptions();
+  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres, available.genres);
+  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras, available.eras);
+  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries, available.countries);
+  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours, available.colours);
 
   if (!activeFilterCount) {
     if (elements.browseSummary) {
@@ -2690,7 +2725,7 @@ function attachBaseEventHandlers() {
   [elements.facetGenres, elements.facetEras, elements.facetCountries, elements.facetColours].forEach((container) => {
     container?.addEventListener("click", (event) => {
       const chip = event.target.closest("[data-facet-kind]");
-      if (!chip) {
+      if (!chip || chip.disabled) {
         return;
       }
       const kind = chip.dataset.facetKind;
