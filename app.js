@@ -1577,12 +1577,12 @@ function renderAlgorithmRecommendationCard() {
       <section class="discovery-shell">
         <div class="discovery-shell__head">
           <div>
-            <p class="eyebrow">Recommended films</p>
-            <h3>Recommended by your profile</h3>
+            <p class="eyebrow">For you</p>
+            <h3>Recommended films</h3>
           </div>
         </div>
         <div class="empty-state recommendations-empty-state">
-          <p>Save, dismiss, or open films from the curated grid above and this section will start adapting to your taste profile.</p>
+          <p>Save or open a few films and this list will start to shape itself around your taste.</p>
         </div>
       </section>
     `;
@@ -1593,10 +1593,10 @@ function renderAlgorithmRecommendationCard() {
     <section class="discovery-shell">
       <div class="discovery-shell__head">
         <div>
-          <p class="eyebrow">Recommended films</p>
-          <h3>Recommended by your profile</h3>
+          <p class="eyebrow">For you</p>
+          <h3>Recommended films</h3>
         </div>
-        <p class="discovery-shell__summary">These are shaped by your saved films, dismissals, outbound clicks, and any onboarding taste signals still in session.</p>
+        <p class="discovery-shell__summary">A short, evolving list drawn from the films you've saved, opened, and passed over.</p>
       </div>
       <div class="discovery-grid-cards recommendation-stack">
         ${renderRecommendationCards(recommendations)}

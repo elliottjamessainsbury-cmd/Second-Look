@@ -53,8 +53,10 @@
           <div id="taste-recs" class="results-grid taste-recs" aria-live="polite"></div>
         </section>
 
+        <!-- Browse section temporarily hidden while we trial the search-only flow.
+             Remove the `style="display:none"` attributes below to bring back the filter grid. -->
         <section class="recommendations-section results card">
-          <div class="results-head">
+          <div class="results-head" style="display:none">
             <div>
               <h2 id="results-title">Browse curated films</h2>
             </div>
@@ -63,7 +65,7 @@
             </button>
           </div>
 
-          <div class="browse-layout">
+          <div class="browse-layout" style="display:none">
             <aside class="browse-filters card" id="taste-refine-section" aria-labelledby="browse-filters-title">
               <div class="browse-filters__head">
                 <div>
@@ -147,6 +149,6 @@
 
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=54"></script>
+    <script src="./app.js?v=55"></script>
   </body>
 </html>
