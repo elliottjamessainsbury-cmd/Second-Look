@@ -195,9 +195,10 @@ const state = {
     days: [],
   },
   browseFilters: {
-    genre: "",
-    mood: "",
-    country: "",
+    genres: [],
+    eras: [],
+    countries: [],
+    colours: [],
   },
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
@@ -231,11 +232,10 @@ const elements = {
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
-  browseGenreFilter: document.querySelector("#browse-genre-filter"),
-  browseMoodFilter: document.querySelector("#browse-mood-filter"),
-  browseCountryFilter: document.querySelector("#browse-country-filter"),
-  ctaSearch: document.querySelector("#cta-search"),
-  ctaBrowse: document.querySelector("#cta-browse"),
+  facetGenres: document.querySelector("#facet-genres"),
+  facetEras: document.querySelector("#facet-eras"),
+  facetCountries: document.querySelector("#facet-countries"),
+  facetColours: document.querySelector("#facet-colours"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -485,30 +485,6 @@ function monogramForTitle(title) {
     .toUpperCase();
 }
 
-function deriveMoodSignalsFromText(keywords, text) {
-  const haystack = `${(keywords || []).join(" ")} ${text || ""}`.toLowerCase();
-  const matches = [];
-
-  const moodMap = [
-    { mood: "melancholy", needles: ["memory", "loss", "grief", "loneliness", "longing", "distance"] },
-    { mood: "meditative", needles: ["silence", "slow", "contemplative", "drift", "journey"] },
-    { mood: "dreamlike", needles: ["dream", "surreal", "nightmare", "hallucination", "ghost"] },
-    { mood: "intense", needles: ["violence", "obsession", "pressure", "revenge", "war"] },
-    { mood: "tender", needles: ["childhood", "family", "friendship", "coming of age", "love"] },
-    { mood: "unsettling", needles: ["horror", "murder", "occult", "body", "paranoia"] },
-    { mood: "precise", needles: ["ritual", "form", "control", "performance", "discipline"] },
-    { mood: "romantic", needles: ["romance", "desire", "marriage", "relationship"] },
-  ];
-
-  moodMap.forEach((entry) => {
-    if (entry.needles.some((needle) => haystack.includes(needle))) {
-      matches.push(entry.mood);
-    }
-  });
-
-  return unique(matches);
-}
-
 function parseRatingValue(value) {
   const numeric = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
   return Number.isFinite(numeric) ? numeric : 0;
@@ -617,14 +593,9 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     );
     const themes = mergeLists(sample.themes || [], tmdb.keywords || []);
     const tone = unique(sample.tone || []);
-    const mood = mergeLists(
-      curatedFilm.mood || [],
-      tone,
-      deriveMoodSignalsFromText(tmdb.keywords || [], `${metadata.intro || ""} ${tmdb.overview || ""}`)
-    );
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
-    const countries = unique([...(sample.countries || []), ...(tmdb.countries || [])]);
+    const countries = unique([curatedFilm.country, ...(sample.countries || []), ...(tmdb.countries || [])].filter(Boolean));
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
 
@@ -640,7 +611,8 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
       themes,
       tone,
-      mood,
+      mood: [],
+      bw: Boolean(curatedFilm.bw),
       pace: sample.pace || "",
       directRecommendations,
       cardTags,
@@ -665,12 +637,13 @@ function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
       genres: unique(tmdb.genres || []),
       themes: unique(tmdb.keywords || []),
       tone: [],
-      mood: deriveMoodSignalsFromText(tmdb.keywords || [], tmdb.overview || ""),
+      mood: [],
+      bw: false,
       pace: "",
       averageRating: 0,
       tmdbId: tmdb.tmdb_id || null,
     }))
-    .filter((seed) => seed.title && (seed.themes.length || seed.mood.length || seed.director))
+    .filter((seed) => seed.title && (seed.themes.length || seed.director))
     .sort((left, right) => left.title.localeCompare(right.title));
 }
 
@@ -698,12 +671,10 @@ function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeed) {
 
   allSeeds.forEach((seed) => {
     let score = 0;
-    const moodOverlap = (candidate.mood || []).filter((value) => (seed.mood || []).some((seedMood) => normalize(seedMood) === normalize(value)));
     const themeOverlap = (candidate.themes || []).filter((value) => (seed.themes || []).some((seedTheme) => normalize(seedTheme) === normalize(value)));
     const toneOverlap = (candidate.tone || []).filter((value) => (seed.tone || []).some((seedTone) => normalize(seedTone) === normalize(value)));
     const paceMatch =
       candidate.pace && seed.pace && normalize(candidate.pace) === normalize(seed.pace);
-    score += moodOverlap.length * 4;
     score += themeOverlap.length * 5;
     score += toneOverlap.length * 4;
     score += paceMatch ? 3 : 0;
@@ -1146,17 +1117,34 @@ function renderExpandedPanel(film, explanation) {
     `
     : "";
 
-  return `
-    <div class="card-expanded-panel">
-      ${ratingMarkup}
+  const reasonMarkup = explanation
+    ? `
       <div class="expanded-reason">
         <span class="expanded-reason-label">Why we think you’ll like this</span>
         <p class="expanded-reason-copy">${explanation}</p>
       </div>
+    `
+    : "";
+
+  const synopsis = metadata?.intro || tmdbMetadataForTitle(film.title)?.overview || "";
+  const synopsisMarkup = synopsis ? `<p class="expanded-copy">${synopsis}</p>` : "";
+
+  return `
+    <div class="card-expanded-panel">
+      ${ratingMarkup}
+      ${reasonMarkup}
       ${renderAvailabilityPanel(film)}
-      <p class="expanded-copy">${synopsisForTitle(film.title)}</p>
+      ${synopsisMarkup}
     </div>
   `;
+}
+
+function filmHasExpandableDetail(film) {
+  return Boolean(
+    synopsisForTitle(film.title) ||
+      renderAvailabilityPanel(film) ||
+      metadataForTitle(film.title)?.average_rating
+  );
 }
 
 function cardKey(section, filmId) {
@@ -1245,50 +1233,83 @@ function renderScreeningPreview(film) {
   `;
 }
 
-function renderBrowseFilterSelect(element, options, selectedValue, allLabel) {
+function renderFacetButtons(element, kind, options, selectedValues) {
   if (!element) {
     return;
   }
 
-  element.innerHTML = [
-    `<option value="">${escapeHtml(allLabel)}</option>`,
-    ...options.map((option) => `<option value="${escapeHtml(option)}">${escapeHtml(option)}</option>`),
-  ].join("");
-  element.value = selectedValue;
+  if (!options.length) {
+    element.innerHTML = `<p class="browse-facet__empty">None available yet</p>`;
+    return;
+  }
+
+  element.innerHTML = options
+    .map((option) => {
+      const active = selectedValues.includes(option);
+      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(option)}</button>`;
+    })
+    .join("");
+}
+
+function filmDecade(film) {
+  const year = Number(film?.year);
+  if (!Number.isFinite(year) || year <= 0) {
+    return "";
+  }
+  return `${Math.floor(year / 10) * 10}s`;
+}
+
+function filmColour(film) {
+  return film?.bw ? "Black & white" : "Colour";
 }
 
 function getBrowseFilterOptions() {
   const genres = new Map();
-  const moods = new Map();
+  const eras = new Set();
   const countries = new Map();
+  const colours = new Set();
 
   state.internalFilms.forEach((film) => {
     (film.genres || []).forEach((genre) => genres.set(normalize(genre), genre));
-    (film.mood || []).forEach((mood) => moods.set(normalize(mood), mood));
+    const decade = filmDecade(film);
+    if (decade) {
+      eras.add(decade);
+    }
     (film.countries || []).forEach((country) => countries.set(normalize(country), country));
+    colours.add(filmColour(film));
   });
 
   return {
     genres: Array.from(genres.values()).sort((left, right) => left.localeCompare(right)),
-    moods: Array.from(moods.values()).sort((left, right) => left.localeCompare(right)),
+    eras: Array.from(eras).sort((left, right) => parseInt(left, 10) - parseInt(right, 10)),
     countries: Array.from(countries.values()).sort((left, right) => left.localeCompare(right)),
+    colours: Array.from(colours).sort((left, right) => left.localeCompare(right)),
   };
 }
 
-function getFilteredBrowseFilms() {
-  const { genre, mood, country } = state.browseFilters;
+function browseFilterCount() {
+  const { genres, eras, countries, colours } = state.browseFilters;
+  return genres.length + eras.length + countries.length + colours.length;
+}
 
+function getFilteredBrowseFilms() {
+  const { genres, eras, countries, colours } = state.browseFilters;
+
+  // Selecting within a facet is OR; across facets is AND.
   return state.internalFilms.filter((film) => {
     if (state.userProfile.dislikedFilmIds.includes(film.filmId)) {
       return false;
     }
-    if (genre && !(film.genres || []).includes(genre)) {
+    if (genres.length && !genres.some((value) => (film.genres || []).includes(value))) {
       return false;
     }
-    if (mood && !(film.mood || []).includes(mood)) {
+    if (eras.length && !eras.includes(filmDecade(film))) {
       return false;
     }
-    if (country && !(film.countries || []).includes(country)) {
+    if (countries.length && !countries.some((value) => (film.countries || []).includes(value))) {
+      return false;
+    }
+    if (colours.length && !colours.includes(filmColour(film))) {
       return false;
     }
     return true;
@@ -1312,27 +1333,38 @@ function renderBrowseGridCards() {
     `;
   }
 
+  const activeFilterCount = browseFilterCount();
+  const options = getBrowseFilterOptions();
+
+  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
+  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras);
+  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
+  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours);
+
+  if (!activeFilterCount) {
+    if (elements.browseSummary) {
+      elements.browseSummary.textContent = "Choose a genre, era, country, or colour to begin.";
+    }
+    return `
+      <div class="empty-state results-grid-span recommendations-empty-state browse-empty-state">
+        <h3>Explore the collection</h3>
+        <p>Pick from genre, era, country, or colour on the left — combine as many as you like — and the films that match will appear here.</p>
+      </div>
+    `;
+  }
+
   const filteredFilms = getFilteredBrowseFilms()
     .slice()
     .sort((left, right) => left.title.localeCompare(right.title));
 
-  const activeFilterCount = Object.values(state.browseFilters).filter(Boolean).length;
-  const options = getBrowseFilterOptions();
-
-  renderBrowseFilterSelect(elements.browseGenreFilter, options.genres, state.browseFilters.genre, "All genres");
-  renderBrowseFilterSelect(elements.browseMoodFilter, options.moods, state.browseFilters.mood, "All moods");
-  renderBrowseFilterSelect(elements.browseCountryFilter, options.countries, state.browseFilters.country, "All countries");
-
   if (elements.browseSummary) {
-    elements.browseSummary.textContent = activeFilterCount
-      ? `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your current filters. Saves and dismissals will keep training the profile.`
-      : `Browse the full curated set, then save or dismiss films to shape the recommendation card below.`;
+    elements.browseSummary.textContent = `${filteredFilms.length} film${filteredFilms.length === 1 ? "" : "s"} match your selection. Save or dismiss to shape the recommendation card below.`;
   }
 
   if (!filteredFilms.length) {
     return `
       <div class="empty-state results-grid-span recommendations-empty-state">
-        <p>No films match this filter combination yet. Try clearing one filter to widen the curated set.</p>
+        <p>No films match this combination yet. Try removing a filter to widen the set.</p>
       </div>
     `;
   }
@@ -1341,10 +1373,13 @@ function renderBrowseGridCards() {
     .map((film) => {
       const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
       const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
-      const surfaceTags = unique([...(film.platforms || []).slice(0, 2), ...(film.mood || []).slice(0, 1)]);
+      const surfaceTags = unique([...(film.platforms || []).slice(0, 2)]);
+      const key = cardKey("browse", film.filmId);
+      const expanded = state.session.expandedCardKey === key;
+      const hasDetail = filmHasExpandableDetail(film);
 
       return `
-        <article class="result-card film-card browse-film-card">
+        <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
             ${renderPosterMarkup(film.title)}
           </div>
@@ -1365,9 +1400,17 @@ function renderBrowseGridCards() {
               </button>
             </div>
             ${renderScreeningPreview(film)}
-            <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
-              See Letterboxd reviews
-            </a>
+            ${expanded ? renderExpandedPanel(film) : ""}
+            <div class="browse-card-links">
+              ${
+                hasDetail
+                  ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>`
+                  : ""
+              }
+              <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+                See Letterboxd reviews
+              </a>
+            </div>
           </div>
         </article>
       `;
@@ -1631,6 +1674,15 @@ function renderRecommendations() {
   elements.resultsGrid.querySelectorAll("[data-outbound-film]").forEach((link) => {
     link.addEventListener("click", () => {
       handleFilmInteraction(link.dataset.outboundFilm, "outbound_click");
+    });
+  });
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderRecommendations();
     });
   });
 
@@ -2291,35 +2343,34 @@ function attachBaseEventHandlers() {
     renderQuickPicks();
   });
 
-  elements.browseGenreFilter?.addEventListener("change", (event) => {
-    state.browseFilters.genre = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.browseMoodFilter?.addEventListener("change", (event) => {
-    state.browseFilters.mood = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.browseCountryFilter?.addEventListener("change", (event) => {
-    state.browseFilters.country = event.target.value || "";
-    renderRecommendations();
-  });
-
-  elements.ctaSearch?.addEventListener("click", () => {
-    elements.movieSearch?.scrollIntoView({ behavior: "smooth", block: "center" });
-    elements.movieSearch?.focus();
-  });
-
-  elements.ctaBrowse?.addEventListener("click", () => {
-    elements.resultsGrid?.scrollIntoView({ behavior: "smooth", block: "start" });
+  [elements.facetGenres, elements.facetEras, elements.facetCountries, elements.facetColours].forEach((container) => {
+    container?.addEventListener("click", (event) => {
+      const chip = event.target.closest("[data-facet-kind]");
+      if (!chip) {
+        return;
+      }
+      const kind = chip.dataset.facetKind;
+      const value = chip.dataset.facetValue;
+      const selected = state.browseFilters[kind];
+      if (!Array.isArray(selected)) {
+        return;
+      }
+      const index = selected.indexOf(value);
+      if (index === -1) {
+        selected.push(value);
+      } else {
+        selected.splice(index, 1);
+      }
+      renderRecommendations();
+    });
   });
 
   elements.resetFilters?.addEventListener("click", () => {
     state.browseFilters = {
-      genre: "",
-      mood: "",
-      country: "",
+      genres: [],
+      eras: [],
+      countries: [],
+      colours: [],
     };
     renderRecommendations();
   });

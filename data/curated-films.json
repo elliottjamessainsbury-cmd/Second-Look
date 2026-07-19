@@ -9,7 +9,8 @@
       "Abigail's Party",
       "Naked"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "UK"
   },
   {
     "film_id": "one-battle-after-another-2025",
@@ -22,7 +23,8 @@
       "The Secret Agent",
       "There Will Be Blood"
     ],
-    "source_row_count": 3
+    "source_row_count": 3,
+    "country": "USA"
   },
   {
     "film_id": "a-woman-under-the-influence-1974",
@@ -34,7 +36,8 @@
       "The Piano Teacher",
       "Dans Ma Peau"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "the-voice-of-hind-rajab-2025",
@@ -45,7 +48,8 @@
     "manual_links": [
       "The Look of Silence"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Tunisia"
   },
   {
     "film_id": "the-secret-agent-2025",
@@ -56,7 +60,8 @@
     "manual_links": [
       "One Battle After Another"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Brazil"
   },
   {
     "film_id": "story-of-women-1988",
@@ -68,7 +73,8 @@
       "The Piano Teacher",
       "Le Rayon Vert"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "France"
   },
   {
     "film_id": "aparajito-1956",
@@ -80,7 +86,9 @@
       "Pather Pachali",
       "Late Spring"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "India"
   },
   {
     "film_id": "amadeus-1984",
@@ -92,7 +100,8 @@
       "Barry Lyndon",
       "Lawrence of Arabia"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "lawrence-of-arabia-1962",
@@ -109,7 +118,8 @@
       "The Look of Silence",
       "Oppenheimer"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "UK"
   },
   {
     "film_id": "the-substance-2024",
@@ -125,7 +135,8 @@
       "Inside (2007)",
       "Braindead"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "France"
   },
   {
     "film_id": "tropical-malady-2004",
@@ -136,7 +147,8 @@
     "manual_links": [
       "Happy Together"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "Thailand"
   },
   {
     "film_id": "rope-1948",
@@ -149,7 +161,8 @@
       "Vertigo",
       "Rebecca"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "the-look-of-silence-2014",
@@ -163,7 +176,8 @@
       "Night and Fog",
       "The Act of Killing"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Denmark"
   },
   {
     "film_id": "happy-together-1997",
@@ -177,7 +191,8 @@
       "Tropical Malady",
       "Farwell My Concubine"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Hong Kong"
   },
   {
     "film_id": "bug-2006",
@@ -191,7 +206,8 @@
       "The Piano Teacher",
       "Dans Ma Peau"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "tar-2022",
@@ -203,7 +219,8 @@
       "In the Bedroom",
       "The Piano Teacher"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "persona-1966",
@@ -215,7 +232,9 @@
       "A Woman Under the Influence",
       "Autumn Sonata"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "bw": true,
+    "country": "Sweden"
   },
   {
     "film_id": "harakiri-1962",
@@ -226,7 +245,9 @@
     "manual_links": [
       "Rashomon"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "Japan"
   },
   {
     "film_id": "vertigo-1958",
@@ -238,7 +259,8 @@
       "Persona",
       "Rope"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "all-about-eve-1950",
@@ -249,7 +271,9 @@
     "manual_links": [
       "Gloria"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "cabaret-1972",
@@ -261,7 +285,8 @@
       "All That Jazz",
       "All About Eve"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "chungking-express-1994",
@@ -272,7 +297,8 @@
     "manual_links": [
       "Happy Together"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Hong Kong"
   },
   {
     "film_id": "paris-is-burning-1990",
@@ -284,7 +310,8 @@
       "Funeral Parade of Roses",
       "To Wong Foo Thanks for Everything Julie Newmar"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "oppenheimer-2023",
@@ -295,7 +322,8 @@
     "manual_links": [
       "Lawrence of Arabia"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "singin-in-the-rain-1952",
@@ -306,7 +334,8 @@
     "manual_links": [
       "Sunset Boulevard"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "time-of-the-wolf-2003",
@@ -317,7 +346,8 @@
     "manual_links": [
       "The Piano Teacher"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "France"
   },
   {
     "film_id": "dune-part-two-2024",
@@ -331,7 +361,8 @@
       "The Dark Knight",
       "The Empire Strikes Back"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "poor-things-2023",
@@ -345,7 +376,8 @@
       "The Favourite",
       "TAR"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "UK"
   },
   {
     "film_id": "the-silence-of-the-lambs-1991",
@@ -356,7 +388,8 @@
     "manual_links": [
       "Vertigo"
     ],
-    "source_row_count": 2
+    "source_row_count": 2,
+    "country": "USA"
   },
   {
     "film_id": "who-s-afraid-of-virginia-woolf-1966",
@@ -370,7 +403,9 @@
       "Persona",
       "A Woman Under the Influence"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "the-ascent-1977",
@@ -383,7 +418,9 @@
       "Shoah",
       "Ordet"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "Soviet Union"
   },
   {
     "film_id": "rashomon-1950",
@@ -396,7 +433,9 @@
       "Ran",
       "Woman in the Dunes"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "Japan"
   },
   {
     "film_id": "shoah-1985",
@@ -409,7 +448,8 @@
       "Night and Fog",
       "The Look of Silence"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "France"
   },
   {
     "film_id": "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964",
@@ -422,7 +462,9 @@
       "The War Games",
       "Triangle of Sadness"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "UK"
   },
   {
     "film_id": "threads-1984",
@@ -433,7 +475,8 @@
     "manual_links": [
       "Bug"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "UK"
   },
   {
     "film_id": "eraserhead-1977",
@@ -446,7 +489,9 @@
       "Inland Empire",
       "Mulholland Drive"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "autumn-sonata-1978",
@@ -459,7 +504,8 @@
       "Anatomy of a Fall",
       "Who's Afraid of Virginia Woolf?"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Sweden"
   },
   {
     "film_id": "beau-is-afraid-2023",
@@ -470,7 +516,8 @@
     "manual_links": [
       "We're All Going to the World's Fair"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "the-best-years-of-our-lives-1946",
@@ -481,7 +528,9 @@
     "manual_links": [
       "Lawrence of Arabia"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "citizen-kane-1941",
@@ -493,7 +542,9 @@
       "The Best Years of Our Lives",
       "Lawrence of Arabia"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "the-texas-chain-saw-massacre-1974",
@@ -504,7 +555,8 @@
     "manual_links": [
       "Dans Ma Peau"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "the-shining-1980",
@@ -515,7 +567,8 @@
     "manual_links": [
       "Eyes Wide Shut"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "spirited-away-2001",
@@ -526,7 +579,8 @@
     "manual_links": [
       "Kiki's Delivery Service"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Japan"
   },
   {
     "film_id": "ash-is-purest-white-2018",
@@ -537,7 +591,8 @@
     "manual_links": [
       "Long Day's Journey Into Night (2018)"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "China"
   },
   {
     "film_id": "hard-boiled-1992",
@@ -550,7 +605,8 @@
       "Terminator 2",
       "Aliens"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Hong Kong"
   },
   {
     "film_id": "it-was-just-an-accident-2025",
@@ -563,7 +619,8 @@
       "Triangle of Sadness",
       "Anatomy of a Fall"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Iran"
   },
   {
     "film_id": "28-years-later-2025",
@@ -576,7 +633,8 @@
       "Night of the Living Dead",
       "Day of the Dead"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "UK"
   },
   {
     "film_id": "barton-fink-1991",
@@ -587,7 +645,8 @@
     "manual_links": [
       "There Will Be Blood"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "red-rooms-2023",
@@ -601,7 +660,8 @@
       "Bug",
       "My House Walkthrough"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "Canada"
   },
   {
     "film_id": "anora-2024",
@@ -613,7 +673,8 @@
       "The Florida Project",
       "After Hours"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "haxan-1922",
@@ -625,7 +686,9 @@
       "Freaks",
       "Night of the Hunter"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "bw": true,
+    "country": "Sweden"
   },
   {
     "film_id": "possibly-in-michigan-1983",
@@ -636,7 +699,8 @@
     "manual_links": [
       "We're All Going to the World's Fair"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "wax-or-the-discovery-of-television-among-the-bees-1991",
@@ -647,7 +711,8 @@
     "manual_links": [
       "We're All Going to the World's Fair"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "USA"
   },
   {
     "film_id": "summer-palace-2006",
@@ -659,7 +724,8 @@
       "Ash is Purest White",
       "Raise the Red Lanter"
     ],
-    "source_row_count": 1
+    "source_row_count": 1,
+    "country": "China"
   },
   {
     "film_id": "swallow-2019",
@@ -675,7 +741,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": true,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "comrades-almost-a-love-story-1996",
@@ -693,7 +760,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Hong Kong"
   },
   {
     "film_id": "his-three-daughters-2023",
@@ -709,7 +777,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "3-women-1977",
@@ -725,7 +794,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": true,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "solaris-2002",
@@ -741,7 +811,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": true,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "enemy-2013",
@@ -757,7 +828,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": true,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Canada"
   },
   {
     "film_id": "seed-of-chucky-2004",
@@ -775,7 +847,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "bride-of-chucky-1998",
@@ -793,7 +866,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "in-the-mouth-of-madness-1994",
@@ -811,7 +885,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "prince-of-darkness-1987",
@@ -829,7 +904,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "henry-portrait-of-a-serial-killer-1986",
@@ -847,7 +923,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "the-sisters-brothers-2018",
@@ -863,7 +940,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "France"
   },
   {
     "film_id": "they-shoot-horses-don-t-they-1969",
@@ -879,7 +957,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "bound-1996",
@@ -895,7 +974,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "kokomo-city-2023",
@@ -911,7 +991,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "fallen-leaves-2023",
@@ -929,7 +1011,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Finland"
   },
   {
     "film_id": "mikey-and-nicky-1976",
@@ -945,7 +1028,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "dersu-uzala-1975",
@@ -963,7 +1047,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Soviet Union"
   },
   {
     "film_id": "code-unknown-2000",
@@ -981,7 +1066,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "France"
   },
   {
     "film_id": "funny-games-1997",
@@ -999,7 +1085,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Austria"
   },
   {
     "film_id": "a-short-film-about-killing-1988",
@@ -1017,7 +1104,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Poland"
   },
   {
     "film_id": "stray-dog-1949",
@@ -1035,7 +1123,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "Japan"
   },
   {
     "film_id": "20-days-in-mariupol-2023",
@@ -1053,7 +1143,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Ukraine"
   },
   {
     "film_id": "saw-x-2023",
@@ -1071,7 +1162,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "food-1992",
@@ -1089,7 +1181,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Czechoslovakia"
   },
   {
     "film_id": "f-for-fake-1973",
@@ -1105,7 +1198,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "France"
   },
   {
     "film_id": "meshes-of-the-afternoon-1943",
@@ -1121,7 +1215,9 @@
       "raw_extra": "Yes",
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "yentl-1983",
@@ -1137,7 +1233,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "blue-jean-2022",
@@ -1153,7 +1250,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "UK"
   },
   {
     "film_id": "hell-house-llc-2015",
@@ -1171,7 +1269,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "cure-1997",
@@ -1189,7 +1288,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Japan"
   },
   {
     "film_id": "the-cremator-1969",
@@ -1207,7 +1307,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "Czechoslovakia"
   },
   {
     "film_id": "the-exorcist-iii-1990",
@@ -1225,7 +1327,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "birth-2004",
@@ -1241,7 +1344,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "the-general-1926",
@@ -1257,7 +1361,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "radio-on-1979",
@@ -1273,7 +1379,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "UK"
   },
   {
     "film_id": "sleepaway-camp-ii-unhappy-campers-1988",
@@ -1291,7 +1399,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "platform-2000",
@@ -1309,7 +1418,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "China"
   },
   {
     "film_id": "tokyo-gore-police-2008",
@@ -1327,7 +1437,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Japan"
   },
   {
     "film_id": "star-time-1992",
@@ -1345,7 +1456,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "detour-1945",
@@ -1361,7 +1473,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "USA"
   },
   {
     "film_id": "71-fragments-of-a-chronology-of-chance-1994",
@@ -1379,7 +1493,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Austria"
   },
   {
     "film_id": "the-third-part-of-the-night-1971",
@@ -1400,7 +1515,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Poland"
   },
   {
     "film_id": "funeral-parade-of-roses-1969",
@@ -1423,7 +1539,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "Japan"
   },
   {
     "film_id": "the-train-1964",
@@ -1445,7 +1563,9 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "bw": true,
+    "country": "France"
   },
   {
     "film_id": "peter-hujar-s-day-2025",
@@ -1465,7 +1585,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "palestine-36-2025",
@@ -1486,7 +1607,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "Palestine"
   },
   {
     "film_id": "penda-s-fen-1974",
@@ -1507,7 +1629,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "UK"
   },
   {
     "film_id": "burnt-offerings-1976",
@@ -1527,7 +1650,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "psycho-ii-1983",
@@ -1547,7 +1671,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "the-baby-1973",
@@ -1568,7 +1693,8 @@
       "raw_extra": "Yes",
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "the-times-of-harvey-milk-1984",
@@ -1589,7 +1715,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "cherub-2024",
@@ -1609,7 +1736,8 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   },
   {
     "film_id": "a-different-man-2024",
@@ -1630,6 +1758,7 @@
       "raw_extra": null,
       "assumption_filled_from_letterboxd": false,
       "ready_for_live_curated_dataset": false
-    }
+    },
+    "country": "USA"
   }
 ]

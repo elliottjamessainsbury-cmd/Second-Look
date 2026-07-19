@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-const ROOT = "/Users/elliott/Documents/New project";
+const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 
 class MockElement {
   constructor(id = "") {
