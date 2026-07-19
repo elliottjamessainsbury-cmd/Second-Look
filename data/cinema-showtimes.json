@@ -1,1262 +1,10 @@
 {
-  "generatedAt": "2026-07-16T10:06:16+00:00",
+  "generatedAt": "2026-07-19T19:31:53+00:00",
   "days": [
-    {
-      "date": "2026-07-16",
-      "label": "Thursday",
-      "films": [
-        {
-          "displayTitle": "Stalker",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "11:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626765"
-        },
-        {
-          "displayTitle": "Woman In The Dunes",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626576"
-        },
-        {
-          "displayTitle": "Nirvanna the Band the Show the Movie",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=63056FD6-CAFC-4166-A5D8-2E83286BA485&BOparam::WScontent::loadArticle::context_id=5199BA3C-6DB2-4212-8A29-A4AFF4A3ED1B"
-        },
-        {
-          "displayTitle": "As Aves",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/as-aves"
-        },
-        {
-          "displayTitle": "Dry Leaf",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:45"
-          ],
-          "ticketUrl": "https://www.ica.art/films/dry-leaf"
-        },
-        {
-          "displayTitle": "Blue Heron",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/blue-heron"
-        },
-        {
-          "displayTitle": "The Girls",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:30",
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=679EED06-81D6-4AB4-B79E-EF775EC69AFC"
-        },
-        {
-          "displayTitle": "Taxi Driver",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:50"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=D696B7B3-ABFE-4D27-9E53-E8A48EC6F001&BOparam::WScontent::loadArticle::context_id=D0E9E577-F81D-4528-97D6-F2CADB45ECBA"
-        },
-        {
-          "displayTitle": "Akira",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626577"
-        },
-        {
-          "displayTitle": "What Ever Happened To Baby Jane?",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626580"
-        },
-        {
-          "displayTitle": "Dear You",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:15",
-            "20:50"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5835723.TcsSection_638"
-        },
-        {
-          "displayTitle": "Shoot the People",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5661811.TcsSection_971"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:45",
-            "20:35"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5771060.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Caronte",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/caronte"
-        },
-        {
-          "displayTitle": "Rosebush Pruning",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:15"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rosebush-pruning"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-last-one-for-the-road"
-        },
-        {
-          "displayTitle": "Life Support",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5768069.TcsSection_971"
-        },
-        {
-          "displayTitle": "Aamir Khan in Conversation",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=155DCAFB-2C6D-4303-9317-BB9F979739D3&BOparam::WScontent::loadArticle::context_id=3A5AE086-9F8C-47B8-AD00-DD3BE9256F4A"
-        },
-        {
-          "displayTitle": "Happy Together",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626578"
-        },
-        {
-          "displayTitle": "Days and Nights in the Forest: New Restoration + Pre-recorded introduction by Wes Anderson",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5784492.TcsSection_638"
-        },
-        {
-          "displayTitle": "Nirvanna the Band the Show the Movie",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617400/nirvanna-the-band-the-show-the-movie"
-        },
-        {
-          "displayTitle": "Cactus Pears",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5835727.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Member exclusive: The Girls",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=4CA4BF8F-3FD8-4A83-8A6B-DCD2B8FF33E1&BOparam::WScontent::loadArticle::context_id=3690A6BB-6982-4794-980C-4CBE7797AD8B"
-        },
-        {
-          "displayTitle": "Effi o Blaenau",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:25"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A054318C-DFA6-410B-BFD1-647A3F6533B8&BOparam::WScontent::loadArticle::context_id=E4F46E41-980D-4783-BCB4-73BAAF209AFD"
-        },
-        {
-          "displayTitle": "Shanghai Express",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=90B689DE-BAB2-4FDB-9870-37B607ADA774&BOparam::WScontent::loadArticle::context_id=A4BF9946-2952-4572-A181-C3F15C28F688"
-        },
-        {
-          "displayTitle": "Exhibition Preview: She Flickered In and Out of History",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/to-the-horizon-and-back-q-a"
-        },
-        {
-          "displayTitle": "Near Orouet",
-          "cinema": "ICA",
-          "showtimes": [
-            "19:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rozier-near-orouet"
-        },
-        {
-          "displayTitle": "Blue Heron",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5835725.TcsSection_971"
-        },
-        {
-          "displayTitle": "Sound of Falling",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-kkvlyg"
-        },
-        {
-          "displayTitle": "Interstellar",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626579"
-        },
-        {
-          "displayTitle": "Once a Thief",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=6377BEB6-BA16-47B4-BBE4-BB383C05790C&BOparam::WScontent::loadArticle::context_id=D7628B5F-7D35-4561-BCB0-02C70AD051E8"
-        },
-        {
-          "displayTitle": "Sleepers",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626233"
-        },
-        {
-          "displayTitle": "The Girls (4K Restoration)",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-girls-4k-restoration"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7849EE78-C562-4162-BF14-C316DE66FB3D&BOparam::WScontent::loadArticle::context_id=91E40975-3B32-4B11-BA33-661C1FA755C0"
-        },
-        {
-          "displayTitle": "Mad Max 2",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "21:05"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=2104BAC6-2F10-42E8-B898-E0E93FE10D48&BOparam::WScontent::loadArticle::context_id=C7E5B118-DA33-418D-BFF1-609F4E42584F"
-        }
-      ]
-    },
-    {
-      "date": "2026-07-17",
-      "label": "Friday",
-      "films": [
-        {
-          "displayTitle": "Days Of Heaven",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626595"
-        },
-        {
-          "displayTitle": "My Darling Clementine",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626596"
-        },
-        {
-          "displayTitle": "Taxi Driver",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=D696B7B3-ABFE-4D27-9E53-E8A48EC6F001&BOparam::WScontent::loadArticle::context_id=9314A221-25E7-4D61-83A5-5CAA4F3B6BB5"
-        },
-        {
-          "displayTitle": "Blue Heron",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/blue-heron"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-last-one-for-the-road"
-        },
-        {
-          "displayTitle": "Bhowani Junction: 70th Anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5629086.TcsSection_971"
-        },
-        {
-          "displayTitle": "Interstellar",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626594"
-        },
-        {
-          "displayTitle": "The Misfits",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=CAF0216B-96BC-4F85-B3E7-14838BD5989B"
-        },
-        {
-          "displayTitle": "Troy",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626867"
-        },
-        {
-          "displayTitle": "Birds of War",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/birds-of-war"
-        },
-        {
-          "displayTitle": "Dry Leaf",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/dry-leaf"
-        },
-        {
-          "displayTitle": "Toy Story 5",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839462.TcsSection_638"
-        },
-        {
-          "displayTitle": "Effi o Blaenau",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A054318C-DFA6-410B-BFD1-647A3F6533B8&BOparam::WScontent::loadArticle::context_id=F3EF2ACB-F1A5-460A-8244-16A33C36316C"
-        },
-        {
-          "displayTitle": "Dear You",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868241.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Blue Heron",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868239.TcsSection_971"
-        },
-        {
-          "displayTitle": "Caronte",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/caronte"
-        },
-        {
-          "displayTitle": "The Liberated Film Club: Jonathan Rosenbaum",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-njmgmqn"
-        },
-        {
-          "displayTitle": "Angel's Egg",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627207"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868237.TcsSection_638"
-        },
-        {
-          "displayTitle": "The Killer + intro by Vicki Brown, co-founder of the MilkTea collective",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:05"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=3ADEC28B-276C-43F1-B7D8-F1D838498166&BOparam::WScontent::loadArticle::context_id=757FA181-9E30-44A9-8196-D5A2AA623DE2"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7849EE78-C562-4162-BF14-C316DE66FB3D&BOparam::WScontent::loadArticle::context_id=26E0196A-35C0-4BCE-9DE6-3C906A5A9EFD"
-        },
-        {
-          "displayTitle": "The Girls",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:15",
-            "20:35"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=35AE2896-F9A5-4CB0-B176-4279E3CFD535"
-        },
-        {
-          "displayTitle": "O Brother, Where Art Thou?",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31622126"
-        },
-        {
-          "displayTitle": "La Parra",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5767961.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Planes, Trains and Automobiles",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=48748356-3E60-4BFE-963D-B8C56D4A5DF7&BOparam::WScontent::loadArticle::context_id=92B81729-91E3-4A1F-AAC2-B8CD9E302523"
-        },
-        {
-          "displayTitle": "Synthetic Sincerity",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/synthetic-sincerity"
-        },
-        {
-          "displayTitle": "UK PREMIERE The Day She Returns",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
-        },
-        {
-          "displayTitle": "Synthetic Sincerity + Lift + Q&A",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5745464.TcsSection_971"
-        },
-        {
-          "displayTitle": "Daiquiris, bag switcheroos + What's Up, Doc?",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5745847.TcsSection_5745751"
-        },
-        {
-          "displayTitle": "The Liberated Film Club: The Camelia Committee",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-dkjmxxv"
-        },
-        {
-          "displayTitle": "The Lady Vanishes",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=D8A35D7D-8846-4DB1-B12E-218F68E20C43&BOparam::WScontent::loadArticle::context_id=9A6C33F8-DDDC-4C9D-B6F1-1B679CCB1421"
-        },
-        {
-          "displayTitle": "The Girls (4K Restoration)",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-girls-4k-restoration"
-        },
-        {
-          "displayTitle": "Sing-A-Long-A Rocky Horror Picture Show",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31625924"
-        },
-        {
-          "displayTitle": "Le M\u00e9pris",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5849975.TcsSection_638"
-        },
-        {
-          "displayTitle": "Hard Target",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=229AB138-A44A-46C0-9F53-69E378CF696A&BOparam::WScontent::loadArticle::context_id=DB6FE292-34EB-47E7-9EFA-42EE3D6D9DCC"
-        },
-        {
-          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rosebush-pruning"
-        },
-        {
-          "displayTitle": "Clash by Night + intro by season curator Kimberley Sheehan",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=6744D7AD-1111-4860-B1C9-EE4B662601D1&BOparam::WScontent::loadArticle::context_id=3F459F00-6EA9-429D-92D5-47D03D3AF2F7"
-        },
-        {
-          "displayTitle": "The Furious",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627078"
-        },
-        {
-          "displayTitle": "Paprika - 20th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "21:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839602.TcsSection_971"
-        }
-      ]
-    },
-    {
-      "date": "2026-07-18",
-      "label": "Saturday",
-      "films": [
-        {
-          "displayTitle": "Bugsy Malone- 50th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5525443.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "All About Eve",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=324B12E2-171F-4C22-9705-D4A3873E1A46&BOparam::WScontent::loadArticle::context_id=C474B6ED-82FF-4837-BAE9-E90532F90D3B"
-        },
-        {
-          "displayTitle": "Rosebush Pruning",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rosebush-pruning"
-        },
-        {
-          "displayTitle": "Man with a Movie Camera with Live Score",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626795"
-        },
-        {
-          "displayTitle": "North by Northwest",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=554328BF-E392-46D6-89A6-2343C242C176&BOparam::WScontent::loadArticle::context_id=22827E7D-1BBD-47C4-8BF0-A80E31630600"
-        },
-        {
-          "displayTitle": "TransSiberian",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7491B0BD-D291-41CA-B598-030952BEFB70&BOparam::WScontent::loadArticle::context_id=5CC68E8A-FE2E-48BB-BD79-222467979314"
-        },
-        {
-          "displayTitle": "Chungking Express",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626600"
-        },
-        {
-          "displayTitle": "Wallace & Gromit: A Grand Day Out, The Wrong Trousers, A Close Shave",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839604.TcsSection_971"
-        },
-        {
-          "displayTitle": "Toy Story 5",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839464.TcsSection_638"
-        },
-        {
-          "displayTitle": "Artist Talk: Elisa Giardina Papa in conversation with Erika Balsom",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rozier-shorts-programme"
-        },
-        {
-          "displayTitle": "City Lights presents Bend It Like Beckham",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5629124.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Tokyo Story [T\u00f4ky\u00f4 monogatari]",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626598"
-        },
-        {
-          "displayTitle": "Platform",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=76212CF7-F5D8-435B-AF8A-028CD9BAF1C7&BOparam::WScontent::loadArticle::context_id=FEA38C52-C610-4550-84F6-F45BD87C5675"
-        },
-        {
-          "displayTitle": "The Misfits",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:45",
-            "20:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=692A402F-68FD-432C-BF33-C385698F24E4"
-        },
-        {
-          "displayTitle": "Fallen Angels",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626601"
-        },
-        {
-          "displayTitle": "The Girls",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:10",
-            "18:10",
-            "20:50"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=F5213073-8787-4DC2-B869-4D5CB81C7F32"
-        },
-        {
-          "displayTitle": "Don\u2019t Bother to Knock",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=EC5BB579-4F04-49FD-AAF2-F323AD47791A&BOparam::WScontent::loadArticle::context_id=0333A660-C58D-4FE9-9061-B86019A84918"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868255.TcsSection_971"
-        },
-        {
-          "displayTitle": "Caronte",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/caronte"
-        },
-        {
-          "displayTitle": "History + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/jlg-unmade-history"
-        },
-        {
-          "displayTitle": "The Illegal Immigrant",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5711790.TcsSection_638"
-        },
-        {
-          "displayTitle": "Red Beard",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:35"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5849977.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "The Girls (4K Restoration)",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:20"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-girls-4k-restoration"
-        },
-        {
-          "displayTitle": "Speed Racer",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626289"
-        },
-        {
-          "displayTitle": "Days Of Being Wild",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:50"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626602"
-        },
-        {
-          "displayTitle": "We Crip Film Festival Opening Night: Joybubbles + pre-recorded intro from Rachael J. Morrison",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=C16A32FB-8BAB-4152-9DCC-754BDDEB4B10&BOparam::WScontent::loadArticle::context_id=52B01CAE-6AB5-4079-B38D-82E6603A1AAE"
-        },
-        {
-          "displayTitle": "Paprika - 20th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:10"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839606.TcsSection_971"
-        },
-        {
-          "displayTitle": "A Better Tomorrow",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=22FEC1F7-DC00-4698-8E3B-17DF2858929E&BOparam::WScontent::loadArticle::context_id=90424598-B095-4296-93A0-DAAA51083A33"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7849EE78-C562-4162-BF14-C316DE66FB3D&BOparam::WScontent::loadArticle::context_id=58D579A3-10E3-474D-80D3-6733C73D4526"
-        },
-        {
-          "displayTitle": "Blue Heron",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:25"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868257.TcsSection_638"
-        },
-        {
-          "displayTitle": "I Don't Want to Sleep Alone",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-xmqyqd"
-        },
-        {
-          "displayTitle": "Dear You",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868251.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Nirvanna the Band the Show the Movie",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:10"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626780"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868253.TcsSection_971"
-        },
-        {
-          "displayTitle": "UK PREMIERE The Day She Returns",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
-        },
-        {
-          "displayTitle": "The Matrix",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626286"
-        },
-        {
-          "displayTitle": "Burning",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5731068.TcsSection_638"
-        },
-        {
-          "displayTitle": "Runaway Train",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E259A32F-26EB-44B8-966E-ED29A3272479&BOparam::WScontent::loadArticle::context_id=776AF341-F9D3-42F5-9C07-FAD30782189A"
-        },
-        {
-          "displayTitle": "A Better Tomorrow II",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=358FB261-683F-4480-A765-916680E3A725&BOparam::WScontent::loadArticle::context_id=455BF34F-39B1-4C97-9C43-FE0A03924580"
-        },
-        {
-          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://www.ica.art/films/synthetic-sincerity"
-        }
-      ]
-    },
     {
       "date": "2026-07-19",
       "label": "Sunday",
-      "films": [
-        {
-          "displayTitle": "Bugsy Malone- 50th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5525458.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Angel's Egg",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "11:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627072"
-        },
-        {
-          "displayTitle": "European Premiere: Lone Wolves + pre-recorded intro from writer and actor Matt Foss",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=41A9FF73-6BAD-403F-A8AD-11AB23D0EFE9&BOparam::WScontent::loadArticle::context_id=7F2F49D4-E0A4-4148-BC16-27BBDDD25145"
-        },
-        {
-          "displayTitle": "Nirvanna the Band the Show the Movie",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626781"
-        },
-        {
-          "displayTitle": "The Girls",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:10",
-            "15:15",
-            "18:25"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=C60D8DC1-F4EF-4030-985C-4B2E5C98E56E"
-        },
-        {
-          "displayTitle": "Funday: Charlie and Lola \u2013 25th Anniversary + Q&A with Lauren Child",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=30B95AC0-502B-4390-ADE2-9322D7BD1402&BOparam::WScontent::loadArticle::context_id=C6AE6C4B-4E24-417F-9748-2C76CAC290F4"
-        },
-        {
-          "displayTitle": "Rose of Nevada",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=224A69F0-B71A-4273-AC58-4B8F25B1E987&BOparam::WScontent::loadArticle::context_id=12256D6F-A8E8-440E-BEEB-FE130322D0E0"
-        },
-        {
-          "displayTitle": "Birds of War",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/birds-of-war"
-        },
-        {
-          "displayTitle": "Adam's Rib",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5414172.TcsSection_638"
-        },
-        {
-          "displayTitle": "Le M\u00e9pris",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5849979.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Maine-Oc\u00e9an Express",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rozier-maine-ocean-express"
-        },
-        {
-          "displayTitle": "Solaris (1972)",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626604"
-        },
-        {
-          "displayTitle": "Polvo ser\u00e1n (They Will Be Dust)",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5745468.TcsSection_971"
-        },
-        {
-          "displayTitle": "In The Mood For Love",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626846"
-        },
-        {
-          "displayTitle": "The Misfits",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:50"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=319AACDE-1235-4983-B4AE-B199FF648F69"
-        },
-        {
-          "displayTitle": "Shorts Programme: It\u2019s Not You, It\u2019s Ableism + Q&A",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=38A8F3EA-6C55-46A7-B448-38B2597CF41C&BOparam::WScontent::loadArticle::context_id=B3BA36CA-A0D1-4DA5-B8A9-5C547A226B57"
-        },
-        {
-          "displayTitle": "UK PREMIERE The Day She Returns",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
-        },
-        {
-          "displayTitle": "UK premiere of 4K restoration: 3 Bad Men + intro by Bryony Dixon, Rosie Taylor and Makeda Doyal",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=1AB4D284-77CA-4604-ADF2-09BBA8B87E13&BOparam::WScontent::loadArticle::context_id=32E7D413-9159-463D-9C1C-A7C551A061CF"
-        },
-        {
-          "displayTitle": "All the President's Men - 50th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839468.TcsSection_638"
-        },
-        {
-          "displayTitle": "One Minute Volume 3",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-oemoavz"
-        },
-        {
-          "displayTitle": "Toy Story 5",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:10"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839466.TcsSection_971"
-        },
-        {
-          "displayTitle": "Kapodistrias - The Governor",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839470.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Caronte",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/caronte"
-        },
-        {
-          "displayTitle": "The Girls (4K Restoration)",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-girls-4k-restoration"
-        },
-        {
-          "displayTitle": "Kings of the Road",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=98275C05-D4C3-4C65-8F00-5C8AEF7F3A38&BOparam::WScontent::loadArticle::context_id=BFDEEF8A-5734-427D-8874-4D1AF6E25295"
-        },
-        {
-          "displayTitle": "La Haine",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626605"
-        },
-        {
-          "displayTitle": "Bottoms",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:55"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626609"
-        },
-        {
-          "displayTitle": "Belle de Jour",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-djpopm"
-        },
-        {
-          "displayTitle": "Some Like It Hot + intro",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=1EDB294C-89E8-42CC-8455-B969A9F947D1&BOparam::WScontent::loadArticle::context_id=11A9C6DC-BDD5-4E90-8BA1-2A4A6CCE8040"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-last-one-for-the-road"
-        },
-        {
-          "displayTitle": "The Last One for the Road",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868267.TcsSection_971"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868265.TcsSection_638"
-        },
-        {
-          "displayTitle": "Effi o Blaenau",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:20"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868269.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Rosebush Pruning",
-          "cinema": "ICA",
-          "showtimes": [
-            "19:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/rosebush-pruning"
-        },
-        {
-          "displayTitle": "Mandy",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-yryqpo"
-        },
-        {
-          "displayTitle": "There Will Be Blood",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626606"
-        },
-        {
-          "displayTitle": "Pompei: Below the Clouds",
-          "cinema": "Close-Up Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-ljzdmb"
-        },
-        {
-          "displayTitle": "The Long Goodbye",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626610"
-        },
-        {
-          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/synthetic-sincerity"
-        }
-      ]
+      "films": []
     },
     {
       "date": "2026-07-20",
@@ -1277,6 +25,24 @@
             "12:15"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626619"
+        },
+        {
+          "displayTitle": "Seniors\u2019 Free Matinee: After Hours + intro by Hannah Strong, Film Critic",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=90B91C38-E48E-4514-B733-6A47F067A6FB&BOparam::WScontent::loadArticle::context_id=16E83146-8A61-4801-8358-37C796912344"
+        },
+        {
+          "displayTitle": "The Girls",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:45",
+            "18:10",
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=CF7A12E7-B025-46AE-80A4-E103A59DD0D2"
         },
         {
           "displayTitle": "Close Encounters of the Third Kind [Director's Cut]",
@@ -1351,12 +117,36 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5742397.TcsSection_971"
         },
         {
+          "displayTitle": "Gentlemen Prefer Blondes + intro",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7429EED9-A2BA-47ED-9479-5748673CA2C2&BOparam::WScontent::loadArticle::context_id=AFC2D2AF-FF9E-4FDF-B17B-8FF57B129D07"
+        },
+        {
           "displayTitle": "Talladega Nights: The Ballad of Ricky Bobby",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "18:15"
           ],
           "ticketUrl": "https://princecharlescinema.com/film/114328/talladega-nights-the-ballad-of-ricky-bobby"
+        },
+        {
+          "displayTitle": "Compartment No. 6",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=DD8C7B41-301F-4E71-87D4-025B18BAF925&BOparam::WScontent::loadArticle::context_id=19A42E84-B009-4CDB-B8D2-FF02C4B93F31"
+        },
+        {
+          "displayTitle": "Nirvanna the Band the Show the Movie",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=63056FD6-CAFC-4166-A5D8-2E83286BA485&BOparam::WScontent::loadArticle::context_id=043F793D-FDFB-4A17-99DA-A9EA3323FAC7"
         },
         {
           "displayTitle": "An Autumn's Tale",
@@ -1391,12 +181,36 @@
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626614"
         },
         {
+          "displayTitle": "North by Northwest",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=554328BF-E392-46D6-89A6-2343C242C176&BOparam::WScontent::loadArticle::context_id=1C65EB6C-CD5E-4AB7-AA08-F54CF432D933"
+        },
+        {
+          "displayTitle": "The Misfits",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=A182AED8-210A-4EED-BCA9-74B38AACD8F6"
+        },
+        {
           "displayTitle": "Effi o Blaenau",
           "cinema": "The Garden Cinema",
           "showtimes": [
             "20:35"
           ],
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868271.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "The Seven Year Itch",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=BEDAD5AF-0F96-43BF-88E4-8AB56B4DE303&BOparam::WScontent::loadArticle::context_id=71972BE3-E7F8-4217-A610-BEDD063F920B"
         },
         {
           "displayTitle": "The Furious",
@@ -1444,6 +258,22 @@
             "20:40"
           ],
           "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
+        },
+        {
+          "displayTitle": "The Invite",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7849EE78-C562-4162-BF14-C316DE66FB3D&BOparam::WScontent::loadArticle::context_id=54100033-88DB-475E-816B-1B2604116146"
+        },
+        {
+          "displayTitle": "The Misfits",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=74587D80-7ABD-4C1A-9A0A-97A250BD8C08"
         },
         {
           "displayTitle": "Birds of War",
@@ -1535,6 +365,14 @@
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626631"
         },
         {
+          "displayTitle": "Vagabond",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=6693A880-EB78-4A75-B8B5-0AD6F62DAB1D&BOparam::WScontent::loadArticle::context_id=26D8F6D9-08A4-410F-90F5-BED37E8D744A"
+        },
+        {
           "displayTitle": "Paprika - 20th anniversary",
           "cinema": "The Garden Cinema",
           "showtimes": [
@@ -1543,12 +381,37 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839628.TcsSection_3060731"
         },
         {
+          "displayTitle": "Rome Express + intro with writer Jonathan Coe, hosted by writer and season curator Kazuo Ishiguro",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=706F2D6E-7285-4541-B756-D2F64630887A&BOparam::WScontent::loadArticle::context_id=8ADED2C6-9F55-4344-BD97-5FFD5B3EA98D"
+        },
+        {
           "displayTitle": "Lost City of Gold",
           "cinema": "The Garden Cinema",
           "showtimes": [
             "18:15"
           ],
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839665.TcsSection_971"
+        },
+        {
+          "displayTitle": "The Girls",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20",
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=A469BE38-FD93-4284-97ED-E53E48B24FCB"
+        },
+        {
+          "displayTitle": "Taxi Driver",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=79060D6C-313D-4B62-8E4B-2A3AD285EB88&BOparam::WScontent::loadArticle::context_id=77C34437-64E6-449F-9288-BB1B895A84B1"
         },
         {
           "displayTitle": "Synthetic Sincerity + Q&A",
@@ -1607,6 +470,14 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868275.TcsSection_971"
         },
         {
+          "displayTitle": "Bullet in the Head",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=BA474D5C-0317-4F31-8936-A21D2718AFFF&BOparam::WScontent::loadArticle::context_id=C5531EED-3536-49E6-8B65-15B4FEA7CE01"
+        },
+        {
           "displayTitle": "La Piscine",
           "cinema": "The Garden Cinema",
           "showtimes": [
@@ -1621,6 +492,22 @@
             "20:40"
           ],
           "ticketUrl": "https://www.ica.art/films/the-last-one-for-the-road"
+        },
+        {
+          "displayTitle": "My Own Private Idaho",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=4BC794D0-BCCD-4903-970F-F051D6153346&BOparam::WScontent::loadArticle::context_id=B0D4763F-18C3-42C9-BB34-15BC8FF59F87"
+        },
+        {
+          "displayTitle": "Bus Stop",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=C5958F98-E5FB-4D48-B401-8EDD8C8765EB&BOparam::WScontent::loadArticle::context_id=BFC67760-73DB-4C69-988E-0AD63C378060"
         }
       ]
     },
@@ -1651,6 +538,14 @@
             "12:05"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626647"
+        },
+        {
+          "displayTitle": "Nirvanna the Band the Show the Movie",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "12:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=63056FD6-CAFC-4166-A5D8-2E83286BA485&BOparam::WScontent::loadArticle::context_id=B82EE875-2482-4945-9DCC-B7521C953853"
         },
         {
           "displayTitle": "The Girls (4K Restoration)",
@@ -1702,12 +597,30 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5849985.TcsSection_971"
         },
         {
+          "displayTitle": "The Girls",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:45",
+            "18:00",
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=BFC49E43-C8FD-4544-8008-2A6C41BB3DBE"
+        },
+        {
           "displayTitle": "Mulholland Dr.",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "14:45"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626645"
+        },
+        {
+          "displayTitle": "Taxi Driver",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=79060D6C-313D-4B62-8E4B-2A3AD285EB88&BOparam::WScontent::loadArticle::context_id=B56F4543-2C3B-4325-80F0-89309F196CE2"
         },
         {
           "displayTitle": "Caronte",
@@ -1767,6 +680,22 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5849987.TcsSection_3060731"
         },
         {
+          "displayTitle": "Stranger Than Paradise + intro by film critic and programmer Lucy Peters",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=8AB83E6C-3F39-439E-B72F-8B6ED88AF521&BOparam::WScontent::loadArticle::context_id=9E04F069-68D6-42BD-ADA4-72C9C1634549"
+        },
+        {
+          "displayTitle": "The Misfits",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=83F58036-B2D7-4852-8911-D71B4BE9C283"
+        },
+        {
           "displayTitle": "Mystery Movie",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
@@ -1781,6 +710,14 @@
             "18:15"
           ],
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868287.TcsSection_971"
+        },
+        {
+          "displayTitle": "TransSiberian",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7491B0BD-D291-41CA-B598-030952BEFB70&BOparam::WScontent::loadArticle::context_id=869D016E-18D5-4D54-9FAF-091245233BE4"
         },
         {
           "displayTitle": "Indeterminate Ecologies: Islands of Fire, It's Raining Frogs Outside, Fireworks (Archives), Mekong Hotel and Barbs, Wastelands",
@@ -1807,6 +744,14 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868289.TcsSection_971"
         },
         {
+          "displayTitle": "Hard Boiled + intro by Xavier Alexandre Pillai, BFI TV Programmer",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=8BF7B41A-32FF-4C21-9484-5CEFF41D33D2&BOparam::WScontent::loadArticle::context_id=0DADBF5C-9584-4AFD-A5C3-D27107225814"
+        },
+        {
           "displayTitle": "The Invite",
           "cinema": "The Garden Cinema",
           "showtimes": [
@@ -1815,12 +760,28 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868293.TcsSection_3060731"
         },
         {
+          "displayTitle": "Effi o Blaenau",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:35"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A054318C-DFA6-410B-BFD1-647A3F6533B8&BOparam::WScontent::loadArticle::context_id=CC4E9B9D-1097-481A-8963-7517F396239C"
+        },
+        {
           "displayTitle": "Paris, Texas",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "20:40"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626642"
+        },
+        {
+          "displayTitle": "As Young as You Feel",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F2750A1D-3820-4C7D-B96C-53E7B28C92C1&BOparam::WScontent::loadArticle::context_id=2E3C1F9D-FCAB-47E4-B6B4-2E295644A417"
         },
         {
           "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
@@ -1845,6 +806,627 @@
             "20:55"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626643"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-23",
+      "label": "Thursday",
+      "films": [
+        {
+          "displayTitle": "Persona",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626648"
+        },
+        {
+          "displayTitle": "Cool Hand Luke",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626655"
+        },
+        {
+          "displayTitle": "Taxi Driver",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "12:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=79060D6C-313D-4B62-8E4B-2A3AD285EB88&BOparam::WScontent::loadArticle::context_id=E14B4149-3A1E-4590-A7C1-1BAC4DE3810D"
+        },
+        {
+          "displayTitle": "The Last One for the Road",
+          "cinema": "ICA",
+          "showtimes": [
+            "12:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/the-last-one-for-the-road"
+        },
+        {
+          "displayTitle": "Dry Leaf",
+          "cinema": "ICA",
+          "showtimes": [
+            "13:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/dry-leaf"
+        },
+        {
+          "displayTitle": "Heat",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "14:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626649"
+        },
+        {
+          "displayTitle": "The Misfits",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30",
+            "20:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E9FF3A15-D089-4256-A75B-6421A5B791DF&BOparam::WScontent::loadArticle::context_id=DE30A1FE-6ECC-4179-83FD-8F9B51F436FA"
+        },
+        {
+          "displayTitle": "Blue Heron",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/blue-heron"
+        },
+        {
+          "displayTitle": "Rose of Nevada",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=224A69F0-B71A-4273-AC58-4B8F25B1E987&BOparam::WScontent::loadArticle::context_id=63E8A84C-A9B6-42D0-9862-0BEAA8D03387"
+        },
+        {
+          "displayTitle": "The Furious",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627309"
+        },
+        {
+          "displayTitle": "Wallace & Gromit: A Grand Day Out, The Wrong Trousers, A Close Shave",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839632.TcsSection_971"
+        },
+        {
+          "displayTitle": "Joint Security Area",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5731085.TcsSection_638"
+        },
+        {
+          "displayTitle": "Toy Story 5",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839484.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Rosebush Pruning",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/rosebush-pruning"
+        },
+        {
+          "displayTitle": "Caronte",
+          "cinema": "ICA",
+          "showtimes": [
+            "17:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/caronte"
+        },
+        {
+          "displayTitle": "Angel's Egg",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627294"
+        },
+        {
+          "displayTitle": "The Invite",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868291.TcsSection_971"
+        },
+        {
+          "displayTitle": "Blue Velvet",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626653"
+        },
+        {
+          "displayTitle": "All the President's Men - 50th anniversary",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839486.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "The Girls",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:05",
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A714B355-A0F0-4F82-B69D-25B7BA20CE2A&BOparam::WScontent::loadArticle::context_id=34F3F5BC-56F1-40A7-B17D-F94444EEDFA1"
+        },
+        {
+          "displayTitle": "Tickets",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=FB16F2BE-DEB3-485A-8C48-063E02013F2C&BOparam::WScontent::loadArticle::context_id=560845D3-B172-4864-99ED-B6B49D2B8B5E"
+        },
+        {
+          "displayTitle": "The Invite",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7849EE78-C562-4162-BF14-C316DE66FB3D&BOparam::WScontent::loadArticle::context_id=3E775182-3FBE-4E4C-AD3A-A45FB39BBBB0"
+        },
+        {
+          "displayTitle": "As Tears Go By",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5731320.TcsSection_638"
+        },
+        {
+          "displayTitle": "Blue Black Permanent + pre-recorded intro by Beth Johnston, Filmmaker",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F5A151A7-2BBC-4020-A59F-D1C0ED2E8F1D&BOparam::WScontent::loadArticle::context_id=002769BD-BF44-4EC1-94C9-3788F76164F6"
+        },
+        {
+          "displayTitle": "Synthetic Sincerity",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/synthetic-sincerity"
+        },
+        {
+          "displayTitle": "UK PREMIERE The Day She Returns",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
+        },
+        {
+          "displayTitle": "Babylon",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "19:50"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626652"
+        },
+        {
+          "displayTitle": "The Castaways of Turtle Island",
+          "cinema": "ICA",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/rozier-the-castaways-of-turtle-island"
+        },
+        {
+          "displayTitle": "London Boys + Q&A",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5629169.TcsSection_971"
+        },
+        {
+          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
+          "cinema": "ICA",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/the-girls-4k-restoration"
+        },
+        {
+          "displayTitle": "Dear You",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868301.TcsSection_638"
+        },
+        {
+          "displayTitle": "Some Like It Hot",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:35"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=D94FE08B-E678-4BE8-88AC-CF466A0B4EBC&BOparam::WScontent::loadArticle::context_id=B4895788-6ACC-4A82-B982-7C3D995089B2"
+        },
+        {
+          "displayTitle": "Radio On",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=8840C047-82D0-43CA-B6BC-39F30440B1E8&BOparam::WScontent::loadArticle::context_id=34835F82-F9CA-4862-8C3E-02352BDFD8EB"
+        },
+        {
+          "displayTitle": "The Worst Person in the World",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626650"
+        },
+        {
+          "displayTitle": "Paprika - 20th anniversary",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5839634.TcsSection_3060731"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-24",
+      "label": "Friday",
+      "films": [
+        {
+          "displayTitle": "Shampoo",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "13:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626666"
+        },
+        {
+          "displayTitle": "The Colour of Pomegranates [Sayat Nova]",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "13:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626665"
+        },
+        {
+          "displayTitle": "Nostalgia",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30",
+            "18:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=4647B7D9-AA61-4481-A1B5-244C79ECB154&BOparam::WScontent::loadArticle::context_id=8A529127-0D05-40BA-9107-48F597C118F3"
+        },
+        {
+          "displayTitle": "On the Sea",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5803264.TcsSection_638"
+        },
+        {
+          "displayTitle": "Vampire Hunter D: Bloodlust",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626664"
+        },
+        {
+          "displayTitle": "Nostalghia",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5735338.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Night of the Juggler",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626667"
+        },
+        {
+          "displayTitle": "As Meninas Exemplares",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/as-meninas-exemplares"
+        },
+        {
+          "displayTitle": "Brunello: The Gracious Visionary",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5768152.TcsSection_971"
+        },
+        {
+          "displayTitle": "The Fabulous Baron Munchausen",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-gljpylv"
+        },
+        {
+          "displayTitle": "The Killer (1989)",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626661"
+        },
+        {
+          "displayTitle": "Midnight",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5414182.TcsSection_638"
+        },
+        {
+          "displayTitle": "Face/Off",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:05"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=3106E69C-B93D-4B01-9DBA-B8F3F89DFFA7&BOparam::WScontent::loadArticle::context_id=76D42A77-AED7-4B10-A242-7BE333970813"
+        },
+        {
+          "displayTitle": "Troll 2 (1990)",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626663"
+        },
+        {
+          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/nostalgia-4k"
+        },
+        {
+          "displayTitle": "La Chimera",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-pmjerr"
+        },
+        {
+          "displayTitle": "A Chinese Ghost Story",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5713018.TcsSection_638"
+        },
+        {
+          "displayTitle": "Hard Boiled",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:35"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626660"
+        },
+        {
+          "displayTitle": "The Room",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626662"
+        }
+      ]
+    },
+    {
+      "date": "2026-07-25",
+      "label": "Saturday",
+      "films": [
+        {
+          "displayTitle": "The Lion King",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "11:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5701926.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Stand By Me",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626668"
+        },
+        {
+          "displayTitle": "Before Sunrise",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626671"
+        },
+        {
+          "displayTitle": "Maine-Oc\u00e9an Express",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/rozier-maine-ocean-express"
+        },
+        {
+          "displayTitle": "Collage making workshop: Summer",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5803092.TcsSection_3448696"
+        },
+        {
+          "displayTitle": "Labyrinth - 40th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "14:50"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626669"
+        },
+        {
+          "displayTitle": "Before Sunset",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626673"
+        },
+        {
+          "displayTitle": "Nostalgia (4K Restoration)",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/nostalgia-4k"
+        },
+        {
+          "displayTitle": "Once a Thief",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5712963.TcsSection_638"
+        },
+        {
+          "displayTitle": "Elisa Giardina Papa: She Flickered In and Out of History",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/as-meninas-exemplares"
+        },
+        {
+          "displayTitle": "Amores Perros",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5868370.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Before Midnight",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626674"
+        },
+        {
+          "displayTitle": "Brunello: The Gracious Visionary",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5768154.TcsSection_971"
+        },
+        {
+          "displayTitle": "The Marriage of Maria Braun",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-bprlqp"
+        },
+        {
+          "displayTitle": "The Searchers",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626162"
+        },
+        {
+          "displayTitle": "Sound of Falling",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-kkvlyg"
+        },
+        {
+          "displayTitle": "Nostalghia",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5735340.TcsSection_971"
+        },
+        {
+          "displayTitle": "Nirvanna the Band the Show the Movie",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:05"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626783"
+        },
+        {
+          "displayTitle": "The Lord of the Rings Trilogy - Extended Editions",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626282"
+        },
+        {
+          "displayTitle": "On the Sea",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5803266.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Camp Miasma Inspired Mystery Movie Marathon curated by Jane Schoenbrun",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "22:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626987"
         }
       ]
     }

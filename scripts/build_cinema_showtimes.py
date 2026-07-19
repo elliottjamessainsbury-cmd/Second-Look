@@ -98,6 +98,13 @@ def current_london_date() -> date:
     return datetime.now(LONDON_TZ).date()
 
 
+def current_london_datetime() -> datetime:
+    override = os.environ.get("CINEMA_SHOWTIMES_BASE_DATE")
+    if override:
+        return datetime.fromisoformat(f"{override}T00:00:00+00:00").astimezone(LONDON_TZ)
+    return datetime.now(LONDON_TZ)
+
+
 def target_dates() -> list[date]:
     today = current_london_date()
     day_count = int(os.environ.get("CINEMA_SHOWTIMES_DAYS", DEFAULT_DAY_COUNT))
@@ -391,11 +398,17 @@ def parse_bfi_listing_text(page_text: str, target_dates: set[str]) -> list[Scree
 
 
 def aggregate_screenings(screenings: list[Screening], target_days: list[date]) -> dict:
+    now = current_london_datetime()
+    today_iso = now.date().isoformat()
+    current_time = now.strftime("%H:%M")
     by_day: dict[str, dict[tuple[str, str, str], dict]] = {
         day.isoformat(): {} for day in target_days
     }
 
     for screening in screenings:
+        if screening.date == today_iso and screening.showtime <= current_time:
+            continue
+
         day_entries = by_day.get(screening.date)
         if day_entries is None:
             continue
