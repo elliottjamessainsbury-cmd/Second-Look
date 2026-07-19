@@ -200,6 +200,11 @@ const state = {
     countries: [],
     colours: [],
   },
+  tasteAnchors: [],
+  tastePicks: [],
+  tasteQuery: "",
+  tasteSearchResults: [],
+  tasteGenerated: false,
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
   query: "",
@@ -226,6 +231,7 @@ const elements = {
   directorList: document.querySelector("#director-list"),
   selectedSeeds: document.querySelector("#selected-seeds"),
   discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
+  savedFilmsBottomList: document.querySelector("#saved-films-bottom-list"),
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   resetDirector: document.querySelector("#reset-director"),
   resetFilters: document.querySelector("#reset-filters"),
@@ -236,6 +242,13 @@ const elements = {
   facetEras: document.querySelector("#facet-eras"),
   facetCountries: document.querySelector("#facet-countries"),
   facetColours: document.querySelector("#facet-colours"),
+  tasteSearchSection: document.querySelector("#taste-search-section"),
+  tasteSearchInput: document.querySelector("#taste-search-input"),
+  tasteSearchResults: document.querySelector("#taste-search-results"),
+  tastePicks: document.querySelector("#taste-picks"),
+  tasteGenerate: document.querySelector("#taste-generate"),
+  tasteRecsHead: document.querySelector("#taste-recs-head"),
+  tasteRecs: document.querySelector("#taste-recs"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -595,7 +608,10 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
     const tone = unique(sample.tone || []);
     const cardTags = mergeLists(curatedFilm.cardTags || [], sample.tags ? sample.tags.slice(0, 3) : []);
     const availability = availabilityByFilmId[curatedFilm.film_id] || {};
-    const countries = unique([curatedFilm.country, ...(sample.countries || []), ...(tmdb.countries || [])].filter(Boolean));
+    // Country facet uses the hand-curated primary country as the source of truth.
+    // TMDB emits ISO codes (US/GB) that would splinter into duplicate chips
+    // (USA vs US) after an enrichment refresh, so it is intentionally excluded here.
+    const countries = unique([curatedFilm.country, ...(sample.countries || [])].filter(Boolean));
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
 
@@ -1014,6 +1030,59 @@ function renderRefinePanelState() {
   // Refine panel is always visible; retain method for render() call sites.
 }
 
+function renderSavedFilmsBottom() {
+  if (!elements.savedFilmsBottomList) {
+    return;
+  }
+  const savedFilms = state.userProfile.savedFilmIds
+    .map((filmId) => getInternalFilmById(filmId))
+    .filter(Boolean);
+
+  if (!savedFilms.length) {
+    elements.savedFilmsBottomList.innerHTML = `
+      <div class="empty-state results-grid-span saved-results-empty-state browse-empty-state">
+        <h3>No saved films yet</h3>
+        <p>Save films from your recommendations or the grid above, and they'll gather here for later.</p>
+      </div>`;
+    return;
+  }
+
+  elements.savedFilmsBottomList.innerHTML = savedFilms
+    .map((film) => {
+      const key = cardKey("savedbottom", film.filmId);
+      const expanded = state.session.expandedCardKey === key;
+      const hasDetail = filmHasExpandableDetail(film);
+      const meta = [film.year || "Year unknown", film.director || "Director unknown", ...(film.countries || []).slice(0, 1)]
+        .filter(Boolean)
+        .join(" • ");
+      return `
+        <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
+          <div class="poster-block">${renderPosterMarkup(film.title)}</div>
+          <div class="card-body film-card-body">
+            <h3 class="card-title">${escapeHtml(film.title)}</h3>
+            <p class="match-meta">${escapeHtml(meta)}</p>
+            <div class="card-actions film-actions">
+              <button class="card-link-button discovery-action-button is-active" type="button" data-saved-unsave="${film.filmId}">Remove</button>
+            </div>
+            ${expanded ? renderExpandedPanel(film) : ""}
+            ${
+              hasDetail
+                ? `<div class="browse-card-links">
+              <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
+            </div>`
+                : ""
+            }
+          </div>
+        </article>`;
+    })
+    .join("");
+
+  elements.savedFilmsBottomList.querySelectorAll("[data-saved-unsave]").forEach((button) => {
+    button.addEventListener("click", () => removeSavedFilm(button.dataset.savedUnsave));
+  });
+  bindFilmCardActions(elements.savedFilmsBottomList);
+}
+
 function providerActionLabel(provider) {
   if (provider.type === "flatrate") {
     return `Stream on ${provider.provider_name}`;
@@ -1108,12 +1177,12 @@ function renderExpandedPanel(film, explanation) {
   const letterboxdAverage = metadata?.average_rating ? String(metadata.average_rating) : "";
   const ratingMarkup = letterboxdAverage
     ? `
-      <div class="expanded-stats">
+      <a class="expanded-stats expanded-stats-link" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
         <div class="expanded-stat">
           <span class="expanded-stat-label">Average Letterboxd rating</span>
           <strong>${letterboxdAverage}</strong>
         </div>
-      </div>
+      </a>
     `
     : "";
 
@@ -1180,12 +1249,60 @@ function formatDateKey(date) {
   return `${year}-${month}-${day}`;
 }
 
+function londonNowMinutes() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/London",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const hour = Number(values.hour);
+  const minute = Number(values.minute);
+  if (Number.isNaN(hour) || Number.isNaN(minute)) {
+    return -1;
+  }
+  return hour * 60 + minute;
+}
+
+function showtimeToMinutes(time) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(String(time || "").trim());
+  if (!match) {
+    return null;
+  }
+  return Number(match[1]) * 60 + Number(match[2]);
+}
+
+// For today's date (Europe/London) drop showtimes that have already passed, and
+// remove films left with no upcoming screenings. Future days are returned as-is.
+// Non-HH:MM times (e.g. "Time TBC") are always kept.
+function filterPastShowtimesForDay(day) {
+  const films = Array.isArray(day?.films) ? day.films : [];
+  if (!day || day.date !== londonTodayDate()) {
+    return films;
+  }
+  const nowMinutes = londonNowMinutes();
+  if (nowMinutes < 0) {
+    return films;
+  }
+  return films
+    .map((film) => {
+      const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
+      const upcoming = showtimes.filter((time) => {
+        const minutes = showtimeToMinutes(time);
+        return minutes === null || minutes >= nowMinutes;
+      });
+      return { ...film, showtimes: upcoming };
+    })
+    .filter((film) => (Array.isArray(film.showtimes) ? film.showtimes.length : 0) > 0);
+}
+
 function allScreenings() {
   const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
   const today = londonTodayDate();
   return days.flatMap((day) =>
     day.date >= today
-      ? (Array.isArray(day.films) ? day.films : []).flatMap((film) => {
+      ? filterPastShowtimesForDay(day).flatMap((film) => {
           const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : [""];
           return showtimes.map((time) => ({
             date: day.date,
@@ -1233,7 +1350,7 @@ function renderScreeningPreview(film) {
   `;
 }
 
-function renderFacetButtons(element, kind, options, selectedValues) {
+function renderFacetButtons(element, kind, options, selectedValues, availableSet) {
   if (!element) {
     return;
   }
@@ -1246,9 +1363,43 @@ function renderFacetButtons(element, kind, options, selectedValues) {
   element.innerHTML = options
     .map((option) => {
       const active = selectedValues.includes(option);
-      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}">${escapeHtml(option)}</button>`;
+      const disabled = !active && availableSet && !availableSet.has(option);
+      return `<button type="button" class="browse-facet__chip ${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}" data-facet-kind="${kind}" data-facet-value="${escapeHtml(option)}" aria-pressed="${active ? "true" : "false"}"${disabled ? " disabled" : ""}>${escapeHtml(option)}</button>`;
     })
     .join("");
+}
+
+// For each facet, which option values still yield >=1 film given the OTHER
+// facets' current selections (OR within a facet, AND across facets). Used to
+// grey out dead-end combinations.
+function getAvailableFacetOptions() {
+  const { genres, eras, countries, colours } = state.browseFilters;
+  const films = state.internalFilms.filter(
+    (film) => !state.userProfile.dislikedFilmIds.includes(film.filmId)
+  );
+
+  const matchesGenre = (film) => !genres.length || genres.some((value) => (film.genres || []).includes(value));
+  const matchesEra = (film) => !eras.length || eras.includes(filmDecade(film));
+  const matchesCountry = (film) => !countries.length || countries.some((value) => (film.countries || []).includes(value));
+  const matchesColour = (film) => !colours.length || colours.includes(filmColour(film));
+
+  const available = { genres: new Set(), eras: new Set(), countries: new Set(), colours: new Set() };
+  films.forEach((film) => {
+    if (matchesEra(film) && matchesCountry(film) && matchesColour(film)) {
+      (film.genres || []).forEach((value) => available.genres.add(value));
+    }
+    if (matchesGenre(film) && matchesCountry(film) && matchesColour(film)) {
+      const decade = filmDecade(film);
+      if (decade) available.eras.add(decade);
+    }
+    if (matchesGenre(film) && matchesEra(film) && matchesColour(film)) {
+      (film.countries || []).forEach((value) => available.countries.add(value));
+    }
+    if (matchesGenre(film) && matchesEra(film) && matchesCountry(film)) {
+      available.colours.add(filmColour(film));
+    }
+  });
+  return available;
 }
 
 function filmDecade(film) {
@@ -1336,10 +1487,11 @@ function renderBrowseGridCards() {
   const activeFilterCount = browseFilterCount();
   const options = getBrowseFilterOptions();
 
-  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres);
-  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras);
-  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries);
-  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours);
+  const available = getAvailableFacetOptions();
+  renderFacetButtons(elements.facetGenres, "genres", options.genres, state.browseFilters.genres, available.genres);
+  renderFacetButtons(elements.facetEras, "eras", options.eras, state.browseFilters.eras, available.eras);
+  renderFacetButtons(elements.facetCountries, "countries", options.countries, state.browseFilters.countries, available.countries);
+  renderFacetButtons(elements.facetColours, "colours", options.colours, state.browseFilters.colours, available.colours);
 
   if (!activeFilterCount) {
     if (elements.browseSummary) {
@@ -1401,16 +1553,13 @@ function renderBrowseGridCards() {
             </div>
             ${renderScreeningPreview(film)}
             ${expanded ? renderExpandedPanel(film) : ""}
-            <div class="browse-card-links">
-              ${
-                hasDetail
-                  ? `<button class="text-button card-detail-toggle" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>`
-                  : ""
-              }
-              <a class="text-button card-detail-toggle" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
-                See Letterboxd reviews
-              </a>
-            </div>
+            ${
+              hasDetail
+                ? `<div class="browse-card-links">
+              <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
+            </div>`
+                : ""
+            }
           </div>
         </article>
       `;
@@ -1476,12 +1625,12 @@ function renderAlgorithmRecommendationCard() {
       <section class="discovery-shell">
         <div class="discovery-shell__head">
           <div>
-            <p class="eyebrow">Recommended films</p>
-            <h3>Recommended by your profile</h3>
+            <p class="eyebrow">For you</p>
+            <h3>Recommended films</h3>
           </div>
         </div>
         <div class="empty-state recommendations-empty-state">
-          <p>Save, dismiss, or open films from the curated grid above and this section will start adapting to your taste profile.</p>
+          <p>Save or open a few films and this list will start to shape itself around your taste.</p>
         </div>
       </section>
     `;
@@ -1492,10 +1641,10 @@ function renderAlgorithmRecommendationCard() {
     <section class="discovery-shell">
       <div class="discovery-shell__head">
         <div>
-          <p class="eyebrow">Recommended films</p>
-          <h3>Recommended by your profile</h3>
+          <p class="eyebrow">For you</p>
+          <h3>Recommended films</h3>
         </div>
-        <p class="discovery-shell__summary">These are shaped by your saved films, dismissals, outbound clicks, and any onboarding taste signals still in session.</p>
+        <p class="discovery-shell__summary">A short, evolving list drawn from the films you've saved, opened, and passed over.</p>
       </div>
       <div class="discovery-grid-cards recommendation-stack">
         ${renderRecommendationCards(recommendations)}
@@ -2080,7 +2229,7 @@ function renderShowtimeFilterSelect(element, options, selectedValue, allLabel) {
 }
 
 function getCalendarFilmsForDay(day) {
-  const films = Array.isArray(day?.films) ? day.films : [];
+  const films = filterPastShowtimesForDay(day);
   return films.filter((film) => !state.selectedCinemaShowtimesCinema || film.cinema === state.selectedCinemaShowtimesCinema);
 }
 
@@ -2253,6 +2402,321 @@ function renderCinemaShowtimes() {
   });
 }
 
+// --- Taste search: "films you love" -> recommendations from the collection ---
+function tasteDecade(year) {
+  const y = Number(year);
+  return Number.isFinite(y) && y > 0 ? Math.floor(y / 10) * 10 : null;
+}
+
+function bindFilmCardActions(container) {
+  if (!container) {
+    return;
+  }
+  container.querySelectorAll("[data-save-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.saveFilm, "save"));
+  });
+  container.querySelectorAll("[data-dismiss-film]").forEach((button) => {
+    button.addEventListener("click", () => handleFilmInteraction(button.dataset.dismissFilm, "not_for_me"));
+  });
+  container.querySelectorAll("[data-outbound-film]").forEach((link) => {
+    link.addEventListener("click", () => handleFilmInteraction(link.dataset.outboundFilm, "outbound_click"));
+  });
+  container.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      render();
+    });
+  });
+}
+
+let tasteSearchToken = 0;
+
+async function runTasteSearch(rawQuery) {
+  state.tasteQuery = rawQuery;
+  const query = String(rawQuery || "").trim();
+  if (!query) {
+    state.tasteSearchResults = [];
+    renderTasteSearchResults();
+    return;
+  }
+
+  const token = ++tasteSearchToken;
+  let results = null;
+
+  // Live TMDB search via the serverless proxy (active once TMDB_API_KEY is set).
+  try {
+    const response = await fetch(`/api/tmdb-search?q=${encodeURIComponent(query)}`);
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data.results) && data.results.length) {
+        results = data.results.map((item) => ({
+          source: "tmdb",
+          id: item.id,
+          title: item.title,
+          year: item.year || null,
+          meta: [item.year].filter(Boolean).join(""),
+        }));
+      }
+    }
+  } catch (error) {
+    /* fall back to the local anchor set below */
+  }
+
+  // Fallback: local anchor set (used before a TMDB key is configured, or offline).
+  if (!results) {
+    const needle = normalize(query);
+    results = state.tasteAnchors
+      .filter((anchor) => normalize(anchor.title).includes(needle))
+      .slice(0, 6)
+      .map((anchor) => ({
+        source: "anchor",
+        title: anchor.title,
+        year: anchor.year || null,
+        director: anchor.director || "",
+        country: anchor.country || "",
+        genres: anchor.genres || [],
+        keywords: anchor.keywords || [],
+        meta: [anchor.year, anchor.director].filter(Boolean).join(" · "),
+      }));
+  }
+
+  if (token !== tasteSearchToken) {
+    return; // a newer keystroke superseded this search
+  }
+  state.tasteSearchResults = results.filter(
+    (result) => !state.tastePicks.some((pick) => normalize(pick.title) === normalize(result.title))
+  );
+  renderTasteSearchResults();
+}
+
+function renderTasteSearchResults() {
+  if (!elements.tasteSearchResults) {
+    return;
+  }
+  if (!String(state.tasteQuery || "").trim()) {
+    elements.tasteSearchResults.innerHTML = "";
+    return;
+  }
+  const results = state.tasteSearchResults || [];
+  if (!results.length) {
+    elements.tasteSearchResults.innerHTML = `<p class="taste-search__muted">No matches yet — try another title.</p>`;
+    return;
+  }
+  elements.tasteSearchResults.innerHTML = results
+    .map(
+      (result, index) => `
+      <button class="taste-result" type="button" data-taste-index="${index}">
+        <span class="taste-result__title">${escapeHtml(result.title)}</span>
+        <span class="taste-result__meta">${escapeHtml(result.meta || "")}</span>
+      </button>`
+    )
+    .join("");
+
+  elements.tasteSearchResults.querySelectorAll("[data-taste-index]").forEach((button) => {
+    button.addEventListener("click", () => pickTasteResult(Number(button.dataset.tasteIndex)));
+  });
+}
+
+async function pickTasteResult(index) {
+  const result = (state.tasteSearchResults || [])[index];
+  if (!result || state.tastePicks.length >= 3) {
+    return;
+  }
+
+  let pick;
+  if (result.source === "anchor") {
+    pick = {
+      title: result.title,
+      year: result.year,
+      director: result.director,
+      country: result.country,
+      genres: result.genres || [],
+      keywords: result.keywords || [],
+    };
+  } else {
+    pick = { title: result.title, year: result.year, director: "", country: "", genres: [], keywords: [] };
+    try {
+      const response = await fetch(`/api/tmdb-film?id=${encodeURIComponent(result.id)}`);
+      if (response.ok) {
+        const data = await response.json();
+        if (data.film) {
+          pick = {
+            title: data.film.title || result.title,
+            year: data.film.year || result.year,
+            director: data.film.director || "",
+            country: data.film.country || "",
+            genres: data.film.genres || [],
+            keywords: data.film.keywords || [],
+          };
+        }
+      }
+    } catch (error) {
+      /* keep the minimal pick */
+    }
+  }
+
+  if (state.tastePicks.some((existing) => normalize(existing.title) === normalize(pick.title))) {
+    return;
+  }
+  state.tastePicks.push(pick);
+  state.tasteQuery = "";
+  state.tasteSearchResults = [];
+  if (elements.tasteSearchInput) {
+    elements.tasteSearchInput.value = "";
+  }
+  state.tasteGenerated = false;
+  renderTasteSearchResults();
+  renderTastePicks();
+  renderTasteRecs();
+}
+
+function removeTastePick(title) {
+  state.tastePicks = state.tastePicks.filter((pick) => normalize(pick.title) !== normalize(title));
+  state.tasteGenerated = false;
+  renderTastePicks();
+  renderTasteRecs();
+}
+
+function renderTastePicks() {
+  if (!elements.tastePicks) {
+    return;
+  }
+  const chips = state.tastePicks
+    .map(
+      (pick) => `
+      <span class="taste-chip">${escapeHtml(pick.title)}
+        <button class="taste-chip__x" type="button" data-taste-remove="${escapeHtml(pick.title)}" aria-label="Remove ${escapeHtml(pick.title)}">×</button>
+      </span>`
+    )
+    .join("");
+  const ghost =
+    state.tastePicks.length < 3
+      ? `<span class="taste-chip taste-chip--ghost">${state.tastePicks.length ? "Add another (optional)" : "Search and add up to 3"}</span>`
+      : "";
+  elements.tastePicks.innerHTML = chips + ghost;
+
+  elements.tastePicks.querySelectorAll("[data-taste-remove]").forEach((button) => {
+    button.addEventListener("click", () => removeTastePick(button.dataset.tasteRemove));
+  });
+
+  if (elements.tasteGenerate) {
+    elements.tasteGenerate.disabled = state.tastePicks.length === 0;
+    elements.tasteGenerate.textContent = state.tastePicks.length === 0 ? "Add a film to begin" : "Show me recommendations";
+  }
+}
+
+function buildTasteSignal() {
+  const signal = { genres: new Set(), keywords: new Set(), countries: new Set(), directors: new Set(), decades: new Set() };
+  state.tastePicks.forEach((pick) => {
+    (pick.genres || []).forEach((value) => signal.genres.add(value));
+    (pick.keywords || []).forEach((value) => signal.keywords.add(value));
+    if (pick.country) signal.countries.add(pick.country);
+    if (pick.director) signal.directors.add(pick.director);
+    const decade = tasteDecade(pick.year);
+    if (decade) signal.decades.add(decade);
+  });
+  return signal;
+}
+
+function scoreTasteCandidate(film, signal) {
+  const reasons = [];
+  let score = 0;
+  const sharedGenres = (film.genres || []).filter((value) => signal.genres.has(value));
+  if (sharedGenres.length) {
+    score += 3 * sharedGenres.length;
+    reasons.push(...sharedGenres);
+  }
+  const sharedKeywords = (film.themes || []).filter((value) => signal.keywords.has(value));
+  if (sharedKeywords.length) {
+    score += 2 * sharedKeywords.length;
+    reasons.push(...sharedKeywords.slice(0, 2));
+  }
+  const sharedCountry = (film.countries || []).filter((value) => signal.countries.has(value));
+  if (sharedCountry.length) {
+    score += 4;
+    reasons.push(...sharedCountry);
+  }
+  if (film.director && signal.directors.has(film.director)) {
+    score += 8;
+    reasons.push(`dir. ${film.director}`);
+  }
+  const decade = tasteDecade(film.year);
+  if (decade && signal.decades.has(decade)) {
+    score += 2;
+  }
+  return { score, reasons: unique(reasons).slice(0, 4) };
+}
+
+function renderTasteCard(film, reasons) {
+  const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
+  const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
+  const key = cardKey("taste", film.filmId);
+  const expanded = state.session.expandedCardKey === key;
+  const hasDetail = filmHasExpandableDetail(film);
+  const meta = [film.year || "Year unknown", film.director || "Director unknown", ...(film.countries || []).slice(0, 1)]
+    .filter(Boolean)
+    .join(" • ");
+
+  return `
+    <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
+      <div class="poster-block">${renderPosterMarkup(film.title)}</div>
+      <div class="card-body film-card-body">
+        <h3 class="card-title">${escapeHtml(film.title)}</h3>
+        <p class="match-meta">${escapeHtml(meta)}</p>
+        ${reasons.length ? `<p class="discovery-card__rationale">${escapeHtml(reasons.join(" • "))}</p>` : ""}
+        <div class="card-actions film-actions">
+          <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
+            ${isSaved ? "Saved" : "Save"}
+          </button>
+          <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
+            Not for me
+          </button>
+        </div>
+        ${expanded ? renderExpandedPanel(film) : ""}
+        ${
+          hasDetail
+            ? `<div class="browse-card-links">
+          <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
+        </div>`
+            : ""
+        }
+      </div>
+    </article>`;
+}
+
+function renderTasteRecs() {
+  if (!elements.tasteRecs) {
+    return;
+  }
+  if (!state.tasteGenerated || !state.tastePicks.length) {
+    if (elements.tasteRecsHead) elements.tasteRecsHead.textContent = "";
+    elements.tasteRecs.innerHTML = "";
+    return;
+  }
+
+  const signal = buildTasteSignal();
+  const scored = state.internalFilms
+    .filter((film) => !state.userProfile.dislikedFilmIds.includes(film.filmId))
+    .map((film) => ({ film, ...scoreTasteCandidate(film, signal) }))
+    .filter((entry) => entry.score > 0)
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 8);
+
+  if (elements.tasteRecsHead) {
+    elements.tasteRecsHead.textContent = `From your taste — ${scored.length} pick${scored.length === 1 ? "" : "s"} from our collection`;
+  }
+
+  if (!scored.length) {
+    elements.tasteRecs.innerHTML = `<p class="taste-search__muted">Nothing matched those signals yet — try another film.</p>`;
+    return;
+  }
+
+  elements.tasteRecs.innerHTML = scored.map(({ film, reasons }) => renderTasteCard(film, reasons)).join("");
+  bindFilmCardActions(elements.tasteRecs);
+}
+
 function render() {
   renderSelectedSeeds();
   renderSearchResults();
@@ -2260,6 +2724,10 @@ function render() {
   renderSavedSidebar();
   renderRefinePanelState();
   renderCinemaShowtimes();
+  renderTasteSearchResults();
+  renderTastePicks();
+  renderTasteRecs();
+  renderSavedFilmsBottom();
 
   if (isSavedPage) {
     renderSavedFilmsPage();
@@ -2329,6 +2797,20 @@ function attachBaseEventHandlers() {
     handleExternalSearchInput(event.target.value);
   });
 
+  let tasteSearchDebounce;
+  elements.tasteSearchInput?.addEventListener("input", (event) => {
+    const value = event.target.value;
+    state.tasteQuery = value;
+    clearTimeout(tasteSearchDebounce);
+    tasteSearchDebounce = setTimeout(() => runTasteSearch(value), 250);
+  });
+
+  elements.tasteGenerate?.addEventListener("click", () => {
+    state.tasteGenerated = true;
+    renderTasteRecs();
+    elements.tasteRecs?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
   elements.addFirstMatch?.addEventListener("click", () => {
     const firstMatch = state.externalSearchResults[0];
     if (firstMatch) {
@@ -2346,7 +2828,7 @@ function attachBaseEventHandlers() {
   [elements.facetGenres, elements.facetEras, elements.facetCountries, elements.facetColours].forEach((container) => {
     container?.addEventListener("click", (event) => {
       const chip = event.target.closest("[data-facet-kind]");
-      if (!chip) {
+      if (!chip || chip.disabled) {
         return;
       }
       const kind = chip.dataset.facetKind;
@@ -2425,7 +2907,7 @@ async function loadCinemaShowtimes() {
 
 async function loadAppData() {
   try {
-    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse] =
+    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse, anchorsResponse] =
       await Promise.all([
         fetch("./data/curated-films.json"),
         fetch("./data/film-metadata.json"),
@@ -2433,6 +2915,7 @@ async function loadAppData() {
         fetch("./data/tmdb-metadata.json"),
         fetch("./data/availability.json"),
         fetch("./data/sample-movies.json"),
+        fetch("./data/taste-anchor-films.json"),
       ]);
 
     if (!curatedResponse.ok) {
@@ -2445,6 +2928,8 @@ async function loadAppData() {
     state.tmdbMetadataByTitle = tmdbResponse.ok ? await tmdbResponse.json() : {};
     state.availabilityByFilmId = availabilityResponse.ok ? await availabilityResponse.json() : {};
     const sampleMovies = sampleResponse.ok ? await sampleResponse.json() : [];
+    const anchorData = anchorsResponse.ok ? await anchorsResponse.json() : {};
+    state.tasteAnchors = Array.isArray(anchorData.films) ? anchorData.films : [];
 
     const metadataByTitleKey = buildTitleIndex(
       Object.entries(state.metadataByTitle).map(([title, value]) => ({ title, value })),
