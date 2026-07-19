@@ -1249,12 +1249,60 @@ function formatDateKey(date) {
   return `${year}-${month}-${day}`;
 }
 
+function londonNowMinutes() {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/London",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(new Date());
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  const hour = Number(values.hour);
+  const minute = Number(values.minute);
+  if (Number.isNaN(hour) || Number.isNaN(minute)) {
+    return -1;
+  }
+  return hour * 60 + minute;
+}
+
+function showtimeToMinutes(time) {
+  const match = /^(\d{1,2}):(\d{2})$/.exec(String(time || "").trim());
+  if (!match) {
+    return null;
+  }
+  return Number(match[1]) * 60 + Number(match[2]);
+}
+
+// For today's date (Europe/London) drop showtimes that have already passed, and
+// remove films left with no upcoming screenings. Future days are returned as-is.
+// Non-HH:MM times (e.g. "Time TBC") are always kept.
+function filterPastShowtimesForDay(day) {
+  const films = Array.isArray(day?.films) ? day.films : [];
+  if (!day || day.date !== londonTodayDate()) {
+    return films;
+  }
+  const nowMinutes = londonNowMinutes();
+  if (nowMinutes < 0) {
+    return films;
+  }
+  return films
+    .map((film) => {
+      const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
+      const upcoming = showtimes.filter((time) => {
+        const minutes = showtimeToMinutes(time);
+        return minutes === null || minutes >= nowMinutes;
+      });
+      return { ...film, showtimes: upcoming };
+    })
+    .filter((film) => (Array.isArray(film.showtimes) ? film.showtimes.length : 0) > 0);
+}
+
 function allScreenings() {
   const days = Array.isArray(state.cinemaShowtimes.days) ? state.cinemaShowtimes.days : [];
   const today = londonTodayDate();
   return days.flatMap((day) =>
     day.date >= today
-      ? (Array.isArray(day.films) ? day.films : []).flatMap((film) => {
+      ? filterPastShowtimesForDay(day).flatMap((film) => {
           const showtimes = Array.isArray(film.showtimes) && film.showtimes.length ? film.showtimes : [""];
           return showtimes.map((time) => ({
             date: day.date,
@@ -2181,7 +2229,7 @@ function renderShowtimeFilterSelect(element, options, selectedValue, allLabel) {
 }
 
 function getCalendarFilmsForDay(day) {
-  const films = Array.isArray(day?.films) ? day.films : [];
+  const films = filterPastShowtimesForDay(day);
   return films.filter((film) => !state.selectedCinemaShowtimesCinema || film.cinema === state.selectedCinemaShowtimesCinema);
 }
 
