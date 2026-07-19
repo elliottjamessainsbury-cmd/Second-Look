@@ -299,7 +299,6 @@ const elements = {
   directorList: document.querySelector("#director-list"),
   selectedSeeds: document.querySelector("#selected-seeds"),
   discoveryBookmarks: document.querySelector("#discovery-bookmarks"),
-  savedFilmsBottomList: document.querySelector("#saved-films-bottom-list"),
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   resetDirector: document.querySelector("#reset-director"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
@@ -1447,62 +1446,6 @@ function renderRefinePanelState() {
   if (elements.resetDirector) {
     elements.resetDirector.disabled = !signedIn;
   }
-  if (elements.ctaSearch) {
-    elements.ctaSearch.textContent = signedIn ? "Search by film" : "Log in to search";
-  }
-}
-
-function renderSavedFilmsBottom() {
-  if (!elements.savedFilmsBottomList) {
-    return;
-  }
-  const savedFilms = state.userProfile.savedFilmIds
-    .map((filmId) => getInternalFilmById(filmId))
-    .filter(Boolean);
-
-  if (!savedFilms.length) {
-    elements.savedFilmsBottomList.innerHTML = `
-      <div class="empty-state results-grid-span saved-results-empty-state browse-empty-state">
-        <h3>No saved films yet</h3>
-        <p>Save films from your recommendations or the grid above, and they'll gather here for later.</p>
-      </div>`;
-    return;
-  }
-
-  elements.savedFilmsBottomList.innerHTML = savedFilms
-    .map((film) => {
-      const key = cardKey("savedbottom", film.filmId);
-      const expanded = state.session.expandedCardKey === key;
-      const hasDetail = filmHasExpandableDetail(film);
-      const meta = [film.year || "Year unknown", film.director || "Director unknown", ...(film.countries || []).slice(0, 1)]
-        .filter(Boolean)
-        .join(" • ");
-      return `
-        <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
-          <div class="poster-block">${renderPosterMarkup(film.title)}</div>
-          <div class="card-body film-card-body">
-            <h3 class="card-title">${escapeHtml(film.title)}</h3>
-            <p class="match-meta">${escapeHtml(meta)}</p>
-            <div class="card-actions film-actions">
-              <button class="card-link-button discovery-action-button is-active" type="button" data-saved-unsave="${film.filmId}">Remove</button>
-            </div>
-            ${expanded ? renderExpandedPanel(film) : ""}
-            ${
-              hasDetail
-                ? `<div class="browse-card-links">
-              <button class="card-detail-toggle card-detail-toggle--prominent" type="button" data-toggle-card="${key}">${expanded ? "See less" : "See more"}</button>
-            </div>`
-                : ""
-            }
-          </div>
-        </article>`;
-    })
-    .join("");
-
-  elements.savedFilmsBottomList.querySelectorAll("[data-saved-unsave]").forEach((button) => {
-    button.addEventListener("click", () => removeSavedFilm(button.dataset.savedUnsave));
-  });
-  bindFilmCardActions(elements.savedFilmsBottomList);
 }
 
 function providerActionLabel(provider) {
@@ -3542,7 +3485,6 @@ function render() {
   renderTasteSearchResults();
   renderTastePicks();
   renderTasteRecs();
-  renderSavedFilmsBottom();
   renderAccountSurfaces();
 
   if (isSavedPage) {

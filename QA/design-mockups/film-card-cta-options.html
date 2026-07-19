@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Second Look Film Card CTA Options</title>
+    <style>
+      :root {
+        --bg: #e3e2de;
+        --paper: #f5f4f0;
+        --ink: #141414;
+        --text: #444343;
+        --muted: #7a7a7a;
+        --line: #c7c7c7;
+        --accent: #1351aa;
+        --accent-soft: #dbe6f6;
+        --save: #0f4d2c;
+        --save-soft: #dce9df;
+        --save-ink: #0f4d2c;
+        --radius-md: 18px;
+        --radius-pill: 999px;
+        --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --control-height: 46px;
+        --control-height-compact: 38px;
+        --control-padding-x: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--body);
+      }
+
+      main {
+        width: min(1120px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(2.2rem, 6vw, 5rem);
+        line-height: 0.92;
+      }
+
+      .intro {
+        max-width: 680px;
+        margin: 0 0 30px;
+        color: var(--text);
+        font-size: 1.05rem;
+        line-height: 1.5;
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .option-shell {
+        display: grid;
+        gap: 12px;
+      }
+
+      .option-label {
+        margin: 0;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .film-card {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: var(--paper);
+      }
+
+      .poster {
+        aspect-ratio: 4 / 5;
+        display: flex;
+        align-items: flex-end;
+        padding: 18px;
+        background:
+          linear-gradient(145deg, rgba(19, 81, 170, 0.18), rgba(20, 20, 20, 0.05)),
+          #d3d1cb;
+        color: var(--accent);
+        font-family: var(--display);
+        font-size: clamp(3rem, 8vw, 5.4rem);
+        font-weight: 800;
+      }
+
+      .card-body {
+        display: flex;
+        min-height: 292px;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: clamp(1.6rem, 3vw, 2.15rem);
+        line-height: 0.98;
+      }
+
+      .meta {
+        margin: 0;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .rationale {
+        margin: 0;
+        color: var(--text);
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+
+      .actions {
+        margin-top: auto;
+      }
+
+      button {
+        min-height: var(--control-height);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-pill);
+        padding: 0 var(--control-padding-x);
+        font-family: var(--body);
+        font-size: 0.92rem;
+        font-weight: 800;
+        letter-spacing: 0;
+        cursor: default;
+      }
+
+      .primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .secondary {
+        background: #fff;
+        color: var(--accent);
+      }
+
+      .tertiary {
+        border-color: transparent;
+        background: transparent;
+        color: var(--muted);
+      }
+
+      .option-a .actions {
+        display: grid;
+        gap: 8px;
+      }
+
+      .option-a .secondary-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .option-a .primary,
+      .option-a .secondary {
+        width: 100%;
+      }
+
+      .option-a .tertiary {
+        min-width: 112px;
+      }
+
+      .option-b .actions {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .option-b .primary {
+        min-width: 152px;
+      }
+
+      .option-b .secondary,
+      .option-b .tertiary {
+        min-height: var(--control-height-compact);
+        padding: 0 14px;
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 760px) {
+        .options {
+          grid-template-columns: 1fr;
+        }
+
+        .option-b .actions {
+          grid-template-columns: 1fr;
+        }
+
+        .option-b .primary,
+        .option-b .secondary,
+        .option-b .tertiary {
+          width: 100%;
+          min-height: var(--control-height);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Film card CTA options</h1>
+      <p class="intro">Both options make See more the primary action, keep Save as secondary, and reduce Not for me to a quieter tertiary action.</p>
+
+      <section class="options" aria-label="Film card CTA options">
+        <div class="option-shell option-a">
+          <p class="option-label">Option A · stacked hierarchy</p>
+          <article class="film-card">
+            <div class="poster">SL</div>
+            <div class="card-body">
+              <h2 class="card-title">The Long Goodbye</h2>
+              <p class="meta">1973 • Robert Altman</p>
+              <p class="rationale">Loose private-eye drift, hazy city textures, anti-hero wit.</p>
+              <div class="actions">
+                <button class="primary" type="button">See more</button>
+                <div class="secondary-row">
+                  <button class="secondary" type="button">Save</button>
+                  <button class="tertiary" type="button">Not for me</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="option-shell option-b">
+          <p class="option-label">Option B · editorial action bar</p>
+          <article class="film-card">
+            <div class="poster">SL</div>
+            <div class="card-body">
+              <h2 class="card-title">The Long Goodbye</h2>
+              <p class="meta">1973 • Robert Altman</p>
+              <p class="rationale">Loose private-eye drift, hazy city textures, anti-hero wit.</p>
+              <div class="actions">
+                <button class="primary" type="button">See more</button>
+                <button class="secondary" type="button">Save</button>
+                <button class="tertiary" type="button">Not for me</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
