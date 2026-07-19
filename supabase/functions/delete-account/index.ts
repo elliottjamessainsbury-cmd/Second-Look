@@ -36,10 +36,6 @@ Deno.serve(async (req) => {
   }
 
   const userId = data.user.id;
-  await adminClient.from("saved_films").delete().eq("user_id", userId);
-  await adminClient.from("taste_profiles").delete().eq("user_id", userId);
-  await adminClient.from("profiles").delete().eq("id", userId);
-
   const { error: deleteError } = await adminClient.auth.admin.deleteUser(userId);
   if (deleteError) {
     return new Response(JSON.stringify({ error: deleteError.message }), {
@@ -47,6 +43,10 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
+
+  await adminClient.from("saved_films").delete().eq("user_id", userId);
+  await adminClient.from("taste_profiles").delete().eq("user_id", userId);
+  await adminClient.from("profiles").delete().eq("id", userId);
 
   return new Response(JSON.stringify({ ok: true }), {
     headers: { ...corsHeaders, "Content-Type": "application/json" },
