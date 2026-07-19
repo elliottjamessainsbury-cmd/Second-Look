@@ -14,6 +14,11 @@
   </head>
   <body>
     <div class="page-shell">
+      <nav class="app-topbar" aria-label="Account">
+        <a class="privacy-link" href="./privacy.html">Privacy</a>
+        <button id="account-button" class="account-button" type="button">Sign up / log in</button>
+      </nav>
+
       <header class="hero">
         <div class="hero-copy">
           <h1>
@@ -58,7 +63,7 @@
         <section class="recommendations-section results card">
           <div class="results-head" style="display:none">
             <div>
-              <h2 id="results-title">Browse curated films</h2>
+              <h2 id="results-title">Start from a film</h2>
             </div>
             <button id="clear-recommendations" class="text-button" type="button" hidden>
               Reset session
@@ -69,13 +74,13 @@
             <aside class="browse-filters card" id="taste-refine-section" aria-labelledby="browse-filters-title">
               <div class="browse-filters__head">
                 <div>
-                  <p class="eyebrow">Curated taste card</p>
-                  <h3 id="browse-filters-title">Refine your picks</h3>
+                  <p class="eyebrow">Seed films</p>
+                  <h3 id="browse-filters-title">Pick up to three starting points</h3>
                 </div>
-                <button id="reset-filters" class="text-button" type="button">Reset filters</button>
+                <button id="reset-director" class="text-button" type="button">Refresh suggestions</button>
               </div>
               <div class="browse-search">
-                <input id="movie-search" type="text" autocomplete="off" placeholder="Search for a film…" class="browse-search__input" />
+                <input id="movie-search" type="text" autocomplete="off" placeholder="Use a film you love as a starting point…" class="browse-search__input" />
                 <div id="search-results" class="search-results" aria-live="polite"></div>
               </div>
               <p id="browse-summary" class="browse-filters__summary"></p>
@@ -101,9 +106,9 @@
 
             <div class="browse-results">
               <div id="results-grid" class="results-grid browse-results__grid" aria-live="polite"></div>
+              <div id="criterion-section" class="criterion-section"></div>
             </div>
           </div>
-          <div id="criterion-section" class="criterion-section"></div>
         </section>
 
         <section class="calendar-preview-section cinema-showtimes card" id="cinema-showtimes-section" aria-labelledby="cinema-showtimes-title">
@@ -147,6 +152,11 @@
       </main>
     </div>
 
+    <div id="onboarding-overlay" class="onboarding-overlay" hidden></div>
+    <div id="account-overlay" class="account-overlay" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js"></script>
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
     <script src="./app.js?v=56"></script>

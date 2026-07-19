@@ -1,5 +1,9 @@
 const LEGACY_SAVED_FILMS_STORAGE_KEY = "secondlook:savedFilmIds";
 const SESSION_STATE_STORAGE_KEY = "secondlook:sessionState:v2";
+const ONBOARDING_DISMISSED_STORAGE_KEY = "secondlook:onboardingDismissed:v1";
+const LOCAL_IMPORT_DISMISSED_STORAGE_KEY = "secondlook:localImportDismissed:v1";
+const MAX_SEED_COUNT = 3;
+const ACCOUNT_DELETE_FUNCTION_NAME = "delete-account";
 
 const {
   USER_PROFILE_STORAGE_KEY,
@@ -112,11 +116,49 @@ function saveUserProfile() {
   }
 }
 
+function loadLocalUserProfileForImport() {
+  return loadUserProfile();
+}
+
+function storageBoolean(key) {
+  try {
+    return getLocalStorage()?.getItem(key) === "true";
+  } catch (error) {
+    return false;
+  }
+}
+
+function setStorageBoolean(key, value) {
+  try {
+    getLocalStorage()?.setItem(key, value ? "true" : "false");
+  } catch (error) {
+    console.warn(`Failed to persist ${key}.`, error);
+  }
+}
+
+function getSupabaseConfig() {
+  const config = window.SecondLookConfig || window.SECOND_LOOK_CONFIG || {};
+  const supabaseConfig = config.supabase || window.SECOND_LOOK_SUPABASE || {};
+  return {
+    url: supabaseConfig.url || "",
+    anonKey: supabaseConfig.anonKey || supabaseConfig.anon_key || "",
+  };
+}
+
+function createSupabaseClient() {
+  const config = getSupabaseConfig();
+  if (!config.url || !config.anonKey || !window.supabase?.createClient) {
+    return null;
+  }
+
+  return window.supabase.createClient(config.url, config.anonKey);
+}
+
 function baseSessionState() {
   return {
     answers: {},
     seedFilmIds: [],
-    externalSeedTitle: "",
+    externalSeedTitles: [],
     expandedCardKey: "",
     hasGenerated: false,
   };
@@ -131,7 +173,11 @@ function normalizeSessionState(value) {
   return {
     answers: value.answers && typeof value.answers === "object" ? value.answers : {},
     seedFilmIds: Array.isArray(value.seedFilmIds) ? unique(value.seedFilmIds) : [],
-    externalSeedTitle: value.externalSeedTitle ? String(value.externalSeedTitle) : "",
+    externalSeedTitles: Array.isArray(value.externalSeedTitles)
+      ? unique(value.externalSeedTitles.map((title) => String(title || "").trim()).filter(Boolean))
+      : value.externalSeedTitle
+        ? [String(value.externalSeedTitle).trim()]
+        : [],
     expandedCardKey: value.expandedCardKey ? String(value.expandedCardKey) : "",
     hasGenerated: Boolean(value.hasGenerated),
   };
@@ -168,7 +214,7 @@ function saveSessionState() {
       JSON.stringify({
         answers: state.session.answers,
         seedFilmIds: state.session.seedFilmIds,
-        externalSeedTitle: state.session.externalSeed ? state.session.externalSeed.title : "",
+        externalSeedTitles: (state.session.externalSeeds || []).map((seed) => seed.title),
         expandedCardKey: state.session.expandedCardKey,
         hasGenerated: state.session.hasGenerated,
       })
@@ -186,7 +232,9 @@ const state = {
   internalFilmByTitleKey: {},
   externalSeedPool: [],
   metadataByTitle: {},
+  metadataByFilmKey: {},
   tmdbMetadataByTitle: {},
+  tmdbMetadataByFilmKey: {},
   recommendationBlurbsByPairId: {},
   recommendationBlurbsByPairTitle: {},
   availabilityByFilmId: {},
@@ -212,17 +260,37 @@ const state = {
   quickPicks: [],
   recommendations: [],
   resultsMode: "discover",
-  userProfile: loadUserProfile(),
+  userProfile: normalizeUserProfile(createEmptyUserProfile(), []),
+  localUserProfileForImport: loadLocalUserProfileForImport(),
   session: {
     answers: persistedSession.answers,
     seedFilmIds: persistedSession.seedFilmIds,
-    externalSeed: null,
+    externalSeeds: [],
     expandedCardKey: persistedSession.expandedCardKey,
     hasGenerated: persistedSession.hasGenerated,
+  },
+  account: {
+    client: createSupabaseClient(),
+    configured: false,
+    ready: false,
+    loading: true,
+    user: null,
+    profile: null,
+    paneOpen: false,
+    authDialogOpen: false,
+    editDetailsOpen: false,
+    onboardingDismissed: storageBoolean(ONBOARDING_DISMISSED_STORAGE_KEY),
+    localImportDismissed: storageBoolean(LOCAL_IMPORT_DISMISSED_STORAGE_KEY),
+    message: "",
+    error: "",
+    pendingEmail: "",
+    pendingDisplayName: "",
   },
   loading: true,
   error: "",
 };
+
+state.account.configured = Boolean(state.account.client);
 
 const elements = {
   movieSearch: document.querySelector("#movie-search"),
@@ -234,7 +302,6 @@ const elements = {
   savedFilmsBottomList: document.querySelector("#saved-films-bottom-list"),
   tasteRefineSection: document.querySelector("#taste-refine-section"),
   resetDirector: document.querySelector("#reset-director"),
-  resetFilters: document.querySelector("#reset-filters"),
   clearRecommendations: document.querySelector("#clear-recommendations"),
   resultsGrid: document.querySelector("#results-grid"),
   browseSummary: document.querySelector("#browse-summary"),
@@ -262,6 +329,9 @@ const elements = {
   cinemaShowtimesMonth: document.querySelector("#cinema-showtimes-month"),
   cinemaShowtimesToday: document.querySelector("#cinema-showtimes-today"),
   cinemaShowtimesSelection: document.querySelector("#cinema-showtimes-selection"),
+  accountButton: document.querySelector("#account-button"),
+  accountOverlay: document.querySelector("#account-overlay"),
+  onboardingOverlay: document.querySelector("#onboarding-overlay"),
 };
 
 const isSavedPage = Boolean(
@@ -355,12 +425,34 @@ function buildTitleIndex(items, getTitle) {
   }, {});
 }
 
+function filmLookupKey(title, year) {
+  return `${normalize(title)}::${year || ""}`;
+}
+
+function buildFilmValueIndex(records) {
+  return Object.values(records || {}).reduce((output, item) => {
+    if (!item?.title) {
+      return output;
+    }
+    output[filmLookupKey(item.title, item.year)] = item;
+    return output;
+  }, {});
+}
+
 function metadataForTitle(title) {
   if (state.metadataByTitle[title]) {
     return state.metadataByTitle[title];
   }
 
   return state.metadataByTitle[Object.keys(state.metadataByTitle).find((key) => normalize(key) === normalize(title))] || null;
+}
+
+function metadataForFilm(film) {
+  if (!film?.title) {
+    return null;
+  }
+
+  return state.metadataByFilmKey[filmLookupKey(film.title, film.year)] || metadataForTitle(film.title);
 }
 
 function tmdbMetadataForTitle(title) {
@@ -373,6 +465,14 @@ function tmdbMetadataForTitle(title) {
       Object.keys(state.tmdbMetadataByTitle).find((key) => normalize(key) === normalize(title))
     ] || null
   );
+}
+
+function tmdbMetadataForFilm(film) {
+  if (!film?.title) {
+    return null;
+  }
+
+  return state.tmdbMetadataByFilmKey[filmLookupKey(film.title, film.year)] || tmdbMetadataForTitle(film.title);
 }
 
 function defaultRetailerSearchLinks(title) {
@@ -443,8 +543,13 @@ function makeLetterboxdSlug(title) {
   return overrides[normalizedTitle] || normalizedTitle;
 }
 
-function makeLetterboxdUrl(title) {
-  const metadata = metadataForTitle(title);
+function makeLetterboxdUrl(subject) {
+  const film = typeof subject === "string" ? { title: subject } : subject;
+  const title = film?.title || "";
+  if (film?.letterboxdUrl) {
+    return film.letterboxdUrl;
+  }
+  const metadata = typeof subject === "string" ? metadataForTitle(title) : metadataForFilm(film);
   if (metadata?.letterboxd_url) {
     return metadata.letterboxd_url;
   }
@@ -452,13 +557,15 @@ function makeLetterboxdUrl(title) {
   return `https://letterboxd.com/film/${makeLetterboxdSlug(title)}/`;
 }
 
-function makePosterUrl(title) {
-  const metadata = metadataForTitle(title);
+function makePosterUrl(subject) {
+  const film = typeof subject === "string" ? { title: subject } : subject;
+  const title = film?.title || "";
+  const metadata = typeof subject === "string" ? metadataForTitle(title) : metadataForFilm(film);
   if (metadata?.poster_url) {
     return metadata.poster_url;
   }
 
-  const tmdb = tmdbMetadataForTitle(title);
+  const tmdb = typeof subject === "string" ? tmdbMetadataForTitle(title) : tmdbMetadataForFilm(film);
   if (tmdb?.poster_path) {
     return `https://image.tmdb.org/t/p/w342${tmdb.poster_path}`;
   }
@@ -466,8 +573,10 @@ function makePosterUrl(title) {
   return "";
 }
 
-function renderPosterMarkup(title) {
-  const posterUrl = makePosterUrl(title);
+function renderPosterMarkup(subject) {
+  const film = typeof subject === "string" ? { title: subject } : subject;
+  const title = film?.title || "";
+  const posterUrl = makePosterUrl(film);
   if (posterUrl) {
     return `<img class="poster-image" src="${posterUrl}" alt="Poster for ${title}" loading="lazy" />`;
   }
@@ -475,13 +584,15 @@ function renderPosterMarkup(title) {
   return `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
 }
 
-function synopsisForTitle(title) {
-  const metadata = metadataForTitle(title);
+function synopsisForTitle(subject) {
+  const film = typeof subject === "string" ? { title: subject } : subject;
+  const title = film?.title || "";
+  const metadata = typeof subject === "string" ? metadataForTitle(title) : metadataForFilm(film);
   if (metadata?.intro) {
     return metadata.intro;
   }
 
-  const tmdb = tmdbMetadataForTitle(title);
+  const tmdb = typeof subject === "string" ? tmdbMetadataForTitle(title) : tmdbMetadataForFilm(film);
   if (tmdb?.overview) {
     return tmdb.overview;
   }
@@ -587,7 +698,7 @@ function deriveFormats(sample, tmdb) {
   return [];
 }
 
-function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies, availabilityByFilmId) {
+function buildInternalFilms(curated, sampleMovies, availabilityByFilmId) {
   const internalTitleToId = curated.reduce((output, film) => {
     output[normalize(film.title)] = film.film_id;
     return output;
@@ -596,8 +707,8 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
   const sampleByTitle = buildTitleIndex(sampleMovies, (film) => film.title);
 
   return curated.map((curatedFilm) => {
-    const metadata = metadataByTitle[curatedFilm.title] || metadataForTitle(curatedFilm.title) || {};
-    const tmdb = tmdbByTitle[curatedFilm.title] || tmdbMetadataForTitle(curatedFilm.title) || {};
+    const metadata = metadataForFilm(curatedFilm) || {};
+    const tmdb = tmdbMetadataForFilm(curatedFilm) || {};
     const sample = sampleByTitle[normalize(curatedFilm.title)] || {};
     const directRecommendations = unique(
       [...(curatedFilm.manual_links || []), ...(sample.manual_links || []), ...(sample.similar_to || [])]
@@ -620,6 +731,7 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
       filmId: curatedFilm.film_id,
       title: curatedFilm.title,
       year: curatedFilm.year || metadata.year || tmdb.year || null,
+      letterboxdUrl: curatedFilm.letterboxd_url || metadata.letterboxd_url || "",
       director: metadata.director || tmdb.director || sample.director || "",
       countries,
       formats,
@@ -639,9 +751,16 @@ function buildInternalFilms(curated, metadataByTitle, tmdbByTitle, sampleMovies,
   });
 }
 
-function buildExternalSeedPool(tmdbByTitle, internalFilmByTitleKey) {
+function buildExternalSeedPool(tmdbByTitle, internalFilms) {
+  const internalFilmKeys = new Set(
+    (internalFilms || []).map((film) => filmLookupKey(film.title, film.year))
+  );
   return Object.entries(tmdbByTitle)
-    .filter(([title, tmdb]) => tmdb && !internalFilmByTitleKey[normalize(title)])
+    .filter(
+      ([title, tmdb]) =>
+        tmdb &&
+        !internalFilmKeys.has(filmLookupKey(title, tmdb.year))
+    )
     .map(([title, tmdb]) => ({
       source: "tmdb-external",
       title,
@@ -671,15 +790,23 @@ function getSelectedSeedFilms() {
   return state.session.seedFilmIds.map((filmId) => getInternalFilmById(filmId)).filter(Boolean);
 }
 
-function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeed) {
+function getSelectedExternalSeeds() {
+  return Array.isArray(state.session.externalSeeds) ? state.session.externalSeeds.filter(Boolean) : [];
+}
+
+function totalSelectedSeedCount() {
+  return getSelectedSeedFilms().length + getSelectedExternalSeeds().length;
+}
+
+function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeeds) {
   if (scoreData.directSources.length) {
     const title = scoreData.directSources[0];
     return seedFilms.find((film) => normalize(film.title) === normalize(title)) || null;
   }
 
   const allSeeds = [...seedFilms];
-  if (externalSeed) {
-    allSeeds.push(externalSeed);
+  if (Array.isArray(externalSeeds) && externalSeeds.length) {
+    allSeeds.push(...externalSeeds);
   }
 
   let bestSeed = null;
@@ -727,9 +854,193 @@ function explanationForCandidate(candidate, scoreData, bestSeed) {
   return explanation.text;
 }
 
+function isSignedIn() {
+  return Boolean(state.account.user);
+}
+
+function accountDisplayName() {
+  const profileName = state.account.profile?.display_name || "";
+  const userEmail = state.account.user?.email || "";
+  return profileName || userEmail.split("@")[0] || "Account";
+}
+
+function localImportFilmIds() {
+  return unique([
+    ...normalizeUserProfile(state.localUserProfileForImport, []).savedFilmIds,
+    ...loadLegacySavedFilmIds(),
+  ]);
+}
+
+function hasLocalImportAvailable() {
+  if (!isSignedIn() || state.account.localImportDismissed) {
+    return false;
+  }
+
+  return localImportFilmIds().some((filmId) => !state.userProfile.savedFilmIds.includes(filmId));
+}
+
+function promptForAuth(message) {
+  state.account.authDialogOpen = true;
+  state.account.paneOpen = false;
+  state.account.editDetailsOpen = false;
+  state.account.message = message || "Sign up or log in to save films and shape your recommendations.";
+  state.account.error = "";
+  renderAccountSurfaces();
+}
+
+function requireSignedIn(message) {
+  if (isSignedIn()) {
+    return true;
+  }
+
+  promptForAuth(message);
+  return false;
+}
+
+function profileForPersistence() {
+  return normalizeUserProfile(state.userProfile, []);
+}
+
+function profileToDatabasePayload(userProfile) {
+  const normalizedProfile = normalizeUserProfile(userProfile, []);
+  return {
+    liked_film_ids: normalizedProfile.likedFilmIds,
+    disliked_film_ids: normalizedProfile.dislikedFilmIds,
+    mood_affinity: normalizedProfile.moodAffinity,
+    theme_affinity: normalizedProfile.themeAffinity,
+    director_affinity: normalizedProfile.directorAffinity,
+  };
+}
+
+function databasePayloadToProfile(payload, savedFilmIds) {
+  return normalizeUserProfile(
+    {
+      likedFilmIds: payload?.liked_film_ids || [],
+      dislikedFilmIds: payload?.disliked_film_ids || [],
+      savedFilmIds,
+      moodAffinity: payload?.mood_affinity || {},
+      themeAffinity: payload?.theme_affinity || {},
+      directorAffinity: payload?.director_affinity || {},
+    },
+    []
+  );
+}
+
+function showAccountMessage(message) {
+  state.account.message = message;
+  state.account.error = "";
+  renderAccountSurfaces();
+}
+
+function showAccountError(message) {
+  state.account.error = message;
+  renderAccountSurfaces();
+}
+
+async function fetchRemoteUserProfile() {
+  if (!state.account.client || !state.account.user) {
+    state.userProfile = normalizeUserProfile(createEmptyUserProfile(), []);
+    state.account.profile = null;
+    return;
+  }
+
+  const user = state.account.user;
+  const client = state.account.client;
+  const email = user.email || "";
+
+  const { data: profile, error: profileError } = await client
+    .from("profiles")
+    .upsert({ id: user.id, email }, { onConflict: "id" })
+    .select("id,email,display_name")
+    .single();
+
+  if (profileError) {
+    throw profileError;
+  }
+
+  const [{ data: savedRows, error: savedError }, { data: tasteRows, error: tasteError }] = await Promise.all([
+    client.from("saved_films").select("film_id").eq("user_id", user.id).order("saved_at", { ascending: false }),
+    client.from("taste_profiles").select("*").eq("user_id", user.id).maybeSingle(),
+  ]);
+
+  if (savedError) {
+    throw savedError;
+  }
+  if (tasteError) {
+    throw tasteError;
+  }
+
+  state.account.profile = profile || { id: user.id, email, display_name: "" };
+  state.account.pendingDisplayName = state.account.profile.display_name || accountDisplayName();
+  state.userProfile = databasePayloadToProfile(tasteRows || {}, (savedRows || []).map((row) => row.film_id));
+}
+
+async function persistRemoteUserProfile() {
+  if (!state.account.client || !state.account.user) {
+    return;
+  }
+
+  const client = state.account.client;
+  const userId = state.account.user.id;
+  const userProfile = profileForPersistence();
+  const savedFilmIds = new Set(userProfile.savedFilmIds);
+
+  const { data: existingRows, error: fetchError } = await client
+    .from("saved_films")
+    .select("film_id")
+    .eq("user_id", userId);
+
+  if (fetchError) {
+    throw fetchError;
+  }
+
+  const existingIds = new Set((existingRows || []).map((row) => row.film_id));
+  const inserts = [...savedFilmIds]
+    .filter((filmId) => !existingIds.has(filmId))
+    .map((filmId) => ({ user_id: userId, film_id: filmId }));
+  const removals = [...existingIds].filter((filmId) => !savedFilmIds.has(filmId));
+
+  if (inserts.length) {
+    const { error } = await client.from("saved_films").upsert(inserts, { onConflict: "user_id,film_id" });
+    if (error) {
+      throw error;
+    }
+  }
+
+  if (removals.length) {
+    const { error } = await client.from("saved_films").delete().eq("user_id", userId).in("film_id", removals);
+    if (error) {
+      throw error;
+    }
+  }
+
+  const { error: tasteError } = await client.from("taste_profiles").upsert({
+    user_id: userId,
+    ...profileToDatabasePayload(userProfile),
+    updated_at: new Date().toISOString(),
+  });
+
+  if (tasteError) {
+    throw tasteError;
+  }
+}
+
+async function saveAccountUserProfile() {
+  if (!isSignedIn()) {
+    return;
+  }
+
+  try {
+    await persistRemoteUserProfile();
+  } catch (error) {
+    console.warn("Failed to save account profile.", error);
+    showAccountError("We couldn't save that account change. Please try again.");
+  }
+}
+
 function generateRecommendations() {
   const seedFilms = getSelectedSeedFilms();
-  const externalSeed = state.session.externalSeed;
+  const externalSeeds = getSelectedExternalSeeds();
   const signalFilmIds = new Set(seedFilms.map((film) => film.filmId));
   const profileFilms = unique([...state.userProfile.savedFilmIds, ...state.userProfile.likedFilmIds])
     .filter((filmId) => !signalFilmIds.has(filmId))
@@ -739,7 +1050,7 @@ function generateRecommendations() {
   const seedProfile = buildSeedProfile({
     questionnaireAnswers: state.session.answers,
     seedFilms,
-    externalSeed,
+    externalSeeds,
     userProfile: state.userProfile,
     profileFilms,
     dislikedFilms,
@@ -756,7 +1067,7 @@ function generateRecommendations() {
     .filter((film) => !excludedIds.has(film.filmId))
     .map((film) => {
       const scoreData = scoreCandidate(film, seedProfile, state.userProfile);
-      const bestSeed = bestSeedForCandidate(film, scoreData, seedFilms, externalSeed);
+      const bestSeed = bestSeedForCandidate(film, scoreData, seedFilms, externalSeeds);
       return {
         film,
         scoreData,
@@ -775,7 +1086,7 @@ function generateRecommendations() {
 function canGenerateRecommendations() {
   return Boolean(
     state.session.seedFilmIds.length ||
-      state.session.externalSeed ||
+      getSelectedExternalSeeds().length ||
       isQuizComplete() ||
       state.userProfile.savedFilmIds.length ||
       state.userProfile.likedFilmIds.length
@@ -793,34 +1104,74 @@ function regenerateIfActive() {
 }
 
 function toggleSeedFilm(filmId) {
+  if (!requireSignedIn("Log in to search from films you love and build recommendations around your taste.")) {
+    return;
+  }
+
   state.resultsMode = "discover";
   if (state.session.seedFilmIds.includes(filmId)) {
     state.session.seedFilmIds = state.session.seedFilmIds.filter((id) => id !== filmId);
-  } else {
-    state.session.seedFilmIds = [...state.session.seedFilmIds, filmId].slice(0, 3);
+  } else if (totalSelectedSeedCount() < MAX_SEED_COUNT) {
+    state.session.seedFilmIds = [...state.session.seedFilmIds, filmId];
   }
 
   saveSessionState();
   regenerateIfActive();
 }
 
-function setExternalSeed(seed) {
-  state.session.externalSeed = seed;
-  state.query = seed ? seed.title : "";
+function addExternalSeed(seed) {
+  if (!requireSignedIn("Log in to search from films you love and build recommendations around your taste.")) {
+    return;
+  }
+
+  if (!seed) {
+    return;
+  }
+
+  const existing = getSelectedExternalSeeds();
+  if (existing.some((item) => normalize(item.title) === normalize(seed.title))) {
+    return;
+  }
+  if (totalSelectedSeedCount() >= MAX_SEED_COUNT) {
+    return;
+  }
+
+  state.session.externalSeeds = [...existing, seed];
+  state.query = "";
   state.externalSearchResults = [];
   if (elements.movieSearch) {
-    elements.movieSearch.value = seed ? seed.title : "";
+    elements.movieSearch.value = "";
+    elements.movieSearch.focus();
   }
   saveSessionState();
   regenerateIfActive();
 }
 
-function clearSessionAndReturnToOnboarding() {
+function removeExternalSeed(title) {
+  if (!requireSignedIn("Log in to change your recommendation seeds.")) {
+    return;
+  }
+
+  state.session.externalSeeds = getSelectedExternalSeeds().filter(
+    (seed) => normalize(seed.title) !== normalize(title)
+  );
+  if (!state.session.externalSeeds.length && !elements.movieSearch?.value) {
+    state.query = "";
+  }
+  saveSessionState();
+  regenerateIfActive();
+}
+
+function clearSessionAndReturnToSetup() {
+  if (!requireSignedIn("Log in to reset and reshape your recommendation session.")) {
+    return;
+  }
+
   state.resultsMode = "discover";
   state.session = {
     answers: {},
     seedFilmIds: [],
-    externalSeed: null,
+    externalSeeds: [],
     expandedCardKey: "",
     hasGenerated: false,
   };
@@ -835,12 +1186,24 @@ function clearSessionAndReturnToOnboarding() {
 }
 
 function handleQuizAnswer(questionId, answerId) {
+  if (!requireSignedIn("Log in to save taste answers and improve your recommendations.")) {
+    return;
+  }
+
   state.session.answers[questionId] = answerId;
   saveSessionState();
   regenerateIfActive();
 }
 
-function handleFilmInteraction(filmId, actionType) {
+async function handleFilmInteraction(filmId, actionType) {
+  if (actionType === "outbound_click" && !isSignedIn()) {
+    return;
+  }
+
+  if (!requireSignedIn("Log in to save films, dismiss misses, and shape your recommendations.")) {
+    return;
+  }
+
   const film = getInternalFilmById(filmId);
   if (!film) {
     return;
@@ -852,18 +1215,22 @@ function handleFilmInteraction(filmId, actionType) {
     filmData: film,
     userProfile: state.userProfile,
   });
-  saveUserProfile();
+  await saveAccountUserProfile();
   regenerateIfActive();
 }
 
-function removeSavedFilm(filmId) {
+async function removeSavedFilm(filmId) {
+  if (!requireSignedIn("Log in to manage your saved films.")) {
+    return;
+  }
+
   state.userProfile = updateUserProfileFromInteraction({
     filmId,
     actionType: "unsave",
     filmData: getInternalFilmById(filmId),
     userProfile: state.userProfile,
   });
-  saveUserProfile();
+  await saveAccountUserProfile();
   render();
 }
 
@@ -888,27 +1255,30 @@ function renderSelectedSeeds() {
   }
 
   const selectedSeeds = getSelectedSeedFilms();
+  const selectedExternalSeeds = getSelectedExternalSeeds();
+  const signedIn = isSignedIn();
   const selectedIds = new Set(selectedSeeds.map((film) => film.filmId));
+  const selectedExternalTitles = new Set(selectedExternalSeeds.map((film) => normalize(film.title)));
   const chips = selectedSeeds.map(
     (film) => `
-      <button class="selected-seed-chip" type="button" data-remove-seed="${film.filmId}">
+      <button class="selected-seed-chip" type="button" data-remove-seed="${film.filmId}" ${signedIn ? "" : "disabled"}>
         ${film.title}
       </button>
     `
   );
 
-  if (state.session.externalSeed) {
+  selectedExternalSeeds.forEach((seed) => {
     chips.push(
-      `<button class="selected-seed-chip selected-seed-chip-secondary" type="button" data-clear-external>${state.session.externalSeed.title}</button>`
+      `<button class="selected-seed-chip selected-seed-chip-secondary" type="button" data-remove-external-seed="${encodeURIComponent(seed.title)}" ${signedIn ? "" : "disabled"}>${seed.title}</button>`
     );
-  }
+  });
 
   const suggestedChips = state.quickPicks
     .filter((film) => !selectedIds.has(film.filmId))
-    .slice(0, chips.length ? 3 : 5)
+    .slice(0, totalSelectedSeedCount() ? 3 : 5)
     .map(
       (film) => `
-        <button class="selected-seed-chip selected-seed-chip-suggestion" type="button" data-summary-quick-pick="${film.filmId}">
+        <button class="selected-seed-chip selected-seed-chip-suggestion" type="button" data-summary-quick-pick="${film.filmId}" ${signedIn ? "" : "disabled"}>
           ${film.title}
         </button>
       `
@@ -918,8 +1288,8 @@ function renderSelectedSeeds() {
     <div class="selected-seed-list">${[...chips, ...suggestedChips].join("")}</div>
     ${
       chips.length
-        ? ""
-        : `<p class="selected-seed-empty">Choose a suggested film, or pick from the guided set below.</p>`
+        ? `<p class="selected-seed-empty">Selected ${chips.length} of ${MAX_SEED_COUNT} seeds. External search only informs taste; recommendations still come from the curated catalogue.</p>`
+        : `<p class="selected-seed-empty">${signedIn ? "Choose a suggested film, or search for an external starting point." : "Log in to search, save, or shape recommendations. The page stays browseable until then."}</p>`
     }
   `;
 
@@ -931,9 +1301,21 @@ function renderSelectedSeeds() {
     button.addEventListener("click", () => toggleSeedFilm(button.dataset.summaryQuickPick));
   });
 
-  elements.selectedSeeds.querySelector("[data-clear-external]")?.addEventListener("click", () => {
-    setExternalSeed(null);
+  elements.selectedSeeds.querySelectorAll("[data-remove-external-seed]").forEach((button) => {
+    button.addEventListener("click", () => {
+      removeExternalSeed(decodeURIComponent(button.dataset.removeExternalSeed));
+    });
   });
+
+  if (elements.browseSummary) {
+    const selectedCount = chips.length;
+    const remaining = Math.max(0, MAX_SEED_COUNT - selectedCount);
+    elements.browseSummary.textContent = selectedCount
+      ? `${selectedCount} seed${selectedCount === 1 ? "" : "s"} selected. You can add ${remaining} more.`
+      : signedIn
+        ? "Search for up to three films. Those titles are used as taste input only; recommendations stay inside the curated catalogue."
+        : "Browse freely, then log in when you want to search, save, or build a personal recommendation profile.";
+  }
 }
 
 function renderSearchResults() {
@@ -949,12 +1331,16 @@ function renderSearchResults() {
   if (!state.externalSearchResults.length) {
     elements.searchResults.innerHTML = `
       <div class="empty-state search-empty-state">
-        <h3>No external film in the local cache yet</h3>
-        <p>Try another title, or use one of the curated starting films below.</p>
+        <h3>No search match yet</h3>
+        <p>Try another title, or use one of the suggested starting films below.</p>
       </div>
     `;
     return;
   }
+
+  const selectedExternalTitles = new Set(getSelectedExternalSeeds().map((seed) => normalize(seed.title)));
+  const seedsAtCapacity = totalSelectedSeedCount() >= MAX_SEED_COUNT;
+  const signedIn = isSignedIn();
 
   elements.searchResults.innerHTML = state.externalSearchResults
     .map(
@@ -964,7 +1350,21 @@ function renderSearchResults() {
             <strong>${seed.title}</strong>
             <div class="match-meta">${[seed.year || "Year unknown", seed.director || "Director unknown"].join(" • ")}</div>
           </div>
-          <button type="button" data-external-seed="${encodeURIComponent(seed.title)}">Use film</button>
+          <button
+            type="button"
+            data-external-seed="${encodeURIComponent(seed.title)}"
+            ${!signedIn || selectedExternalTitles.has(normalize(seed.title)) || seedsAtCapacity ? "disabled" : ""}
+          >
+            ${
+              !signedIn
+                ? "Log in"
+                : selectedExternalTitles.has(normalize(seed.title))
+                ? "Selected"
+                : seedsAtCapacity
+                  ? "Max 3 seeds"
+                  : "Use film"
+            }
+          </button>
         </div>
       `
     )
@@ -975,7 +1375,7 @@ function renderSearchResults() {
       const title = decodeURIComponent(button.dataset.externalSeed);
       const seed = state.externalSeedPool.find((item) => normalize(item.title) === normalize(title));
       if (seed) {
-        setExternalSeed(seed);
+        addExternalSeed(seed);
       }
       render();
     });
@@ -994,6 +1394,7 @@ function renderQuickPicks() {
           class="director-pill ${state.session.seedFilmIds.includes(film.filmId) ? "active" : ""}"
           type="button"
           data-quick-pick="${film.filmId}"
+          ${isSignedIn() ? "" : "disabled"}
         >
           ${film.title}
         </button>
@@ -1014,12 +1415,21 @@ function renderSavedSidebar() {
   const savedCount = state.userProfile.savedFilmIds.length;
   elements.discoveryBookmarks.innerHTML = `
     <button class="card-link-button saved-sidebar-button ${state.resultsMode === "saved" ? "is-active" : ""}" type="button" data-open-saved>
-      ${savedCount ? `Saved films (${savedCount})` : "Saved films"}
+      ${isSignedIn() && savedCount ? `Saved films (${savedCount})` : "Saved films"}
     </button>
-    <p class="saved-sidebar-summary">${savedCount ? `${savedCount} saved so far.` : "Nothing saved yet."}</p>
+    <p class="saved-sidebar-summary">${
+      isSignedIn()
+        ? savedCount
+          ? `${savedCount} saved so far.`
+          : "Nothing saved yet."
+        : "Log in to save films to your account."
+    }</p>
   `;
 
   elements.discoveryBookmarks.querySelector("[data-open-saved]")?.addEventListener("click", () => {
+    if (!requireSignedIn("Log in to see saved films.")) {
+      return;
+    }
     state.resultsMode = "saved";
     state.session.expandedCardKey = "";
     render();
@@ -1027,7 +1437,19 @@ function renderSavedSidebar() {
 }
 
 function renderRefinePanelState() {
-  // Refine panel is always visible; retain method for render() call sites.
+  const signedIn = isSignedIn();
+  if (elements.movieSearch) {
+    elements.movieSearch.disabled = !signedIn;
+    elements.movieSearch.placeholder = signedIn
+      ? "Use a film you love as a starting point…"
+      : "Log in to search from films you love…";
+  }
+  if (elements.resetDirector) {
+    elements.resetDirector.disabled = !signedIn;
+  }
+  if (elements.ctaSearch) {
+    elements.ctaSearch.textContent = signedIn ? "Search by film" : "Log in to search";
+  }
 }
 
 function renderSavedFilmsBottom() {
@@ -1130,7 +1552,7 @@ function renderAvailabilityPanel(film) {
           <span class="availability-label">Streaming</span>
           <div class="availability-links">
             ${streamingProviders
-              .map((provider) => renderLink(watchUrl || makeLetterboxdUrl(film.title), providerActionLabel(provider), film.filmId, "streaming"))
+              .map((provider) => renderLink(watchUrl || makeLetterboxdUrl(film), providerActionLabel(provider), film.filmId, "streaming"))
               .join("")}
           </div>
         </div>
@@ -1173,7 +1595,7 @@ function renderAvailabilityPanel(film) {
 }
 
 function renderExpandedPanel(film, explanation) {
-  const metadata = metadataForTitle(film.title);
+  const metadata = metadataForFilm(film);
   const letterboxdAverage = metadata?.average_rating ? String(metadata.average_rating) : "";
   const ratingMarkup = letterboxdAverage
     ? `
@@ -1568,6 +1990,8 @@ function renderBrowseGridCards() {
 }
 
 function renderRecommendationCards(items) {
+  const signedIn = isSignedIn();
+
   return (items || state.recommendations)
     .map((item) => {
       const film = item.film;
@@ -1579,7 +2003,7 @@ function renderRecommendationCards(items) {
       return `
         <article class="result-card film-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
-            ${renderPosterMarkup(film.title)}
+            ${renderPosterMarkup(film)}
           </div>
           <div class="card-body film-card-body">
             <h3 class="card-title">${film.title}</h3>
@@ -1591,10 +2015,10 @@ function renderRecommendationCards(items) {
             }
             <div class="card-actions film-actions">
               <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
-                ${isSaved ? "Saved" : "Save"}
+                ${signedIn ? (isSaved ? "Saved" : "Save") : "Log in to save"}
               </button>
               <button class="card-link-button card-link-button-tertiary discovery-dismiss-button ${isDismissed ? "is-active" : ""}" type="button" data-dismiss-film="${film.filmId}">
-                ${isDismissed ? "Not for me" : "Not for me"}
+                ${signedIn ? "Not for me" : "Log in"}
               </button>
             </div>
             ${renderScreeningPreview(film)}
@@ -1696,110 +2120,60 @@ function initTasteCardSwap() {
   swapRoot.querySelector("[data-swap-next]")?.addEventListener("click", advanceCard);
 }
 
-function renderOnboarding() {
+function renderRecommendationSetup() {
   if (!elements.resultsGrid || !elements.resultsTitle || !elements.clearRecommendations) {
     return;
   }
 
-  const unansweredQuestions = tasteQuizQuestions.filter((question) => !state.session.answers[question.id]);
-
   elements.clearRecommendations.hidden = true;
-  elements.resultsTitle.textContent = "Curated taste onboarding";
+  elements.resultsTitle.textContent = "Start from a film";
   elements.resultsGrid.innerHTML = `
-    <section class="results-grid-span taste-quiz-shell">
-      <div class="taste-quiz-intro">
-        <p class="eyebrow">Onboarding</p>
-        <h3>Start with your taste, not a catalogue search</h3>
-        <p class="results-subtitle">Pick up to three curated films from the left and answer the quick taste questions. Recommendations will always stay within our curated picks.</p>
-      </div>
-      <div class="taste-card-swap-layout">
-        <div class="taste-card-swap-copy">
-          <p class="eyebrow">Card stack</p>
-          <h4>Answer one card at a time.</h4>
-          <p>Pick an option and that card leaves the deck. Use next card if you want to answer them in a different order.</p>
-        </div>
-        <div class="taste-card-swap" data-taste-card-swap>
-          <div class="taste-card-swap-stage">
-            ${
-              unansweredQuestions.length
-                ? unansweredQuestions
-                    .map((question) => {
-                      return `
-                        <section class="taste-quiz-question taste-swap-card" data-swap-card>
-                          <div class="taste-quiz-question__head">
-                            <span class="taste-quiz-question__count">${question.id.toUpperCase()}</span>
-                            <h4>${question.prompt}</h4>
-                          </div>
-                          <div class="taste-quiz-answers">
-                            ${question.answers
-                              .map(
-                                (answer) => `
-                                  <button
-                                    class="taste-quiz-answer"
-                                    type="button"
-                                    data-quiz-answer="${question.id}::${answer.id}"
-                                  >
-                                    ${answer.label}
-                                  </button>
-                                `
-                              )
-                              .join("")}
-                          </div>
-                        </section>
-                      `;
-                    })
-                    .join("")
-                : `
-                  <section class="taste-quiz-question taste-swap-card is-active taste-swap-card-complete">
-                    <div class="taste-quiz-question__head">
-                      <span class="taste-quiz-question__count">DONE</span>
-                      <h4>Your taste cards are complete.</h4>
-                    </div>
-                    <p class="taste-card-swap-note">You can generate recommendations now, or add curated films from the list first.</p>
-                  </section>
-                `
-            }
-          </div>
-          ${
-            unansweredQuestions.length > 1
-              ? `
-                <div class="taste-card-swap-controls">
-                  <button class="card-link-button" type="button" data-swap-next>Next card</button>
-                </div>
-              `
-              : ""
-          }
-        </div>
-      </div>
-      <div class="taste-quiz-footer">
-        <p class="taste-quiz-footer__copy">${state.session.seedFilmIds.length} curated films • ${answerCount()} of ${tasteQuizQuestions.length} answers</p>
-        <button
-          id="taste-quiz-submit"
-          class="ghost-button taste-quiz-submit"
-          type="button"
-          ${canGenerateRecommendations() ? "" : "disabled"}
-        >
-          Show me films
-        </button>
-      </div>
+    <section class="results-grid-span recommendation-empty-shell">
+      <p class="eyebrow">Recommendations</p>
+      <h3>Start with a film you love.</h3>
+      <p class="results-subtitle">Use the search panel to pick up to three starting points. The separate taste-input flow is paused while we decide the right UX.</p>
     </section>
   `;
   elements.criterionSection.innerHTML = "";
+}
 
-  elements.resultsGrid.querySelectorAll("[data-quiz-answer]").forEach((button) => {
+function renderAnonymousPreview() {
+  if (!elements.resultsGrid || !elements.resultsTitle || !elements.clearRecommendations || isSavedPage) {
+    return;
+  }
+
+  const previewFilms = (state.quickPicks.length ? state.quickPicks : state.internalFilms).slice(0, 8);
+  const previewItems = previewFilms.map((film) => ({
+    film,
+    explanation: "A hand-picked Second Look catalogue title to browse before you make an account.",
+  }));
+
+  elements.clearRecommendations.hidden = true;
+  elements.resultsTitle.textContent = "Browse before you join";
+  elements.resultsGrid.innerHTML = previewItems.length
+    ? renderRecommendationCards(previewItems)
+    : `
+      <div class="empty-state results-grid-span recommendations-empty-state">
+        <h3>Loading the catalogue</h3>
+        <p>Curated films will appear here as soon as the dataset is ready.</p>
+      </div>
+    `;
+  elements.criterionSection.innerHTML = "";
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
     button.addEventListener("click", () => {
-      const [questionId, answerId] = button.dataset.quizAnswer.split("::");
-      tasteCardSwapIndex = 0;
-      handleQuizAnswer(questionId, answerId);
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderAnonymousPreview();
     });
   });
 
-  elements.resultsGrid.querySelector("#taste-quiz-submit")?.addEventListener("click", () => {
-    generateRecommendations();
-    render();
+  elements.resultsGrid.querySelectorAll("[data-save-film], [data-dismiss-film]").forEach((button) => {
+    button.addEventListener("click", () => {
+      promptForAuth("Log in to save films and make Second Look learn what lands for you.");
+    });
   });
-
-  initTasteCardSwap();
 }
 
 function renderRecommendations() {
@@ -1807,10 +2181,53 @@ function renderRecommendations() {
     return;
   }
 
+  if (!isSignedIn()) {
+    renderAnonymousPreview();
+    return;
+  }
+
+  if (!canGenerateRecommendations()) {
+    renderRecommendationSetup();
+    return;
+  }
+
   elements.clearRecommendations.hidden = true;
-  elements.resultsTitle.textContent = "Browse curated films";
-  elements.resultsGrid.innerHTML = renderBrowseGridCards();
-  renderAlgorithmRecommendationCard();
+  elements.resultsTitle.textContent = state.recommendations.length
+    ? "Recommended from your taste"
+    : "Recommendations";
+
+  if (!state.recommendations.length) {
+    elements.resultsGrid.innerHTML = `
+      <div class="empty-state results-grid-span recommendations-empty-state">
+        <h3>No recommendations yet</h3>
+        <p>Add one to three seed films or answer a few taste questions to generate recommendations.</p>
+      </div>
+    `;
+    elements.criterionSection.innerHTML = "";
+    return;
+  }
+
+  elements.resultsGrid.innerHTML = renderRecommendationCards(state.recommendations);
+  elements.criterionSection.innerHTML = `
+    <section class="discovery-shell">
+      <div class="discovery-shell__head">
+        <div>
+          <p class="eyebrow">Why this section exists</p>
+          <h3>Recommendations first, actions second</h3>
+        </div>
+        <p class="discovery-shell__summary">These cards are driven by your seed films, saved titles, dismissals, and taste answers. The cinema calendar remains a separate section below so it can work as a distinct action layer.</p>
+      </div>
+    </section>
+  `;
+
+  elements.resultsGrid.querySelectorAll("[data-toggle-card]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const key = button.dataset.toggleCard;
+      state.session.expandedCardKey = state.session.expandedCardKey === key ? "" : key;
+      saveSessionState();
+      renderRecommendations();
+    });
+  });
 
   elements.resultsGrid.querySelectorAll("[data-save-film]").forEach((button) => {
     button.addEventListener("click", () => handleFilmInteraction(button.dataset.saveFilm, "save"));
@@ -1890,7 +2307,7 @@ function renderSavedResults() {
       return `
         <article class="result-card ${expanded ? "result-card-expanded" : ""}">
           <div class="poster-block">
-            ${renderPosterMarkup(film.title)}
+            ${renderPosterMarkup(film)}
           </div>
           <div class="card-body">
             <h3 class="card-title">${film.title}</h3>
@@ -1905,7 +2322,7 @@ function renderSavedResults() {
               <button class="card-link-button discovery-action-button is-active" type="button" data-saved-unsave="${film.filmId}">
                 Remove
               </button>
-              <a class="card-link-button card-link-button-secondary" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
+              <a class="card-link-button card-link-button-secondary" href="${makeLetterboxdUrl(film)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
                 See Letterboxd reviews
               </a>
               <button class="card-link-button card-link-button-tertiary" type="button" data-toggle-saved-card="${key}">
@@ -1942,6 +2359,20 @@ function renderSavedResults() {
 
 function renderSavedFilmsPage() {
   if (!elements.savedFilmsList) {
+    return;
+  }
+
+  if (!isSignedIn()) {
+    elements.savedFilmsList.innerHTML = `
+      <div class="empty-state saved-films-empty-state">
+        <h3>Log in to see saved films</h3>
+        <p>Saved films now live in your account so they can follow you between browsers.</p>
+        <button class="card-link-button saved-films-empty-state__link" type="button" data-open-auth>Sign up / log in</button>
+      </div>
+    `;
+    elements.savedFilmsList.querySelector("[data-open-auth]")?.addEventListener("click", () => {
+      promptForAuth("Log in to view your saved films.");
+    });
     return;
   }
 
@@ -2005,13 +2436,13 @@ function renderSavedFilmsPage() {
                   ? `
                     <div class="saved-film-row__detail">
                       <div class="poster-block">
-                        ${renderPosterMarkup(film.title)}
+                        ${renderPosterMarkup(film)}
                       </div>
                       <div class="card-body">
                         <h3 class="card-title">${film.title}</h3>
                         ${renderExpandedPanel(film, "You saved this film as part of your evolving taste profile.")}
                         <div class="card-actions">
-                          <a class="card-link-button" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
+                          <a class="card-link-button" href="${makeLetterboxdUrl(film)}" target="_blank" rel="noreferrer">See Letterboxd reviews</a>
                         </div>
                       </div>
                     </div>
@@ -2344,10 +2775,6 @@ function renderCinemaShowtimes() {
     .map((day) => {
       const films = getCalendarFilmsForDay(day);
       const filmCount = films.length;
-      const screeningCount = films.reduce((count, film) => {
-        const showtimes = Array.isArray(film.showtimes) ? film.showtimes : [];
-        return count + Math.max(showtimes.length, 1);
-      }, 0);
       return `
         <article class="cinema-week-day ${day.date === selectedDate ? "is-active" : ""}">
           <button class="cinema-week-day__button" type="button" data-cinema-date="${escapeHtml(day.date)}" aria-pressed="${day.date === selectedDate ? "true" : "false"}">
@@ -2355,7 +2782,6 @@ function renderCinemaShowtimes() {
             <span class="cinema-week-day__number">${escapeHtml(formatShowtimesDayNumber(day.date))}</span>
             <span class="cinema-week-day__month">${escapeHtml(formatShowtimesMonthLabel(day.date))}</span>
             <span class="cinema-week-day__count">${filmCount} film${filmCount === 1 ? "" : "s"}</span>
-            <span class="cinema-week-day__summary">${screeningCount} screening${screeningCount === 1 ? "" : "s"}</span>
           </button>
         </article>
       `;
@@ -2717,6 +3143,395 @@ function renderTasteRecs() {
   bindFilmCardActions(elements.tasteRecs);
 }
 
+function renderWelcomeOverlay() {
+  if (!elements.onboardingOverlay) {
+    return;
+  }
+
+  const shouldShow = !isSignedIn() && !state.account.onboardingDismissed && !state.account.authDialogOpen;
+  elements.onboardingOverlay.hidden = !shouldShow;
+  if (!shouldShow) {
+    elements.onboardingOverlay.innerHTML = "";
+    return;
+  }
+
+  elements.onboardingOverlay.innerHTML = `
+    <div class="onboarding-backdrop" data-close-onboarding></div>
+    <section class="onboarding-dialog" role="dialog" aria-modal="true" aria-labelledby="onboarding-title">
+      <button class="overlay-close-button" type="button" aria-label="Close onboarding" data-close-onboarding>&times;</button>
+      <p class="eyebrow">Second Look</p>
+      <h2 id="onboarding-title">Stop watching slop.</h2>
+      <p>Start watching better movies based on what you love, and find the best rare, rerelease, and unusual films showing in London's cinemas off the beaten track.</p>
+      <div class="onboarding-actions">
+        <button class="ghost-button" type="button" data-open-auth>Sign up / log in</button>
+        <button class="text-button" type="button" data-close-onboarding>Browse first</button>
+      </div>
+    </section>
+  `;
+
+  elements.onboardingOverlay.querySelectorAll("[data-close-onboarding]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.account.onboardingDismissed = true;
+      setStorageBoolean(ONBOARDING_DISMISSED_STORAGE_KEY, true);
+      renderAccountSurfaces();
+    });
+  });
+
+  elements.onboardingOverlay.querySelector("[data-open-auth]")?.addEventListener("click", () => {
+    state.account.onboardingDismissed = true;
+    setStorageBoolean(ONBOARDING_DISMISSED_STORAGE_KEY, true);
+    promptForAuth("Enter your email and we'll send a magic link. No password, no 2FA.");
+  });
+}
+
+function accountNoticeMarkup() {
+  if (state.account.error) {
+    return `<p class="account-notice account-notice-error">${escapeHtml(state.account.error)}</p>`;
+  }
+  if (state.account.message) {
+    return `<p class="account-notice">${escapeHtml(state.account.message)}</p>`;
+  }
+  return "";
+}
+
+function renderAuthDialog() {
+  const configuredMarkup = state.account.configured
+    ? `
+      <form class="account-form" data-auth-form>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required value="${escapeHtml(state.account.pendingEmail)}" placeholder="you@example.com" />
+        </label>
+        <button class="ghost-button" type="submit">Send magic link</button>
+      </form>
+    `
+    : `
+      <div class="account-setup-note">
+        <h3>Supabase is not configured yet</h3>
+        <p>Add your project URL and anon key in <code>config.js</code>, then run the SQL in <code>supabase/schema.sql</code>.</p>
+      </div>
+    `;
+
+  return `
+    <div class="account-modal-backdrop" data-close-account></div>
+    <section class="account-auth-dialog" role="dialog" aria-modal="true" aria-labelledby="account-auth-title">
+      <button class="overlay-close-button" type="button" aria-label="Close sign in" data-close-account>&times;</button>
+      <p class="eyebrow">Account</p>
+      <h2 id="account-auth-title">Sign up / log in</h2>
+      <p class="account-copy">Second Look uses email magic links, so there is no password to remember and no 2FA in this first web version.</p>
+      ${accountNoticeMarkup()}
+      ${configuredMarkup}
+      <p class="account-privacy-copy">We store only the details needed to run your account and recommendations. <a href="./privacy.html">Read the privacy note</a>.</p>
+    </section>
+  `;
+}
+
+function renderAccountPane() {
+  const savedCount = state.userProfile.savedFilmIds.length;
+  const importAvailable = hasLocalImportAvailable();
+  const editMarkup = state.account.editDetailsOpen
+    ? `
+      <form class="account-form account-edit-form" data-profile-form>
+        <label>
+          <span>Display name</span>
+          <input type="text" name="displayName" autocomplete="name" value="${escapeHtml(state.account.pendingDisplayName || "")}" />
+        </label>
+        <button class="ghost-button" type="submit">Save details</button>
+      </form>
+    `
+    : "";
+  const importMarkup = importAvailable
+    ? `
+      <div class="account-import-card">
+        <p>You have saved films in this browser. Import them into this account?</p>
+        <div class="account-inline-actions">
+          <button class="card-link-button" type="button" data-import-local-saves>Import saves</button>
+          <button class="text-button" type="button" data-dismiss-local-import>Not now</button>
+        </div>
+      </div>
+    `
+    : "";
+
+  return `
+    <div class="account-modal-backdrop" data-close-account></div>
+    <aside class="account-pane" role="dialog" aria-modal="true" aria-labelledby="account-pane-title">
+      <button class="overlay-close-button" type="button" aria-label="Close account menu" data-close-account>&times;</button>
+      <div class="account-pane__head">
+        <p class="eyebrow">Account</p>
+        <h2 id="account-pane-title">${escapeHtml(accountDisplayName())}</h2>
+        <p>${escapeHtml(state.account.user?.email || "")}</p>
+      </div>
+      ${accountNoticeMarkup()}
+      ${importMarkup}
+      <div class="account-pane__actions">
+        <button class="card-link-button" type="button" data-toggle-edit-details>Edit details</button>
+        <a class="card-link-button" href="./saved.html">See saved films (${savedCount})</a>
+        <button class="card-link-button" type="button" data-export-account>Export my data</button>
+        <button class="card-link-button card-link-button-tertiary" type="button" data-sign-out>Log out</button>
+        <button class="card-link-button danger-button" type="button" data-delete-account>Delete account</button>
+      </div>
+      ${editMarkup}
+      <p class="account-privacy-copy">No marketing emails or optional analytics are enabled in this version.</p>
+    </aside>
+  `;
+}
+
+function renderAccountSurfaces() {
+  if (elements.accountButton) {
+    elements.accountButton.textContent = isSignedIn() ? accountDisplayName() : "Sign up / log in";
+    elements.accountButton.classList.toggle("is-authenticated", isSignedIn());
+    elements.accountButton.disabled = Boolean(state.account.loading);
+  }
+
+  renderWelcomeOverlay();
+
+  if (!elements.accountOverlay) {
+    return;
+  }
+
+  const shouldShow = state.account.authDialogOpen || state.account.paneOpen;
+  elements.accountOverlay.hidden = !shouldShow;
+  if (!shouldShow) {
+    elements.accountOverlay.innerHTML = "";
+    return;
+  }
+
+  elements.accountOverlay.innerHTML = state.account.authDialogOpen ? renderAuthDialog() : renderAccountPane();
+  attachAccountOverlayHandlers();
+}
+
+function closeAccountOverlay() {
+  state.account.authDialogOpen = false;
+  state.account.paneOpen = false;
+  state.account.editDetailsOpen = false;
+  state.account.message = "";
+  state.account.error = "";
+  renderAccountSurfaces();
+}
+
+function downloadAccountExport() {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    profile: {
+      email: state.account.user?.email || "",
+      displayName: state.account.profile?.display_name || "",
+    },
+    savedFilmIds: state.userProfile.savedFilmIds,
+    likedFilmIds: state.userProfile.likedFilmIds,
+    dislikedFilmIds: state.userProfile.dislikedFilmIds,
+    tasteAffinities: {
+      mood: state.userProfile.moodAffinity,
+      theme: state.userProfile.themeAffinity,
+      director: state.userProfile.directorAffinity,
+    },
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "second-look-account-export.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+}
+
+async function importLocalSaves() {
+  const importIds = localImportFilmIds();
+  if (!importIds.length) {
+    return;
+  }
+
+  state.userProfile = normalizeUserProfile(
+    {
+      ...state.userProfile,
+      savedFilmIds: unique([...importIds, ...state.userProfile.savedFilmIds]),
+    },
+    []
+  );
+  await saveAccountUserProfile();
+  state.account.localImportDismissed = true;
+  setStorageBoolean(LOCAL_IMPORT_DISMISSED_STORAGE_KEY, true);
+  showAccountMessage("Saved films imported into this account.");
+  regenerateIfActive();
+}
+
+async function updateAccountDetails(displayName) {
+  if (!state.account.client || !state.account.user) {
+    return;
+  }
+
+  const nextDisplayName = String(displayName || "").trim();
+  const { data, error } = await state.account.client
+    .from("profiles")
+    .update({ display_name: nextDisplayName, updated_at: new Date().toISOString() })
+    .eq("id", state.account.user.id)
+    .select("id,email,display_name")
+    .single();
+
+  if (error) {
+    throw error;
+  }
+
+  state.account.profile = data;
+  state.account.pendingDisplayName = data.display_name || accountDisplayName();
+  state.account.editDetailsOpen = false;
+  showAccountMessage("Account details updated.");
+}
+
+async function sendMagicLink(email) {
+  if (!state.account.client) {
+    showAccountError("Supabase is not configured yet.");
+    return;
+  }
+
+  const normalizedEmail = String(email || "").trim();
+  state.account.pendingEmail = normalizedEmail;
+  const { error } = await state.account.client.auth.signInWithOtp({
+    email: normalizedEmail,
+    options: {
+      emailRedirectTo: window.location.href,
+    },
+  });
+
+  if (error) {
+    showAccountError(error.message || "Magic link sign-in failed.");
+    return;
+  }
+
+  showAccountMessage("Check your email for a magic link.");
+}
+
+async function signOut() {
+  if (state.account.client) {
+    await state.account.client.auth.signOut();
+  }
+  state.account.user = null;
+  state.account.profile = null;
+  state.userProfile = normalizeUserProfile(createEmptyUserProfile(), []);
+  closeAccountOverlay();
+  render();
+}
+
+async function deleteAccount() {
+  if (!state.account.client || !state.account.user) {
+    return;
+  }
+
+  const confirmed = window.confirm(
+    "Delete your Second Look account and saved films? This cannot be undone."
+  );
+  if (!confirmed) {
+    return;
+  }
+
+  const { error } = await state.account.client.functions.invoke(ACCOUNT_DELETE_FUNCTION_NAME);
+  if (error) {
+    showAccountError(error.message || "Account deletion failed. Please try again.");
+    return;
+  }
+
+  await signOut();
+}
+
+function attachAccountOverlayHandlers() {
+  elements.accountOverlay?.querySelectorAll("[data-close-account]").forEach((button) => {
+    button.addEventListener("click", closeAccountOverlay);
+  });
+
+  elements.accountOverlay?.querySelector("[data-auth-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    sendMagicLink(form.get("email"));
+  });
+
+  elements.accountOverlay?.querySelector("[data-toggle-edit-details]")?.addEventListener("click", () => {
+    state.account.editDetailsOpen = !state.account.editDetailsOpen;
+    state.account.pendingDisplayName = state.account.profile?.display_name || accountDisplayName();
+    renderAccountSurfaces();
+  });
+
+  elements.accountOverlay?.querySelector("[data-profile-form]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    try {
+      await updateAccountDetails(form.get("displayName"));
+    } catch (error) {
+      console.warn("Profile update failed.", error);
+      showAccountError("We couldn't update your details. Please try again.");
+    }
+  });
+
+  elements.accountOverlay?.querySelector("[data-export-account]")?.addEventListener("click", downloadAccountExport);
+  elements.accountOverlay?.querySelector("[data-import-local-saves]")?.addEventListener("click", importLocalSaves);
+  elements.accountOverlay?.querySelector("[data-dismiss-local-import]")?.addEventListener("click", () => {
+    state.account.localImportDismissed = true;
+    setStorageBoolean(LOCAL_IMPORT_DISMISSED_STORAGE_KEY, true);
+    renderAccountSurfaces();
+  });
+  elements.accountOverlay?.querySelector("[data-sign-out]")?.addEventListener("click", signOut);
+  elements.accountOverlay?.querySelector("[data-delete-account]")?.addEventListener("click", deleteAccount);
+}
+
+async function hydrateAccountFromSession(session) {
+  state.account.user = session?.user || null;
+  state.account.error = "";
+  if (!state.account.user) {
+    state.account.profile = null;
+    state.userProfile = normalizeUserProfile(createEmptyUserProfile(), []);
+    state.account.ready = true;
+    state.account.loading = false;
+    render();
+    return;
+  }
+
+  try {
+    await fetchRemoteUserProfile();
+    state.account.ready = true;
+    state.account.loading = false;
+    if (canGenerateRecommendations()) {
+      generateRecommendations();
+    }
+    render();
+    if (hasLocalImportAvailable()) {
+      state.account.paneOpen = true;
+      state.account.message = "You can import saved films from this browser into your account.";
+      renderAccountSurfaces();
+    }
+  } catch (error) {
+    console.warn("Account profile load failed.", error);
+    state.account.ready = true;
+    state.account.loading = false;
+    state.userProfile = normalizeUserProfile(createEmptyUserProfile(), []);
+    showAccountError("We couldn't load your account data. Please refresh or try again.");
+    render();
+  }
+}
+
+async function initAccount() {
+  if (!state.account.client) {
+    state.account.loading = false;
+    state.account.ready = true;
+    renderAccountSurfaces();
+    return;
+  }
+
+  const { data, error } = await state.account.client.auth.getSession();
+  if (error) {
+    console.warn("Supabase session load failed.", error);
+    state.account.loading = false;
+    state.account.ready = true;
+    showAccountError("We couldn't check your account session.");
+    return;
+  }
+
+  await hydrateAccountFromSession(data.session);
+
+  state.account.client.auth.onAuthStateChange((_event, session) => {
+    hydrateAccountFromSession(session);
+  });
+}
+
 function render() {
   renderSelectedSeeds();
   renderSearchResults();
@@ -2728,6 +3543,7 @@ function render() {
   renderTastePicks();
   renderTasteRecs();
   renderSavedFilmsBottom();
+  renderAccountSurfaces();
 
   if (isSavedPage) {
     renderSavedFilmsPage();
@@ -2743,6 +3559,15 @@ function render() {
 }
 
 function handleExternalSearchInput(value) {
+  if (!requireSignedIn("Log in to search from films you love.")) {
+    state.query = "";
+    state.externalSearchResults = [];
+    if (elements.movieSearch) {
+      elements.movieSearch.value = "";
+    }
+    return;
+  }
+
   state.query = value;
   state.externalSearchResults = searchExternalSeeds(value);
   renderSearchResults();
@@ -2793,6 +3618,18 @@ function initRotatingFilmQuotes() {
 }
 
 function attachBaseEventHandlers() {
+  elements.accountButton?.addEventListener("click", () => {
+    if (isSignedIn()) {
+      state.account.paneOpen = true;
+      state.account.authDialogOpen = false;
+      state.account.editDetailsOpen = false;
+      renderAccountSurfaces();
+      return;
+    }
+
+    promptForAuth("Enter your email and we'll send a magic link.");
+  });
+
   elements.movieSearch?.addEventListener("input", (event) => {
     handleExternalSearchInput(event.target.value);
   });
@@ -2814,7 +3651,7 @@ function attachBaseEventHandlers() {
   elements.addFirstMatch?.addEventListener("click", () => {
     const firstMatch = state.externalSearchResults[0];
     if (firstMatch) {
-      setExternalSeed(firstMatch);
+      addExternalSeed(firstMatch);
       render();
     }
   });
@@ -2879,7 +3716,7 @@ function attachBaseEventHandlers() {
       return;
     }
 
-    clearSessionAndReturnToOnboarding();
+    clearSessionAndReturnToSetup();
   });
 }
 
@@ -2931,31 +3768,10 @@ async function loadAppData() {
     const anchorData = anchorsResponse.ok ? await anchorsResponse.json() : {};
     state.tasteAnchors = Array.isArray(anchorData.films) ? anchorData.films : [];
 
-    const metadataByTitleKey = buildTitleIndex(
-      Object.entries(state.metadataByTitle).map(([title, value]) => ({ title, value })),
-      (item) => item.title
-    );
-    const tmdbByTitleKey = buildTitleIndex(
-      Object.entries(state.tmdbMetadataByTitle).map(([title, value]) => ({ title, value })),
-      (item) => item.title
-    );
+    state.metadataByFilmKey = buildFilmValueIndex(state.metadataByTitle);
+    state.tmdbMetadataByFilmKey = buildFilmValueIndex(state.tmdbMetadataByTitle);
 
-    const metadataLookup = Object.entries(metadataByTitleKey).reduce((output, [key, item]) => {
-      output[item.title] = item.value;
-      return output;
-    }, {});
-    const tmdbLookup = Object.entries(tmdbByTitleKey).reduce((output, [key, item]) => {
-      output[item.title] = item.value;
-      return output;
-    }, {});
-
-    state.internalFilms = buildInternalFilms(
-      curated,
-      metadataLookup,
-      tmdbLookup,
-      sampleMovies,
-      state.availabilityByFilmId
-    );
+    state.internalFilms = buildInternalFilms(curated, sampleMovies, state.availabilityByFilmId);
     state.internalFilmById = state.internalFilms.reduce((output, film) => {
       output[film.filmId] = film;
       return output;
@@ -2969,10 +3785,14 @@ async function loadAppData() {
     state.recommendationBlurbsByPairId = blurbs.byId;
     state.recommendationBlurbsByPairTitle = blurbs.byTitle;
 
-    state.externalSeedPool = buildExternalSeedPool(state.tmdbMetadataByTitle, state.internalFilmByTitleKey);
-    if (persistedSession.externalSeedTitle && elements.movieSearch) {
-      state.session.externalSeed =
-        state.externalSeedPool.find((seed) => normalize(seed.title) === normalize(persistedSession.externalSeedTitle)) || null;
+    state.externalSeedPool = buildExternalSeedPool(state.tmdbMetadataByTitle, state.internalFilms);
+    if (persistedSession.externalSeedTitles?.length && elements.movieSearch) {
+      state.session.externalSeeds = persistedSession.externalSeedTitles
+        .map((title) =>
+          state.externalSeedPool.find((seed) => normalize(seed.title) === normalize(title)) || null
+        )
+        .filter(Boolean)
+        .slice(0, MAX_SEED_COUNT);
     }
 
     refreshQuickPicks();
@@ -2993,5 +3813,6 @@ attachBaseEventHandlers();
 initHeroHeaderImageRotation();
 initRotatingFilmQuotes();
 render();
+initAccount();
 loadAppData();
 loadCinemaShowtimes();

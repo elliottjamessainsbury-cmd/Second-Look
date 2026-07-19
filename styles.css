@@ -18,6 +18,9 @@
   --radius-lg: 26px;
   --radius-md: 18px;
   --radius-pill: 999px;
+  --control-height: 46px;
+  --control-height-compact: 38px;
+  --control-padding-x: 18px;
 }
 
 * {
@@ -34,12 +37,24 @@ body {
   font-family: var(--body);
   color: var(--ink);
   background: var(--bg);
+  overflow-x: hidden;
 }
 
 a,
 button,
 input {
   font: inherit;
+}
+
+a,
+button,
+h1,
+h2,
+h3,
+p,
+.card-title,
+.match-meta {
+  overflow-wrap: anywhere;
 }
 
 button {
@@ -50,6 +65,233 @@ button {
   width: min(1440px, calc(100% - 48px));
   margin: 0 auto;
   padding: 20px 0 44px;
+}
+
+.app-topbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.account-button,
+.privacy-link {
+  display: inline-flex;
+  min-height: var(--control-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--control-padding-x);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.privacy-link {
+  width: auto;
+}
+
+.account-button:hover,
+.privacy-link:hover,
+.account-button.is-authenticated {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.account-button:disabled,
+button:disabled,
+input:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.onboarding-overlay,
+.account-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.account-overlay {
+  z-index: 40;
+}
+
+.onboarding-backdrop,
+.account-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 20, 20, 0.35);
+}
+
+.onboarding-dialog,
+.account-auth-dialog,
+.account-pane {
+  position: absolute;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  box-shadow: 0 24px 80px rgba(20, 20, 20, 0.22);
+}
+
+.onboarding-dialog {
+  top: 50%;
+  left: 50%;
+  width: min(560px, calc(100% - 32px));
+  transform: translate(-50%, -50%);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+}
+
+.onboarding-dialog h2,
+.account-auth-dialog h2,
+.privacy-card h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+  line-height: 0.92;
+  letter-spacing: 0;
+}
+
+.account-pane h2 {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  line-height: 1;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+.onboarding-dialog p,
+.account-copy,
+.account-pane__head p,
+.account-privacy-copy,
+.account-import-card p,
+.privacy-card p {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.onboarding-actions,
+.account-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.overlay-close-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.account-auth-dialog {
+  top: 50%;
+  left: 50%;
+  width: min(480px, calc(100% - 32px));
+  transform: translate(-50%, -50%);
+  padding: 28px;
+  border-radius: var(--radius-lg);
+}
+
+.account-pane {
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: min(420px, 100%);
+  height: 100%;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.account-pane__head {
+  display: grid;
+  gap: 8px;
+  padding-right: 34px;
+}
+
+.account-pane__actions,
+.account-form {
+  display: grid;
+  gap: 10px;
+}
+
+.account-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.account-form .ghost-button,
+.account-pane__actions .card-link-button {
+  width: 100%;
+  min-height: 48px;
+  justify-content: center;
+}
+
+.account-notice,
+.account-setup-note,
+.account-import-card {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.account-notice-error {
+  border-color: #9f4527;
+  color: #7a2414;
+}
+
+.danger-button {
+  border-color: #9f4527;
+  color: #7a2414;
+}
+
+.privacy-page-shell {
+  max-width: 920px;
+}
+
+.privacy-card {
+  display: grid;
+  gap: 22px;
+  background: var(--panel);
+}
+
+.privacy-card section {
+  display: grid;
+  gap: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.privacy-card h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
 }
 
 .saved-page-shell {
@@ -262,7 +504,7 @@ h3,
   font-family: var(--display);
   font-weight: 700;
   line-height: 0.9;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 h1 {
@@ -375,7 +617,7 @@ h1 {
   font-size: 22px;
   font-weight: 300;
   line-height: 1.25;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.9);
   opacity: 0;
   transition: opacity 1.2s linear;
@@ -394,14 +636,14 @@ h1 {
 .quote-text {
   font-size: clamp(1.3rem, 2.2vw, 2.1rem);
   line-height: 1.15;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .quote-film {
   margin-top: 18px;
   font-size: 0.92rem;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   color: rgba(255, 255, 255, 0.92);
 }
 
@@ -442,7 +684,7 @@ h1 {
 }
 
 .results-head h2 {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .section-heading p,
@@ -569,15 +811,24 @@ input:focus {
 .search-result button,
 .director-pill,
 .card-link-button {
+  display: inline-flex;
+  min-height: var(--control-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--control-padding-x);
   border: 1px solid var(--line);
   border-radius: var(--radius-pill);
   background: var(--paper);
+  color: var(--ink);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  text-wrap: balance;
 }
 
 .ghost-button {
   min-width: 132px;
-  padding: 0 18px;
-  color: var(--ink);
   font-size: 0.92rem;
   font-weight: 800;
   text-transform: none;
@@ -663,7 +914,7 @@ input:focus {
   font-family: var(--display);
   font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -676,8 +927,8 @@ input:focus {
 }
 
 .search-result button {
-  padding: 10px 14px;
-  color: var(--ink);
+  min-height: var(--control-height-compact);
+  padding: 0 14px;
   font-size: 0.84rem;
   font-weight: 800;
   text-transform: none;
@@ -731,7 +982,7 @@ input:focus {
   font-family: var(--display);
   font-size: 1rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .discovery-bookmark-pill__meta {
@@ -743,8 +994,8 @@ input:focus {
 }
 
 .director-pill {
-  padding: 12px 14px;
-  color: var(--ink);
+  min-height: var(--control-height);
+  padding: 0 14px;
   font-size: 0.92rem;
   font-weight: 700;
   text-transform: none;
@@ -895,7 +1146,65 @@ input:focus {
 }
 
 .browse-results__grid {
-  gap: 18px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.browse-film-card .poster-block {
+  aspect-ratio: 2 / 3;
+}
+
+.browse-film-card .card-body {
+  gap: 6px;
+  padding: 10px 10px 12px;
+}
+
+.browse-film-card .card-title {
+  font-size: clamp(0.92rem, 1vw, 1.05rem);
+  line-height: 1.1;
+}
+
+.browse-film-card .match-meta {
+  margin-top: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+}
+
+.browse-film-card .discovery-card__rationale {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  -webkit-line-clamp: 1;
+}
+
+.browse-film-card .film-actions {
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.browse-film-card .film-actions .card-link-button {
+  min-height: var(--control-height-compact);
+  min-width: 0;
+  padding: 0 8px;
+  font-size: 0.72rem;
+}
+
+.browse-film-card .film-actions .discovery-dismiss-button {
+  min-width: 0;
+}
+
+.browse-film-card .film-screening-preview {
+  gap: 4px;
+  margin-top: 0;
+  padding: 8px;
+}
+
+.browse-film-card .screening-meta {
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.browse-film-card .card-detail-toggle {
+  font-size: 0.72rem;
 }
 
 .results-subtitle {
@@ -1045,6 +1354,7 @@ input:focus {
 }
 
 .taste-quiz-shell,
+.recommendation-empty-shell,
 .discovery-shell {
   display: flex;
   flex-direction: column;
@@ -1056,6 +1366,7 @@ input:focus {
 }
 
 .taste-quiz-intro h3,
+.recommendation-empty-shell h3,
 .discovery-shell__head h3 {
   font-size: clamp(2rem, 3vw, 3rem);
   text-transform: none;
@@ -1359,7 +1670,7 @@ input:focus {
   font-family: var(--display);
   font-size: clamp(2.4rem, 5vw, 4.2rem);
   font-weight: 800;
-  letter-spacing: -0.05em;
+  letter-spacing: 0;
 }
 
 .card-body {
@@ -1409,7 +1720,7 @@ input:focus {
 
 .film-actions .card-link-button {
   width: auto;
-  min-height: 46px;
+  min-height: var(--control-height);
 }
 
 .film-actions .discovery-dismiss-button {
@@ -1463,24 +1774,17 @@ input:focus {
 
 .card-link-button {
   width: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 54px;
-  padding: 12px 16px;
-  background: var(--paper);
-  color: var(--ink);
-  text-decoration: none;
-  text-align: center;
+  min-height: var(--control-height);
+  padding: 0 var(--control-padding-x);
   font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   text-transform: none;
 }
 
 .result-card-expanded .card-link-button {
   width: 100%;
-  min-height: 46px;
+  min-height: var(--control-height);
 }
 
 .card-link-button-secondary {
@@ -1757,7 +2061,7 @@ a.expanded-stats-link:hover strong {
   font-family: var(--display);
   font-size: 1.05rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .cinema-showtimes__today {
@@ -1885,8 +2189,7 @@ a.expanded-stats-link:hover strong {
 
 .cinema-week-day__label,
 .cinema-week-day__month,
-.cinema-week-day__count,
-.cinema-week-day__summary {
+.cinema-week-day__count {
   font-family: var(--mono);
   font-size: 0.6rem;
   font-weight: 700;
@@ -2122,6 +2425,10 @@ a.expanded-stats-link:hover strong {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .browse-results__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .browse-layout {
     grid-template-columns: 1fr;
   }
@@ -2181,6 +2488,10 @@ a.expanded-stats-link:hover strong {
   .results-grid,
   .discovery-grid-cards,
   .cinema-showtimes__list {
+    grid-template-columns: 1fr;
+  }
+
+  .browse-results__grid {
     grid-template-columns: 1fr;
   }
 
