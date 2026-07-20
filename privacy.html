@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy | Second Look</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=47" />
+  </head>
+  <body class="privacy-page">
+    <div class="page-shell privacy-page-shell">
+      <nav class="app-topbar" aria-label="Navigation">
+        <a class="privacy-link" href="./index.html">Discovery</a>
+        <a class="privacy-link" href="./saved.html">Saved films</a>
+      </nav>
+
+      <main class="card privacy-card">
+        <p class="eyebrow">Privacy</p>
+        <h1>Second Look privacy note</h1>
+        <p class="hero-text">
+          Second Look is designed to store only what is needed to run your account, save films, and shape better recommendations.
+        </p>
+
+        <section>
+          <h2>What we store</h2>
+          <p>
+            If you create an account, we store your email address, optional display name, saved film IDs, liked or dismissed film IDs, and lightweight taste-affinity data used by the recommendation engine.
+          </p>
+        </section>
+
+        <section>
+          <h2>What we do not store in v1</h2>
+          <p>
+            We do not store raw search history by default. We do not run marketing emails, advertising pixels, or optional behavioural analytics in this version.
+          </p>
+        </section>
+
+        <section>
+          <h2>Why we use this data</h2>
+          <p>
+            Account data is used to provide the service you request: sign-in, saved films, account controls, and personalised recommendations. Essential operational and security logs may be used to keep the service working and secure.
+          </p>
+        </section>
+
+        <section>
+          <h2>Your controls</h2>
+          <p>
+            From the account pane you can edit your display name, export your account data, or delete your account. Deleting your account removes your profile, saved films, taste profile, and sign-in user record.
+          </p>
+        </section>
+
+        <section>
+          <h2>Supabase</h2>
+          <p>
+            Second Look uses Supabase for authentication and account data storage. Supabase processes account data so the app can provide sign-in and persistence.
+          </p>
+        </section>
+
+        <p class="account-privacy-copy">
+          This page is a practical product privacy note for the prototype and not legal advice. Review it before public launch.
+        </p>
+      </main>
+    </div>
+  </body>
+</html>

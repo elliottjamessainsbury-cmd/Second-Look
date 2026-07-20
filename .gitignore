@@ -1,5 +1,7 @@
 .cursor/
 .venv/
+.superdesign/tmp/
+supabase/.temp/
 
 # macOS
 .DS_Store

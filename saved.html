@@ -10,10 +10,15 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=45" />
+    <link rel="stylesheet" href="./styles.css?v=47" />
   </head>
   <body class="saved-page">
     <div class="page-shell saved-page-shell">
+      <nav class="app-topbar" aria-label="Account">
+        <a class="privacy-link" href="./privacy.html">Privacy</a>
+        <button id="account-button" class="account-button" type="button">Sign up / log in</button>
+      </nav>
+
       <header class="card saved-page-header">
         <div class="saved-page-header__copy">
           <p class="eyebrow">Saved films</p>
@@ -30,8 +35,12 @@
       </main>
     </div>
 
+    <div id="account-overlay" class="account-overlay" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="./config.js"></script>
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=56"></script>
+    <script src="./app.js?v=57"></script>
   </body>
 </html>
