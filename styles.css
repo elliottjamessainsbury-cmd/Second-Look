@@ -1,26 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap");
+
+/* Design system — editorial, image-led, print restraint (see DESIGN.md).
+   The film image is the design; UI chrome is quiet scaffolding. */
 :root {
-  --bg: #e3e2de;
-  --panel: #ecebe6;
-  --panel-dark: #5f666d;
-  --paper: #f5f4f0;
-  --ink: #141414;
-  --text: #444343;
-  --muted: #7a7a7a;
-  --line: #c7c7c7;
-  --accent: #1351aa;
-  --accent-soft: #dbe6f6;
-  --save: #0f4d2c;
-  --save-soft: #cfe5d6;
-  --save-ink: #0f3b25;
-  --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bg: #f8f6f2;            /* warm off-white */
+  --panel: #f8f6f2;         /* flattened toward bg — avoid card-in-card */
+  --panel-dark: #1a1814;    /* dark typographic (no-poster) cards */
+  --paper: #ffffff;         /* elevated surface, used sparingly */
+  --surface: #ffffff;
+  --ink: #1a1814;           /* near-black, warm undertone */
+  --text: #6b6560;          /* secondary labels, descriptions */
+  --muted: #9b928a;         /* mono metadata: director, year, runtime */
+  --line: #e4e0d9;          /* hairline dividers only */
+  --border: #e4e0d9;
+  --accent: #1a1814;        /* no colour accent — posters are the palette */
+  --accent-soft: #f1efea;
+  --save: #1a1814;
+  --save-soft: #f1efea;
+  --save-ink: #1a1814;
+  --display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --body: "EB Garamond", Georgia, "Times New Roman", serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", "Courier New", monospace;
-  --radius-lg: 26px;
-  --radius-md: 18px;
-  --radius-pill: 999px;
+  --radius-lg: 4px;
+  --radius-md: 4px;
+  --radius-pill: 0px;
+  --radius-card: 4px;
+  --radius-input: 2px;
   --control-height: 46px;
   --control-height-compact: 38px;
   --control-padding-x: 18px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 32px;
+  --space-lg: 64px;
+  --space-xl: 120px;
+  --max-width: 1080px;
+  --card-gap: 24px;
 }
 
 * {
@@ -2571,3 +2586,254 @@ a.expanded-stats-link:hover strong {
     justify-content: stretch;
   }
 }
+
+/* ============================================================
+   DESIGN REFRESH — editorial system (DESIGN.md)
+   Minimal · image-led · print restraint. Layered last to win.
+   ============================================================ */
+
+body {
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--bg);
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-shell {
+  width: min(var(--max-width), calc(100% - 48px));
+  padding: 28px 0 var(--space-xl);
+}
+
+/* Flatten chrome — quiet scaffolding, no card-in-card layering */
+.card,
+.hero-copy,
+.hero-panel,
+.recommendations-section,
+.taste-search.card,
+.cinema-showtimes.card,
+.saved-films-section.card,
+.results.card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.home-flow > section {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--border);
+}
+.home-flow > section:first-child { border-top: none; padding-top: 0; }
+
+/* Navigation — plain spaced-caps text links, no chrome */
+.app-topbar { gap: var(--space-md); margin-bottom: var(--space-md); }
+.account-button,
+.privacy-link {
+  min-height: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.account-button:hover,
+.privacy-link:hover,
+.account-button.is-authenticated {
+  border: none;
+  background: none;
+  color: var(--ink);
+}
+
+/* Hero — editorial display serif, calm */
+.hero { align-items: end; gap: var(--space-lg); }
+.hero-copy { min-height: auto; padding: 0; background: none; }
+.hero-panel { background: none; padding: 0; }
+h1 {
+  display: block;
+  font-family: var(--display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  font-size: clamp(3.4rem, 8vw, 5rem);
+  text-transform: none;
+  margin: var(--space-md) 0 0;
+}
+.hero-indent { margin-left: 0; }
+.hero-text {
+  font-family: var(--body);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--text);
+  max-width: 46ch;
+  margin-top: var(--space-md);
+}
+
+/* Hero CTAs — no card, no pill: quiet editorial links under a hairline */
+.hero-links { gap: var(--space-md); margin-top: var(--space-lg); }
+.hero-link {
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: var(--space-sm) 0 0;
+  border: none;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  transition: border-color 0.2s ease;
+}
+.hero-link:hover { background: none; border-color: var(--ink); transform: none; }
+.hero-link__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.hero-link__hint {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* Eyebrows / section labels */
+.eyebrow,
+.panel-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--space-sm);
+}
+
+/* Section headings + editorial prose */
+h2 { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; font-size: 2rem; line-height: 1.1; }
+h3 { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; }
+.taste-search__sub,
+.cinema-showtimes__intro,
+.hero-text { font-family: var(--body); }
+
+/* Metadata — mono uppercase */
+.match-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Search inputs — single underline, no box */
+.taste-search__input,
+.browse-search__input,
+#movie-search,
+#taste-search-input {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-radius: 0;
+  background: none;
+  padding: 12px 0;
+  min-height: auto;
+  font-family: var(--display);
+  font-size: 20px;
+  color: var(--ink);
+}
+.taste-search__input:focus,
+.browse-search__input:focus,
+#movie-search:focus,
+#taste-search-input:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom-color: var(--ink);
+}
+.taste-search__input::placeholder,
+.browse-search__input::placeholder,
+#taste-search-input::placeholder { color: var(--muted); }
+
+/* Card titles */
+.card-title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+/* Buttons — strip pill/chrome, text-forward */
+.ghost-button,
+.card-link-button,
+.text-button,
+.card-detail-toggle,
+.card-detail-toggle--prominent {
+  border-radius: 0;
+  box-shadow: none;
+}
+.ghost-button {
+  border: 1px solid var(--ink);
+  background: none;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.card-detail-toggle,
+.card-detail-toggle--prominent,
+.text-button {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* No pills anywhere */
+.browse-facet__chip,
+.pill,
+.badge { border-radius: 0; }
+
+/* Dividers */
+hr { border: none; border-top: 1px solid var(--border); }
+
+/* Cinema listings — quiet gallery cards, text-forward actions */
+.cinema-showtimes-card {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: none;
+}
+.cinema-showtimes-card__times,
+.cinema-showtimes-card__cinema-name { font-family: var(--mono); }
+.cinema-showtimes-card .card-link-button,
+.screening-book-button {
+  background: none;
+  border: none;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  min-height: auto;
+  justify-content: flex-start;
+  padding: 12px 0 0;
+}
+.cinema-showtimes-card .card-link-button:hover,
+.screening-book-button:hover { background: none; color: var(--ink); text-decoration: underline; }
+.cinema-week-day,
+.cinema-week-day__button,
+.cinema-showtimes__today,
+.cinema-showtimes__filter-select { border-radius: var(--radius-card); }
