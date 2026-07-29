@@ -2877,3 +2877,95 @@ hr { border: none; border-top: 1px solid var(--border); }
 .rotating-film-quote { color: var(--text); }
 .quote-film { color: var(--ink); }
 .quote-credit { color: var(--muted); }
+
+/* ============================================================
+   Portrait poster-led film cards (DESIGN.md)
+   The poster is the object; text sits quietly beneath it.
+   ============================================================ */
+.film-card {
+  background: none;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+.film-card .poster-block {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-card);
+  background: #ece9e3;
+}
+.film-card .poster-image { border-radius: var(--radius-card); }
+
+/* No-poster: dark typographic card — intentional accent pieces in the grid */
+.poster-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 20px;
+  background: var(--panel-dark);
+  text-align: center;
+}
+.poster-fallback__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--bg);
+}
+.poster-fallback__director {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Card body sits under the poster, no chrome */
+.film-card .card-body,
+.film-card .film-card-body {
+  padding: var(--space-sm) 0 0;
+  gap: 6px;
+  background: none;
+}
+.film-card .card-title { font-size: 20px; }
+.film-card .match-meta { margin: 0; }
+
+/* "Why" text — editorial italic */
+.film-card .discovery-card__rationale {
+  font-family: var(--body);
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text);
+  margin: 4px 0 0;
+}
+
+/* Actions — text-only, mono, no button chrome */
+.film-actions { gap: var(--space-md); margin-top: var(--space-xs); }
+.film-actions .card-link-button {
+  min-height: auto;
+  padding: 0;
+  border: none;
+  background: none;
+  border-radius: 0;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.film-actions .card-link-button:hover { color: var(--ink); background: none; text-decoration: underline; }
+.film-actions .save-action-button.is-active,
+.film-actions .discovery-dismiss-button.is-active { color: var(--ink); }
+.film-card .card-detail-toggle {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--muted);
+}
+.film-card .card-detail-toggle:hover { color: var(--ink); text-decoration: underline; }
