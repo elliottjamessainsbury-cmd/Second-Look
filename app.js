@@ -577,10 +577,15 @@ function renderPosterMarkup(subject) {
   const title = film?.title || "";
   const posterUrl = makePosterUrl(film);
   if (posterUrl) {
-    return `<img class="poster-image" src="${posterUrl}" alt="Poster for ${title}" loading="lazy" />`;
+    return `<img class="poster-image" src="${posterUrl}" alt="Poster for ${escapeHtml(title)}" loading="lazy" />`;
   }
 
-  return `<div class="poster-monogram">${monogramForTitle(title)}</div>`;
+  // No poster: a dark typographic card — intentional accent pieces in the grid.
+  const director = film?.director || "";
+  return `<div class="poster-monogram poster-fallback">
+    <span class="poster-fallback__title">${escapeHtml(title)}</span>
+    ${director ? `<span class="poster-fallback__director">${escapeHtml(director)}</span>` : ""}
+  </div>`;
 }
 
 function synopsisForTitle(subject) {
@@ -3030,7 +3035,7 @@ function renderTasteCard(film, reasons) {
 
   return `
     <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
-      <div class="poster-block">${renderPosterMarkup(film.title)}</div>
+      <div class="poster-block">${renderPosterMarkup(film)}</div>
       <div class="card-body film-card-body">
         <h3 class="card-title">${escapeHtml(film.title)}</h3>
         <p class="match-meta">${escapeHtml(meta)}</p>
