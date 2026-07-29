@@ -2969,3 +2969,83 @@ hr { border: none; border-top: 1px solid var(--border); }
   color: var(--muted);
 }
 .film-card .card-detail-toggle:hover { color: var(--ink); text-decoration: underline; }
+
+/* ============================================================
+   Refinements: header/quote card treatment, button nav,
+   mobile top bar (product direction on top of the refresh).
+   ============================================================ */
+
+.hero { align-items: stretch; gap: var(--space-md); }
+
+/* Header: restore the card with the rotating background image */
+.hero-copy {
+  min-height: 460px;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(248, 246, 242, 0.22), rgba(248, 246, 242, 0.92)),
+    var(--hero-image, url("./assets/images/hero/header-film-still.jpg")),
+    var(--surface);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.hero-copy h1 { margin-top: 0; }
+
+/* Quote module: restore its dark card (light text is legible again) */
+.hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: var(--space-md);
+  border: 1px solid var(--panel-dark);
+  border-radius: 14px;
+  background: var(--panel-dark);
+}
+.rotating-film-quote { color: rgba(255, 255, 255, 0.92); }
+.quote-film { color: #ffffff; }
+.quote-credit { color: rgba(255, 255, 255, 0.6); }
+
+/* Navigation: real rounded-corner buttons (clearly clickable) */
+.account-button,
+.privacy-link {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.account-button:hover,
+.privacy-link:hover,
+.account-button.is-authenticated {
+  border-color: var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+/* Mobile top bar: keep buttons tidy instead of spilling awkwardly */
+@media (max-width: 600px) {
+  .app-topbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .account-button,
+  .privacy-link {
+    min-height: 34px;
+    padding: 0 12px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+  .hero-copy { min-height: 320px; }
+}
