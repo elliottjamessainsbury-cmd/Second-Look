@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path("/Users/elliott/Documents/New project")
+ROOT = Path(__file__).resolve().parents[1]
 CURATED_PATH = ROOT / "data/curated-films.json"
 TMDB_METADATA_PATH = ROOT / "data/tmdb-metadata.json"
 OUTPUT_PATH = ROOT / "data/availability.json"

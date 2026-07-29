@@ -6,6 +6,20 @@ const vm = require("vm");
 const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
 const editorial = require(path.join(ROOT, "lib", "editorial-copy.js"));
+const FIXED_NOW = new Date("2026-07-29T11:00:00.000Z");
+
+class FixedDate extends Date {
+  constructor(...args) {
+    super(...(args.length ? args : [FIXED_NOW.getTime()]));
+  }
+
+  static now() {
+    return FIXED_NOW.getTime();
+  }
+}
+
+FixedDate.UTC = Date.UTC;
+FixedDate.parse = Date.parse;
 
 class MockElement {
   constructor(id = "") {
@@ -120,6 +134,7 @@ async function createHarness() {
 
   const context = {
     console,
+    Date: FixedDate,
     window: {
       setTimeout,
       setInterval,
