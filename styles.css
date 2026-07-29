@@ -2964,7 +2964,7 @@ hr { border: none; border-top: 1px solid var(--border); }
   border: 1px solid var(--border);
   border-radius: 14px;
   background:
-    linear-gradient(180deg, rgba(248, 246, 242, 0.22), rgba(248, 246, 242, 0.92)),
+    linear-gradient(180deg, rgba(248, 246, 242, 0.64) 0%, rgba(248, 246, 242, 0.34) 46%, rgba(248, 246, 242, 0.92) 100%),
     var(--hero-image, url("./assets/images/hero/header-film-still.jpg")),
     var(--surface);
   background-size: cover;
@@ -2973,6 +2973,12 @@ hr { border: none; border-top: 1px solid var(--border); }
   overflow: hidden;
 }
 .hero-copy h1 { margin-top: 0; }
+/* Light halo keeps dark text legible over dark rotating stills */
+.hero-copy h1,
+.hero-copy .hero-text,
+.hero-copy .hero-link__title {
+  text-shadow: 0 1px 12px rgba(248, 246, 242, 0.85);
+}
 
 /* Quote module: restore its dark card (light text is legible again) */
 .hero-panel {
