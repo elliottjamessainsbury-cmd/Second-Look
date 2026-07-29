@@ -604,15 +604,6 @@ function synopsisForTitle(subject) {
   return "No extended synopsis available yet.";
 }
 
-function monogramForTitle(title) {
-  return String(title || "")
-    .split(" ")
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join("")
-    .toUpperCase();
-}
-
 function parseRatingValue(value) {
   const numeric = Number.parseFloat(String(value || "").replace(/[^0-9.]/g, ""));
   return Number.isFinite(numeric) ? numeric : 0;

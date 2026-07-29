@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap");
+/* EB Garamond + IBM Plex Mono are loaded via <link> in each page <head>. */
 
 /* Design system — editorial, image-led, print restraint (see DESIGN.md).
    The film image is the design; UI chrome is quiet scaffolding. */
@@ -2629,34 +2629,11 @@ body {
 }
 .home-flow > section:first-child { border-top: none; padding-top: 0; }
 
-/* Navigation — plain spaced-caps text links, no chrome */
+/* Top-bar spacing (button styling + hero card treatment live in the
+   refinements block at the end of this file). */
 .app-topbar { gap: var(--space-md); margin-bottom: var(--space-md); }
-.account-button,
-.privacy-link {
-  min-height: auto;
-  padding: 0;
-  border: none;
-  background: none;
-  border-radius: 0;
-  font-family: var(--mono);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text);
-}
-.account-button:hover,
-.privacy-link:hover,
-.account-button.is-authenticated {
-  border: none;
-  background: none;
-  color: var(--ink);
-}
 
-/* Hero — editorial display serif, calm */
-.hero { align-items: end; gap: var(--space-lg); }
-.hero-copy { min-height: auto; padding: 0; background: none; }
-.hero-panel { background: none; padding: 0; }
+/* Hero — editorial display serif headline */
 h1 {
   display: block;
   font-family: var(--display);
@@ -2873,14 +2850,10 @@ hr { border: none; border-top: 1px solid var(--border); }
 .cinema-week-day__summary { color: var(--muted); }
 .cinema-showtimes__selection { color: var(--text); }
 
-/* Hero rotating quote — legible on off-white */
-.rotating-film-quote { color: var(--text); }
-.quote-film { color: var(--ink); }
-.quote-credit { color: var(--muted); }
-
 /* ============================================================
    Portrait poster-led film cards (DESIGN.md)
    The poster is the object; text sits quietly beneath it.
+   (Quote colours live in the refinements block, on its dark card.)
    ============================================================ */
 .film-card {
   background: none;
@@ -2889,9 +2862,12 @@ hr { border: none; border-top: 1px solid var(--border); }
   overflow: visible;
 }
 .film-card .poster-block {
-  aspect-ratio: 2 / 3;
   border-radius: var(--radius-card);
   background: #ece9e3;
+}
+/* Portrait frame only when collapsed — the expanded card fills its column. */
+.film-card:not(.result-card-expanded) .poster-block {
+  aspect-ratio: 2 / 3;
 }
 .film-card .poster-image { border-radius: var(--radius-card); }
 
@@ -2907,6 +2883,10 @@ hr { border: none; border-top: 1px solid var(--border); }
   text-align: center;
 }
 .poster-fallback__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-family: var(--display);
   font-weight: 500;
   font-size: clamp(1.5rem, 2.4vw, 2.1rem);
