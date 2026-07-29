@@ -5,10 +5,16 @@ const { execFileSync } = require("child_process");
 
 const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT, "data");
+const ARTIFACT_DIR = path.join(ROOT, "QA", "artifacts");
+const GENERATED_PATH = path.join(ARTIFACT_DIR, "availability-smoke.json");
 const BUILD_SCRIPT = path.join(ROOT, "scripts", "build_availability_data.py");
 
 function loadJson(filename) {
   return JSON.parse(fs.readFileSync(path.join(DATA_DIR, filename), "utf8"));
+}
+
+function loadJsonPath(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
 function sorted(values) {
@@ -44,16 +50,17 @@ function main() {
   console.log("Flow: QA/flows/availability-m3.md");
   console.log("");
 
-  execFileSync("python3", [BUILD_SCRIPT], { cwd: ROOT, stdio: "inherit" });
+  fs.mkdirSync(ARTIFACT_DIR, { recursive: true });
+  execFileSync("python3", [BUILD_SCRIPT, "--output", GENERATED_PATH], { cwd: ROOT, stdio: "inherit" });
 
   const curatedFilms = loadJson("curated-films.json");
-  const availability = loadJson("availability.json");
+  const availability = loadJsonPath(GENERATED_PATH);
   const curatedIds = curatedFilms.map((film) => film.film_id);
   const availabilityIds = Object.keys(availability);
   const results = [];
 
   runCheck("availability.json exists", () => {
-    assert(fs.existsSync(path.join(DATA_DIR, "availability.json")));
+    assert(fs.existsSync(GENERATED_PATH));
   }, results);
 
   runCheck("Availability output only contains curated film_ids", () => {

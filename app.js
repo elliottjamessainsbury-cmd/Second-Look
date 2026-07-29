@@ -835,7 +835,7 @@ function bestSeedForCandidate(candidate, scoreData, seedFilms, externalSeeds) {
 }
 
 function explanationForCandidate(candidate, scoreData, bestSeed) {
-  const explanation = buildEditorialExplanation({
+  return buildEditorialExplanation({
     candidate,
     scoreData,
     bestSeed,
@@ -845,8 +845,6 @@ function explanationForCandidate(candidate, scoreData, bestSeed) {
     },
     userProfile: state.userProfile,
   });
-
-  return explanation.text;
 }
 
 function isSignedIn() {
@@ -1536,6 +1534,7 @@ function renderAvailabilityPanel(film) {
 function renderExpandedPanel(film, explanation) {
   const metadata = metadataForFilm(film);
   const letterboxdAverage = metadata?.average_rating ? String(metadata.average_rating) : "";
+  const explanationText = typeof explanation === "string" ? explanation : explanation?.text || "";
   const ratingMarkup = letterboxdAverage
     ? `
       <a class="expanded-stats expanded-stats-link" href="${makeLetterboxdUrl(film.title)}" target="_blank" rel="noreferrer" data-outbound-film="${film.filmId}">
@@ -1547,11 +1546,11 @@ function renderExpandedPanel(film, explanation) {
     `
     : "";
 
-  const reasonMarkup = explanation
+  const reasonMarkup = explanationText
     ? `
       <div class="expanded-reason">
         <span class="expanded-reason-label">Why we think you’ll like this</span>
-        <p class="expanded-reason-copy">${explanation}</p>
+        <p class="expanded-reason-copy">${escapeHtml(explanationText)}</p>
       </div>
     `
     : "";
@@ -1579,6 +1578,20 @@ function filmHasExpandableDetail(film) {
 
 function cardKey(section, filmId) {
   return `${section}:${filmId}`;
+}
+
+function rationaleForRecommendationCard(item) {
+  const explanation = item?.explanation;
+  const explanationText =
+    typeof explanation === "string"
+      ? explanation
+      : explanation?.shortText || explanation?.text || "";
+  if (explanationText) {
+    return explanationText;
+  }
+
+  const cardTags = Array.isArray(item?.film?.cardTags) ? item.film.cardTags : [];
+  return cardTags.slice(0, 3).join(" • ");
 }
 
 function normalizeScreeningTitle(value) {
@@ -1938,6 +1951,7 @@ function renderRecommendationCards(items) {
       const expanded = state.session.expandedCardKey === key;
       const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
       const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
+      const rationale = rationaleForRecommendationCard(item);
 
       return `
         <article class="result-card film-card ${expanded ? "result-card-expanded" : ""}">
@@ -1947,11 +1961,7 @@ function renderRecommendationCards(items) {
           <div class="card-body film-card-body">
             <h3 class="card-title">${film.title}</h3>
             <p class="match-meta">${[film.year || "Year unknown", film.director || "Director unknown"].join(" • ")}</p>
-            ${
-              film.cardTags.length
-                ? `<p class="discovery-card__rationale">${film.cardTags.slice(0, 3).join(" • ")}</p>`
-                : ""
-            }
+            ${rationale ? `<p class="discovery-card__rationale">${escapeHtml(rationale)}</p>` : ""}
             <div class="card-actions film-actions">
               <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
                 ${signedIn ? (isSaved ? "Saved" : "Save") : "Log in to save"}

@@ -15,6 +15,9 @@ class MockElement {
     this.value = "";
     this.listeners = {};
     this.attributes = {};
+    this.style = {
+      setProperty() {}
+    };
     this.classList = {
       toggle() {}
     };
@@ -60,6 +63,15 @@ function printResults(results) {
   const passed = results.filter((result) => result.status === "PASS").length;
   console.log("");
   console.log(`Summary: ${passed} passed, ${results.length - passed} failed`);
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 async function createHarness() {
@@ -154,6 +166,9 @@ function pickScenario(app) {
     return null;
   }
 
+  app.state.account.user = { id: "test-user", email: "test@example.com" };
+  app.state.account.ready = true;
+  app.state.account.loading = false;
   app.state.session.seedFilmIds = [seed.filmId];
   app.generateRecommendations();
   app.renderRecommendations();
@@ -185,6 +200,17 @@ async function main() {
     process.exitCode = 1;
     return;
   }
+
+  runCheck("Collapsed recommendation card includes sentence rationale copy", () => {
+    const html = elementMap.get("#results-grid").innerHTML;
+    const explanation = app.state.recommendations[0]?.explanation;
+    const expected = typeof explanation === "string" ? explanation : explanation?.shortText || "";
+
+    assert(html.includes("discovery-card__rationale"), "Collapsed rationale element missing");
+    assert(expected, "Recommendation did not produce a short explanation");
+    assert(html.includes(escapeHtml(expected)), `Collapsed rationale missing expected copy: ${expected}`);
+    assert(/[.!?]$/.test(expected), `Collapsed rationale should read as sentence copy: ${expected}`);
+  }, results);
 
   app.state.session.expandedCardKey = app.cardKey("recommendation", scenario.primaryPick.filmId);
   app.renderRecommendations();

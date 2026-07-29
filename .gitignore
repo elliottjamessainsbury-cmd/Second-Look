@@ -1,6 +1,7 @@
 .cursor/
 .venv/
 .superdesign/tmp/
+QA/artifacts/
 supabase/.temp/
 
 # macOS
