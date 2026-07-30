@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Dict, List, Set, Tuple, Union
 
 
-ROOT = Path("/Users/elliott/Documents/New project")
+ROOT = Path(__file__).resolve().parents[1]
 FILMS_PATH = ROOT / "data/curated-films.json"
 NODE_SOURCES_PATH = ROOT / "data/node-enrichment-sources.json"
 NODE_MAP_PATH = ROOT / "data/film-node-enrichment-map.json"

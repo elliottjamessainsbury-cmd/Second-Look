@@ -4,7 +4,8 @@ const path = require("path");
 const vm = require("vm");
 
 const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
-const STORAGE_KEY = "secondlook:savedFilmIds";
+const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
+const editorial = require(path.join(ROOT, "lib", "editorial-copy.js"));
 
 class MockElement {
   constructor(id = "") {
@@ -13,6 +14,13 @@ class MockElement {
     this.hidden = false;
     this.value = "";
     this.listeners = {};
+    this.attributes = {};
+    this.style = {
+      setProperty() {}
+    };
+    this.classList = {
+      toggle() {}
+    };
   }
 
   addEventListener(type, handler) {
@@ -25,6 +33,10 @@ class MockElement {
 
   querySelector() {
     return null;
+  }
+
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
   }
 }
 
@@ -97,7 +109,9 @@ async function createHarness({ page = "index", storageSeed = {} } = {}) {
       setInterval,
       clearTimeout,
       clearInterval,
-      localStorage
+      localStorage,
+      SecondLookEngine: engine,
+      SecondLookEditorial: editorial
     },
     document: {
       body: {
@@ -137,14 +151,20 @@ globalThis.__savedFilmsHarness = {
   state,
   elements,
   renderSavedFilmsPage,
-  renderDiscoveryGrid,
-  toggleDiscoveryBookmark,
-  cardKey
+  cardKey,
+  metadataForTitle
 };`;
 
   vm.createContext(context);
   vm.runInContext(wrapped, context, { filename: "app.js" });
-  await new Promise((resolve) => setTimeout(resolve, 60));
+
+  const waitStart = Date.now();
+  while (context.__savedFilmsHarness?.state?.loading) {
+    if (Date.now() - waitStart > 5000) {
+      throw new Error("Timed out waiting for app data to load.");
+    }
+    await new Promise((resolve) => setTimeout(resolve, 25));
+  }
 
   return {
     app: context.__savedFilmsHarness,
@@ -160,35 +180,31 @@ async function main() {
 
   const results = [];
 
-  const mainHarness = await createHarness({ page: "index" });
-  const firstSavedId = mainHarness.app.state.discoveryFilms[0].id;
-  const secondSavedId = mainHarness.app.state.discoveryFilms[1].id;
-  const thirdSavedId = mainHarness.app.state.discoveryFilms[2].id;
-
-  mainHarness.app.toggleDiscoveryBookmark(firstSavedId);
-  mainHarness.app.toggleDiscoveryBookmark(secondSavedId);
-  mainHarness.app.toggleDiscoveryBookmark(thirdSavedId);
-  const persistedIds = JSON.parse(mainHarness.localStorage.dump()[STORAGE_KEY]);
-
-  runCheck("Bookmarking from the main app persists ids to localStorage in most-recent-first order", () => {
-    assert.deepStrictEqual(persistedIds.slice(0, 3), [thirdSavedId, secondSavedId, firstSavedId]);
-  }, results);
-
-  const savedHarness = await createHarness({
-    page: "saved",
-    storageSeed: {
-      [STORAGE_KEY]: JSON.stringify(persistedIds)
-    }
-  });
+  const savedHarness = await createHarness({ page: "saved" });
+  const savedIds = savedHarness.app.state.internalFilms
+    .filter((film) => savedHarness.app.metadataForTitle(film.title)?.average_rating)
+    .slice(0, 3)
+    .map((film) => film.filmId);
+  savedHarness.app.state.account.user = { id: "test-user", email: "test@example.com" };
+  savedHarness.app.state.account.ready = true;
+  savedHarness.app.state.account.loading = false;
+  savedHarness.app.state.userProfile = engine.normalizeUserProfile(
+    {
+      ...engine.createEmptyUserProfile(),
+      savedFilmIds: savedIds,
+    },
+    savedHarness.app.state.internalFilms
+  );
+  savedHarness.app.renderSavedFilmsPage();
 
   const savedListHtml = savedHarness.elementMap.get("#saved-films-list").innerHTML;
-  const savedFilms = persistedIds
-    .map((filmId) => savedHarness.app.state.discoveryFilms.find((film) => film.id === filmId))
+  const savedFilms = savedIds
+    .map((filmId) => savedHarness.app.state.internalFilmById[filmId])
     .filter(Boolean);
 
-  runCheck("Saved page renders the same saved films in a compact list", () => {
+  runCheck("Saved page renders account saved films in a compact list", () => {
     assert(savedListHtml.includes("saved-films-list"), "Saved films list container missing");
-    assert.strictEqual((savedListHtml.match(/data-saved-film="/g) || []).length, 3);
+    assert.strictEqual((savedListHtml.match(/data-saved-toggle="/g) || []).length, 3);
     savedFilms.forEach((film) => {
       assert(savedListHtml.includes(film.title), `Missing saved film title ${film.title}`);
     });
@@ -197,27 +213,27 @@ async function main() {
   runCheck("Collapsed saved rows show title, year, director, and See more only", () => {
     assert(savedListHtml.includes("See more"), "Missing See more action");
     assert(!savedListHtml.includes("Average Letterboxd rating"), "Collapsed rows should not show expanded metadata");
-    assert(!savedListHtml.includes("AI take on the fit"), "Collapsed rows should not show expanded rationale");
+    assert(!savedListHtml.includes("Why we think you’ll like this"), "Collapsed rows should not show expanded rationale");
     assert(!savedListHtml.includes("Search Criterion"), "Collapsed rows should not show availability links");
   }, results);
 
-  const expandedKey = savedHarness.app.cardKey("saved", savedFilms[0].title);
-  savedHarness.app.state.expandedCardKey = expandedKey;
+  const expandedKey = savedHarness.app.cardKey("saved", savedFilms[0].filmId);
+  savedHarness.app.state.session.expandedCardKey = expandedKey;
   savedHarness.app.renderSavedFilmsPage();
   const expandedHtml = savedHarness.elementMap.get("#saved-films-list").innerHTML;
 
   runCheck("Saved page reuses the existing detail renderer for See more", () => {
     assert(expandedHtml.includes("Average Letterboxd rating"), "Expanded saved row missing rating");
-    assert(expandedHtml.includes("AI take on the fit"), "Expanded saved row missing rationale heading");
+    assert(expandedHtml.includes("Why we think you’ll like this"), "Expanded saved row missing rationale heading");
     assert(expandedHtml.includes("expanded-copy"), "Expanded saved row missing synopsis");
   }, results);
 
-  const emptyHarness = await createHarness({
-    page: "saved",
-    storageSeed: {
-      [STORAGE_KEY]: JSON.stringify([])
-    }
-  });
+  const emptyHarness = await createHarness({ page: "saved" });
+  emptyHarness.app.state.account.user = { id: "test-user", email: "test@example.com" };
+  emptyHarness.app.state.account.ready = true;
+  emptyHarness.app.state.account.loading = false;
+  emptyHarness.app.state.userProfile = engine.normalizeUserProfile(engine.createEmptyUserProfile(), []);
+  emptyHarness.app.renderSavedFilmsPage();
   const emptyHtml = emptyHarness.elementMap.get("#saved-films-list").innerHTML;
 
   runCheck("Saved page shows a clean empty state when no films are saved", () => {

@@ -19,6 +19,7 @@ This script:
 from __future__ import annotations
 
 import base64
+import argparse
 import json
 import os
 import re
@@ -30,7 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-ROOT = Path("/Users/elliott/Documents/New project")
+ROOT = Path(__file__).resolve().parents[1]
 CURATED_PATH = ROOT / "data/curated-films.json"
 TMDB_METADATA_PATH = ROOT / "data/tmdb-metadata.json"
 OUTPUT_PATH = ROOT / "data/availability.json"
@@ -345,7 +346,20 @@ def default_physical_media(title: str, existing_entry: dict | None) -> dict:
     }
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Build availability data for the curated catalogue.")
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=OUTPUT_PATH,
+        help="Path to write generated availability JSON.",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+    output_path = args.output
     curated_films = load_json(CURATED_PATH, [])
     tmdb_metadata = load_json(TMDB_METADATA_PATH, {})
     existing_output = load_json(OUTPUT_PATH, {})
@@ -401,12 +415,13 @@ def main() -> None:
         }
         time.sleep(0.05)
 
-    OUTPUT_PATH.write_text(
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(
         json.dumps(output, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
 
-    print(f"Wrote {len(output)} availability records to {OUTPUT_PATH}")
+    print(f"Wrote {len(output)} availability records to {output_path}")
     if warnings:
         print(f"Warnings: {len(warnings)}")
         for warning in warnings[:20]:

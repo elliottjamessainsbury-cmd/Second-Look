@@ -2,7 +2,7 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = "/Users/elliott/Documents/New project";
+const ROOT = path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT, "data");
 
 const {
