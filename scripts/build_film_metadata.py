@@ -12,10 +12,11 @@ from typing import Optional
 
 
 WORKBOOK_PATH = Path("/Users/elliott/Downloads/Film curation .xlsx")
-CURATED_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
-OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/film-metadata.json")
-RECOMMENDED_OVERRIDES_PATH = Path("/Users/elliott/Documents/New project/data/recommended-film-urls.json")
-CRITERION_PATH = Path("/Users/elliott/Documents/New project/data/criterion-closet-picks.json")
+ROOT = Path(__file__).resolve().parents[1]
+CURATED_PATH = ROOT / "data/curated-films.json"
+OUTPUT_PATH = ROOT / "data/film-metadata.json"
+RECOMMENDED_OVERRIDES_PATH = ROOT / "data/recommended-film-urls.json"
+CRITERION_PATH = ROOT / "data/criterion-closet-picks.json"
 
 NS = {
     "a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",

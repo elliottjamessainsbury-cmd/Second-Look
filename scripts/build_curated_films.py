@@ -9,7 +9,7 @@ from typing import Optional
 
 
 WORKBOOK_PATH = Path("/Users/elliott/Downloads/Film curation .xlsx")
-OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
+OUTPUT_PATH = Path(__file__).resolve().parents[1] / "data/curated-films.json"
 
 NS = {
     "a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",

@@ -23,8 +23,9 @@ import urllib.request
 from pathlib import Path
 
 
-CURATED_PATH = Path("/Users/elliott/Documents/New project/data/curated-films.json")
-OUTPUT_PATH = Path("/Users/elliott/Documents/New project/data/tmdb-metadata.json")
+ROOT = Path(__file__).resolve().parents[1]
+CURATED_PATH = ROOT / "data/curated-films.json"
+OUTPUT_PATH = ROOT / "data/tmdb-metadata.json"
 API_ROOT = "https://api.themoviedb.org/3"
 
 
