@@ -1,170 +1,47 @@
-# Movie Recommendation App
+# **Second Look**
 
-An MVP concept for a movie recommendation app focused on discovery, curation, and surfacing high-quality films beyond the obvious mainstream choices.
+Film discovery for people who've exhausted the obvious recommendations.
 
-## Problem
+**Live:** [https://second-look-delta.vercel.app](https://second-look-delta.vercel.app)
 
-People often struggle to discover new films worth watching. Smaller, independent, international, archival, and critically acclaimed titles can be hard to find across cinemas and streaming platforms. Existing recommendation systems tend to over-index on popularity and familiarity.
+## **Why it exists**
 
-This app is designed to help users move from a few recent films or favorite directors to a set of thoughtful recommendations that feel curated rather than algorithmically generic.
+Most recommendation engines optimise for familiarity, so the picks come back generic. They're bad at the specific itch \- so-bad-it's-good classics, meditative black and white, films with stunts that make you sit up, or just something to fill a Sunday afternoon.
 
-## Core User Flow
+Indie films, shorts, forgotten classics and modern films buried by streaming algorithms are all hard to find. And there's nothing quite like turning up a film that becomes one of your personal classics.
 
-1. The user opens the app.
-2. The user enters 3 to 4 recently watched films or selects from a list of directors.
-3. The app generates a set of recommended films.
-4. The user sees recommendation cards with artwork, short reasoning, and useful metadata.
-5. Editorial notes from Elliott can shape, boost, or override recommendations.
+## **How it works**
 
-## Product Direction
+- **Search** runs against the TMDb API, so the searchable range is large. Suggestions also draw on a film's director \- their other work, and films they've recommended themselves.  
+- **Editorial weighting** scores films on decade, length, tone, director and cast.  
+- **A graph** connects those signals across a curated universe of approved films. It's grown by hand, which is slow and deliberately so \- the depth of that curation is the thing the big engines can't replicate. Community input comes later.  
+- **Saving and dismissing** refines your taste over time. Occasionally the app asks why, which gives it far better signal than a binary. Saved films double as a watchlist.  
+- **Each recommendation carries AI-generated copy** explaining why it surfaced, alongside links to stream or buy a physical copy.  
+- **A combined listings calendar** for London's repertory and arthouse cinemas. As far as I can tell this doesn't exist anywhere else, and it turns discovery into something you can act on this week.
 
-This should feel like:
+## **The decision that shaped the product**
 
-- intelligent but opinionated
-- cinematic rather than overly technical
-- discovery-first
-- useful for both casual users and film-curious audiences
+The obvious way to build this is to let volume do the work \- scrape the big film sites, index everything, rank by similarity. I built the recommendation engine the other way, and that choice defined what the product could credibly promise.
 
-It should not feel like:
+Scraped data is noisy and inconsistent, and site structures shift under you. More importantly, recommendation quality becomes almost impossible to control or debug at that scale. If you can't explain why a film surfaced, you can't fix it when it's wrong \- and every recommendation here ships with a reason attached, so the reasoning has to hold up.
 
-- a generic streaming app clone
-- a black-box algorithm
-- a popularity contest that only returns the same famous titles
+So the engine runs on a structured, curated dataset with editorial weighting on top, enriched from APIs where that adds something. Where the recommendations come from is a decision, not a byproduct of what was easiest to collect.
 
-## MVP Recommendation Inputs
+The trade-off is real. Precision improved and debugging became possible, but the universe of films is smaller and it grows by hand. Which is exactly why accuracy at scale is the current problem rather than a solved one.
 
-The first version should support:
+## **What's next**
 
-- 3 to 4 recent films typed by the user
-- a director picker for users who do not know what to enter
-- optional manual curation tags and notes maintained by Elliott
+- **Recommendation accuracy at scale.** The scoring holds up well across a curated set; the work now is keeping it honest as that set grows.  
+- **Physical media.** A lot of great films aren't streaming, or are out of print entirely. Surfacing where to buy them is the near-term step, and a marketplace is the longer-term ambition \- partly because the alternative for most people is piracy.
 
-## MVP Recommendation Outputs
+## **Stack**
 
-Each recommendation card should ideally include:
+Next.js, TypeScript and Tailwind, deployed on Vercel. Accounts and saved films run on Supabase. Film metadata from the TMDb API. Recommendation scoring, editorial weighting and the curated universe run server-side.
 
-- film title
-- poster or thumbnail
-- year
-- director
-- short one-line explanation of why it was recommended
-- tags such as `psychological`, `slow cinema`, `gritty British drama`, `formal experimentation`
-- confidence or match strength
+## **How it was built**
 
-## Recommendation Strategy
+Built solo with Claude Code, with Claude and Codex running as review agents over the output rather than just generating it. That review loop is most of the value \- a second and third pass catching what the first one talked itself into. The product decisions, the curation and the calls about what the recommendations are allowed to claim are mine.
 
-For v1, avoid relying on broad scraping as the primary engine.
+## **Status**
 
-Instead, use a hybrid recommendation model:
-
-1. A structured local movie dataset
-2. Similarity based on tags, directors, eras, countries, genres, and mood
-3. Editorial weighting from Elliott
-4. Optional enrichment from external APIs later
-
-This gives us:
-
-- more control
-- faster performance
-- easier debugging
-- safer legal and maintenance posture than scraping Letterboxd, IMDb, and Reddit directly
-
-## Suggested v1 Data Model
-
-Each movie record could contain:
-
-- `id`
-- `title`
-- `year`
-- `director`
-- `countries`
-- `genres`
-- `themes`
-- `tone`
-- `pace`
-- `tags`
-- `similar_to`
-- `editorial_score`
-- `editorial_notes`
-- `poster_url`
-- `where_to_watch` (optional later)
-
-## Recommendation Logic
-
-Given user inputs, the engine can:
-
-1. Find the selected films in the dataset
-2. Merge their attributes into a weighted preference profile
-3. Score other films by overlap and editorial boost
-4. Exclude titles the user already entered
-5. Return a ranked list with explanations
-
-Example reasons:
-
-- "Because you liked intimate British character studies with melancholy humor"
-- "Shares the same formal precision and urban paranoia as your recent picks"
-- "A deeper cut if you want to move from classic noir into political conspiracy thrillers"
-
-## Editorial Layer
-
-Elliott's taste and knowledge can be a major differentiator.
-
-That layer can be implemented as:
-
-- custom tags
-- hand-authored recommendation links
-- boosts for overlooked films
-- anti-boosts for obvious but low-value recommendations
-- short written blurbs
-- curated collections such as `bleak British realism`, `maximalist melodrama`, `1990s erotic thrillers`, `great first Tarkovsky`, or `postwar British noir`
-
-## Why Not Start With Scraping
-
-Scraping can be useful later for research or enrichment, but it is a fragile foundation for the first version because:
-
-- site structures change often
-- terms of service may restrict usage
-- recommendation quality becomes hard to control
-- scraped data is noisy and inconsistent
-
-Better first options:
-
-- TMDb API for title search and posters
-- OMDb for lightweight metadata
-- a local curated JSON dataset
-- optional future ingestion from public datasets or licensed APIs
-
-## Proposed MVP Tech Stack
-
-Because the workspace is empty, a practical first stack would be:
-
-- Next.js
-- TypeScript
-- Tailwind CSS
-- local JSON or SQLite for the first movie dataset
-
-This would let us build:
-
-- a fast search-first homepage
-- recommendation cards
-- an admin-style curation file or panel later
-
-## Build Order
-
-1. Create a small curated dataset of 50 to 100 films
-2. Build input UI for recent films and director selection
-3. Implement local recommendation scoring
-4. Render recommendation cards with reasons
-5. Add Elliott editorial boosts and manual recommendation links
-6. Add external metadata enrichment only where useful
-
-## Immediate Next Step
-
-The best next move is to build a clickable MVP with:
-
-- a homepage input form
-- a small seed movie dataset
-- a recommendation function
-- a simple results page
-
-That will let us test whether the recommendation tone and curation model feels right before we invest in larger-scale data collection.
+Live and in beta.  
