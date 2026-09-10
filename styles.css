@@ -1,4 +1,4 @@
-/* EB Garamond + IBM Plex Mono are loaded via <link> in each page <head>. */
+/* Inter + IBM Plex Mono are loaded via <link> in each page <head>. */
 
 /* Design system — editorial, image-led, print restraint (see DESIGN.md).
    The film image is the design; UI chrome is quiet scaffolding. */
@@ -18,8 +18,8 @@
   --save: #1a1814;
   --save-soft: #f1efea;
   --save-ink: #1a1814;
-  --display: "EB Garamond", Georgia, "Times New Roman", serif;
-  --body: "EB Garamond", Georgia, "Times New Roman", serif;
+  --display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", "Courier New", monospace;
   --radius-lg: 4px;
   --radius-md: 4px;
