@@ -478,7 +478,7 @@ input:disabled {
   min-height: 560px;
   padding: clamp(24px, 3vw, 42px);
   background:
-    linear-gradient(180deg, rgba(248, 246, 242, 0.86), rgba(248, 246, 242, 0.96)),
+    linear-gradient(180deg, rgba(248, 246, 242, 0.66) 0%, rgba(248, 246, 242, 0.46) 50%, rgba(248, 246, 242, 0.9) 100%),
     var(--hero-image, url("./assets/images/hero/header-film-still.jpg")),
     var(--panel);
   background-size: cover;
