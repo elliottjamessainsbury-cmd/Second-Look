@@ -93,6 +93,29 @@ function extractCinemaNames(html) {
 }
 
 async function createHarness() {
+  const showtimesFixture = JSON.parse(
+    await fs.promises.readFile(path.join(ROOT, "data", "cinema-showtimes.json"), "utf8")
+  );
+  const fixtureDate = showtimesFixture.days?.[0]?.date || "2026-09-10";
+  const fixedNow = new Date(`${fixtureDate}T12:00:00Z`);
+  class FixedDate extends Date {
+    constructor(...args) {
+      super(...(args.length ? args : [fixedNow.getTime()]));
+    }
+
+    static now() {
+      return fixedNow.getTime();
+    }
+
+    static parse(value) {
+      return Date.parse(value);
+    }
+
+    static UTC(...args) {
+      return Date.UTC(...args);
+    }
+  }
+
   const selectors = [
     "#movie-search",
     "#add-first-match",
@@ -120,7 +143,9 @@ async function createHarness() {
 
   const context = {
     console,
+    Date: FixedDate,
     window: {
+      Date: FixedDate,
       setTimeout,
       setInterval,
       clearTimeout,

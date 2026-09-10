@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T11:57:26+00:00",
+  "generatedAt": "2026-09-10T12:52:15+00:00",
   "days": [
     {
       "date": "2026-09-10",
@@ -87,21 +87,20 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5955528.TcsSection_638"
         },
         {
-          "displayTitle": "GHOSTWOMAN + Desert Liminal",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30",
-            "19:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
-        },
-        {
           "displayTitle": "Soldier Girls + Q&A",
           "cinema": "ICA",
           "showtimes": [
             "18:30"
           ],
           "ticketUrl": "https://www.ica.art/films/soldier-girls-q-a"
+        },
+        {
+          "displayTitle": "UK PREMIERE Pin de Fartie",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
         },
         {
           "displayTitle": "I Want Your Sex",
@@ -333,7 +332,7 @@
           "showtimes": [
             "19:45"
           ],
-          "ticketUrl": "https://princecharlescinema.com/film/3225884/kingdom-of-heaven-directors-cut"
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627221"
         },
         {
           "displayTitle": "Late Fame",
@@ -406,12 +405,10 @@
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627298"
         },
         {
-          "displayTitle": "GLUE Workshop Remixing Capital Landscapes with Ibrahim Azab",
+          "displayTitle": "UK PREMIERE The Day She Returns",
           "cinema": "ICA",
           "showtimes": [
-            "12:10",
-            "12:30",
-            "15:30"
+            "12:10"
           ],
           "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
         },
@@ -448,22 +445,20 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182278.TcsSection_971"
         },
         {
-          "displayTitle": "GLUE Talk Pina issue #3 \u2013 American Artist and Rosa-Johan Uddoh with Catalina Imizcoz",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00",
-            "14:15",
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/late-fame"
-        },
-        {
           "displayTitle": "La Femme infid\u00e8le",
           "cinema": "ICA",
           "showtimes": [
             "14:00"
           ],
           "ticketUrl": "https://www.ica.art/films/chabrol-la-femme-infidele"
+        },
+        {
+          "displayTitle": "Late Fame",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/late-fame"
         },
         {
           "displayTitle": "Stalker",
@@ -594,7 +589,7 @@
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627290"
         },
         {
-          "displayTitle": "GLUE Book Fair 2026",
+          "displayTitle": "UK PREMIERE Pin de Fartie",
           "cinema": "ICA",
           "showtimes": [
             "20:30"
@@ -664,11 +659,10 @@
           "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
         },
         {
-          "displayTitle": "GLUE Talk SMUT Press, HELA Press and Tummy Ache magazine with Flora Gau (Studio Nocturne)",
+          "displayTitle": "A Free Woman",
           "cinema": "ICA",
           "showtimes": [
-            "12:30",
-            "14:00"
+            "12:30"
           ],
           "ticketUrl": "https://www.ica.art/films/a-free-woman"
         },
@@ -713,11 +707,10 @@
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627301"
         },
         {
-          "displayTitle": "GLUE Performance TALKER \u2013 A Flickering Space Where the Deed Dissolves",
+          "displayTitle": "A. Rimbaud",
           "cinema": "ICA",
           "showtimes": [
-            "14:30",
-            "15:45"
+            "14:30"
           ],
           "ticketUrl": "https://www.ica.art/films/a-rimbaud"
         },
@@ -818,7 +811,7 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6023459.TcsSection_3060731"
         },
         {
-          "displayTitle": "GLUE Book Fair 2026",
+          "displayTitle": "Matador",
           "cinema": "ICA",
           "showtimes": [
             "20:00"
@@ -1292,21 +1285,20 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182160.TcsSection_971"
         },
         {
+          "displayTitle": "Late Fame",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/late-fame"
+        },
+        {
           "displayTitle": "UK PREMIERE Pin de Fartie",
           "cinema": "ICA",
           "showtimes": [
             "16:30"
           ],
           "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
-        },
-        {
-          "displayTitle": "Visible Justice Screening + Talk: Battle of Algiers (1996)",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:30",
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/late-fame"
         },
         {
           "displayTitle": "I Want Your Sex",
