@@ -6,20 +6,6 @@ const vm = require("vm");
 const ROOT = process.env.SECOND_LOOK_ROOT || path.resolve(__dirname, "..");
 const engine = require(path.join(ROOT, "lib", "recommendation-engine.js"));
 const editorial = require(path.join(ROOT, "lib", "editorial-copy.js"));
-const FIXED_NOW = new Date("2026-07-29T11:00:00.000Z");
-
-class FixedDate extends Date {
-  constructor(...args) {
-    super(...(args.length ? args : [FIXED_NOW.getTime()]));
-  }
-
-  static now() {
-    return FIXED_NOW.getTime();
-  }
-}
-
-FixedDate.UTC = Date.UTC;
-FixedDate.parse = Date.parse;
 
 class MockElement {
   constructor(id = "") {
@@ -107,6 +93,29 @@ function extractCinemaNames(html) {
 }
 
 async function createHarness() {
+  const showtimesFixture = JSON.parse(
+    await fs.promises.readFile(path.join(ROOT, "data", "cinema-showtimes.json"), "utf8")
+  );
+  const fixtureDate = showtimesFixture.days?.[0]?.date || "2026-09-10";
+  const fixedNow = new Date(`${fixtureDate}T12:00:00Z`);
+  class FixedDate extends Date {
+    constructor(...args) {
+      super(...(args.length ? args : [fixedNow.getTime()]));
+    }
+
+    static now() {
+      return fixedNow.getTime();
+    }
+
+    static parse(value) {
+      return Date.parse(value);
+    }
+
+    static UTC(...args) {
+      return Date.UTC(...args);
+    }
+  }
+
   const selectors = [
     "#movie-search",
     "#add-first-match",
@@ -136,6 +145,7 @@ async function createHarness() {
     console,
     Date: FixedDate,
     window: {
+      Date: FixedDate,
       setTimeout,
       setInterval,
       clearTimeout,
@@ -160,7 +170,8 @@ async function createHarness() {
       }
     },
     fetch: async (url) => {
-      const filePath = path.join(ROOT, url.replace(/^\.?\//, ""));
+      const cleanUrl = String(url).split("?")[0];
+      const filePath = path.join(ROOT, cleanUrl.replace(/^\.?\//, ""));
       const text = await fs.promises.readFile(filePath, "utf8");
       return {
         ok: true,

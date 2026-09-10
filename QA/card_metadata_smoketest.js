@@ -116,7 +116,8 @@ async function createHarness() {
       }
     },
     fetch: async (url) => {
-      const filePath = path.join(ROOT, url.replace(/^\.?\//, ""));
+      const cleanUrl = String(url).split("?")[0];
+      const filePath = path.join(ROOT, cleanUrl.replace(/^\.?\//, ""));
       const text = await fs.promises.readFile(filePath, "utf8");
 
       return {

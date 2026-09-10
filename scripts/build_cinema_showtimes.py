@@ -299,7 +299,8 @@ def parse_ica(target_dates: set[str]) -> list[Screening]:
         if date_iso not in target_dates:
             continue
 
-        for chunk in section.split('<div class="item films "')[1:]:
+        film_items = re.findall(r'<div class="item films ">(.*?</a></div>)', section, re.S)
+        for chunk in film_items:
             href_match = re.search(r'<a href="(/films/[^"]+)">', chunk)
             title_matches = re.findall(r'<div class="title[^"]*">(.*?)</div>', chunk, re.S)
             time_matches = re.findall(r'<div class="time-slot">(.*?)</div>', chunk, re.S)

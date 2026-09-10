@@ -9,10 +9,10 @@
   --paper: #ffffff;         /* elevated surface, used sparingly */
   --surface: #ffffff;
   --ink: #1a1814;           /* near-black, warm undertone */
-  --text: #6b6560;          /* secondary labels, descriptions */
-  --muted: #9b928a;         /* mono metadata: director, year, runtime */
-  --line: #e4e0d9;          /* hairline dividers only */
-  --border: #e4e0d9;
+  --text: #4f4943;          /* secondary labels, descriptions */
+  --muted: #6f675f;         /* mono metadata: director, year, runtime */
+  --line: #c9c2b8;          /* hairline dividers only */
+  --border: #c9c2b8;
   --accent: #1a1814;        /* no colour accent — posters are the palette */
   --accent-soft: #f1efea;
   --save: #1a1814;
@@ -79,7 +79,7 @@ button {
 .page-shell {
   width: min(1440px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 20px 0 44px;
+  padding: 24px 0 56px;
 }
 
 .app-topbar {
@@ -101,7 +101,7 @@ button {
   border-radius: var(--radius-pill);
   background: var(--paper);
   color: var(--ink);
-  font-size: 0.84rem;
+  font-size: 0.88rem;
   font-weight: 800;
   line-height: 1;
   text-decoration: none;
@@ -448,10 +448,10 @@ input:disabled {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.72fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.58fr) minmax(300px, 0.78fr);
+  gap: 22px;
   align-items: stretch;
-  margin: 0 0 18px;
+  margin: 0 0 24px;
 }
 
 .hero-copy,
@@ -475,10 +475,10 @@ input:disabled {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 520px;
-  padding: 28px;
+  min-height: 560px;
+  padding: clamp(24px, 3vw, 42px);
   background:
-    linear-gradient(180deg, rgba(236, 235, 230, 0.2), rgba(236, 235, 230, 0.88)),
+    linear-gradient(180deg, rgba(248, 246, 242, 0.66) 0%, rgba(248, 246, 242, 0.46) 50%, rgba(248, 246, 242, 0.9) 100%),
     var(--hero-image, url("./assets/images/hero/header-film-still.jpg")),
     var(--panel);
   background-size: cover;
@@ -537,57 +537,62 @@ h1 {
 }
 
 .hero-text {
-  max-width: 50ch;
+  max-width: 58ch;
   margin: 24px 0 0;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text);
+  font-size: clamp(1.08rem, 1.3vw, 1.22rem);
+  font-weight: 500;
+  line-height: 1.62;
+  color: var(--ink);
 }
 
 .hero-links {
-  display: flex;
-  gap: 14px;
-  margin-top: 28px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 34px;
 }
 
 .hero-link {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  flex: 1 1 240px;
-  min-width: 220px;
-  padding: 16px 18px;
-  border: 1px solid #ffffff;
-  border-radius: 18px;
-  background: #ffffff;
-  color: #111111;
+  gap: 8px;
+  min-height: 112px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 22px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-card);
+  background: var(--ink);
+  color: #ffffff;
   text-decoration: none;
+  text-align: center;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease,
+    box-shadow 0.25s ease,
     transform 0.25s ease;
 }
 
 .hero-link:hover {
-  background: #f2f2f2;
-  border-color: #f2f2f2;
+  background: #3a332c;
+  border-color: #3a332c;
+  box-shadow: 0 14px 28px rgba(26, 24, 20, 0.18);
   transform: translateY(-2px);
 }
 
 .hero-link__title {
-  font-family: var(--display, var(--body));
-  font-size: 1.02rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #111111;
+  font-family: var(--body);
+  font-size: clamp(1.08rem, 1.5vw, 1.32rem);
+  font-weight: 800;
+  letter-spacing: 0;
+  color: inherit;
 }
 
 .hero-link__hint {
-  font-size: 0.82rem;
-  line-height: 1.4;
-  color: rgba(17, 17, 17, 0.66);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .browse-search {
@@ -675,11 +680,11 @@ h1 {
 .home-flow {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 30px;
 }
 
 .card {
-  padding: 24px;
+  padding: clamp(22px, 2.3vw, 32px);
 }
 
 .controls.card {
@@ -2475,12 +2480,31 @@ a.expanded-stats-link:hover strong {
 @media (max-width: 640px) {
   .page-shell {
     width: min(100% - 18px, 1500px);
+    padding-top: 12px;
+  }
+
+  .app-topbar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   .hero-copy,
   .hero-panel,
   .card {
     padding: 20px;
+  }
+
+  .hero-copy {
+    min-height: 0;
+  }
+
+  .hero-links {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-link {
+    min-height: 92px;
   }
 
   h1 {
