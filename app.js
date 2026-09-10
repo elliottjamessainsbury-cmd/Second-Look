@@ -2663,10 +2663,10 @@ function renderCinemaShowtimes() {
   }
 
   if (elements.cinemaShowtimesTitle) {
-    elements.cinemaShowtimesTitle.textContent = "Playing in London this week";
+    elements.cinemaShowtimesTitle.textContent = "Showing in London this week";
   }
   if (elements.cinemaShowtimesIntro) {
-    elements.cinemaShowtimesIntro.textContent = "Choose a day in the week view, then browse that day's listings below.";
+    elements.cinemaShowtimesIntro.textContent = "Watch something different from London's arthouse & independent cinemas.";
   }
 
   const days = getUpcomingShowtimeDays();
@@ -2978,7 +2978,7 @@ function renderTastePicks() {
 
   if (elements.tasteGenerate) {
     elements.tasteGenerate.disabled = state.tastePicks.length === 0;
-    elements.tasteGenerate.textContent = state.tastePicks.length === 0 ? "Add a film to begin" : "Show me recommendations";
+    elements.tasteGenerate.textContent = state.tastePicks.length === 0 ? "Add film" : "Show me recommendations";
   }
 }
 

@@ -583,7 +583,7 @@ h1 {
 .hero-link__title {
   font-family: var(--body);
   font-size: clamp(1.08rem, 1.5vw, 1.32rem);
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0;
   color: inherit;
 }
