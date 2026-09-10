@@ -3670,7 +3670,8 @@ function attachBaseEventHandlers() {
 
 async function loadCinemaShowtimes() {
   try {
-    const response = await fetch("./data/cinema-showtimes.json");
+    const showtimesUrl = `./data/cinema-showtimes.json?v=${Date.now()}`;
+    const response = await fetch(showtimesUrl, { cache: "no-store" });
     if (!response.ok) {
       console.warn(`Cinema showtimes unavailable (HTTP ${response.status}).`);
       return null;
