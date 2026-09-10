@@ -2680,32 +2680,7 @@ h1 {
 
 /* Hero CTAs — no card, no pill: quiet editorial links under a hairline */
 .hero-links { gap: var(--space-md); margin-top: var(--space-lg); }
-.hero-link {
-  flex: 1 1 260px;
-  min-width: 220px;
-  padding: var(--space-sm) 0 0;
-  border: none;
-  border-top: 1px solid var(--border);
-  border-radius: 0;
-  background: none;
-  transition: border-color 0.2s ease;
-}
-.hero-link:hover { background: none; border-color: var(--ink); transform: none; }
-.hero-link__title {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 1.5rem;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-.hero-link__hint {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.5;
-  color: var(--muted);
-}
+/* Hero CTAs render as the solid buttons defined in the base .hero-link block above. */
 
 /* Eyebrows / section labels */
 .eyebrow,
@@ -2999,12 +2974,11 @@ hr { border: none; border-top: 1px solid var(--border); }
 .hero-copy h1 { margin-top: 0; }
 /* Light halo keeps dark text legible over dark rotating stills */
 .hero-copy h1,
-.hero-copy .hero-text,
-.hero-copy .hero-link__title {
+.hero-copy .hero-text {
   text-shadow: 0 1px 12px rgba(248, 246, 242, 0.85);
 }
 
-/* Quote module: restore its dark card (light text is legible again) */
+/* Quote module: its own dark card */
 .hero-panel {
   display: flex;
   flex-direction: column;
