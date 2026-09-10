@@ -560,7 +560,7 @@ h1 {
   align-items: center;
   justify-content: center;
   padding: 20px 22px;
-  border: 2px solid var(--ink);
+  border: none;
   border-radius: 999px;
   background: var(--surface);
   color: var(--ink);
@@ -2667,13 +2667,14 @@ h1 {
   font-size: clamp(3.4rem, 8vw, 5rem);
   text-transform: none;
   margin: var(--space-md) 0 0;
+  color: #000000;
 }
 .hero-indent { margin-left: 0; }
 .hero-text {
   font-family: var(--body);
   font-size: 1.2rem;
   line-height: 1.5;
-  color: var(--text);
+  color: #000000;
   max-width: 46ch;
   margin-top: var(--space-md);
 }
