@@ -43,8 +43,8 @@ This is not a dark-mode app. It is not a streaming UI. It is not shadcn defaults
 Two typefaces only. No exceptions.
 
 ```css
-/* Display + editorial headings */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+/* Display + body (sans) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 /* Metadata, labels, captions */
 /* IBM Plex Mono — already in project, keep it */
@@ -54,16 +54,16 @@ Two typefaces only. No exceptions.
 
 | Role | Family | Size | Weight | Transform | Tracking |
 |---|---|---|---|---|---|
-| Hero / display | EB Garamond | 64–80px | 400 | — | -0.02em |
-| Section heading | EB Garamond | 32px | 400 | — | -0.01em |
-| Body / "why" text | EB Garamond | 18px | 400 | — | 0 |
-| Film title (card) | EB Garamond | 20px | 500 | — | 0 |
+| Hero / display | Inter | 64–80px | 400 | — | -0.02em |
+| Section heading | Inter | 32px | 400 | — | -0.01em |
+| Body / "why" text | Inter | 18px | 400 | — | 0 |
+| Film title (card) | Inter | 20px | 500 | — | 0 |
 | Eyebrow / section label | IBM Plex Mono | 11px | 400 | UPPERCASE | 0.12em |
 | Director · Year · Country | IBM Plex Mono | 11px | 400 | UPPERCASE | 0.08em |
 | Nav links | IBM Plex Mono | 12px | 400 | UPPERCASE | 0.1em |
-| Search input | EB Garamond | 20px | 400 | — | 0 |
+| Search input | Inter | 20px | 400 | — | 0 |
 
-**Rule:** IBM Plex Mono is for data and chrome only — it never carries editorial prose. EB Garamond carries the voice.
+**Rule:** IBM Plex Mono is for data and chrome only — it never carries editorial prose. Inter carries the voice.
 
 ---
 
@@ -120,20 +120,20 @@ Position: top-right, small, IBM Plex Mono uppercase. Logo (hand-drawn asset) top
 ### Film card
 Portrait aspect ratio — movie poster proportions (2:3).
 - Image: full-bleed, no padding, object-fit: cover
-- Below image: Film title (EB Garamond, 20px) + Director · Year (IBM Plex Mono, 11px uppercase)
-- "Why" text: EB Garamond italic, 15px, --text-secondary, appears on hover/expand
+- Below image: Film title (Inter, 20px) + Director · Year (IBM Plex Mono, 11px uppercase)
+- "Why" text: Inter italic, 15px, --text-secondary, appears on hover/expand
 - Actions (Save / Not for me): IBM Plex Mono, 11px uppercase, text-only — no button chrome
 
 ### No-poster fallback card
 When no image is available, use a typographic card:
 - Background: --text-primary (#1a1814)
-- Film title: EB Garamond, large (28–36px), --bg colour, centered
+- Film title: Inter, large (28–36px), --bg colour, centered
 - Director: IBM Plex Mono, 11px, --text-meta colour
 *These dark cards as accent pieces in an otherwise light grid look intentional, not broken.*
 
 ### Search input
 No box. No border box. Single bottom border in --border, 1px.
-Placeholder text in --text-meta. EB Garamond, 20px.
+Placeholder text in --text-meta. Inter, 20px.
 
 ```
 Which films do you love? _________________
@@ -157,7 +157,7 @@ START FROM YOUR TASTE
 Hand-drawn asset (to be supplied as SVG or transparent PNG).
 Place top-left. Maximum height: 32px on mobile, 40px desktop.
 No drop shadow, no border, no background treatment.
-If logo not yet available: set `font-family: EB Garamond; font-style: italic; font-size: 20px;` as a text placeholder.
+If logo not yet available: set `font-family: Inter; font-style: italic; font-size: 20px;` as a text placeholder.
 
 ---
 
