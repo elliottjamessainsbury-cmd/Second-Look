@@ -2,6 +2,8 @@
 
 This is the working UI contract for Second Look. Use it when reviewing screenshots, building new surfaces, or writing QA checks.
 
+> **Tooling note.** `docs/design-system.md` and `styles.css` are the source of truth for design — read them directly. Second Look does **not** use the Superdesign design agent (or any design-agent MCP): the old `.superdesign/` context folder was removed as stale, so don't recreate it, design against it, or flag its absence.
+
 ## Visual Intent
 
 - Quiet, editorial, cinema-aware, and utilitarian.
