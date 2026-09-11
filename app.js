@@ -1,6 +1,7 @@
 const LEGACY_SAVED_FILMS_STORAGE_KEY = "secondlook:savedFilmIds";
 const SESSION_STATE_STORAGE_KEY = "secondlook:sessionState:v2";
-const ONBOARDING_DISMISSED_STORAGE_KEY = "secondlook:onboardingDismissed:v1";
+const RECOMMENDATION_DRAFT_STORAGE_KEY = "secondlook:recommendationDraft:v1";
+const ONBOARDING_DISMISSED_STORAGE_KEY = "secondlook:onboardingDismissed:v2";
 const LOCAL_IMPORT_DISMISSED_STORAGE_KEY = "secondlook:localImportDismissed:v1";
 const MAX_SEED_COUNT = 3;
 const ACCOUNT_DELETE_FUNCTION_NAME = "delete-account";
@@ -14,6 +15,7 @@ const {
   buildSeedProfile,
   scoreCandidate,
   diversifyRecommendations,
+  blendQueryVectors,
   updateUserProfileFromInteraction,
 } = window.SecondLookEngine || {};
 const {
@@ -226,6 +228,53 @@ function saveSessionState() {
 
 const persistedSession = loadSessionState();
 
+function baseRecommendationDraft() {
+  return {
+    picks: [],
+    prompt: "",
+    answers: {},
+    refinements: { wander: "balanced", pace: "any", temperature: "any", era: "any" },
+    pendingGeneration: false,
+  };
+}
+
+function loadRecommendationDraft() {
+  try {
+    const raw = getLocalStorage()?.getItem(RECOMMENDATION_DRAFT_STORAGE_KEY);
+    if (!raw) return baseRecommendationDraft();
+    const value = JSON.parse(raw);
+    const base = baseRecommendationDraft();
+    return {
+      picks: Array.isArray(value.picks) ? value.picks.slice(0, MAX_SEED_COUNT) : [],
+      prompt: String(value.prompt || "").slice(0, 300),
+      answers: value.answers && typeof value.answers === "object" ? value.answers : {},
+      refinements: { ...base.refinements, ...(value.refinements || {}) },
+      pendingGeneration: Boolean(value.pendingGeneration),
+    };
+  } catch (error) {
+    return baseRecommendationDraft();
+  }
+}
+
+function saveRecommendationDraft() {
+  try {
+    getLocalStorage()?.setItem(RECOMMENDATION_DRAFT_STORAGE_KEY, JSON.stringify(state.recommendationDraft));
+  } catch (error) {
+    console.warn("Failed to preserve recommendation draft.", error);
+  }
+}
+
+function clearRecommendationDraft() {
+  try {
+    getLocalStorage()?.removeItem(RECOMMENDATION_DRAFT_STORAGE_KEY);
+  } catch (error) {
+    console.warn("Failed to clear recommendation draft.", error);
+  }
+  state.recommendationDraft = baseRecommendationDraft();
+}
+
+const persistedRecommendationDraft = loadRecommendationDraft();
+
 const state = {
   internalFilms: [],
   internalFilmById: {},
@@ -238,6 +287,8 @@ const state = {
   recommendationBlurbsByPairId: {},
   recommendationBlurbsByPairTitle: {},
   availabilityByFilmId: {},
+  tasteProfilesByFilmId: {},
+  filmEmbeddings: {},
   cinemaShowtimes: {
     generatedAt: "",
     days: [],
@@ -249,10 +300,17 @@ const state = {
     colours: [],
   },
   tasteAnchors: [],
-  tastePicks: [],
+  tastePicks: persistedRecommendationDraft.picks,
   tasteQuery: "",
   tasteSearchResults: [],
   tasteGenerated: false,
+  tasteGenerating: false,
+  tasteReducedPersonalization: false,
+  tasteQueryVector: null,
+  tastePrompt: persistedRecommendationDraft.prompt,
+  tasteAnswers: persistedRecommendationDraft.answers,
+  tasteRefinements: persistedRecommendationDraft.refinements,
+  recommendationDraft: persistedRecommendationDraft,
   selectedCinemaShowtimesDate: "",
   selectedCinemaShowtimesCinema: "",
   query: "",
@@ -315,6 +373,11 @@ const elements = {
   tasteGenerate: document.querySelector("#taste-generate"),
   tasteRecsHead: document.querySelector("#taste-recs-head"),
   tasteRecs: document.querySelector("#taste-recs"),
+  tastePrompt: document.querySelector("#taste-prompt"),
+  tastePromptCount: document.querySelector("#taste-prompt-count"),
+  tasteCalibration: document.querySelector("#taste-calibration"),
+  tasteStatus: document.querySelector("#taste-status"),
+  tasteRefinements: document.querySelector("#taste-refinements"),
   criterionSection: document.querySelector("#criterion-section"),
   resultsTitle: document.querySelector("#results-title"),
   savedFilmsList: document.querySelector("#saved-films-list"),
@@ -348,15 +411,7 @@ const tasteQuizQuestions = [
       { id: "timeless", label: "Timeless" },
       { id: "depends", label: "Depends" },
       { id: "homework", label: "Homework" },
-    ],
-  },
-  {
-    id: "subtitles",
-    prompt: "Subtitles:",
-    answers: [
-      { id: "essential", label: "Essential" },
-      { id: "fine", label: "Fine if it’s worth it" },
-      { id: "prefer_not", label: "Prefer not" },
+      { id: "neutral", label: "Haven’t seen enough" },
     ],
   },
   {
@@ -366,23 +421,7 @@ const tasteQuizQuestions = [
       { id: "hypnotic", label: "Hypnotic" },
       { id: "depends", label: "Depends" },
       { id: "move_it", label: "Move it along" },
-    ],
-  },
-  {
-    id: "weird",
-    prompt: "Weirdness:",
-    answers: [
-      { id: "max", label: "As weird as it gets" },
-      { id: "medium", label: "A little strange is good" },
-      { id: "grounded", label: "Keep it grounded" },
-    ],
-  },
-  {
-    id: "craft_vs_feeling",
-    prompt: "What matters more:",
-    answers: [
-      { id: "craft", label: "How it’s made" },
-      { id: "feeling", label: "How it makes me feel" },
+      { id: "neutral", label: "Haven’t seen enough" },
     ],
   },
   {
@@ -392,6 +431,17 @@ const tasteQuizQuestions = [
       { id: "love", label: "That’s the point" },
       { id: "sometimes", label: "Fine occasionally" },
       { id: "clear", label: "Just tell me what happened" },
+      { id: "neutral", label: "Haven’t seen enough" },
+    ],
+  },
+  {
+    id: "ari_aster",
+    prompt: "What’s Ari Aster’s worst film?",
+    answers: [
+      { id: "hereditary", label: "Hereditary" },
+      { id: "midsommar", label: "Midsommar" },
+      { id: "beau", label: "Beau Is Afraid" },
+      { id: "neutral", label: "Haven’t seen enough" },
     ],
   },
 ];
@@ -693,7 +743,7 @@ function deriveFormats(sample, tmdb) {
   return [];
 }
 
-function buildInternalFilms(curated, sampleMovies, availabilityByFilmId) {
+function buildInternalFilms(curated, sampleMovies, availabilityByFilmId, tasteProfilesByFilmId, filmEmbeddings) {
   const internalTitleToId = curated.reduce((output, film) => {
     output[normalize(film.title)] = film.film_id;
     return output;
@@ -720,6 +770,7 @@ function buildInternalFilms(curated, sampleMovies, availabilityByFilmId) {
     const countries = unique([curatedFilm.country, ...(sample.countries || [])].filter(Boolean));
     const platforms = platformsFromAvailability(availability);
     const formats = deriveFormats(sample, tmdb);
+    const tasteProfile = tasteProfilesByFilmId[curatedFilm.film_id] || {};
 
     return {
       source: "internal",
@@ -732,15 +783,24 @@ function buildInternalFilms(curated, sampleMovies, availabilityByFilmId) {
       formats,
       platforms,
       genres: mergeLists(tmdb.genres || [], sample.genres || []),
-      themes,
-      tone,
-      mood: [],
+      themes: mergeLists(tasteProfile.themes || [], themes),
+      tone: mergeLists(tasteProfile.tone || [], tone),
+      mood: unique(tasteProfile.mood || []),
+      formalStyle: unique(tasteProfile.formal_style || []),
+      intensity: tasteProfile.intensity || "",
+      ambiguity: tasteProfile.ambiguity || "",
+      accessibility: tasteProfile.accessibility || "",
+      movement: tasteProfile.movement || "",
+      editorialNotes: tasteProfile.editorial_notes || "",
       bw: Boolean(curatedFilm.bw),
-      pace: sample.pace || "",
+      pace: tasteProfile.pace || sample.pace || "",
       directRecommendations,
       cardTags,
       averageRating: parseRatingValue(metadata.average_rating || metadata.review_rating),
+      elliottRating: Number(curatedFilm.elliott_rating || 0),
       tmdbId: tmdb.tmdb_id || null,
+      overview: tmdb.overview || "",
+      embedding: filmEmbeddings[curatedFilm.film_id] || null,
       availability,
     };
   });
@@ -1209,6 +1269,19 @@ async function handleFilmInteraction(filmId, actionType) {
     userProfile: state.userProfile,
   });
   await saveAccountUserProfile();
+
+  // When the taste flow is the active surface, keep results in that ranking:
+  // saving or dismissing a result should re-rank the full catalogue through
+  // the taste query (which excludes saved/disliked films), not fall back to
+  // the legacy seed-based path that would overwrite the taste recommendations.
+  if (state.tasteGenerated) {
+    if (actionType === "save" || actionType === "not_for_me") {
+      rankTasteRecommendations(state.tasteQueryVector);
+    }
+    render();
+    return;
+  }
+
   regenerateIfActive();
 }
 
@@ -2909,9 +2982,12 @@ async function pickTasteResult(index) {
       country: result.country,
       genres: result.genres || [],
       keywords: result.keywords || [],
+      countries: [result.country].filter(Boolean),
+      overview: "",
+      descriptor: [result.title, result.year, result.director, result.country, ...(result.genres || []), ...(result.keywords || [])].filter(Boolean).join(" "),
     };
   } else {
-    pick = { title: result.title, year: result.year, director: "", country: "", genres: [], keywords: [] };
+    pick = { id: result.id, title: result.title, year: result.year, director: "", country: "", countries: [], genres: [], keywords: [], overview: "", descriptor: `${result.title} ${result.year || ""}`.trim() };
     try {
       const response = await fetch(`/api/tmdb-film?id=${encodeURIComponent(result.id)}`);
       if (response.ok) {
@@ -2922,8 +2998,11 @@ async function pickTasteResult(index) {
             year: data.film.year || result.year,
             director: data.film.director || "",
             country: data.film.country || "",
+            countries: data.film.countries || [data.film.country].filter(Boolean),
             genres: data.film.genres || [],
             keywords: data.film.keywords || [],
+            overview: data.film.overview || "",
+            descriptor: data.film.descriptor || "",
           };
         }
       }
@@ -2942,6 +3021,8 @@ async function pickTasteResult(index) {
     elements.tasteSearchInput.value = "";
   }
   state.tasteGenerated = false;
+  state.recommendationDraft.picks = state.tastePicks;
+  saveRecommendationDraft();
   renderTasteSearchResults();
   renderTastePicks();
   renderTasteRecs();
@@ -2950,6 +3031,8 @@ async function pickTasteResult(index) {
 function removeTastePick(title) {
   state.tastePicks = state.tastePicks.filter((pick) => normalize(pick.title) !== normalize(title));
   state.tasteGenerated = false;
+  state.recommendationDraft.picks = state.tastePicks;
+  saveRecommendationDraft();
   renderTastePicks();
   renderTasteRecs();
 }
@@ -2978,53 +3061,39 @@ function renderTastePicks() {
 
   if (elements.tasteGenerate) {
     elements.tasteGenerate.disabled = state.tastePicks.length === 0;
-    elements.tasteGenerate.textContent = state.tastePicks.length === 0 ? "Add film" : "Show me recommendations";
+    elements.tasteGenerate.textContent = state.tasteGenerating
+      ? "Finding films…"
+      : state.tastePicks.length === 0 ? "Add film" : "Show my recommendations";
   }
 }
 
-function buildTasteSignal() {
-  const signal = { genres: new Set(), keywords: new Set(), countries: new Set(), directors: new Set(), decades: new Set() };
-  state.tastePicks.forEach((pick) => {
-    (pick.genres || []).forEach((value) => signal.genres.add(value));
-    (pick.keywords || []).forEach((value) => signal.keywords.add(value));
-    if (pick.country) signal.countries.add(pick.country);
-    if (pick.director) signal.directors.add(pick.director);
-    const decade = tasteDecade(pick.year);
-    if (decade) signal.decades.add(decade);
+function renderTasteCalibration() {
+  if (!elements.tasteCalibration) return;
+  elements.tasteCalibration.innerHTML = tasteQuizQuestions.map((question) => `
+    <fieldset class="taste-question">
+      <legend>${escapeHtml(question.prompt)}</legend>
+      <div class="taste-question__options">
+        ${question.answers.map((answer) => `
+          <label>
+            <input type="radio" name="taste-${question.id}" value="${answer.id}" ${state.tasteAnswers[question.id] === answer.id ? "checked" : ""}>
+            <span>${escapeHtml(answer.label)}</span>
+          </label>
+        `).join("")}
+      </div>
+    </fieldset>
+  `).join("");
+  elements.tasteCalibration.querySelectorAll("input[type=radio]").forEach((input) => {
+    input.addEventListener("change", () => {
+      const questionId = input.name.replace(/^taste-/, "");
+      state.tasteAnswers[questionId] = input.value;
+      state.recommendationDraft.answers = state.tasteAnswers;
+      saveRecommendationDraft();
+    });
   });
-  return signal;
 }
 
-function scoreTasteCandidate(film, signal) {
-  const reasons = [];
-  let score = 0;
-  const sharedGenres = (film.genres || []).filter((value) => signal.genres.has(value));
-  if (sharedGenres.length) {
-    score += 3 * sharedGenres.length;
-    reasons.push(...sharedGenres);
-  }
-  const sharedKeywords = (film.themes || []).filter((value) => signal.keywords.has(value));
-  if (sharedKeywords.length) {
-    score += 2 * sharedKeywords.length;
-    reasons.push(...sharedKeywords.slice(0, 2));
-  }
-  const sharedCountry = (film.countries || []).filter((value) => signal.countries.has(value));
-  if (sharedCountry.length) {
-    score += 4;
-    reasons.push(...sharedCountry);
-  }
-  if (film.director && signal.directors.has(film.director)) {
-    score += 8;
-    reasons.push(`dir. ${film.director}`);
-  }
-  const decade = tasteDecade(film.year);
-  if (decade && signal.decades.has(decade)) {
-    score += 2;
-  }
-  return { score, reasons: unique(reasons).slice(0, 4) };
-}
-
-function renderTasteCard(film, reasons) {
+function renderTasteCard(item) {
+  const { film, scoreData, explanation } = item;
   const isSaved = state.userProfile.savedFilmIds.includes(film.filmId);
   const isDismissed = state.userProfile.dislikedFilmIds.includes(film.filmId);
   const key = cardKey("taste", film.filmId);
@@ -3033,6 +3102,12 @@ function renderTasteCard(film, reasons) {
   const meta = [film.year || "Year unknown", film.director || "Director unknown", ...(film.countries || []).slice(0, 1)]
     .filter(Boolean)
     .join(" • ");
+  const ratingMeta = [
+    film.elliottRating ? `Elliott ${film.elliottRating}/5` : "",
+    film.averageRating ? `Letterboxd ${film.averageRating.toFixed(1)}` : "",
+  ].filter(Boolean).join(" · ");
+  const availability = platformsFromAvailability(film.availability || {});
+  const why = explanation?.shortText || explanation?.text || scoreData?.reasons?.[0] || film.editorialNotes || "A strong editorial match from the collection.";
 
   return `
     <article class="result-card film-card browse-film-card ${expanded ? "result-card-expanded" : ""}">
@@ -3040,7 +3115,9 @@ function renderTasteCard(film, reasons) {
       <div class="card-body film-card-body">
         <h3 class="card-title">${escapeHtml(film.title)}</h3>
         <p class="match-meta">${escapeHtml(meta)}</p>
-        ${reasons.length ? `<p class="discovery-card__rationale">${escapeHtml(reasons.join(" • "))}</p>` : ""}
+        ${ratingMeta ? `<p class="taste-card__ratings">${escapeHtml(ratingMeta)}</p>` : ""}
+        <p class="discovery-card__rationale"><strong>Why this:</strong> ${escapeHtml(why)}</p>
+        <p class="taste-card__availability">${availability.length ? `Available via ${escapeHtml(availability.join(", "))}` : "Availability varies by region"}</p>
         <div class="card-actions film-actions">
           <button class="card-link-button discovery-action-button save-action-button ${isSaved ? "is-active" : ""}" type="button" data-save-film="${film.filmId}">
             ${isSaved ? "Saved" : "Save"}
@@ -3061,34 +3138,149 @@ function renderTasteCard(film, reasons) {
     </article>`;
 }
 
+function quizSummary() {
+  return tasteQuizQuestions
+    .map((question) => {
+      const answer = question.answers.find((item) => item.id === state.tasteAnswers[question.id]);
+      return answer && answer.id !== "neutral" ? `${question.prompt} ${answer.label}.` : "";
+    })
+    .filter(Boolean)
+    .join(" ");
+}
+
+function averageVectors(vectors) {
+  if (!vectors.length) return null;
+  return vectors[0].map((_, index) => vectors.reduce((total, vector) => total + Number(vector[index] || 0), 0) / vectors.length);
+}
+
+async function requestTasteQueryVector() {
+  if (!Object.keys(state.filmEmbeddings).length || !state.account.client) return null;
+  const descriptors = state.tastePicks.map((pick) => pick.descriptor || [pick.title, pick.overview, ...(pick.keywords || [])].filter(Boolean).join(" "));
+  const promptText = state.tastePrompt.trim();
+  const quizText = quizSummary();
+  const inputs = [...descriptors, ...(promptText ? [promptText] : []), ...(quizText ? [quizText] : [])];
+  const { data } = await state.account.client.auth.getSession();
+  const token = data?.session?.access_token;
+  if (!token || !inputs.length) return null;
+  const response = await fetch("/api/taste-embedding", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ inputs }),
+  });
+  if (!response.ok) throw new Error("embedding_unavailable");
+  const payload = await response.json();
+  let offset = 0;
+  const seedVector = averageVectors(payload.embeddings.slice(offset, offset + descriptors.length));
+  offset += descriptors.length;
+  const promptVector = promptText ? payload.embeddings[offset++] : null;
+  const quizVector = quizText ? payload.embeddings[offset] : null;
+  return blendQueryVectors([
+    { vector: seedVector, weight: 0.6 },
+    { vector: promptVector, weight: 0.25 },
+    { vector: quizVector, weight: 0.15 },
+  ]);
+}
+
+function tasteExternalSeeds() {
+  return state.tastePicks.map((pick) => {
+    const curatedMatch = state.internalFilmByTitleKey[normalize(pick.title)];
+    return {
+      ...(curatedMatch || {}),
+      ...pick,
+      source: curatedMatch ? "internal" : "external",
+      countries: pick.countries?.length ? pick.countries : curatedMatch?.countries || [pick.country].filter(Boolean),
+      themes: curatedMatch?.themes || pick.keywords || [],
+      mood: curatedMatch?.mood || [],
+      tone: curatedMatch?.tone || [],
+      pace: curatedMatch?.pace || "",
+      directRecommendations: curatedMatch?.directRecommendations || [],
+    };
+  });
+}
+
+function rankTasteRecommendations(queryVector, candidatePool = state.internalFilms) {
+  const externalSeeds = tasteExternalSeeds();
+  const seedProfile = buildSeedProfile({
+    questionnaireAnswers: state.tasteAnswers,
+    seedFilms: [],
+    externalSeeds,
+    userProfile: state.userProfile,
+    profileFilms: state.userProfile.likedFilmIds.map(getInternalFilmById).filter(Boolean),
+    dislikedFilms: state.userProfile.dislikedFilmIds.map(getInternalFilmById).filter(Boolean),
+    queryVector,
+    refinements: state.tasteRefinements,
+  });
+  const selectedTitles = new Set(state.tastePicks.map((pick) => normalize(pick.title)));
+  const excludedIds = new Set([...state.userProfile.savedFilmIds, ...state.userProfile.dislikedFilmIds]);
+  const scored = candidatePool
+    .filter((film) => !selectedTitles.has(normalize(film.title)) && !excludedIds.has(film.filmId))
+    .map((film) => {
+      const scoreData = scoreCandidate(film, seedProfile, state.userProfile);
+      const bestSeed = bestSeedForCandidate(film, scoreData, [], externalSeeds);
+      return { film, scoreData, bestSeed, explanation: explanationForCandidate(film, scoreData, bestSeed) };
+    })
+    .sort((left, right) => right.scoreData.totalScore - left.scoreData.totalScore);
+  state.recommendations = diversifyRecommendations(scored, 8);
+}
+
+async function generateTasteRecommendations({ rerankOnly = false } = {}) {
+  if (!state.tastePicks.length || state.tasteGenerating) return;
+  state.tasteGenerating = true;
+  state.tasteGenerated = true;
+  state.tasteReducedPersonalization = false;
+  renderTasteRecs();
+  let queryVector = state.tasteQueryVector;
+  if (!rerankOnly) {
+    try {
+      queryVector = await requestTasteQueryVector();
+      state.tasteReducedPersonalization = !queryVector;
+    } catch (error) {
+      state.tasteReducedPersonalization = true;
+    }
+    state.tasteQueryVector = queryVector;
+  }
+  // Always rescore the whole catalogue. `rerankOnly` reuses the cached query
+  // vector (skipping the embedding request); it must NOT restrict the pool to
+  // the eight already-shown films, or a refinement like "Before 1970" could
+  // never surface a better-matching film that wasn't already in the results.
+  rankTasteRecommendations(queryVector, state.internalFilms);
+  state.tasteGenerating = false;
+  state.recommendationDraft.pendingGeneration = false;
+  if (!rerankOnly) clearRecommendationDraft();
+  renderTasteRecs();
+  elements.tasteRecs?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
 function renderTasteRecs() {
   if (!elements.tasteRecs) {
+    return;
+  }
+  elements.tasteRefinements.hidden = !state.tasteGenerated || state.tasteGenerating;
+  if (state.tasteGenerating) {
+    elements.tasteRecsHead.textContent = "Reading the signals…";
+    elements.tasteRecs.innerHTML = `<p class="taste-search__muted results-grid-span">Looking across Elliott’s collection.</p>`;
     return;
   }
   if (!state.tasteGenerated || !state.tastePicks.length) {
     if (elements.tasteRecsHead) elements.tasteRecsHead.textContent = "";
     elements.tasteRecs.innerHTML = "";
+    if (elements.tasteStatus) elements.tasteStatus.textContent = "";
     return;
   }
 
-  const signal = buildTasteSignal();
-  const scored = state.internalFilms
-    .filter((film) => !state.userProfile.dislikedFilmIds.includes(film.filmId))
-    .map((film) => ({ film, ...scoreTasteCandidate(film, signal) }))
-    .filter((entry) => entry.score > 0)
-    .sort((left, right) => right.score - left.score)
-    .slice(0, 8);
-
   if (elements.tasteRecsHead) {
-    elements.tasteRecsHead.textContent = `From your taste — ${scored.length} pick${scored.length === 1 ? "" : "s"} from our collection`;
+    elements.tasteRecsHead.textContent = `${state.recommendations.length} recommendations from Elliott’s collection`;
   }
+  if (elements.tasteStatus) elements.tasteStatus.textContent = state.tasteReducedPersonalization
+    ? "Semantic matching is temporarily unavailable. These results use Elliott’s links, editorial metadata, ratings, and your taste signals."
+    : "";
 
-  if (!scored.length) {
+  if (!state.recommendations.length) {
     elements.tasteRecs.innerHTML = `<p class="taste-search__muted">Nothing matched those signals yet — try another film.</p>`;
     return;
   }
 
-  elements.tasteRecs.innerHTML = scored.map(({ film, reasons }) => renderTasteCard(film, reasons)).join("");
+  elements.tasteRecs.innerHTML = state.recommendations.map(renderTasteCard).join("");
   bindFilmCardActions(elements.tasteRecs);
 }
 
@@ -3442,6 +3634,9 @@ async function hydrateAccountFromSession(session) {
       generateRecommendations();
     }
     render();
+    if (state.recommendationDraft.pendingGeneration && state.internalFilms.length) {
+      generateTasteRecommendations();
+    }
     if (hasLocalImportAvailable()) {
       state.account.paneOpen = true;
       state.account.message = "You can import saved films from this browser into your account.";
@@ -3490,6 +3685,7 @@ function render() {
   renderCinemaShowtimes();
   renderTasteSearchResults();
   renderTastePicks();
+  renderTasteCalibration();
   renderTasteRecs();
   renderAccountSurfaces();
 
@@ -3590,10 +3786,42 @@ function attachBaseEventHandlers() {
     tasteSearchDebounce = setTimeout(() => runTasteSearch(value), 250);
   });
 
-  elements.tasteGenerate?.addEventListener("click", () => {
-    state.tasteGenerated = true;
-    renderTasteRecs();
-    elements.tasteRecs?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  if (elements.tastePrompt) {
+    elements.tastePrompt.value = state.tastePrompt;
+    if (elements.tastePromptCount) elements.tastePromptCount.textContent = String(state.tastePrompt.length);
+  }
+  elements.tastePrompt?.addEventListener("input", (event) => {
+    state.tastePrompt = event.target.value.slice(0, 300);
+    state.recommendationDraft.prompt = state.tastePrompt;
+    if (elements.tastePromptCount) elements.tastePromptCount.textContent = String(state.tastePrompt.length);
+    saveRecommendationDraft();
+  });
+
+  elements.tasteGenerate?.addEventListener("click", async () => {
+    if (!state.tastePicks.length) return;
+    state.recommendationDraft = {
+      picks: state.tastePicks,
+      prompt: state.tastePrompt,
+      answers: state.tasteAnswers,
+      refinements: state.tasteRefinements,
+      pendingGeneration: !isSignedIn(),
+    };
+    saveRecommendationDraft();
+    if (!isSignedIn()) {
+      promptForAuth("Log in to see your recommendations. Your selections will be waiting when you return.");
+      return;
+    }
+    await generateTasteRecommendations();
+  });
+
+  elements.tasteRefinements?.querySelectorAll("[data-taste-refinement]").forEach((select) => {
+    const key = select.dataset.tasteRefinement;
+    select.value = state.tasteRefinements[key] || select.value;
+    select.addEventListener("change", async () => {
+      state.tasteRefinements[key] = select.value;
+      state.recommendationDraft.refinements = state.tasteRefinements;
+      if (state.tasteGenerated) await generateTasteRecommendations({ rerankOnly: true });
+    });
   });
 
   elements.addFirstMatch?.addEventListener("click", () => {
@@ -3693,7 +3921,7 @@ async function loadCinemaShowtimes() {
 
 async function loadAppData() {
   try {
-    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse, anchorsResponse] =
+    const [curatedResponse, metadataResponse, blurbsResponse, tmdbResponse, availabilityResponse, sampleResponse, anchorsResponse, profilesResponse, embeddingsResponse] =
       await Promise.all([
         fetch("./data/curated-films.json"),
         fetch("./data/film-metadata.json"),
@@ -3702,6 +3930,8 @@ async function loadAppData() {
         fetch("./data/availability.json"),
         fetch("./data/sample-movies.json"),
         fetch("./data/taste-anchor-films.json"),
+        fetch("./data/film-taste-profiles.json"),
+        fetch("./data/film-embeddings.json").catch(() => null),
       ]);
 
     if (!curatedResponse.ok) {
@@ -3715,12 +3945,21 @@ async function loadAppData() {
     state.availabilityByFilmId = availabilityResponse.ok ? await availabilityResponse.json() : {};
     const sampleMovies = sampleResponse.ok ? await sampleResponse.json() : [];
     const anchorData = anchorsResponse.ok ? await anchorsResponse.json() : {};
+    state.tasteProfilesByFilmId = profilesResponse.ok ? await profilesResponse.json() : {};
+    const embeddingData = embeddingsResponse?.ok ? await embeddingsResponse.json() : {};
+    state.filmEmbeddings = embeddingData.vectors || {};
     state.tasteAnchors = Array.isArray(anchorData.films) ? anchorData.films : [];
 
     state.metadataByFilmKey = buildFilmValueIndex(state.metadataByTitle);
     state.tmdbMetadataByFilmKey = buildFilmValueIndex(state.tmdbMetadataByTitle);
 
-    state.internalFilms = buildInternalFilms(curated, sampleMovies, state.availabilityByFilmId);
+    state.internalFilms = buildInternalFilms(
+      curated,
+      sampleMovies,
+      state.availabilityByFilmId,
+      state.tasteProfilesByFilmId,
+      state.filmEmbeddings
+    );
     state.internalFilmById = state.internalFilms.reduce((output, film) => {
       output[film.filmId] = film;
       return output;
@@ -3748,6 +3987,9 @@ async function loadAppData() {
 
     if (canGenerateRecommendations()) {
       generateRecommendations();
+    }
+    if (isSignedIn() && state.recommendationDraft.pendingGeneration) {
+      generateTasteRecommendations();
     }
   } catch (error) {
     console.error(error);

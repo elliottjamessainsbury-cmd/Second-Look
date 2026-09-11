@@ -371,7 +371,10 @@ function main() {
       userProfile: engine.createEmptyUserProfile(),
     });
 
-    assert(seedProfile.moodCounts.meditative > 0);
+    // Questionnaire moods must stay within the controlled vocabulary the
+    // profiles use (slow:"hypnotic" maps to contemplative/melancholic), so the
+    // signal actually overlaps candidate films instead of scoring as a no-op.
+    assert(seedProfile.moodCounts.contemplative > 0);
     assert(seedProfile.themeCounts.obsession > 0);
     assert(seedProfile.paceCounts.slow > 0);
     assert.deepStrictEqual(seedProfile.explicitSeedFilmIds, []);

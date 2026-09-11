@@ -1,0 +1,2532 @@
+{
+  "hard-truths-2024": {
+    "themes": [
+      "family",
+      "art"
+    ],
+    "mood": [
+      "comic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "British social realism",
+    "editorial_notes": "A measured intimate film, especially useful for matching family, art."
+  },
+  "one-battle-after-another-2025": {
+    "themes": [
+      "memory",
+      "family",
+      "love",
+      "violence"
+    ],
+    "mood": [
+      "tense",
+      "comic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk intimate film, especially useful for matching memory, family, love."
+  },
+  "a-woman-under-the-influence-1974": {
+    "themes": [
+      "family",
+      "love",
+      "isolation"
+    ],
+    "mood": [
+      "romantic",
+      "tender",
+      "melancholic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "New Hollywood",
+    "editorial_notes": "A measured intimate film, especially useful for matching family, love, isolation."
+  },
+  "the-voice-of-hind-rajab-2025": {
+    "themes": [
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "visceral"
+    ],
+    "tone": [
+      "epic"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "clear",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured epic film, especially useful for matching violence, history."
+  },
+  "the-secret-agent-2025": {
+    "themes": [
+      "family",
+      "violence",
+      "power",
+      "justice",
+      "technology"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching family, violence, power."
+  },
+  "story-of-women-1988": {
+    "themes": [
+      "family",
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "visceral"
+    ],
+    "tone": [
+      "epic"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "clear",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured epic film, especially useful for matching family, violence, history."
+  },
+  "aparajito-1956": {
+    "themes": [
+      "family",
+      "grief",
+      "love",
+      "coming of age"
+    ],
+    "mood": [
+      "melancholic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow intimate film, especially useful for matching family, grief, love."
+  },
+  "amadeus-1984": {
+    "themes": [
+      "family",
+      "love",
+      "art",
+      "history"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "Czech New Wave",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, art."
+  },
+  "lawrence-of-arabia-1962": {
+    "themes": [
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "exhilarating",
+      "visceral"
+    ],
+    "tone": [
+      "epic"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady epic film, especially useful for matching violence, history."
+  },
+  "the-substance-2024": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "comic"
+    ],
+    "tone": [
+      "satirical"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured satirical film, especially useful for matching identity, community."
+  },
+  "tropical-malady-2004": {
+    "themes": [
+      "love",
+      "art"
+    ],
+    "mood": [
+      "romantic",
+      "tender",
+      "dreamlike"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow intimate film, especially useful for matching love, art."
+  },
+  "rope-1948": {
+    "themes": [
+      "family",
+      "violence",
+      "mortality"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk intimate film, especially useful for matching family, violence, mortality."
+  },
+  "the-look-of-silence-2014": {
+    "themes": [
+      "grief",
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "tense",
+      "melancholic"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "documentary",
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "clear",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching grief, violence, history."
+  },
+  "happy-together-1997": {
+    "themes": [
+      "love",
+      "identity"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "Hong Kong New Wave",
+    "editorial_notes": "A measured intimate film, especially useful for matching love, identity."
+  },
+  "bug-2006": {
+    "themes": [
+      "love",
+      "isolation",
+      "friendship"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "tense",
+      "melancholic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk intimate film, especially useful for matching love, isolation, friendship."
+  },
+  "tar-2022": {
+    "themes": [
+      "memory",
+      "art",
+      "work"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching memory, art, work."
+  },
+  "persona-1966": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "harakiri-1962": {
+    "themes": [
+      "family",
+      "love"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching family, love."
+  },
+  "vertigo-1958": {
+    "themes": [
+      "love",
+      "obsession",
+      "friendship"
+    ],
+    "mood": [
+      "tense",
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching love, obsession, friendship."
+  },
+  "all-about-eve-1950": {
+    "themes": [
+      "love",
+      "power"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured intimate film, especially useful for matching love, power."
+  },
+  "cabaret-1972": {
+    "themes": [
+      "love",
+      "violence",
+      "power",
+      "coming of age",
+      "art"
+    ],
+    "mood": [
+      "romantic",
+      "tender",
+      "visceral"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching love, violence, power."
+  },
+  "chungking-express-1994": {
+    "themes": [
+      "love",
+      "justice"
+    ],
+    "mood": [
+      "comic",
+      "romantic",
+      "tender",
+      "melancholic"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "Hong Kong New Wave",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching love, justice."
+  },
+  "paris-is-burning-1990": {
+    "themes": [
+      "class",
+      "identity"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist",
+      "intimate"
+    ],
+    "formal_style": [
+      "documentary",
+      "classical"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "clear",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching class, identity."
+  },
+  "oppenheimer-2023": {
+    "themes": [
+      "love",
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "visceral"
+    ],
+    "tone": [
+      "epic",
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured epic film, especially useful for matching love, violence, history."
+  },
+  "singin-in-the-rain-1952": {
+    "themes": [
+      "love",
+      "art"
+    ],
+    "mood": [
+      "comic",
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching love, art."
+  },
+  "time-of-the-wolf-2003": {
+    "themes": [
+      "mortality",
+      "identity"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching mortality, identity."
+  },
+  "dune-part-two-2024": {
+    "themes": [
+      "family",
+      "love",
+      "revenge"
+    ],
+    "mood": [
+      "romantic",
+      "tender",
+      "exhilarating"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady intimate film, especially useful for matching family, love, revenge."
+  },
+  "poor-things-2023": {
+    "themes": [
+      "love",
+      "obsession"
+    ],
+    "mood": [
+      "comic",
+      "romantic",
+      "tender",
+      "exhilarating"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching love, obsession."
+  },
+  "the-silence-of-the-lambs-1991": {
+    "themes": [
+      "violence",
+      "identity"
+    ],
+    "mood": [
+      "tense",
+      "visceral"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, identity."
+  },
+  "who-s-afraid-of-virginia-woolf-1966": {
+    "themes": [
+      "family",
+      "love",
+      "history"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, history."
+  },
+  "the-ascent-1977": {
+    "themes": [
+      "violence",
+      "identity"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching violence, identity."
+  },
+  "rashomon-1950": {
+    "themes": [
+      "violence",
+      "justice",
+      "mortality"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching violence, justice, mortality."
+  },
+  "shoah-1985": {
+    "themes": [
+      "violence",
+      "history"
+    ],
+    "mood": [
+      "visceral"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist",
+      "epic"
+    ],
+    "formal_style": [
+      "documentary",
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "clear",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching violence, history."
+  },
+  "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964": {
+    "themes": [
+      "love",
+      "violence"
+    ],
+    "mood": [
+      "comic",
+      "romantic",
+      "tender",
+      "visceral"
+    ],
+    "tone": [
+      "satirical",
+      "epic"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady satirical film, especially useful for matching love, violence."
+  },
+  "threads-1984": {
+    "themes": [
+      "violence",
+      "class",
+      "survival"
+    ],
+    "mood": [
+      "visceral"
+    ],
+    "tone": [
+      "epic"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "clear",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured epic film, especially useful for matching violence, class, survival."
+  },
+  "eraserhead-1977": {
+    "themes": [
+      "family",
+      "justice",
+      "survival"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "challenging",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching family, justice, survival."
+  },
+  "autumn-sonata-1978": {
+    "themes": [
+      "memory",
+      "family",
+      "grief",
+      "love",
+      "work"
+    ],
+    "mood": [
+      "romantic",
+      "tender",
+      "melancholic"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow intimate film, especially useful for matching memory, family, grief."
+  },
+  "beau-is-afraid-2023": {
+    "themes": [
+      "family",
+      "mortality"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "comic",
+      "dreamlike"
+    ],
+    "tone": [
+      "epic"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady epic film, especially useful for matching family, mortality."
+  },
+  "the-best-years-of-our-lives-1946": {
+    "themes": [
+      "love",
+      "violence"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "surreal",
+      "epic"
+    ],
+    "formal_style": [
+      "experimental",
+      "nonlinear",
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "high",
+    "ambiguity": "opaque",
+    "accessibility": "challenging",
+    "movement": "",
+    "editorial_notes": "A measured surreal film, especially useful for matching love, violence."
+  },
+  "citizen-kane-1941": {
+    "themes": [
+      "family",
+      "identity"
+    ],
+    "mood": [
+      "contemplative",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, identity."
+  },
+  "the-texas-chain-saw-massacre-1974": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "the-shining-1980": {
+    "themes": [
+      "family",
+      "isolation"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching family, isolation."
+  },
+  "spirited-away-2001": {
+    "themes": [
+      "family",
+      "love"
+    ],
+    "mood": [
+      "dreamlike"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady intimate film, especially useful for matching family, love."
+  },
+  "ash-is-purest-white-2018": {
+    "themes": [
+      "love",
+      "violence"
+    ],
+    "mood": [
+      "tense",
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching love, violence."
+  },
+  "hard-boiled-1992": {
+    "themes": [
+      "violence",
+      "identity"
+    ],
+    "mood": [
+      "tense",
+      "exhilarating"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "Hong Kong New Wave",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, identity."
+  },
+  "it-was-just-an-accident-2025": {
+    "themes": [
+      "violence",
+      "power",
+      "revenge"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, power, revenge."
+  },
+  "28-years-later-2025": {
+    "themes": [
+      "survival",
+      "identity"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie",
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching survival, identity."
+  },
+  "barton-fink-1991": {
+    "themes": [
+      "violence",
+      "identity"
+    ],
+    "mood": [
+      "tense",
+      "comic"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "observational"
+    ],
+    "pace": "brisk",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, identity."
+  },
+  "red-rooms-2023": {
+    "themes": [
+      "obsession",
+      "violence",
+      "justice",
+      "technology"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "brisk",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching obsession, violence, justice."
+  },
+  "anora-2024": {
+    "themes": [
+      "family",
+      "love"
+    ],
+    "mood": [
+      "comic",
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love."
+  },
+  "haxan-1922": {
+    "themes": [
+      "art",
+      "history"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "documentary",
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "high",
+    "ambiguity": "clear",
+    "accessibility": "challenging",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching art, history."
+  },
+  "possibly-in-michigan-1983": {
+    "themes": [
+      "art",
+      "friendship"
+    ],
+    "mood": [
+      "unsettling",
+      "eerie"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "genre-driven",
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching art, friendship."
+  },
+  "wax-or-the-discovery-of-television-among-the-bees-1991": {
+    "themes": [
+      "technology",
+      "identity"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching technology, identity."
+  },
+  "summer-palace-2006": {
+    "themes": [
+      "love",
+      "community"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured intimate film, especially useful for matching love, community."
+  },
+  "swallow-2019": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "comrades-almost-a-love-story-1996": {
+    "themes": [
+      "love",
+      "identity"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching love, identity."
+  },
+  "his-three-daughters-2023": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "3-women-1977": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "solaris-2002": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "enemy-2013": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "seed-of-chucky-2004": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "bride-of-chucky-1998": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "in-the-mouth-of-madness-1994": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "prince-of-darkness-1987": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "henry-portrait-of-a-serial-killer-1986": {
+    "themes": [
+      "violence",
+      "identity"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching violence, identity."
+  },
+  "the-sisters-brothers-2018": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "they-shoot-horses-don-t-they-1969": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "bound-1996": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "kokomo-city-2023": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "fallen-leaves-2023": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "mikey-and-nicky-1976": {
+    "themes": [
+      "friendship",
+      "identity"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "Useful deeper-cut recommendation for users orbiting around 1970s American male relationship dramas."
+  },
+  "dersu-uzala-1975": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "code-unknown-2000": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "funny-games-1997": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "comic"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "a-short-film-about-killing-1988": {
+    "themes": [
+      "art",
+      "identity"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching art, identity."
+  },
+  "stray-dog-1949": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "20-days-in-mariupol-2023": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "saw-x-2023": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "food-1992": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "f-for-fake-1973": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "meshes-of-the-afternoon-1943": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "yentl-1983": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "blue-jean-2022": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "hell-house-llc-2015": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "cure-1997": {
+    "themes": [
+      "violence",
+      "justice"
+    ],
+    "mood": [
+      "tense"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "high",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching violence, justice."
+  },
+  "the-cremator-1969": {
+    "themes": [
+      "family",
+      "class",
+      "faith",
+      "art",
+      "mortality"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "clear",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady intimate film, especially useful for matching family, class, faith."
+  },
+  "the-exorcist-iii-1990": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "birth-2004": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "the-general-1926": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "radio-on-1979": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "sleepaway-camp-ii-unhappy-campers-1988": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "platform-2000": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "tokyo-gore-police-2008": {
+    "themes": [
+      "justice",
+      "identity"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching justice, identity."
+  },
+  "star-time-1992": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "detour-1945": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "71-fragments-of-a-chronology-of-chance-1994": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "the-third-part-of-the-night-1971": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "funeral-parade-of-roses-1969": {
+    "themes": [
+      "love",
+      "history"
+    ],
+    "mood": [
+      "romantic",
+      "tender"
+    ],
+    "tone": [
+      "intimate"
+    ],
+    "formal_style": [
+      "observational"
+    ],
+    "pace": "measured",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A measured intimate film, especially useful for matching love, history."
+  },
+  "the-train-1964": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "peter-hujar-s-day-2025": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "palestine-36-2025": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "penda-s-fen-1974": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "slow",
+    "intensity": "low",
+    "ambiguity": "open",
+    "accessibility": "demanding",
+    "movement": "",
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
+  },
+  "burnt-offerings-1976": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "psycho-ii-1983": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "the-baby-1973": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "the-times-of-harvey-milk-1984": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "cherub-2024": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  },
+  "a-different-man-2024": {
+    "themes": [
+      "identity",
+      "community"
+    ],
+    "mood": [
+      "playful",
+      "hopeful"
+    ],
+    "tone": [
+      "naturalistic",
+      "humanist"
+    ],
+    "formal_style": [
+      "classical"
+    ],
+    "pace": "steady",
+    "intensity": "medium",
+    "ambiguity": "open",
+    "accessibility": "approachable",
+    "movement": "",
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
+  }
+}

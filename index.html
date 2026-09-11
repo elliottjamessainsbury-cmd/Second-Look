@@ -51,12 +51,53 @@
           <p class="eyebrow">Build your recommendations</p>
           <h2 id="taste-search-title">Add your favourites, and we'll find you some new ones.</h2>
           <p class="taste-search__sub">Search up to three films that capture your taste. We'll do the magic, using AI and curation to find you something new.</p>
-          <input id="taste-search-input" type="text" autocomplete="off" placeholder="Search films…" class="taste-search__input" />
+          <label class="taste-field-label" for="taste-search-input">Start with one film you love</label>
+          <input id="taste-search-input" type="text" autocomplete="off" placeholder="Search any film…" class="taste-search__input" />
           <div id="taste-search-results" class="taste-search__results" aria-live="polite"></div>
           <div id="taste-picks" class="taste-picks"></div>
+
+          <details id="taste-sharpen" class="taste-sharpen">
+            <summary>Sharpen the match <span>Optional</span></summary>
+            <div class="taste-sharpen__body">
+              <label class="taste-field-label" for="taste-prompt">What are you in the mood for?</label>
+              <textarea id="taste-prompt" maxlength="300" rows="4" placeholder="A bruised, nocturnal character study; beautiful but not stately…"></textarea>
+              <p class="taste-character-count"><span id="taste-prompt-count">0</span>/300</p>
+              <div>
+                <p class="taste-field-label">A little calibration</p>
+                <div id="taste-calibration" class="taste-calibration"></div>
+              </div>
+            </div>
+          </details>
           <button id="taste-generate" class="ghost-button taste-search__generate" type="button" disabled>Add film</button>
+          <p id="taste-status" class="taste-status" role="status" aria-live="polite"></p>
           <p id="taste-recs-head" class="taste-recs-head"></p>
           <div id="taste-recs" class="results-grid taste-recs" aria-live="polite"></div>
+          <section id="taste-refinements" class="taste-refinements" hidden aria-labelledby="taste-refinements-title">
+            <div>
+              <p class="eyebrow">Refine these results</p>
+              <h3 id="taste-refinements-title">Tune the distance, not the starting point.</h3>
+            </div>
+            <label>How far to wander
+              <select data-taste-refinement="wander">
+                <option value="balanced">Balanced</option><option value="close">Stay close</option><option value="far">Surprise me</option>
+              </select>
+            </label>
+            <label>Pace tonight
+              <select data-taste-refinement="pace">
+                <option value="any">Any</option><option value="slow">Slow</option><option value="measured">Measured</option><option value="steady">Steady</option><option value="brisk">Brisk</option>
+              </select>
+            </label>
+            <label>Emotional temperature
+              <select data-taste-refinement="temperature">
+                <option value="any">Any</option><option value="cool">Cool</option><option value="warm">Warm</option><option value="hot">Hot</option>
+              </select>
+            </label>
+            <label>Era
+              <select data-taste-refinement="era">
+                <option value="any">Any</option><option value="classic">Before 1970</option><option value="late-century">1970–1999</option><option value="modern">2000 onwards</option>
+              </select>
+            </label>
+          </section>
         </section>
 
         <!-- Browse section temporarily hidden while we trial the search-only flow.
@@ -151,6 +192,6 @@
     <script src="./config.js"></script>
     <script src="./lib/recommendation-engine.js"></script>
     <script src="./lib/editorial-copy.js"></script>
-    <script src="./app.js?v=58"></script>
+    <script src="./app.js?v=59"></script>
   </body>
 </html>
