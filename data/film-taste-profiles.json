@@ -2,7 +2,6 @@
   "hard-truths-2024": {
     "themes": [
       "family",
-      "love",
       "art"
     ],
     "mood": [
@@ -19,15 +18,14 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "British social realism",
-    "editorial_notes": "A measured intimate film, especially useful for matching family, love, art."
+    "editorial_notes": "A measured intimate film, especially useful for matching family, art."
   },
   "one-battle-after-another-2025": {
     "themes": [
       "memory",
       "family",
       "love",
-      "violence",
-      "history"
+      "violence"
     ],
     "mood": [
       "tense",
@@ -51,9 +49,7 @@
     "themes": [
       "family",
       "love",
-      "isolation",
-      "faith",
-      "work"
+      "isolation"
     ],
     "mood": [
       "romantic",
@@ -123,7 +119,6 @@
   "story-of-women-1988": {
     "themes": [
       "family",
-      "love",
       "violence",
       "history"
     ],
@@ -141,15 +136,14 @@
     "ambiguity": "clear",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured epic film, especially useful for matching family, love, violence."
+    "editorial_notes": "A measured epic film, especially useful for matching family, violence, history."
   },
   "aparajito-1956": {
     "themes": [
       "family",
       "grief",
       "love",
-      "coming of age",
-      "mortality"
+      "coming of age"
     ],
     "mood": [
       "melancholic"
@@ -171,9 +165,8 @@
     "themes": [
       "family",
       "love",
-      "obsession",
-      "violence",
-      "art"
+      "art",
+      "history"
     ],
     "mood": [
       "contemplative",
@@ -191,14 +184,12 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "Czech New Wave",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, obsession."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, art."
   },
   "lawrence-of-arabia-1962": {
     "themes": [
       "violence",
-      "justice",
-      "history",
-      "work"
+      "history"
     ],
     "mood": [
       "exhilarating",
@@ -215,7 +206,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady epic film, especially useful for matching violence, justice, history."
+    "editorial_notes": "A steady epic film, especially useful for matching violence, history."
   },
   "the-substance-2024": {
     "themes": [
@@ -244,8 +235,7 @@
   "tropical-malady-2004": {
     "themes": [
       "love",
-      "art",
-      "desire"
+      "art"
     ],
     "mood": [
       "romantic",
@@ -263,14 +253,12 @@
     "ambiguity": "open",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow intimate film, especially useful for matching love, art, desire."
+    "editorial_notes": "A slow intimate film, especially useful for matching love, art."
   },
   "rope-1948": {
     "themes": [
       "family",
       "violence",
-      "class",
-      "art",
       "mortality"
     ],
     "mood": [
@@ -288,12 +276,11 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A brisk intimate film, especially useful for matching family, violence, class."
+    "editorial_notes": "A brisk intimate film, especially useful for matching family, violence, mortality."
   },
   "the-look-of-silence-2014": {
     "themes": [
       "grief",
-      "love",
       "violence",
       "history"
     ],
@@ -314,12 +301,12 @@
     "ambiguity": "clear",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching grief, love, violence."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching grief, violence, history."
   },
   "happy-together-1997": {
     "themes": [
       "love",
-      "desire"
+      "identity"
     ],
     "mood": [
       "romantic",
@@ -336,13 +323,12 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "Hong Kong New Wave",
-    "editorial_notes": "A measured intimate film, especially useful for matching love, desire."
+    "editorial_notes": "A measured intimate film, especially useful for matching love, identity."
   },
   "bug-2006": {
     "themes": [
       "love",
       "isolation",
-      "art",
       "friendship"
     ],
     "mood": [
@@ -363,12 +349,11 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A brisk intimate film, especially useful for matching love, isolation, art."
+    "editorial_notes": "A brisk intimate film, especially useful for matching love, isolation, friendship."
   },
   "tar-2022": {
     "themes": [
       "memory",
-      "class",
       "art",
       "work"
     ],
@@ -388,12 +373,12 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching memory, class, art."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching memory, art, work."
   },
   "persona-1966": {
     "themes": [
       "identity",
-      "family"
+      "community"
     ],
     "mood": [
       "contemplative",
@@ -411,13 +396,12 @@
     "ambiguity": "open",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, family."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching identity, community."
   },
   "harakiri-1962": {
     "themes": [
       "family",
-      "love",
-      "work"
+      "love"
     ],
     "mood": [
       "romantic",
@@ -435,7 +419,7 @@
     "ambiguity": "open",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching family, love, work."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching family, love."
   },
   "vertigo-1958": {
     "themes": [
@@ -466,8 +450,7 @@
   "all-about-eve-1950": {
     "themes": [
       "love",
-      "power",
-      "friendship"
+      "power"
     ],
     "mood": [
       "contemplative",
@@ -484,7 +467,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured intimate film, especially useful for matching love, power, friendship."
+    "editorial_notes": "A measured intimate film, especially useful for matching love, power."
   },
   "cabaret-1972": {
     "themes": [
@@ -516,8 +499,7 @@
   "chungking-express-1994": {
     "themes": [
       "love",
-      "justice",
-      "friendship"
+      "justice"
     ],
     "mood": [
       "comic",
@@ -537,13 +519,12 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "Hong Kong New Wave",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching love, justice, friendship."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching love, justice."
   },
   "paris-is-burning-1990": {
     "themes": [
-      "family",
       "class",
-      "desire"
+      "identity"
     ],
     "mood": [
       "romantic",
@@ -563,7 +544,7 @@
     "ambiguity": "clear",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching family, class, desire."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching class, identity."
   },
   "oppenheimer-2023": {
     "themes": [
@@ -614,8 +595,8 @@
   },
   "time-of-the-wolf-2003": {
     "themes": [
-      "family",
-      "mortality"
+      "mortality",
+      "identity"
     ],
     "mood": [
       "contemplative",
@@ -633,7 +614,7 @@
     "ambiguity": "open",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching family, mortality."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching mortality, identity."
   },
   "dune-part-two-2024": {
     "themes": [
@@ -662,8 +643,7 @@
   "poor-things-2023": {
     "themes": [
       "love",
-      "obsession",
-      "justice"
+      "obsession"
     ],
     "mood": [
       "comic",
@@ -683,7 +663,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady naturalistic film, especially useful for matching love, obsession, justice."
+    "editorial_notes": "A steady naturalistic film, especially useful for matching love, obsession."
   },
   "the-silence-of-the-lambs-1991": {
     "themes": [
@@ -713,7 +693,6 @@
     "themes": [
       "family",
       "love",
-      "art",
       "history"
     ],
     "mood": [
@@ -732,7 +711,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, art."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, history."
   },
   "the-ascent-1977": {
     "themes": [
@@ -783,9 +762,7 @@
   "shoah-1985": {
     "themes": [
       "violence",
-      "survival",
-      "history",
-      "work"
+      "history"
     ],
     "mood": [
       "visceral"
@@ -804,13 +781,12 @@
     "ambiguity": "clear",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching violence, survival, history."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching violence, history."
   },
   "dr-strangelove-or-how-i-learned-to-stop-worrying-and-love-the-bomb-1964": {
     "themes": [
       "love",
-      "violence",
-      "power"
+      "violence"
     ],
     "mood": [
       "comic",
@@ -830,14 +806,13 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady satirical film, especially useful for matching love, violence, power."
+    "editorial_notes": "A steady satirical film, especially useful for matching love, violence."
   },
   "threads-1984": {
     "themes": [
       "violence",
       "class",
-      "survival",
-      "work"
+      "survival"
     ],
     "mood": [
       "visceral"
@@ -859,8 +834,7 @@
     "themes": [
       "family",
       "justice",
-      "survival",
-      "friendship"
+      "survival"
     ],
     "mood": [
       "unsettling",
@@ -887,7 +861,7 @@
       "family",
       "grief",
       "love",
-      "class"
+      "work"
     ],
     "mood": [
       "romantic",
@@ -933,7 +907,6 @@
   },
   "the-best-years-of-our-lives-1946": {
     "themes": [
-      "family",
       "love",
       "violence"
     ],
@@ -957,13 +930,12 @@
     "ambiguity": "opaque",
     "accessibility": "challenging",
     "movement": "",
-    "editorial_notes": "A measured surreal film, especially useful for matching family, love, violence."
+    "editorial_notes": "A measured surreal film, especially useful for matching love, violence."
   },
   "citizen-kane-1941": {
     "themes": [
       "family",
-      "violence",
-      "justice"
+      "identity"
     ],
     "mood": [
       "contemplative",
@@ -981,12 +953,12 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching family, violence, justice."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, identity."
   },
   "the-texas-chain-saw-massacre-1974": {
     "themes": [
-      "family",
-      "friendship"
+      "identity",
+      "community"
     ],
     "mood": [
       "unsettling",
@@ -1005,7 +977,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady naturalistic film, especially useful for matching family, friendship."
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
   },
   "the-shining-1980": {
     "themes": [
@@ -1055,11 +1027,8 @@
   },
   "ash-is-purest-white-2018": {
     "themes": [
-      "family",
       "love",
-      "violence",
-      "art",
-      "friendship"
+      "violence"
     ],
     "mood": [
       "tense",
@@ -1078,12 +1047,12 @@
     "ambiguity": "open",
     "accessibility": "demanding",
     "movement": "",
-    "editorial_notes": "A slow naturalistic film, especially useful for matching family, love, violence."
+    "editorial_notes": "A slow naturalistic film, especially useful for matching love, violence."
   },
   "hard-boiled-1992": {
     "themes": [
       "violence",
-      "work"
+      "identity"
     ],
     "mood": [
       "tense",
@@ -1102,11 +1071,10 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "Hong Kong New Wave",
-    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, work."
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, identity."
   },
   "it-was-just-an-accident-2025": {
     "themes": [
-      "family",
       "violence",
       "power",
       "revenge"
@@ -1127,7 +1095,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A brisk naturalistic film, especially useful for matching family, violence, power."
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, power, revenge."
   },
   "28-years-later-2025": {
     "themes": [
@@ -1157,7 +1125,7 @@
   "barton-fink-1991": {
     "themes": [
       "violence",
-      "art"
+      "identity"
     ],
     "mood": [
       "tense",
@@ -1176,7 +1144,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, art."
+    "editorial_notes": "A brisk naturalistic film, especially useful for matching violence, identity."
   },
   "red-rooms-2023": {
     "themes": [
@@ -1206,8 +1174,7 @@
   "anora-2024": {
     "themes": [
       "family",
-      "love",
-      "work"
+      "love"
     ],
     "mood": [
       "comic",
@@ -1226,7 +1193,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love, work."
+    "editorial_notes": "A measured naturalistic film, especially useful for matching family, love."
   },
   "haxan-1922": {
     "themes": [
@@ -1255,7 +1222,6 @@
   },
   "possibly-in-michigan-1983": {
     "themes": [
-      "violence",
       "art",
       "friendship"
     ],
@@ -1276,7 +1242,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady naturalistic film, especially useful for matching violence, art, friendship."
+    "editorial_notes": "A steady naturalistic film, especially useful for matching art, friendship."
   },
   "wax-or-the-discovery-of-television-among-the-bees-1991": {
     "themes": [
@@ -1371,8 +1337,8 @@
   },
   "his-three-daughters-2023": {
     "themes": [
-      "family",
-      "identity"
+      "identity",
+      "community"
     ],
     "mood": [
       "playful",
@@ -1390,7 +1356,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A steady naturalistic film, especially useful for matching family, identity."
+    "editorial_notes": "A steady naturalistic film, especially useful for matching identity, community."
   },
   "3-women-1977": {
     "themes": [
@@ -1694,7 +1660,7 @@
   "mikey-and-nicky-1976": {
     "themes": [
       "friendship",
-      "violence"
+      "identity"
     ],
     "mood": [
       "tense"
@@ -2314,10 +2280,7 @@
   "funeral-parade-of-roses-1969": {
     "themes": [
       "love",
-      "obsession",
-      "violence",
-      "history",
-      "desire"
+      "history"
     ],
     "mood": [
       "romantic",
@@ -2334,7 +2297,7 @@
     "ambiguity": "open",
     "accessibility": "approachable",
     "movement": "",
-    "editorial_notes": "A measured intimate film, especially useful for matching love, obsession, violence."
+    "editorial_notes": "A measured intimate film, especially useful for matching love, history."
   },
   "the-train-1964": {
     "themes": [

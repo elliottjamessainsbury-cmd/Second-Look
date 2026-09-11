@@ -27,7 +27,11 @@ function validatedInputs(body) {
   return inputs.join("").length <= MAX_TOTAL_LENGTH ? inputs : null;
 }
 
-function withinRateLimit(userId) {
+// Per-process fallback limiter. This alone is NOT sufficient on Vercel: each
+// function instance (and every cold start) has its own Map, so a user hitting
+// several instances could exceed the limit. It is only used when the shared
+// backend below is not configured, or if a shared check fails.
+function withinMemoryRateLimit(userId) {
   const now = Date.now();
   const recent = (requestsByUser.get(userId) || []).filter((timestamp) => now - timestamp < RATE_WINDOW_MS);
   if (recent.length >= RATE_LIMIT) {
@@ -36,6 +40,41 @@ function withinRateLimit(userId) {
   }
   requestsByUser.set(userId, [...recent, now]);
   return true;
+}
+
+// Shared, atomic limiter backed by Postgres via Supabase RPC, so the limit is
+// enforced across every function instance. Requires SUPABASE_SERVICE_ROLE_KEY
+// and the `check_embedding_rate_limit` function (see
+// supabase/embedding_rate_limit.sql). Returns null when it cannot be used, so
+// the caller can fall back to the per-process limiter rather than fail open.
+async function withinSharedRateLimit(userId) {
+  const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !serviceKey) {
+    return null;
+  }
+  try {
+    const response = await fetch(`${url.replace(/\/$/, "")}/rest/v1/rpc/check_embedding_rate_limit`, {
+      method: "POST",
+      headers: {
+        apikey: serviceKey,
+        Authorization: `Bearer ${serviceKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_user_id: userId, p_window_ms: RATE_WINDOW_MS, p_limit: RATE_LIMIT }),
+    });
+    if (!response.ok) {
+      return null;
+    }
+    return (await response.json()) === true;
+  } catch (error) {
+    return null;
+  }
+}
+
+async function withinRateLimit(userId) {
+  const shared = await withinSharedRateLimit(userId);
+  return shared === null ? withinMemoryRateLimit(userId) : shared;
 }
 
 async function authenticatedUser(token) {
@@ -73,7 +112,7 @@ export default async function handler(req, res) {
     if (!user?.id) {
       return send(res, 401, { error: "invalid_session" });
     }
-    if (!withinRateLimit(user.id)) {
+    if (!(await withinRateLimit(user.id))) {
       return send(res, 429, { error: "rate_limited" });
     }
     if (!process.env.OPENAI_API_KEY) {

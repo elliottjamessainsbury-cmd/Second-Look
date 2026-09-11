@@ -50,17 +50,17 @@ THEME_PATTERNS = {
     "love": ["love", "romance", "relationship", "affair", "marriage"],
     "obsession": ["obsession", "obsessive", "voyeur", "jealous", "fixation"],
     "violence": ["violence", "murder", "war", "crime", "gang", "killer", "brutal"],
-    "power": ["power", "politic", "authority", "dictator", "corruption", "control"],
+    "power": ["power", "politics", "political", "authority", "dictator", "corruption", "control"],
     "class": ["class", "wealth", "poverty", "bourgeois", "working class", "social"],
     "isolation": ["isolation", "lonely", "loneliness", "alienation", "solitude"],
     "justice": ["justice", "trial", "court", "police", "investigation", "law"],
     "survival": ["survival", "survive", "escape", "disaster", "apocalyptic"],
-    "coming of age": ["coming of age", "childhood", "adolesc", "teen", "youth"],
+    "coming of age": ["coming of age", "childhood", "adolescent", "adolescence", "teen", "teenager", "youth"],
     "faith": ["faith", "religion", "god", "spiritual", "church", "ritual"],
     "art": ["artist", "cinema", "film", "music", "writer", "theatre", "dance"],
-    "history": ["histor", "period drama", "biography", "revolution"],
+    "history": ["history", "historical", "historian", "period drama", "biography", "revolution"],
     "community": ["community", "village", "neighbour", "collective"],
-    "mortality": ["death", "mortality", "dying", "illness", "aging"],
+    "mortality": ["death", "mortality", "dying", "illness", "aging", "ageing"],
     "displacement": ["migration", "immigrant", "exile", "refugee", "displacement"],
     "technology": ["technology", "computer", "robot", "artificial intelligence", "space"],
     "desire": ["desire", "sexual", "erotic", "seduction", "passion"],
@@ -103,7 +103,7 @@ def value_by_film(records: dict, title: str, year: int | None) -> dict:
 
 
 def pick_terms(text: str, patterns: dict[str, list[str]], minimum: int = 2, maximum: int = 5) -> list[str]:
-    selected = [label for label, needles in patterns.items() if any(needle in text for needle in needles)]
+    selected = [label for label, needles in patterns.items() if has_any(text, needles)]
     defaults = ["identity", "community", "mortality", "love", "power"]
     for label in defaults:
         if len(selected) >= minimum:

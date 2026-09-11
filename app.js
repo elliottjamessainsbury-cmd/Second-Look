@@ -1269,6 +1269,19 @@ async function handleFilmInteraction(filmId, actionType) {
     userProfile: state.userProfile,
   });
   await saveAccountUserProfile();
+
+  // When the taste flow is the active surface, keep results in that ranking:
+  // saving or dismissing a result should re-rank the full catalogue through
+  // the taste query (which excludes saved/disliked films), not fall back to
+  // the legacy seed-based path that would overwrite the taste recommendations.
+  if (state.tasteGenerated) {
+    if (actionType === "save" || actionType === "not_for_me") {
+      rankTasteRecommendations(state.tasteQueryVector);
+    }
+    render();
+    return;
+  }
+
   regenerateIfActive();
 }
 
@@ -3226,8 +3239,11 @@ async function generateTasteRecommendations({ rerankOnly = false } = {}) {
     }
     state.tasteQueryVector = queryVector;
   }
-  const candidatePool = rerankOnly ? state.recommendations.map((item) => item.film) : state.internalFilms;
-  rankTasteRecommendations(queryVector, candidatePool);
+  // Always rescore the whole catalogue. `rerankOnly` reuses the cached query
+  // vector (skipping the embedding request); it must NOT restrict the pool to
+  // the eight already-shown films, or a refinement like "Before 1970" could
+  // never surface a better-matching film that wasn't already in the results.
+  rankTasteRecommendations(queryVector, state.internalFilms);
   state.tasteGenerating = false;
   state.recommendationDraft.pendingGeneration = false;
   if (!rerankOnly) clearRecommendationDraft();
