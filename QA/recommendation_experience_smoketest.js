@@ -62,7 +62,11 @@ function main() {
   assert(!appSource.includes("function scoreTasteCandidate"));
   assert(appSource.includes("secondlook:onboardingDismissed:v2"));
   assert(appSource.includes("secondlook:recommendationDraft:v1"));
-  assert(html.includes("maxlength=\"300\"") && appSource.includes("Ari Aster"));
+  const calibrationBlock = appSource.match(/const tasteQuizQuestions = \[([\s\S]*?)\n\];/);
+  assert(calibrationBlock, "calibration question configuration is missing");
+  assert.strictEqual((calibrationBlock[1].match(/prompt:/g) || []).length, 4);
+  assert.strictEqual((calibrationBlock[1].match(/id: "neutral"/g) || []).length, 4);
+  assert(html.includes("maxlength=\"300\""));
   assert(html.match(/class="hero-link"/g).length === 2);
   console.log("PASS  homepage uses the shared engine, restored onboarding key, auth draft, and exactly two hero actions");
 
