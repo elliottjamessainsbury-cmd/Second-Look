@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import sys
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -79,8 +80,6 @@ def fetch_embeddings(inputs: list[str], api_key: str) -> list[list[float]]:
 
 def main() -> None:
     api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise SystemExit("OPENAI_API_KEY is not set.")
 
     curated = load_json("curated-films.json")
     profiles = load_json("film-taste-profiles.json")
@@ -98,6 +97,22 @@ def main() -> None:
         rows.append((film["film_id"], text))
         checksum_payload.append({"film_id": film["film_id"], "descriptor": text})
 
+    checksum = source_checksum(checksum_payload)
+    if not api_key or api_key == "your-key-here":
+        if "--write-pending" not in sys.argv:
+            raise SystemExit("OPENAI_API_KEY is not configured. Use --write-pending only to emit the explicit fallback manifest.")
+        output = {
+            "model": MODEL,
+            "dimensions": DIMENSIONS,
+            "source_checksum": checksum,
+            "generated_at": None,
+            "generation_status": "pending_credentials",
+            "vectors": {},
+        }
+        OUTPUT_PATH.write_text(json.dumps(output, separators=(",", ":")) + "\n", encoding="utf-8")
+        print(f"Wrote pending embedding manifest to {OUTPUT_PATH}")
+        return
+
     vectors = {}
     for start in range(0, len(rows), 50):
         batch = rows[start:start + 50]
@@ -109,8 +124,9 @@ def main() -> None:
     output = {
         "model": MODEL,
         "dimensions": DIMENSIONS,
-        "source_checksum": source_checksum(checksum_payload),
+        "source_checksum": checksum,
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "generation_status": "ready",
         "vectors": vectors,
     }
     OUTPUT_PATH.write_text(json.dumps(output, separators=(",", ":")) + "\n", encoding="utf-8")
