@@ -1,687 +1,10 @@
 {
-  "generatedAt": "2026-09-10T12:52:15+00:00",
+  "generatedAt": "2026-09-13T12:52:36+00:00",
   "days": [
-    {
-      "date": "2026-09-10",
-      "label": "Thursday",
-      "films": [
-        {
-          "displayTitle": "UK PREMIERE The Visitor",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:10"
-          ],
-          "ticketUrl": "https://www.ica.art/films/off-circuit-the-visitor"
-        },
-        {
-          "displayTitle": "Solaris (1972)",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627276"
-        },
-        {
-          "displayTitle": "Sherman's March",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/sherman-s-march"
-        },
-        {
-          "displayTitle": "Leviticus",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:00",
-            "21:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5943797.TcsSection_971"
-        },
-        {
-          "displayTitle": "Bitter Christmas",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6144342.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "La femme publique",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5888761.TcsSection_638"
-        },
-        {
-          "displayTitle": "A Free Woman",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/a-free-woman"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5958028.TcsSection_971"
-        },
-        {
-          "displayTitle": "The Battle of Algiers",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627275"
-        },
-        {
-          "displayTitle": "Diamonds of the Night",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5955528.TcsSection_638"
-        },
-        {
-          "displayTitle": "Soldier Girls + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/soldier-girls-q-a"
-        },
-        {
-          "displayTitle": "UK PREMIERE Pin de Fartie",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
-        },
-        {
-          "displayTitle": "I Want Your Sex",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:05"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6075659.TcsSection_971"
-        },
-        {
-          "displayTitle": "Stella",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5599668.TcsSection_638"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/late-fame"
-        },
-        {
-          "displayTitle": "Survive Style 5+ \u2022 World Premiere of 4K Restoration",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31626865"
-        },
-        {
-          "displayTitle": "I Want Your Sex",
-          "cinema": "ICA",
-          "showtimes": [
-            "21:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/i-want-your-sex"
-        },
-        {
-          "displayTitle": "Twin Peaks: Fire Walk With Me",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "21:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/2666286/twin-peaks-fire-walk-with-me"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-11",
-      "label": "Friday",
-      "films": [
-        {
-          "displayTitle": "Bitter Christmas",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00",
-            "18:10"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6149842.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Amelie - 25th Anniversary",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627287"
-        },
-        {
-          "displayTitle": "Teenage Sex and Death at Camp Miasma",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://www.ica.art/films/teenage-sex-and-death-at-camp-miasma"
-        },
-        {
-          "displayTitle": "Hunt For The Wilderpeople - 10th Anniversary",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627289"
-        },
-        {
-          "displayTitle": "Sherman's March",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/sherman-s-march"
-        },
-        {
-          "displayTitle": "Dear You",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:20"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182268.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Leviticus",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:35"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182249.TcsSection_638"
-        },
-        {
-          "displayTitle": "The Incomer",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:50",
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182272.TcsSection_971"
-        },
-        {
-          "displayTitle": "I Want Your Sex",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/i-want-your-sex"
-        },
-        {
-          "displayTitle": "Raiders of the Lost Ark",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627281"
-        },
-        {
-          "displayTitle": "The Cook, the Thief, His Wife & Her Lover",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627288"
-        },
-        {
-          "displayTitle": "Everybody Digs Bill Evans",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5995790.TcsSection_638"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/late-fame"
-        },
-        {
-          "displayTitle": "Sexy Beast - 25th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6063477.TcsSection_971"
-        },
-        {
-          "displayTitle": "Lady",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182266.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "A Free Woman",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/a-free-woman"
-        },
-        {
-          "displayTitle": "Eraserhead",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627280"
-        },
-        {
-          "displayTitle": "Purple Rain",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627279"
-        },
-        {
-          "displayTitle": "Les Biches",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/chabrol-les-biches"
-        },
-        {
-          "displayTitle": "UK PREMIERE Nova '78 + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/brookner-nova-78"
-        },
-        {
-          "displayTitle": "Teenage Sex and Death at Camp Miasma",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182253.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Kingdom of Heaven: Director's Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "19:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627221"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182270.TcsSection_971"
-        },
-        {
-          "displayTitle": "La Femme infid\u00e8le",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/chabrol-la-femme-infidele"
-        },
-        {
-          "displayTitle": "The Devil",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5888791.TcsSection_638"
-        },
-        {
-          "displayTitle": "Graffiti Bridge",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627278"
-        },
-        {
-          "displayTitle": "Everybody Digs Bill Evans + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/everybody-digs-bill-evans"
-        },
-        {
-          "displayTitle": "The Invite",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:50"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182255.TcsSection_3060731"
-        }
-      ]
-    },
-    {
-      "date": "2026-09-12",
-      "label": "Saturday",
-      "films": [
-        {
-          "displayTitle": "Reverie Cineclub presents 80 Years of DEFA: Animated Short Films for the Family",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5697515.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Kiki's Delivery Service",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "11:55"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627298"
-        },
-        {
-          "displayTitle": "UK PREMIERE The Day She Returns",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
-        },
-        {
-          "displayTitle": "Network - 50th Anniversary",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627299"
-        },
-        {
-          "displayTitle": "Soul Mate + Q&A",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6096201.TcsSection_638"
-        },
-        {
-          "displayTitle": "Steel Magnolias",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182315.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Dear You",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182278.TcsSection_971"
-        },
-        {
-          "displayTitle": "La Femme infid\u00e8le",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/chabrol-la-femme-infidele"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/late-fame"
-        },
-        {
-          "displayTitle": "Stalker",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627297"
-        },
-        {
-          "displayTitle": "The Good, The Bad and The Ugly",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:55"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/618020/the-good-the-bad-and-the-ugly"
-        },
-        {
-          "displayTitle": "I Want Your Sex",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182282.TcsSection_638"
-        },
-        {
-          "displayTitle": "Teenage Sex and Death at Camp Miasma",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182317.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Burroughs: The Movie",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/brookner-burroughs-the-movie"
-        },
-        {
-          "displayTitle": "La Femme Infid\u00e8le",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6020550.TcsSection_971"
-        },
-        {
-          "displayTitle": "UK PREMIERE Robert Wilson and the CIVIL warS",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/brookner-robert-wilson-and-the-civil-wars"
-        },
-        {
-          "displayTitle": "Godzilla (1954)",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627295"
-        },
-        {
-          "displayTitle": "A Blonde in Love",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5734061.TcsSection_638"
-        },
-        {
-          "displayTitle": "Bitter Christmas",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182322.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Everybody Digs Bill Evans + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/everybody-digs-bill-evans"
-        },
-        {
-          "displayTitle": "Late Fame",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182280.TcsSection_971"
-        },
-        {
-          "displayTitle": "Beavis and Butt-Head Do America",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "18:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627293"
-        },
-        {
-          "displayTitle": "Matador",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://www.ica.art/films/matador"
-        },
-        {
-          "displayTitle": "Everybody Digs Bill Evans",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5995792.TcsSection_638"
-        },
-        {
-          "displayTitle": "Interstellar",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627290"
-        },
-        {
-          "displayTitle": "UK PREMIERE Pin de Fartie",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
-        },
-        {
-          "displayTitle": "Sinners",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627292"
-        },
-        {
-          "displayTitle": "Sexy Beast - 25th anniversary",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6063479.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "The Incomer",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "21:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6035048.TcsSection_971"
-        }
-      ]
-    },
     {
       "date": "2026-09-13",
       "label": "Sunday",
       "films": [
-        {
-          "displayTitle": "Reverie Cineclub presents 80 Years of DEFA: Animated Short Films for the Family",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5697520.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Raiders of the Lost Ark",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "11:30"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627285"
-        },
-        {
-          "displayTitle": "The Red Shoes",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627307"
-        },
-        {
-          "displayTitle": "UK PREMIERE The Day She Returns",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
-        },
-        {
-          "displayTitle": "A Free Woman",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/a-free-woman"
-        },
-        {
-          "displayTitle": "La Femme Infid\u00e8le",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6020552.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Lady",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182289.TcsSection_971"
-        },
         {
           "displayTitle": "Late Fame",
           "cinema": "ICA",
@@ -760,7 +83,7 @@
           "showtimes": [
             "16:35"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627302"
+          "ticketUrl": "https://princecharlescinema.com/film/3182341/heat"
         },
         {
           "displayTitle": "Everybody Digs Bill Evans + Q&A",
@@ -784,7 +107,7 @@
           "showtimes": [
             "18:00"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627305"
+          "ticketUrl": "https://princecharlescinema.com/film/30736779/perfect-days"
         },
         {
           "displayTitle": "Sexy Beast - 25th anniversary",
@@ -840,7 +163,7 @@
           "showtimes": [
             "20:45"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627834"
+          "ticketUrl": "https://princecharlescinema.com/film/31617400/nirvanna-the-band-the-show-the-movie"
         }
       ]
     },
@@ -1403,6 +726,455 @@
             "21:15"
           ],
           "ticketUrl": "https://www.ica.art/films/matador"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-17",
+      "label": "Thursday",
+      "films": [
+        {
+          "displayTitle": "Mirror",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627328"
+        },
+        {
+          "displayTitle": "UK PREMIERE The Day She Returns",
+          "cinema": "ICA",
+          "showtimes": [
+            "12:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/the-day-she-returns"
+        },
+        {
+          "displayTitle": "The Transformers: The Movie: 40th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:30",
+            "20:35"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627737"
+        },
+        {
+          "displayTitle": "Sherman's March",
+          "cinema": "ICA",
+          "showtimes": [
+            "13:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/sherman-s-march"
+        },
+        {
+          "displayTitle": "Matador",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/matador"
+        },
+        {
+          "displayTitle": "Taipei Story",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627327"
+        },
+        {
+          "displayTitle": "Bitter Christmas",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182349.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Kiki's Delivery Service",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627300"
+        },
+        {
+          "displayTitle": "A Free Woman",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/a-free-woman"
+        },
+        {
+          "displayTitle": "UK PREMIERE Pin de Fartie",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/pin-de-fartie"
+        },
+        {
+          "displayTitle": "La Femme Infid\u00e8le",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "16:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6020558.TcsSection_971"
+        },
+        {
+          "displayTitle": "Raiders of the Lost Ark",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627282"
+        },
+        {
+          "displayTitle": "Late Fame",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182351.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "A Room in Town [Une chambre en ville]",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627330"
+        },
+        {
+          "displayTitle": "Everybody Digs Bill Evans",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5995802.TcsSection_638"
+        },
+        {
+          "displayTitle": "Everybody Digs Bill Evans + Q&A",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/everybody-digs-bill-evans"
+        },
+        {
+          "displayTitle": "La Femme infid\u00e8le",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/chabrol-la-femme-infidele"
+        },
+        {
+          "displayTitle": "Sexy Beast - 25th anniversary",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6063485.TcsSection_971"
+        },
+        {
+          "displayTitle": "Showgirls 2: Penny's from Heaven presented by Frowzy Films",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627215"
+        },
+        {
+          "displayTitle": "Teenage Sex and Death at Camp Miasma",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6182353.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Late Fame",
+          "cinema": "ICA",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/late-fame"
+        },
+        {
+          "displayTitle": "Daisies",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5955745.TcsSection_638"
+        },
+        {
+          "displayTitle": "The Incomer",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6035058.TcsSection_971"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-18",
+      "label": "Friday",
+      "films": [
+        {
+          "displayTitle": "The Transformers: The Movie: 40th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627740"
+        },
+        {
+          "displayTitle": "Sexy Beast",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627343"
+        },
+        {
+          "displayTitle": "Queen at Sea",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "13:30",
+            "20:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6075419.TcsSection_638"
+        },
+        {
+          "displayTitle": "There Will Be Blood",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "14:35"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627341"
+        },
+        {
+          "displayTitle": "Miracle Mile",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627347"
+        },
+        {
+          "displayTitle": "The Cycle of Love",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:45",
+            "17:50"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6075421.TcsSection_971"
+        },
+        {
+          "displayTitle": "Queen at Sea",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:00",
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/queen-at-sea"
+        },
+        {
+          "displayTitle": "Bad Apples",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "16:00",
+            "20:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5987398.TcsSection_638"
+        },
+        {
+          "displayTitle": "We Are Fugazi From Washington, DC",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627340"
+        },
+        {
+          "displayTitle": "April X",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/film/31617483/april-x"
+        },
+        {
+          "displayTitle": "Closely Observed Trains",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5955603.TcsSection_638"
+        },
+        {
+          "displayTitle": "UK PREMIEREIn-I In Motion",
+          "cinema": "ICA",
+          "showtimes": [
+            "19:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/in-i-in-motion-q-a-with-juliette-binoche"
+        },
+        {
+          "displayTitle": "Interstellar",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627339"
+        },
+        {
+          "displayTitle": "Possession",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5888883.TcsSection_638"
+        },
+        {
+          "displayTitle": "Backrooms: Everything Must Go Edition With Bonus Footage",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627804"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-19",
+      "label": "Saturday",
+      "films": [
+        {
+          "displayTitle": "Free Willy",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "11:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5672884.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Project Hail Mary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627360"
+        },
+        {
+          "displayTitle": "The Cycle of Love",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6075427.TcsSection_971"
+        },
+        {
+          "displayTitle": "Nostalgia [Nostalghia]",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627359"
+        },
+        {
+          "displayTitle": "Queen at Sea",
+          "cinema": "ICA",
+          "showtimes": [
+            "13:40",
+            "20:40"
+          ],
+          "ticketUrl": "https://www.ica.art/films/queen-at-sea"
+        },
+        {
+          "displayTitle": "Burden of Dreams + Werner Herzog Eats His Shoe",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5734070.TcsSection_638"
+        },
+        {
+          "displayTitle": "Queen at Sea",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:20",
+            "20:10"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6075429.TcsSection_971"
+        },
+        {
+          "displayTitle": "The Transformers: The Movie: 40th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:10"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627742"
+        },
+        {
+          "displayTitle": "Sexy Beast",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:25"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627709"
+        },
+        {
+          "displayTitle": "UK PREMIEREIn-I In Motion",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/in-i-in-motion-q-a-with-juliette-binoche"
+        },
+        {
+          "displayTitle": "Bad Apples",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:05"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5987402.TcsSection_638"
+        },
+        {
+          "displayTitle": "Fringe! Queer Film Festival presents: Two Times Jo\u00e3o Liberada + Three times Mina",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "17:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6023464.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Blade Runner : Double Feature",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627357"
+        },
+        {
+          "displayTitle": "The Fall - 20th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:05"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627352"
+        },
+        {
+          "displayTitle": "April X",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627879"
         }
       ]
     }
