@@ -1,820 +1,10 @@
 {
-  "generatedAt": "2026-11-05T15:51:08+00:00",
+  "generatedAt": "2026-11-08T14:35:50+00:00",
   "days": [
-    {
-      "date": "2026-11-05",
-      "label": "Thursday",
-      "films": [
-        {
-          "displayTitle": "Nova '78",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/nova-78"
-        },
-        {
-          "displayTitle": "Possible Love",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6490030.TcsSection_971"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6490032.TcsSection_638"
-        },
-        {
-          "displayTitle": "Salo, Or The 120 Days of Sodom",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:50"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628234"
-        },
-        {
-          "displayTitle": "Bluebeard\u2019s Eighth Wife",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=4C550FA8-DA73-4C00-9138-E19BBE9A755B&BOparam::WScontent::loadArticle::context_id=A8755C41-90DA-4FFD-AF39-272FB3BFC4CB"
-        },
-        {
-          "displayTitle": "All About the Money + Q&A",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6440581.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Ken Russell\u2019s The Devils",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:10",
-            "20:35"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=EB9708BC-214E-47E9-BCB0-86A9453F4E1B"
-        },
-        {
-          "displayTitle": "Time of Cinema",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=C8908A38-FDEC-4E7A-9D75-F14920E5612E&BOparam::WScontent::loadArticle::context_id=C33726C4-2A95-4E89-9E4F-1B0AD28F9208"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:25"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=9F5E3B90-E28E-4F1D-82B2-0DACFA6E1B9E"
-        },
-        {
-          "displayTitle": "Final Works + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/godard-unmade-and-abandoned-final-works-q-a"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/naza"
-        },
-        {
-          "displayTitle": "'Wicker Sour' cocktails, straw man making + Wicker",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6401050.TcsSection_6400987"
-        },
-        {
-          "displayTitle": "Better Go Mad in the Wild + Q&A with director Miro Remo",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6282544.TcsSection_638"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6490028.TcsSection_971"
-        },
-        {
-          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=6BF4EE77-ABB0-4A1C-AF22-DDAAAB993086"
-        },
-        {
-          "displayTitle": "Shakedown + Introduction",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/nfts-collective-visions-of-pleasure-shakedown"
-        },
-        {
-          "displayTitle": "Roger Corman\u2019s Frankenstein Unbound",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=B96585F1-CA41-47CF-B49B-80D4A1FB6126&BOparam::WScontent::loadArticle::context_id=CF3E2B7E-085E-4416-BF71-548DBA9DE4BD"
-        },
-        {
-          "displayTitle": "The Devils",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:50"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-devils"
-        },
-        {
-          "displayTitle": "V For Vendetta",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:50"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/3273/v-for-vendetta"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-06",
-      "label": "Friday",
-      "films": [
-        {
-          "displayTitle": "Eternal Sunshine of the Spotless Mind",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "11:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628283"
-        },
-        {
-          "displayTitle": "Excalibur",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617489/excalibur"
-        },
-        {
-          "displayTitle": "Pan\u2019s Labyrinth (2D)",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:15",
-            "18:05",
-            "20:35"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2EB82BC-B8DA-49DA-92B7-63249BECD9F8&BOparam::WScontent::loadArticle::context_id=9D974ECF-5C43-475F-9979-E9B15115D0AF"
-        },
-        {
-          "displayTitle": "Possible Love",
-          "cinema": "ICA",
-          "showtimes": [
-            "12:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/possible-love"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:45"
-          ],
-          "ticketUrl": "https://www.ica.art/films/naza"
-        },
-        {
-          "displayTitle": "Short Cuts : 35mm Roadshow Tour",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628284"
-        },
-        {
-          "displayTitle": "Onwards and Sideways",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:15"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6511518.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Ken Russell\u2019s The Devils",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:30",
-            "18:00",
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=F1E5789B-C272-4B41-94FB-CD98372FEECE"
-        },
-        {
-          "displayTitle": "La Bola Negra",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:30",
-            "17:35"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314418.TcsSection_971"
-        },
-        {
-          "displayTitle": "Wild Horse Nine",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:00",
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307613.TcsSection_638"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:15",
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=60BA5623-C0E1-4A18-8F8C-E706BC62793A"
-        },
-        {
-          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:15",
-            "18:05"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/fatherland"
-        },
-        {
-          "displayTitle": "Raise the Red Lantern",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:45"
-          ],
-          "ticketUrl": "https://www.ica.art/films/raise-the-red-lantern"
-        },
-        {
-          "displayTitle": "The Devils",
-          "cinema": "ICA",
-          "showtimes": [
-            "17:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-devils"
-        },
-        {
-          "displayTitle": "The Fifth Element",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:50"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628285"
-        },
-        {
-          "displayTitle": "Ball of Fire",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7F060545-0ACA-468C-ACF8-54E88A6F2CBD&BOparam::WScontent::loadArticle::context_id=7B916A69-84E8-4F26-A452-C0B32D2D3282"
-        },
-        {
-          "displayTitle": "Touki Bouki",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=9CCC6AD7-4810-4A65-BAAD-41C6C9F0C7BB&BOparam::WScontent::loadArticle::context_id=C82A0264-84FC-4741-8D9A-BF4800395FD6"
-        },
-        {
-          "displayTitle": "The Best Summer + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/doc-n-roll-ff-the-best-summer"
-        },
-        {
-          "displayTitle": "La Bola Negra",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/la-bola-negra"
-        },
-        {
-          "displayTitle": "Wicker",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542343.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=FE888CD4-CE2E-4A60-B3ED-A9E6AA124060"
-        },
-        {
-          "displayTitle": "The Devils - director's cut",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307617.TcsSection_638"
-        },
-        {
-          "displayTitle": "Dead Mountaineer\u2019s Hotel",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/pushkin-house-dead-mountaineer-s-hotel"
-        },
-        {
-          "displayTitle": "Akira",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627780"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542345.TcsSection_971"
-        },
-        {
-          "displayTitle": "Mikey and Nicky",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "21:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628286"
-        }
-      ]
-    },
-    {
-      "date": "2026-11-07",
-      "label": "Saturday",
-      "films": [
-        {
-          "displayTitle": "Maya, Give Me a Title [Subbed]",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5956450.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Chungking Express",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628287"
-        },
-        {
-          "displayTitle": "30th Anniversary: Space Jam",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=1FB128E4-4D1C-4F1C-B9F6-C1E99CA516A8&BOparam::WScontent::loadArticle::context_id=73CCEB8A-410F-4CDE-8F8C-A4C1D5A503EB"
-        },
-        {
-          "displayTitle": "Wicker",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542361.TcsSection_971"
-        },
-        {
-          "displayTitle": "The Major and the Minor",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=AD6D0B08-5CDA-4137-BC92-F0E39A0081CA&BOparam::WScontent::loadArticle::context_id=681BEC37-1C16-461E-8562-1C97BBF862A8"
-        },
-        {
-          "displayTitle": "The Gorals",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=22ABB453-6B64-4591-95EA-6D57772F85A8&BOparam::WScontent::loadArticle::context_id=22677B91-306F-4E08-830E-401E903A46AE"
-        },
-        {
-          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
-        },
-        {
-          "displayTitle": "La Bola Negra",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "12:25",
-            "20:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314422.TcsSection_638"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "12:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542335.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "A Man Vanishes",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/imamura-a-man-vanishes"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/naza"
-        },
-        {
-          "displayTitle": "Possible Love",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "14:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542337.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Akira",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:35"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627781"
-        },
-        {
-          "displayTitle": "Sunset Boulevard",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=FD0B62D9-F671-4E4B-B3DB-DD6D39B0069C&BOparam::WScontent::loadArticle::context_id=E93199D6-CC87-4176-9833-756B297CC0B0"
-        },
-        {
-          "displayTitle": "Raise the Red Lantern",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6270658.TcsSection_971"
-        },
-        {
-          "displayTitle": "Ken Russell\u2019s The Devils",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:10",
-            "15:20",
-            "18:00",
-            "20:35"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=F69215A7-0565-4531-89FF-732A3300FF38"
-        },
-        {
-          "displayTitle": "Sapphire",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=CA644FD0-884F-4795-A8B2-931F86CE1E67&BOparam::WScontent::loadArticle::context_id=2E97B26C-682A-471E-8B22-B1D9F44A1BAB"
-        },
-        {
-          "displayTitle": "Bugsy Malone",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "15:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628288"
-        },
-        {
-          "displayTitle": "La Bola Negra",
-          "cinema": "ICA",
-          "showtimes": [
-            "15:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/la-bola-negra"
-        },
-        {
-          "displayTitle": "Wild Horse Nine",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "15:30",
-            "20:30"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307619.TcsSection_638"
-        },
-        {
-          "displayTitle": "The Accordion Door",
-          "cinema": "ICA",
-          "showtimes": [
-            "16:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/lkff-26-the-accordion-door"
-        },
-        {
-          "displayTitle": "The Devils - director's cut",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:35"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307623.TcsSection_971"
-        },
-        {
-          "displayTitle": "Big Trouble in Little China",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "17:45"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/2631741/big-trouble-in-little-china"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "17:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542339.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "En Route To",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/en-route-to"
-        },
-        {
-          "displayTitle": "Strawman",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "18:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6267238.TcsSection_638"
-        },
-        {
-          "displayTitle": "35 Shots of Rum",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A8B5BBC3-34D0-4AFF-87CA-A6070FA17481&BOparam::WScontent::loadArticle::context_id=AE7E3C9B-3F98-45B5-B1BD-7C9D3E1DC1D2"
-        },
-        {
-          "displayTitle": "Mauvaise Graine",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=13CC9684-ED54-4E3A-84AE-D1C7F63AAA4C&BOparam::WScontent::loadArticle::context_id=C6DC3D28-8443-4AB3-BC75-EB15EC19CA1B"
-        },
-        {
-          "displayTitle": "Fatherland",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "18:25"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=19A8F78D-4DEB-4AFD-948B-83C3D725EDF5"
-        },
-        {
-          "displayTitle": "Marina Gr\u017eini\u0107 & Aina \u0160mid Underground Experiments",
-          "cinema": "ICA",
-          "showtimes": [
-            "18:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/marina-grzinic-aina-smid-films-1984-1997"
-        },
-        {
-          "displayTitle": "Stalker",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "19:45"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6352293.TcsSection_3060731"
-        },
-        {
-          "displayTitle": "Short Cuts : 35mm Roadshow Tour",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:05"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628488"
-        },
-        {
-          "displayTitle": "A Foreign Affair",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:20"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=018D957E-DA0F-434E-B6BC-37028831B756&BOparam::WScontent::loadArticle::context_id=AC8FACD3-8173-47BC-9626-F25B4DD742DB"
-        },
-        {
-          "displayTitle": "Manhunter : The Final Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "20:25"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628504"
-        },
-        {
-          "displayTitle": "Pressure",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=789D440A-F6DE-4954-A58C-31EA4502B2F8&BOparam::WScontent::loadArticle::context_id=89E6351F-05E9-4D22-9D2F-600401F4FF91"
-        },
-        {
-          "displayTitle": "Pan\u2019s Labyrinth (3D)",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E6A6F0CF-9B67-4DE0-9935-93520A520B19&BOparam::WScontent::loadArticle::context_id=52D4D12D-91C8-4767-A2A1-C04D4F3CEDAF"
-        },
-        {
-          "displayTitle": "Muguruza FM 40 Tour + Q&A",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:40"
-          ],
-          "ticketUrl": "https://www.ica.art/films/doc-n-roll-ff-muguruza-fm-40-tour-q-a"
-        },
-        {
-          "displayTitle": "Raise the Red Lantern",
-          "cinema": "ICA",
-          "showtimes": [
-            "20:45"
-          ],
-          "ticketUrl": "https://www.ica.art/films/raise-the-red-lantern"
-        }
-      ]
-    },
     {
       "date": "2026-11-08",
       "label": "Sunday",
       "films": [
-        {
-          "displayTitle": "Maya, Give Me a Title [Subbed]",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "11:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6019815.TcsSection_638"
-        },
-        {
-          "displayTitle": "The Spirit of St. Louis",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "11:45"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=86464AAF-A2F6-4108-B495-750F6D8D0C55&BOparam::WScontent::loadArticle::context_id=B7771979-850A-48D3-86B2-5398AB1E0FA9"
-        },
-        {
-          "displayTitle": "Whisper of the Heart",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:00"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628250"
-        },
-        {
-          "displayTitle": "Tim Burton\u2019s Corpse Bride",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:10"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2D6339A-4A5E-4A52-B8D1-571DE7454316&BOparam::WScontent::loadArticle::context_id=B55BFA5C-23A4-4DD1-ACAD-5393644BA887"
-        },
-        {
-          "displayTitle": "The 7th Voyage of Sinbad",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "12:15"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627894"
-        },
-        {
-          "displayTitle": "Naza",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "12:30"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=474A6E08-49B6-416B-B8B3-8BED07270336"
-        },
-        {
-          "displayTitle": "La Bola Negra",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "12:45",
-            "15:55"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314426.TcsSection_971"
-        },
-        {
-          "displayTitle": "Days of Eclipse",
-          "cinema": "The Garden Cinema",
-          "showtimes": [
-            "13:00"
-          ],
-          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6352305.TcsSection_638"
-        },
-        {
-          "displayTitle": "The Devils",
-          "cinema": "ICA",
-          "showtimes": [
-            "13:30"
-          ],
-          "ticketUrl": "https://www.ica.art/films/the-devils"
-        },
-        {
-          "displayTitle": "Profound Desires of the Gods",
-          "cinema": "ICA",
-          "showtimes": [
-            "14:00"
-          ],
-          "ticketUrl": "https://www.ica.art/films/imamura-profound-desires-of-the-gods"
-        },
-        {
-          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
-          "cinema": "Prince Charles Cinema",
-          "showtimes": [
-            "14:25",
-            "20:20"
-          ],
-          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
-        },
-        {
-          "displayTitle": "Pan\u2019s Labyrinth (3D)",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "14:40"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=E6A6F0CF-9B67-4DE0-9935-93520A520B19&BOparam::WScontent::loadArticle::context_id=E7DF858F-95A7-4635-A0D6-D2527838540B"
-        },
         {
           "displayTitle": "All That Jazz",
           "cinema": "Prince Charles Cinema",
@@ -832,22 +22,28 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542347.TcsSection_3060731"
         },
         {
-          "displayTitle": "Ken Russell\u2019s The Devils",
-          "cinema": "BFI Southbank",
-          "showtimes": [
-            "15:00",
-            "15:10",
-            "18:15"
-          ],
-          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=2BFD9B95-9615-4912-92A8-7D322C12DCC0"
-        },
-        {
           "displayTitle": "People on Sunday",
           "cinema": "BFI Southbank",
           "showtimes": [
             "15:30"
           ],
           "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F2AB068E-1F7E-4E6A-9AFC-500E6BC2EDA8&BOparam::WScontent::loadArticle::context_id=EBDCE6C6-1891-4E3D-BB09-D014A59C39D8"
+        },
+        {
+          "displayTitle": "The Eyes of Ghana",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "15:30"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-ymqpqbm"
+        },
+        {
+          "displayTitle": "La Bola Negra",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:55"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314428.TcsSection_638"
         },
         {
           "displayTitle": "Raise the Red Lantern",
@@ -880,7 +76,7 @@
           "showtimes": [
             "17:10"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628295"
+          "ticketUrl": "https://princecharlescinema.com/film/2187938/one-flew-over-the-cuckoos-nest"
         },
         {
           "displayTitle": "You Fuckers Figure It Out: A Jason Molina Story + Q&A",
@@ -896,7 +92,15 @@
           "showtimes": [
             "17:30"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628293"
+          "ticketUrl": "https://princecharlescinema.com/film/19529946/fallen-angels"
+        },
+        {
+          "displayTitle": "Lift + Calais The Last Border",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-dklaqqm"
         },
         {
           "displayTitle": "Be My Baby + intro by programmer Anton Bitel",
@@ -905,6 +109,14 @@
             "18:10"
           ],
           "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=CDCB6F38-5B39-4DE6-9F0C-223A24F8B471&BOparam::WScontent::loadArticle::context_id=27B3192A-6D42-487D-A749-FBD0968EE924"
+        },
+        {
+          "displayTitle": "Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=57FED67E-57AD-4389-951C-9D16F1AA367F"
         },
         {
           "displayTitle": "Young Soul Rebels",
@@ -939,6 +151,14 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6263712.TcsSection_638"
         },
         {
+          "displayTitle": "All White in Barking",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-qmyvppn"
+        },
+        {
           "displayTitle": "The Mutation",
           "cinema": "ICA",
           "showtimes": [
@@ -953,6 +173,14 @@
             "20:00"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628519"
+        },
+        {
+          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
         }
       ]
     },
@@ -967,7 +195,7 @@
             "12:05",
             "17:25"
           ],
-          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628302"
+          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
         },
         {
           "displayTitle": "Naza",
@@ -1080,9 +308,18 @@
           "cinema": "BFI Southbank",
           "showtimes": [
             "18:10",
-            "18:20"
+            "18:20",
+            "20:35"
           ],
           "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=1C416029-7FBA-41DE-900B-A5B6EF2CAF2D"
+        },
+        {
+          "displayTitle": "Mark Kermode Live in 3D at the BFI",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=5FD3B486-9EFE-4ADA-9590-27201CB64BE9&BOparam::WScontent::loadArticle::context_id=CD0E1813-7DF7-4BEC-8013-4A0AFB2D534B"
         },
         {
           "displayTitle": "La Bola Negra",
@@ -1109,12 +346,44 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6265917.TcsSection_638"
         },
         {
+          "displayTitle": "Purple Noon",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-aobovre"
+        },
+        {
           "displayTitle": "Boyhood",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "20:15"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628304"
+        },
+        {
+          "displayTitle": "Sunset Boulevard",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=FD0B62D9-F671-4E4B-B3DB-DD6D39B0069C&BOparam::WScontent::loadArticle::context_id=D2348585-96CD-4B90-9964-E1F4D075285C"
+        },
+        {
+          "displayTitle": "Hell on Earth: The Desecration and Resurrection of The Devils + intro and Q&A",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=BA7C6538-F8DD-475E-99B1-8A95F60010F0&BOparam::WScontent::loadArticle::context_id=D49CEE6B-1E6E-44E4-9A0A-D47520CE047E"
+        },
+        {
+          "displayTitle": "Fatherland",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=4A167D77-532E-4EEA-9AB1-6DCE3F53A6F4"
         }
       ]
     },
@@ -1177,6 +446,23 @@
             "14:00"
           ],
           "ticketUrl": "https://www.ica.art/films/fatherland"
+        },
+        {
+          "displayTitle": "Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30",
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=6B8C98A2-D452-46FD-BECE-081567B94383"
+        },
+        {
+          "displayTitle": "Fatherland",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=951FAB7F-4E94-4977-BC47-7404F8063FDB"
         },
         {
           "displayTitle": "Onwards and Sideways",
@@ -1253,6 +539,14 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6308249.TcsSection_638"
         },
         {
+          "displayTitle": "An Evening with Radio Times \u2013 TV Preview: Rivals Series 2 + Q&A with cast and creatives",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=977DC012-F71B-4B60-AB92-185E17211245&BOparam::WScontent::loadArticle::context_id=D3AEEA3B-B51A-46AE-8649-1D96786D866C"
+        },
+        {
           "displayTitle": "In-Edit Cine-Documental: La guitarra flamenca de Yerai Cort\u00e9s (The Flamenco Guitar of Yerai Cort\u00e9s)",
           "cinema": "The Garden Cinema",
           "showtimes": [
@@ -1261,12 +555,44 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6223527.TcsSection_971"
         },
         {
+          "displayTitle": "Member Exclusive: Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2CAA8DE-D67D-4010-A567-666716FFD2B5&BOparam::WScontent::loadArticle::context_id=1E63B059-35D4-44A0-A95A-2974A8BF6F69"
+        },
+        {
           "displayTitle": "In the Realm of the Senses",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "18:15"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628219"
+        },
+        {
+          "displayTitle": "Animal Farm + intro by Vivien Halas and Jez Stewart of the BFI National Archive",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=9C5C6247-10ED-461C-A9B7-7C519F3BB6A7&BOparam::WScontent::loadArticle::context_id=E95D4B75-B241-462B-8DCA-6221F4C3107B"
+        },
+        {
+          "displayTitle": "Naza",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=9A22D188-7155-49FC-9709-F00FA022E48A"
+        },
+        {
+          "displayTitle": "The Edge of the World",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-mgrlrqo"
         },
         {
           "displayTitle": "The World of Love",
@@ -1293,6 +619,14 @@
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314432.TcsSection_971"
         },
         {
+          "displayTitle": "The Flavour of Green Tea over Rice",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-aobodzv"
+        },
+        {
           "displayTitle": "Perpetual Motion",
           "cinema": "ICA",
           "showtimes": [
@@ -1301,12 +635,36 @@
           "ticketUrl": "https://www.ica.art/films/pereda-perpetual-motion"
         },
         {
+          "displayTitle": "Bamako",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=55725523-0405-41F8-A541-EB0D1B3DD7E1&BOparam::WScontent::loadArticle::context_id=2F518EA4-DF23-441E-ACA1-6C3A7CC4D921"
+        },
+        {
           "displayTitle": "The Departed",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "20:30"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628266"
+        },
+        {
+          "displayTitle": "Some Like it Hot",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:35"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7D2AEF21-5C25-453E-8226-C226B4D3DA7F&BOparam::WScontent::loadArticle::context_id=C547A4E6-F3D1-4321-974C-892CFEF46CA8"
+        },
+        {
+          "displayTitle": "Pan\u2019s Labyrinth (2D)",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2EB82BC-B8DA-49DA-92B7-63249BECD9F8&BOparam::WScontent::loadArticle::context_id=0CF0CB53-09F5-499F-8A89-FA2895E2676C"
         },
         {
           "displayTitle": "La Bola Negra",
@@ -1454,6 +812,23 @@
           "ticketUrl": "https://www.ica.art/films/la-bola-negra"
         },
         {
+          "displayTitle": "Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:00",
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=CE42700D-55FE-4DBB-BE92-5325225C3D1C"
+        },
+        {
+          "displayTitle": "The Man Who Left His Will on Film",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-qbebgap"
+        },
+        {
           "displayTitle": "The Adventures of Prince Achmed",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
@@ -1468,6 +843,30 @@
             "18:00"
           ],
           "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6263825.TcsSection_638"
+        },
+        {
+          "displayTitle": "Daughters of the Dust + intro by Rogan Graham, BFI Film Programmer",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=6E8760F5-CC28-40E7-8A4F-8B85219E721F&BOparam::WScontent::loadArticle::context_id=3BEF308D-E58E-46FA-A636-0E2992E740C8"
+        },
+        {
+          "displayTitle": "Pan\u2019s Labyrinth (2D)",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2EB82BC-B8DA-49DA-92B7-63249BECD9F8&BOparam::WScontent::loadArticle::context_id=ECF9A018-DD66-426D-A054-E3BB9ECD32BB"
+        },
+        {
+          "displayTitle": "Mona Lisa + Q&A with Lola Young and actor Cathy Tyson",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "19:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=803CA4AD-1750-4A97-8245-C50E24AC8F78&BOparam::WScontent::loadArticle::context_id=16F44ECA-0DD7-41E8-9420-4990051A238B"
         },
         {
           "displayTitle": "The Odyssey",
@@ -1510,12 +909,640 @@
           "ticketUrl": "https://www.ica.art/films/lkff-26-mad-dance-office"
         },
         {
+          "displayTitle": "Midnight",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=7AB297E2-7472-4272-AF55-8D971E68001C&BOparam::WScontent::loadArticle::context_id=4ADFD7EA-B30A-4866-B87F-1415F28AB207"
+        },
+        {
           "displayTitle": "In The Mood For Love",
           "cinema": "Prince Charles Cinema",
           "showtimes": [
             "20:50"
           ],
           "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628566"
+        },
+        {
+          "displayTitle": "Naza",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:55"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=7AA8809E-B954-43D3-A995-EB50F2793954"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-12",
+      "label": "Thursday",
+      "films": [
+        {
+          "displayTitle": "Angel's Egg",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628325"
+        },
+        {
+          "displayTitle": "Fatherland",
+          "cinema": "ICA",
+          "showtimes": [
+            "12:05"
+          ],
+          "ticketUrl": "https://www.ica.art/films/fatherland"
+        },
+        {
+          "displayTitle": "UK PREMIEREThe Night is Fading Away",
+          "cinema": "ICA",
+          "showtimes": [
+            "12:15"
+          ],
+          "ticketUrl": "https://www.ica.art/films/off-circuit-the-night-is-fading-away"
+        },
+        {
+          "displayTitle": "Benedetta",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628326"
+        },
+        {
+          "displayTitle": "La Bola Negra",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "12:25",
+            "17:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6314438.TcsSection_638"
+        },
+        {
+          "displayTitle": "Naza",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "12:45"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542391.TcsSection_971"
+        },
+        {
+          "displayTitle": "Naza",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "13:10",
+            "18:25"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=349BD3FB-4720-4600-82B5-3C2C7550A8B3&BOparam::WScontent::loadArticle::context_id=A5076124-18EF-4FA8-9ECA-49692B58AB22"
+        },
+        {
+          "displayTitle": "Naza",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/naza"
+        },
+        {
+          "displayTitle": "Kingdom of Heaven: Director's Cut",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627895"
+        },
+        {
+          "displayTitle": "Raise the Red Lantern",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6270662.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30",
+            "18:00",
+            "20:45"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=B2D370E5-FE30-40A5-BAE9-E372854868F0"
+        },
+        {
+          "displayTitle": "The Devils - director's cut",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307773.TcsSection_971"
+        },
+        {
+          "displayTitle": "Possible Love",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:40"
+          ],
+          "ticketUrl": "https://www.ica.art/films/possible-love"
+        },
+        {
+          "displayTitle": "Fatherland",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "15:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A5874865-E01C-4243-BE87-9A5FECF104C8&BOparam::WScontent::loadArticle::context_id=A14A6762-4E29-46D7-B1ED-977DE73729C3"
+        },
+        {
+          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:30",
+            "18:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628259"
+        },
+        {
+          "displayTitle": "Wild Horse Nine",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "15:30",
+            "20:30"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6307775.TcsSection_638"
+        },
+        {
+          "displayTitle": "Raise the Red Lantern",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/raise-the-red-lantern"
+        },
+        {
+          "displayTitle": "La Bola Negra",
+          "cinema": "ICA",
+          "showtimes": [
+            "17:40"
+          ],
+          "ticketUrl": "https://www.ica.art/films/la-bola-negra"
+        },
+        {
+          "displayTitle": "Taipei Story",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6271889.TcsSection_638"
+        },
+        {
+          "displayTitle": "Mongrels + extended intro with filmmaker Jerome Yoo",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:10"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=393BB720-60D0-47D9-AAA6-414A6AC1551E&BOparam::WScontent::loadArticle::context_id=7414D398-D856-42F6-BF40-D363859ABC91"
+        },
+        {
+          "displayTitle": "The Love Witch",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627844"
+        },
+        {
+          "displayTitle": "Julie Corman in Conversation",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=45C28BB4-99FC-4003-974F-358735A7C1C3&BOparam::WScontent::loadArticle::context_id=F0A33021-2D4B-4AC6-9687-E82C437E1FFB"
+        },
+        {
+          "displayTitle": "History of Postwar Japan as Told by a Bar Hostess",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/imamura-bar-hostess"
+        },
+        {
+          "displayTitle": "Mr. O's Book of the Dead + Q&A with Mitsuyo Uesugi",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6148809.TcsSection_971"
+        },
+        {
+          "displayTitle": "Stalker",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-eaoamek"
+        },
+        {
+          "displayTitle": "The Wild Angels + intro by Catherine Corman, Roger Corman\u2019s daughter",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=8FEFFAD2-5231-428D-A337-E62D6FE7AA51&BOparam::WScontent::loadArticle::context_id=13D529CB-4638-4D5C-8918-65CF6DB81E84"
+        },
+        {
+          "displayTitle": "Pan\u2019s Labyrinth (2D)",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=A2EB82BC-B8DA-49DA-92B7-63249BECD9F8&BOparam::WScontent::loadArticle::context_id=56A5EC65-CC6D-4BA3-BFD4-0E495EE734B3"
+        },
+        {
+          "displayTitle": "Seduction: The Cruel Woman + Introduction",
+          "cinema": "ICA",
+          "showtimes": [
+            "20:40"
+          ],
+          "ticketUrl": "https://www.ica.art/films/nfts-collective-visions-of-pleasure-the-cruel-woman"
+        },
+        {
+          "displayTitle": "The Devils",
+          "cinema": "ICA",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://www.ica.art/films/the-devils"
+        },
+        {
+          "displayTitle": "Akira",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627784"
+        },
+        {
+          "displayTitle": "Burning an Illusion",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "20:50"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=B1F18DCF-762D-4EC9-8788-AC6169939E87&BOparam::WScontent::loadArticle::context_id=85D11354-9887-4CA2-B984-4662A3D6F163"
+        },
+        {
+          "displayTitle": "Have A Gd Trip presents Welcome To Hell & Bag of Suck Double Feature",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "21:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/film/31617534/have-a-gd-trip-presents-welcome-to-hell-bag-of-suck-double-feature"
+        },
+        {
+          "displayTitle": "Fatherland",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "21:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6542393.TcsSection_3060731"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-13",
+      "label": "Friday",
+      "films": [
+        {
+          "displayTitle": "Fjord",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "10:40",
+            "14:10",
+            "17:05"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6551646.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Ken Russell\u2019s The Devils",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "12:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=F47D6B06-93F7-4022-82B6-330619510A56&BOparam::WScontent::loadArticle::context_id=1BF92AFB-E26F-4C80-B45F-72B6E142D1F5"
+        },
+        {
+          "displayTitle": "Network - 50th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628345"
+        },
+        {
+          "displayTitle": "Master and Commander : The Far Side of the World",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628528"
+        },
+        {
+          "displayTitle": "The Man Who Fell to Earth",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "13:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6412607.TcsSection_971"
+        },
+        {
+          "displayTitle": "Fjord",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:30",
+            "18:00"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=44365346-D223-4B93-9F8B-F98BF0F40932&BOparam::WScontent::loadArticle::context_id=CCCC0B37-2C97-4923-B2D7-9F6D820D5C00"
+        },
+        {
+          "displayTitle": "Marie Antoinette",
+          "cinema": "BFI Southbank",
+          "showtimes": [
+            "14:40"
+          ],
+          "ticketUrl": "https://whatson.bfi.org.uk/Online/default.asp?doWork::WScontent::loadArticle=Load&BOparam::WScontent::loadArticle::article_id=073C0856-79E3-43A7-93CE-620AF8669AB9&BOparam::WScontent::loadArticle::context_id=E98BB606-02EE-4E70-AA78-8677BF8BE986"
+        },
+        {
+          "displayTitle": "Amelie - 25th Anniversary",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:00"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628346"
+        },
+        {
+          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628269"
+        },
+        {
+          "displayTitle": "Jason and the Argonauts",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627896"
+        },
+        {
+          "displayTitle": "The Time Masters",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627817"
+        },
+        {
+          "displayTitle": "An Unfinished Film",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/an-unfinished-film"
+        },
+        {
+          "displayTitle": "Scream Station Festival: Experimental Film Section",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "19:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-njvomzn"
+        },
+        {
+          "displayTitle": "Italian cocktails, Morricone musical intro + Ennio",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "19:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6439982.TcsSection_6439902"
+        },
+        {
+          "displayTitle": "Hard to Be a God",
+          "cinema": "ICA",
+          "showtimes": [
+            "19:30"
+          ],
+          "ticketUrl": "https://www.ica.art/films/pushkin-house-hard-to-be-a-god"
+        },
+        {
+          "displayTitle": "Hill of No Return",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "20:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6263738.TcsSection_638"
+        },
+        {
+          "displayTitle": "The Cranes Are Flying",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-xvyvamy"
+        },
+        {
+          "displayTitle": "The Odyssey",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:15"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627897"
+        },
+        {
+          "displayTitle": "Evangelion: Death (True)\u00b2 + The End of Evangelion : Double Feature",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:30"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/film/31617019/evangelion-death-true-the-end-of-evangelion-double-feature"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "label": "Saturday",
+      "films": [
+        {
+          "displayTitle": "The Pirates! In an Adventure with Scientists!",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "11:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5982293.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Troy",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "11:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627899"
+        },
+        {
+          "displayTitle": "The Princess Bride",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "12:05"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628347"
+        },
+        {
+          "displayTitle": "Marie Antoinette",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "13:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6457400.TcsSection_971"
+        },
+        {
+          "displayTitle": "Carnival of Souls",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-rvdodyb"
+        },
+        {
+          "displayTitle": "Greatest Hits",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/pereda-greatest-hits"
+        },
+        {
+          "displayTitle": "Women\u2019s Voices Shorts Programme",
+          "cinema": "ICA",
+          "showtimes": [
+            "14:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/lkff-women-s-voices-shorts-programme"
+        },
+        {
+          "displayTitle": "Fjord",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "14:15",
+            "20:25"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6394289.TcsSection_638"
+        },
+        {
+          "displayTitle": "The Odyssey",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "14:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31627898"
+        },
+        {
+          "displayTitle": "The Grand Budapest Hotel",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "15:10"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628351"
+        },
+        {
+          "displayTitle": "Screamstation Fest: Innovative Short Film Section",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/t-kdzrylk"
+        },
+        {
+          "displayTitle": "Minotaur + My Skin, Luminous",
+          "cinema": "ICA",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/pereda-minotaur-my-skin-luminous"
+        },
+        {
+          "displayTitle": "One In A Million",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "16:00"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_6489806.TcsSection_3060731"
+        },
+        {
+          "displayTitle": "Predator",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "17:40"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628352"
+        },
+        {
+          "displayTitle": "An Unfinished Film",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/an-unfinished-film"
+        },
+        {
+          "displayTitle": "Who Killed Alex Odeh?",
+          "cinema": "ICA",
+          "showtimes": [
+            "18:00"
+          ],
+          "ticketUrl": "https://www.ica.art/films/lpff-2026-who-killed-alex-odeh"
+        },
+        {
+          "displayTitle": "The Phantom of the Opera + live score",
+          "cinema": "The Garden Cinema",
+          "showtimes": [
+            "18:15"
+          ],
+          "ticketUrl": "https://bookings.thegardencinema.co.uk/TheGardenCinema.dll/TSelectItems.waSelectItemsPrompt.TcsWebMenuItem_0.TcsWebTab_0.TcsPerformance_5904879.TcsSection_638"
+        },
+        {
+          "displayTitle": "Fargo",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "18:20"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628332"
+        },
+        {
+          "displayTitle": "Emitai",
+          "cinema": "Close-Up Cinema",
+          "showtimes": [
+            "18:30"
+          ],
+          "ticketUrl": "https://www.ticketsource.com/close-up-cinema/e-xvyxyom"
+        },
+        {
+          "displayTitle": "Ken Russell's The Devils: The Director's Cut",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:25"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/film/31617501/ken-russells-the-devils-the-directors-cut"
+        },
+        {
+          "displayTitle": "Cinema Paradiso [Nuovo Cinema Paradiso]",
+          "cinema": "Prince Charles Cinema",
+          "showtimes": [
+            "20:45"
+          ],
+          "ticketUrl": "https://princecharlescinema.com/prince-charles-cinema/booknow/31628349"
         }
       ]
     }
